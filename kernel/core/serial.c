@@ -92,20 +92,20 @@ int *polling(char *buffer, int *count){
   // insert your code to gather keyboard input via the technique of polling.
   
   char keyboard_character;
-  int buffer_count =0;
+  int cursor = 0;
   while(1){
     if(inb(COM1+5)&1){// is there input char?
       keyboard_character=inb(COM1);//read the char from COM1
-      if(keyboard_character='\n'){// validating entered key and handling it
-        buffer[buffer_count]='\0';
+      if(keyboard_character == '\n' || keyboard_character == '\r'){// validating entered key and handling it
+        buffer[cursor] = '\0';
         break;
       }
-      buffer[buffer_count]=keyboard_character;
+      buffer[cursor]=keyboard_character;
       outb(serial_port_out,keyboard_character);
-      buffer_count++;
+      cursor++;
     }
   }
-  *count=buffer_count // buffer count
+  *count = cursor; // buffer count
 
   // You must validat each key and handle special keys such as delete, back space, and
   // arrow keys

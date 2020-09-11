@@ -22,14 +22,15 @@
 #include <mem/paging.h>
 
 #include "modules/mpx_supt.h"
+#include "modules/R1/commhand.h"
 
 
 void kmain(void)
 {
-   extern uint32_t magic;
+   // extern uint32_t magic;
    // Uncomment if you want to access the multiboot header
-   //extern void *mbd;
-   //char *boot_loader_name = (char*)((long*)mbd)[16];
+   // extern void *mbd;
+   // char *boot_loader_name = (char*)((long*)mbd)[16];
 
   
    // 0) Initialize Serial I/O 
@@ -51,9 +52,9 @@ void kmain(void)
    
    // 2) Check that the boot was successful and correct when using grub
    // Comment this when booting the kernel directly using QEMU, etc.
-   if ( magic != 0x2BADB002 ){
-     kpanic("Boot was not error free. Halting.");
-   }
+   //if ( magic != 0x2BADB002 ){
+   //  kpanic("Boot was not error free. Halting.");
+   //}
    
    // 3) Descriptor Tables -- tables.c
    //  you will need to initialize the global
@@ -62,13 +63,16 @@ void kmain(void)
 
    init_gdt();
    init_idt();
+
+   init_pic();
+   sti();
    
     // 4)  Interrupt vector table --  tables.c
     // this creates and initializes a default interrupt vector table
     // this function is in tables.c
 
    init_irq();
-   
+    
     klogv("Interrupt vector table initialized!");
     
    // 5) Virtual Memory -- paging.c  -- init_paging
@@ -84,9 +88,10 @@ void kmain(void)
 
    // 6) Call YOUR command handler -  interface method
    klogv("Transferring control to commhand...");
-
+   commhand();
 
    // 7) System Shutdown on return from your command handler
+
    klogv("Starting system shutdown procedure...");
    
    /* Shutdown Procedure */
