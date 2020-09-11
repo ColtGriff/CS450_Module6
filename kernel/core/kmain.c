@@ -28,8 +28,8 @@ void kmain(void)
 {
    extern uint32_t magic;
    // Uncomment if you want to access the multiboot header
-   // extern void *mbd;
-   // char *boot_loader_name = (char*)((long*)mbd)[16];
+   //extern void *mbd;
+   //char *boot_loader_name = (char*)((long*)mbd)[16];
 
   
    // 0) Initialize Serial I/O 
@@ -52,7 +52,7 @@ void kmain(void)
    // 2) Check that the boot was successful and correct when using grub
    // Comment this when booting the kernel directly using QEMU, etc.
    if ( magic != 0x2BADB002 ){
-     //kpanic("Boot was not error free. Halting.");
+     kpanic("Boot was not error free. Halting.");
    }
    
    // 3) Descriptor Tables -- tables.c
