@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 #include <string.h>
+#include <stddef.h>
 
 #include <core/io.h>
 #include <core/serial.h>
@@ -93,18 +94,28 @@ int *polling(char *buffer, int *count){
   
   char keyboard_character;
   int cursor = 0;
+
   while(1){
+
     if(inb(COM1+5)&1){// is there input char?
       keyboard_character=inb(COM1);//read the char from COM1
-      if(keyboard_character == '\n' || keyboard_character == '\r'){// validating entered key and handling it
+
+      if(keyboard_character == '\n' || keyboard_character == '\r'){// HANDLEING THE CARRIAGE RETURN AND NEW LINE CHARACTERS
         buffer[cursor] = '\0';
         break;
-      }
+      } else if(keyboard_character == '\b' && cursor > 0){ // HANDELING THE BACKSPACE CHARACTER
+        buffer[cursor - 1] = '\0';
+        cursor--;
+      } else if(keyboard_character == (wchar_t)(127)){ // HANDLEING THE DELETE CHARACTER
+        // CURRENTLY THE DELETE CHARACTER WILL DO NOTHING.
+      } //POLLING DOES NOT NEED TO HANDLE
+
       buffer[cursor]=keyboard_character;
       outb(serial_port_out,keyboard_character);
       cursor++;
     }
   }
+
   *count = cursor; // buffer count
 
   // You must validat each key and handle special keys such as delete, back space, and
