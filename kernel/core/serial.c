@@ -7,7 +7,6 @@
 
 #include <stdint.h>
 #include <string.h>
-#include <stddef.h>
 
 #include <core/io.h>
 #include <core/serial.h>
@@ -106,9 +105,7 @@ int *polling(char *buffer, int *count){
       } else if(keyboard_character == '\b' && cursor > 0){ // HANDELING THE BACKSPACE CHARACTER
         buffer[cursor - 1] = '\0';
         cursor--;
-      } else if(keyboard_character == (wchar_t)(127)){ // HANDLEING THE DELETE CHARACTER
-        // CURRENTLY THE DELETE CHARACTER WILL DO NOTHING.
-      } //POLLING DOES NOT NEED TO HANDLE
+      }
 
       buffer[cursor]=keyboard_character;
       outb(serial_port_out,keyboard_character);
