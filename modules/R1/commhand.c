@@ -37,7 +37,11 @@ int commhand(){
 
 		sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 
-		//sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
+		serial_print("\n");
+
+		sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
+
+		serial_print("\n");
 
 		// process the command: take array buffer chars and make a string. Decide what the cmd wants to do
 		// see if quit was entered: if string == quit = 1

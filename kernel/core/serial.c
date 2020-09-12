@@ -94,22 +94,78 @@ int *polling(char *buffer, int *count){
   char keyboard_character;
   int cursor = 0;
 
+  char log[] = {'\0', '\0', '\0'};
+
   while(1){
 
     if(inb(COM1+5)&1){// is there input char?
       keyboard_character=inb(COM1);//read the char from COM1
 
       if(keyboard_character == '\n' || keyboard_character == '\r'){// HANDLEING THE CARRIAGE RETURN AND NEW LINE CHARACTERS
+
         buffer[cursor] = '\0';
         break;
-      } else if(keyboard_character == '\b' && cursor > 0){ // HANDELING THE BACKSPACE CHARACTER
-        buffer[cursor - 1] = '\0';
-        cursor--;
-      }
 
-      buffer[cursor]=keyboard_character;
-      outb(serial_port_out,keyboard_character);
-      cursor++;
+      } else if((keyboard_character == 127 || keyboard_character == 8) && cursor > 0){ // HANDELING THE BACKSPACE CHARACTER
+
+        //serial_println("Handleing backspace character.");
+
+        buffer[cursor - 1] = '\t';
+        cursor--;
+
+        /*int temp_cursor = cursor;
+
+        while(buffer[temp_cursor + 1] != '\0'){
+
+          serial_println("Entered backspace while loop.");
+
+          buffer[temp_cursor] = buffer[temp_cursor + 1];
+          buffer[temp_cursor + 1] = ' ';
+          temp_cursor++;
+        }*/
+
+      } else if(keyboard_character == '\033'){ // HANDLEING FIRST CHARACTER FOR ARROW KEYS
+
+        log[0] = keyboard_character;
+
+      } else if(keyboard_character == '[' && log[0] == '\033'){ // HANDLEING SECOND CHARACTER FOR ARROW KEYS
+
+        log[1] = keyboard_character;
+
+      } else if(log[0] == '\033' && log[1] == '[' && log[2] == '\0'){ // HANDLEING LAST CHARACTER FOR ARROW KEYS
+
+        log[2] = keyboard_character;
+
+        //serial_println("^");
+
+        if(log[2] == 'A'){
+          //Up arrow
+          //Call a history function from the commhand or do nothing
+        } else if(log[2] == 'B'){
+          //Down arrow
+          //Call a history command from the commhand or do nothing
+        } else if(log[2] == 'C' && cursor != 99){
+          //Right arrow
+
+          cursor++;
+
+        } else if(log[2] == 'D' && cursor != 0){
+          //Left arrow
+
+          cursor--;
+
+        }
+
+        memset(log, '\0', 3);
+
+      } else {
+
+        //serial_println("Adding character to buffer");
+
+        buffer[cursor]=keyboard_character;
+        outb(serial_port_out,keyboard_character);
+        cursor++;
+      }
     }
   }
 
