@@ -1,0 +1,3 @@
+int help();
+
+int version();
