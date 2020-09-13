@@ -92,6 +92,7 @@ int *polling(char *buffer, int *count){
   // insert your code to gather keyboard input via the technique of polling.
   
   char keyboard_character;
+
   int cursor = 0;
 
   char log[] = {'\0', '\0', '\0'};
@@ -110,19 +111,23 @@ int *polling(char *buffer, int *count){
 
         //serial_println("Handleing backspace character.");
 
-        buffer[cursor - 1] = '\t';
+        buffer[cursor - 1] = ' ';
         cursor--;
 
-        /*int temp_cursor = cursor;
+        int temp_cursor = cursor;
 
         while(buffer[temp_cursor + 1] != '\0'){
 
-          serial_println("Entered backspace while loop.");
+          //serial_println("Entered backspace while loop.");
 
           buffer[temp_cursor] = buffer[temp_cursor + 1];
           buffer[temp_cursor + 1] = ' ';
           temp_cursor++;
-        }*/
+        }
+
+      } else if(keyboard_character == '~'){ //HANDLING THE DELETE KEY
+
+        //serial_println("Handling the delete key");
 
       } else if(keyboard_character == '\033'){ // HANDLEING FIRST CHARACTER FOR ARROW KEYS
 
@@ -138,19 +143,15 @@ int *polling(char *buffer, int *count){
 
         //serial_println("^");
 
-        if(log[2] == 'A'){
-          //Up arrow
+        if(log[2] == 'A'){ //Up arrow
           //Call a history function from the commhand or do nothing
-        } else if(log[2] == 'B'){
-          //Down arrow
+        } else if(log[2] == 'B'){ //Down arrow
           //Call a history command from the commhand or do nothing
-        } else if(log[2] == 'C' && cursor != 99){
-          //Right arrow
+        } else if(log[2] == 'C' && cursor != 99){ //Right arrow
 
           cursor++;
 
-        } else if(log[2] == 'D' && cursor != 0){
-          //Left arrow
+        } else if(log[2] == 'D' && cursor != 0){ //Left arrow
 
           cursor--;
 
@@ -170,6 +171,7 @@ int *polling(char *buffer, int *count){
   }
 
   *count = cursor; // buffer count
+
 
   // You must validat each key and handle special keys such as delete, back space, and
   // arrow keys
