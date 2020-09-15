@@ -87,3 +87,16 @@ int setDate(){
 
 	sti();
 }
+
+// change binary into integer
+int change_binary_to_int(unsigned int bn_value){
+	int integer_result=0;
+	integer_result=(bn_value&0x00F)+(((bn_value>>4))&0x00F)*10;
+	return integer_result;
+}
+// change integer to binary
+int change_int_to_binary(int int_value){
+	unsigned int binary_result=0;
+	binary_result=(int_value % 10) + (((int_value/10) % 10) << 4);
+	return integer_result;
+}
