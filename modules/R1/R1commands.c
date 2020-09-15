@@ -113,4 +113,6 @@ int BCDtoInt(unsigned char test){
 	int val = (test/10*16)+(test%10);
 	
 	return val;
+
 }
+
