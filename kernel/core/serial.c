@@ -138,6 +138,7 @@ int *polling(char *buffer, int *count)
       else if (keyboard_character == '~' && cursor < 99)
       { //HANDLING THE DELETE KEY
 
+          // \033[3~
         //serial_println("Handling the delete key");
 
         buffer[cursor + 1] = ' ';
@@ -174,6 +175,7 @@ int *polling(char *buffer, int *count)
         if (log[2] == 'A')
         { //Up arrow
           //Call a history function from the commhand or do nothing
+<<<<<<< HEAD
         }
         else if (log[2] == 'B')
         { //Down arrow
@@ -182,12 +184,23 @@ int *polling(char *buffer, int *count)
         else if (log[2] == 'C' && cursor != 99)
         { //Right arrow
 
+=======
+
+        } else if(log[2] == 'B'){ //Down arrow
+          //Call a history command from the commhand or do nothing
+
+        } else if(log[2] == 'C' && cursor != 99){ //Right arrow
+>>>>>>> 4a107bc27e9d0c8c19bdd3c2b797abcb421e8190
           serial_print("\033[C");
           cursor++;
         }
         else if (log[2] == 'D' && cursor != 0)
         { //Left arrow
 
+<<<<<<< HEAD
+=======
+        } else if(log[2] == 'D' && cursor != 0){ //Left arrow
+>>>>>>> 4a107bc27e9d0c8c19bdd3c2b797abcb421e8190
           serial_print("\033[D");
           cursor--;
         }
