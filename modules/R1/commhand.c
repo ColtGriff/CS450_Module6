@@ -41,15 +41,17 @@ int commhand(){
 			serial_print("Unrecognized command!\n");
 		}
 
-		// sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
+		sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
 
-		// serial_print("\n");
+		serial_print("\n");
 
 		// process the command: take array buffer chars and make a string. Decide what the cmd wants to do
 		// see if quit was entered: if string == quit = 1
 
 	}
 
+
 	return 0;
 
 }
+
