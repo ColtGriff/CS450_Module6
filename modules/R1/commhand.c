@@ -3,6 +3,7 @@
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
+#include "R1commands.h"
 
 int commhand(){
 
@@ -24,9 +25,11 @@ int commhand(){
 		serial_print("\n");
 
 		if(strcmp(cmdBuffer, "help") == 0){
-			serial_print("Help function\n");
+			//serial_print("Help function\n");
+			help();
 		} else if(strcmp(cmdBuffer, "version") == 0){
 			serial_print("version function\n");
+			version();
 		} else if(strcmp(cmdBuffer, "getDate") == 0){
 			serial_print("getDate function\n");
 		} else if(strcmp(cmdBuffer, "setDate") == 0){
@@ -41,7 +44,7 @@ int commhand(){
 			serial_print("Unrecognized command!\n");
 		}
 
-		sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
+		//sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
 
 		serial_print("\n");
 

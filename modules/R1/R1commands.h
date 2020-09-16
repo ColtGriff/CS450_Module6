@@ -1,15 +1,15 @@
-int help();
+void help();
 
-int version();
+void version();
 
-int getTime();
+void getTime();
 
-int setTime();
+void setTime();
 
-int getDate();
+void getDate();
 
-int setDate();
+void setDate();
 
-unsigned char intToBCD(int test);
+unsigned int change_int_to_binary(int test);
 
-int BCDtoInt(unsigned char test);
+int change_binary_to_int(unsigned char test);
