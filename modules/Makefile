@@ -12,7 +12,8 @@ ASFLAGS = -f elf -g
 # I'll start you off with just mpx_supt.o
 OBJFILES =\
 mpx_supt.o \
-R1/commhand.o
+R1/commhand.o \
+R1/R1commands.o
 
 .c.s:
 	$(CC) $(CFLAGS) -S -o $@ $<

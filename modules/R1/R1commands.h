@@ -12,4 +12,4 @@ int setDate();
 
 unsigned char intToBCD(int test);
 
-int BCDtoInt(unsigned char test);
+int BCDtoChar(unsigned char test, char* buffer);
