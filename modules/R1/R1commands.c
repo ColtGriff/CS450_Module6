@@ -1,6 +1,6 @@
 //R1 Commands
 
-<<<<<<< HEAD
+
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
@@ -10,22 +10,14 @@ int BCDtoChar(unsigned char test, char* buffer);
 unsigned char intToBCD(int test);
 
 
-// 0x00 - Seconds
-// 0x02 - Minutes
-// 0x04 - Hours
-// 0x06 - Day of Week
-// 0x07 - Day of Month
-// 0x08 - Month
-// 0x09 - Year
-
-// Year register: 0x09(lower) and 0x32(upper)
-
 int help(){
 
 	// Help Description section
 	char helpDesc[] = "Help: Returns basic command information.\n";
 
 	int tempBuffer = strlen(helpDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char*)helpDesc, &tempBuffer);
 
 
 	// Version Description section
@@ -67,8 +59,16 @@ int help(){
 
 	sys_req(WRITE, DEFAULT_DEVICE, (char*)setDateDesc, &tempBuffer);
 
-	return 0;
 
+	// quit Description section
+	char quitDesc[] = "Quit: Allows the user to shut the system down.\n";
+
+	tempBuffer = strlen(quitDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char*)quitDesc, &tempBuffer);
+
+	return 0;
+}
 
 
 int version(){
@@ -80,7 +80,6 @@ int version(){
 	sys_req(WRITE, DEFAULT_DEVICE, (char*)version, &tempBuffer);
 
 	return 0;
-
 	
 }
 
@@ -107,7 +106,6 @@ void getTime(){
 	BCDtoChar(inb(0x71), buffer);
 	buffer[2] = '\0';
 	sys_req(WRITE, DEFAULT_DEVICE, buffer, &count);
-
 
 	return 0;
 
