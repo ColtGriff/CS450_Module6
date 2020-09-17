@@ -28,7 +28,11 @@ int commhand(){
 			//serial_print("Help function\n");
 			help();
 		} else if(strcmp(cmdBuffer, "version") == 0){
+<<<<<<< HEAD
 			//serial_print("version function\n");
+=======
+			serial_print("version function\n");
+>>>>>>> 59814169b90d1e8ae8a2a1ecb8c3ef576ba2f5f4
 			version();
 		} else if(strcmp(cmdBuffer, "getDate") == 0){
 			//serial_print("getDate function\n");
@@ -52,7 +56,11 @@ int commhand(){
 		} else {
 			char message[] = "Unrecognized Command\n";
 
+<<<<<<< HEAD
 			int tempBuffer = strlen(message);
+=======
+		//sys_req(WRITE, DEFAULT_DEVICE, cmdBuffer, &bufferSize); //Testing write function
+>>>>>>> 59814169b90d1e8ae8a2a1ecb8c3ef576ba2f5f4
 
 			sys_req(WRITE, DEFAULT_DEVICE, (char*)message, &tempBuffer);
 

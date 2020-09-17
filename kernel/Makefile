@@ -19,7 +19,9 @@ core/serial.o\
 core/system.o\
 core/tables.o\
 mem/paging.o\
-mem/heap.o
+mem/heap.o\
+
+
 
 .s.o:
 	$(AS) $(ASFLAGS) -o $@ $<

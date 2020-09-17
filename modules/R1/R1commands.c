@@ -1,5 +1,6 @@
 //R1 Commands
 
+<<<<<<< HEAD
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
@@ -7,6 +8,7 @@
 
 int BCDtoChar(unsigned char test, char* buffer);
 unsigned char intToBCD(int test);
+
 
 // 0x00 - Seconds
 // 0x02 - Minutes
@@ -24,8 +26,6 @@ int help(){
 	char helpDesc[] = "Help: Returns basic command information.\n";
 
 	int tempBuffer = strlen(helpDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char*)helpDesc, &tempBuffer);
 
 
 	// Version Description section
@@ -69,7 +69,7 @@ int help(){
 
 	return 0;
 
-}
+
 
 int version(){
 
@@ -80,10 +80,12 @@ int version(){
 	sys_req(WRITE, DEFAULT_DEVICE, (char*)version, &tempBuffer);
 
 	return 0;
+
 	
 }
 
-int getTime(){
+
+void getTime(){
 
 	char buffer[4]="\0\0\0";
 	int count = 4;
@@ -106,11 +108,11 @@ int getTime(){
 	buffer[2] = '\0';
 	sys_req(WRITE, DEFAULT_DEVICE, buffer, &count);
 
-	sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
 
 	return 0;
 
 }
+
 
 int setTime(){
 
@@ -118,7 +120,6 @@ int setTime(){
 
 	char spacer[1] = "\n"; // used to space out terminal outputs
 	int spaceCount = 1; 
-
 	
 ///////// Taking hours input
 	char instruction1[] = "Please type the desired hours. I.E.: hh.\n";
@@ -203,7 +204,6 @@ int setTime(){
 		}
 	}while(flag == 1);
 
-
 	cli();
 
 	
@@ -228,7 +228,7 @@ int setTime(){
 	return 0;
 }
 
-int getDate(){
+void getDate(){
 
 	char buffer[4]="\0\0\0\0";
 	int count = 4;
@@ -259,8 +259,6 @@ int getDate(){
 
 	return 0;
 }
-
-
 
 
 int setDate(){
@@ -458,11 +456,12 @@ int setDate(){
 }
 
 
-unsigned char intToBCD(int test){
+unsigned char change_int_to_binary(int test){
 
 	return (((test/10)<<4)|(test%10));
 
 }
+
 
 int BCDtoChar(unsigned char test, char* buffer){
 
@@ -474,5 +473,4 @@ int BCDtoChar(unsigned char test, char* buffer){
 
 	return 0;
 }
-
 
