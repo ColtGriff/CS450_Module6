@@ -7,7 +7,6 @@
 
 #include <stdint.h>
 #include <string.h>
-
 #include <core/io.h>
 #include <core/serial.h>
 
