@@ -1,0 +1,258 @@
+\hypertarget{mpx__supt_8c}{}\doxysection{modules/mpx\+\_\+supt.c File Reference}
+\label{mpx__supt_8c}\index{modules/mpx\_supt.c@{modules/mpx\_supt.c}}
+{\ttfamily \#include \char`\"{}mpx\+\_\+supt.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mem/heap.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$core/serial.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\+\_\+req}} (int op\+\_\+code, int device\+\_\+id, char $\ast$buffer\+\_\+ptr, int $\ast$count\+\_\+ptr)
+\item 
+void \mbox{\hyperlink{mpx__supt_8c_a53332c6a3107a4feed6e2e79690a6ffa}{mpx\+\_\+init}} (int cur\+\_\+mod)
+\item 
+void \mbox{\hyperlink{mpx__supt_8c_a4a28bb188c9fed51228c46980b20e605}{sys\+\_\+set\+\_\+malloc}} (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}($\ast$func)(\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}))
+\item 
+void \mbox{\hyperlink{mpx__supt_8c_a2463d934fa39601c275a3ade8afd18bc}{sys\+\_\+set\+\_\+free}} (int($\ast$func)(void $\ast$))
+\item 
+void $\ast$ \mbox{\hyperlink{mpx__supt_8c_a61adad2abba0a3a225c2290b3de1fe93}{sys\+\_\+alloc\+\_\+mem}} (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} size)
+\item 
+int \mbox{\hyperlink{mpx__supt_8c_a950663d39dbb073c9dff9cf3b5d3392c}{sys\+\_\+free\+\_\+mem}} (void $\ast$ptr)
+\item 
+void \mbox{\hyperlink{mpx__supt_8c_a83abbeda22fc5e6c2b35523b64199c1c}{idle}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structparam}{param}} \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}
+\item 
+int \mbox{\hyperlink{mpx__supt_8c_a3d19c725b7f9f45e9da97a79ca6a4737}{current\+\_\+module}} = -\/1
+\item 
+\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}($\ast$ \mbox{\hyperlink{mpx__supt_8c_a421e2b48efb5facc71d16979252710e2}{student\+\_\+malloc}} )(\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})
+\item 
+int($\ast$ \mbox{\hyperlink{mpx__supt_8c_a19c47c02b0338bc13716d98305bb8a34}{student\+\_\+free}} )(void $\ast$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mpx__supt_8c_a83abbeda22fc5e6c2b35523b64199c1c}\label{mpx__supt_8c_a83abbeda22fc5e6c2b35523b64199c1c}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!idle@{idle}}
+\index{idle@{idle}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{idle()}{idle()}}
+{\footnotesize\ttfamily void idle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 173 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{174 \{}
+\DoxyCodeLine{175   \textcolor{keywordtype}{char} msg[30];}
+\DoxyCodeLine{176   \textcolor{keywordtype}{int} count=0;}
+\DoxyCodeLine{177     }
+\DoxyCodeLine{178     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}( msg, \textcolor{charliteral}{'\(\backslash\)0'}, \textcolor{keyword}{sizeof}(msg));}
+\DoxyCodeLine{179     \mbox{\hyperlink{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy}}(msg, \textcolor{stringliteral}{"{}IDLE PROCESS EXECUTING.\(\backslash\)n"{}});}
+\DoxyCodeLine{180     count = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(msg);}
+\DoxyCodeLine{181   }
+\DoxyCodeLine{182   \textcolor{keywordflow}{while}(1)\{}
+\DoxyCodeLine{183     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}( \mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, msg, \&count);}
+\DoxyCodeLine{184     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_a9c21a7caee326d7803b94ae1952b27ca}{IDLE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}}, \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}});}
+\DoxyCodeLine{185   \}}
+\DoxyCodeLine{186 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_a53332c6a3107a4feed6e2e79690a6ffa}\label{mpx__supt_8c_a53332c6a3107a4feed6e2e79690a6ffa}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!mpx\_init@{mpx\_init}}
+\index{mpx\_init@{mpx\_init}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{mpx\_init()}{mpx\_init()}}
+{\footnotesize\ttfamily void mpx\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{cur\+\_\+mod }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108   }
+\DoxyCodeLine{109   \mbox{\hyperlink{mpx__supt_8c_a3d19c725b7f9f45e9da97a79ca6a4737}{current\_module}} = cur\_mod;}
+\DoxyCodeLine{110   \textcolor{keywordflow}{if} (cur\_mod == \mbox{\hyperlink{mpx__supt_8h_a02d9b620a75ca60cd5d24b51309af887}{MEM\_MODULE}})}
+\DoxyCodeLine{111         mem\_module\_active = \mbox{\hyperlink{mpx__supt_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113   \textcolor{keywordflow}{if} (cur\_mod == \mbox{\hyperlink{mpx__supt_8h_a69d0c9d3e706f2549635aeb72dc2c9b1}{IO\_MODULE}})}
+\DoxyCodeLine{114         io\_module\_active = \mbox{\hyperlink{mpx__supt_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}};}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_a61adad2abba0a3a225c2290b3de1fe93}\label{mpx__supt_8c_a61adad2abba0a3a225c2290b3de1fe93}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!sys\_alloc\_mem@{sys\_alloc\_mem}}
+\index{sys\_alloc\_mem@{sys\_alloc\_mem}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{sys\_alloc\_mem()}{sys\_alloc\_mem()}}
+{\footnotesize\ttfamily void$\ast$ sys\+\_\+alloc\+\_\+mem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 144 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146   \textcolor{keywordflow}{if} (!mem\_module\_active)}
+\DoxyCodeLine{147     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *) \mbox{\hyperlink{heap_8h_a15d6a52c5c080c8c7ffc73e336d8e574}{kmalloc}}(size);}
+\DoxyCodeLine{148   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{149     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *) (*student\_malloc)(size);}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_a950663d39dbb073c9dff9cf3b5d3392c}\label{mpx__supt_8c_a950663d39dbb073c9dff9cf3b5d3392c}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!sys\_free\_mem@{sys\_free\_mem}}
+\index{sys\_free\_mem@{sys\_free\_mem}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{sys\_free\_mem()}{sys\_free\_mem()}}
+{\footnotesize\ttfamily int sys\+\_\+free\+\_\+mem (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 158 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{159 \{}
+\DoxyCodeLine{160   \textcolor{keywordflow}{if} (mem\_module\_active)}
+\DoxyCodeLine{161     \textcolor{keywordflow}{return} (*\mbox{\hyperlink{mpx__supt_8c_a19c47c02b0338bc13716d98305bb8a34}{student\_free}})(ptr);}
+\DoxyCodeLine{162   \textcolor{comment}{// otherwise we don't free anything}}
+\DoxyCodeLine{163   \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{164 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}\label{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!sys\_req@{sys\_req}}
+\index{sys\_req@{sys\_req}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{sys\_req()}{sys\_req()}}
+{\footnotesize\ttfamily int sys\+\_\+req (\begin{DoxyParamCaption}\item[{int}]{op\+\_\+code,  }\item[{int}]{device\+\_\+id,  }\item[{char $\ast$}]{buffer\+\_\+ptr,  }\item[{int $\ast$}]{count\+\_\+ptr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} return\_code =0;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57   \textcolor{keywordflow}{if} (op\_code == \mbox{\hyperlink{mpx__supt_8h_a9c21a7caee326d7803b94ae1952b27ca}{IDLE}} || op\_code == \mbox{\hyperlink{mpx__supt_8h_ad111e603bbebe5d87f6bc39264ce4733}{EXIT}})\{}
+\DoxyCodeLine{58     \textcolor{comment}{// store the process's operation request}}
+\DoxyCodeLine{59     \textcolor{comment}{// triger interrupt 60h to invoke}}
+\DoxyCodeLine{60     \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}.\mbox{\hyperlink{structparam_a81c8b24055c2908ebe480598aba6044c}{op\_code}} = op\_code;}
+\DoxyCodeLine{61     \textcolor{keyword}{asm} \textcolor{keyword}{volatile} (\textcolor{stringliteral}{"{}int \$60"{}});}
+\DoxyCodeLine{62   \}\textcolor{comment}{// idle or exit}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (op\_code == \mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}} || op\_code == \mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}) \{}
+\DoxyCodeLine{65     \textcolor{comment}{// validate buffer pointer and count pointer}}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if} (buffer\_ptr == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{67       return\_code = \mbox{\hyperlink{mpx__supt_8h_a9f45976a0d1fa6f0a85a74b6efd93835}{INVALID\_BUFFER}};}
+\DoxyCodeLine{68     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (count\_ptr == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}} || *count\_ptr <= 0)}
+\DoxyCodeLine{69       return\_code = \mbox{\hyperlink{mpx__supt_8h_a2b85babe3dc4162f5551aae5d269ba60}{INVALID\_COUNT}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{comment}{// if parameters are valid store in the params structure}}
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} ( return\_code == 0)\{ }
+\DoxyCodeLine{73       \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}.\mbox{\hyperlink{structparam_a81c8b24055c2908ebe480598aba6044c}{op\_code}} = op\_code;}
+\DoxyCodeLine{74       \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}.\mbox{\hyperlink{structparam_a44a7285b02749114186a9f9971941bcb}{device\_id}} = device\_id;}
+\DoxyCodeLine{75       \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}.\mbox{\hyperlink{structparam_af15d63bace93014ec7425635c892ce99}{buffer\_ptr}} = buffer\_ptr;}
+\DoxyCodeLine{76       \mbox{\hyperlink{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}{params}}.\mbox{\hyperlink{structparam_ab61d8fe96dbeed1ef0387802ac453c53}{count\_ptr}} = count\_ptr;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78       \textcolor{keywordflow}{if} (!io\_module\_active)\{}
+\DoxyCodeLine{79         \textcolor{comment}{// if default device}}
+\DoxyCodeLine{80         \textcolor{keywordflow}{if} (op\_code == \mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}})}
+\DoxyCodeLine{81           return\_code = *(\mbox{\hyperlink{serial_8h_ab1d1d36bd91339352f5b66f809b34d8c}{polling}}(buffer\_ptr, count\_ptr));}
+\DoxyCodeLine{82                     }
+\DoxyCodeLine{83         \textcolor{keywordflow}{else} \textcolor{comment}{//must be WRITE}}
+\DoxyCodeLine{84           return\_code = \mbox{\hyperlink{serial_8h_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer\_ptr);   }
+\DoxyCodeLine{85         }
+\DoxyCodeLine{86       \} \textcolor{keywordflow}{else} \{\textcolor{comment}{// I/O module is implemented}}
+\DoxyCodeLine{87         \textcolor{keyword}{asm} \textcolor{keyword}{volatile} (\textcolor{stringliteral}{"{}int \$60"{}});}
+\DoxyCodeLine{88       \} \textcolor{comment}{// NOT IO\_MODULE}}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90   \} \textcolor{keywordflow}{else} return\_code = \mbox{\hyperlink{mpx__supt_8h_a95d66938b0cfadb27cc1368b5e04fdb3}{INVALID\_OPERATION}};}
+\DoxyCodeLine{91   }
+\DoxyCodeLine{92   \textcolor{keywordflow}{return} return\_code;}
+\DoxyCodeLine{93 \}\textcolor{comment}{// end of sys\_req}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_a2463d934fa39601c275a3ade8afd18bc}\label{mpx__supt_8c_a2463d934fa39601c275a3ade8afd18bc}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!sys\_set\_free@{sys\_set\_free}}
+\index{sys\_set\_free@{sys\_set\_free}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{sys\_set\_free()}{sys\_set\_free()}}
+{\footnotesize\ttfamily void sys\+\_\+set\+\_\+free (\begin{DoxyParamCaption}\item[{int($\ast$)(void $\ast$)}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line 134 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{135 \{}
+\DoxyCodeLine{136   \mbox{\hyperlink{mpx__supt_8c_a19c47c02b0338bc13716d98305bb8a34}{student\_free}} = func;}
+\DoxyCodeLine{137 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mpx__supt_8c_a4a28bb188c9fed51228c46980b20e605}\label{mpx__supt_8c_a4a28bb188c9fed51228c46980b20e605}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!sys\_set\_malloc@{sys\_set\_malloc}}
+\index{sys\_set\_malloc@{sys\_set\_malloc}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{sys\_set\_malloc()}{sys\_set\_malloc()}}
+{\footnotesize\ttfamily void sys\+\_\+set\+\_\+malloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}($\ast$)(\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line 124 of file mpx\+\_\+supt.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125 \{}
+\DoxyCodeLine{126   \mbox{\hyperlink{mpx__supt_8c_a421e2b48efb5facc71d16979252710e2}{student\_malloc}} = func;}
+\DoxyCodeLine{127 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{mpx__supt_8c_a3d19c725b7f9f45e9da97a79ca6a4737}\label{mpx__supt_8c_a3d19c725b7f9f45e9da97a79ca6a4737}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!current\_module@{current\_module}}
+\index{current\_module@{current\_module}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{current\_module}{current\_module}}
+{\footnotesize\ttfamily int current\+\_\+module = -\/1}
+
+
+
+Definition at line 18 of file mpx\+\_\+supt.\+c.
+
+\mbox{\Hypertarget{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}\label{mpx__supt_8c_a3b4b77494d0fad58939896ddc5290c99}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!params@{params}}
+\index{params@{params}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{params}{params}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structparam}{param}} params}
+
+
+
+Definition at line 15 of file mpx\+\_\+supt.\+c.
+
+\mbox{\Hypertarget{mpx__supt_8c_a19c47c02b0338bc13716d98305bb8a34}\label{mpx__supt_8c_a19c47c02b0338bc13716d98305bb8a34}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!student\_free@{student\_free}}
+\index{student\_free@{student\_free}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{student\_free}{student\_free}}
+{\footnotesize\ttfamily int($\ast$ student\+\_\+free) (void $\ast$)}
+
+
+
+Definition at line 28 of file mpx\+\_\+supt.\+c.
+
+\mbox{\Hypertarget{mpx__supt_8c_a421e2b48efb5facc71d16979252710e2}\label{mpx__supt_8c_a421e2b48efb5facc71d16979252710e2}} 
+\index{mpx\_supt.c@{mpx\_supt.c}!student\_malloc@{student\_malloc}}
+\index{student\_malloc@{student\_malloc}!mpx\_supt.c@{mpx\_supt.c}}
+\doxysubsubsection{\texorpdfstring{student\_malloc}{student\_malloc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}($\ast$ student\+\_\+malloc) (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})}
+
+
+
+Definition at line 24 of file mpx\+\_\+supt.\+c.
+
