@@ -1,0 +1,25 @@
+
+
+This document explains to the MPX user how to use every command available in module1.
+All the commands are case sensitive. After succesffully running MPX files,the user has to type the command as explained in this document.
+Also, note that the commands with paranthesis () require arguments. User has to give argument as shown in this document.
+Finally, press enter after typing any of the commands.
+
+COMMANDS                                 HOW TO USE 
+________                                ____________________________________________________________
+
+help     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>type help after running MPX files
+
+version  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> type version 
+
+geTime   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> type getTime
+
+getDate  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> type getDate
+
+setTime()>>>>>>>>>>>>>> >>>>>>>>>>>>>>>>>> type setTime(number of hours, number of minutes, number of seconds)
+                                             for example,type setTime(12,20,45) to set time to 12:20:54
+
+setDate()>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> type seDate(month, day, year)
+                                              For example,type setDate(9,9,2019) to set date to 09/09/2019
+
+quit    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> simply type quit to exit the main loop of the MPx
