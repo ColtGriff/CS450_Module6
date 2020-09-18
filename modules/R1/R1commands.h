@@ -12,6 +12,6 @@ void setDate();
 
 unsigned int change_int_to_binary(int test);
 
+int BCDtoChar(unsigned char test, char *buffer);
 
-int BCDtoChar(unsigned char test, char* buffer);
-
+int quit();

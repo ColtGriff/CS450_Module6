@@ -1,6 +1,5 @@
 /*
   ----- serial.c -----
-
   Description..: Contains methods and variables used for
     serial input and output.
 */

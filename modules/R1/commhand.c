@@ -11,9 +11,9 @@ int commhand()
 	char cmdBuffer[100];
 	int bufferSize;
 
-	int quit = 0;
+	int quitFlag = 0;
 
-	while (!quit)
+	while (!quitFlag)
 	{
 		//get a command: cal polling fx
 
@@ -51,10 +51,11 @@ int commhand()
 		}
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
+			quitFlag = quit();
 
-			// Need a check here
-
-			quit = 1;
+			char newLine[] = "\n";
+			int newLineCount = 1;
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
 		}
 		else
 		{
