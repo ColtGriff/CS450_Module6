@@ -101,6 +101,8 @@ int *polling(char *buffer, int *count)
 
   char log[] = {'\0', '\0', '\0', '\0'};
 
+  int characters_in_buffer = 0;
+
   while (1)
   {
 
@@ -111,49 +113,53 @@ int *polling(char *buffer, int *count)
       if (keyboard_character == '\n' || keyboard_character == '\r')
       { // HANDLEING THE CARRIAGE RETURN AND NEW LINE CHARACTERS
 
-        buffer[cursor] = '\0';
+        buffer[characters_in_buffer] = '\0';
         break;
       }
       else if ((keyboard_character == 127 || keyboard_character == 8) && cursor > 0)
       { // HANDELING THE BACKSPACE CHARACTER
 
         //serial_println("Handleing backspace character.");
+        serial_print("\033[K");
 
-        buffer[cursor - 1] = ' ';
+        buffer[cursor - 1] = '\0';
         serial_print("\b \b");
+        serial_print(buffer + cursor);
         cursor--;
 
         int temp_cursor = cursor;
 
         while (buffer[temp_cursor + 1] != '\0')
         {
-
-          //serial_println("Entered backspace while loop.");
-
           buffer[temp_cursor] = buffer[temp_cursor + 1];
-          buffer[temp_cursor + 1] = ' ';
+          buffer[temp_cursor + 1] = '\0';
           temp_cursor++;
         }
+
+        characters_in_buffer--;
+        cursor = characters_in_buffer;
       }
       else if (keyboard_character == '~' && cursor < 99)
       { //HANDLING THE DELETE KEY
-
         // \033[3~
-        //serial_println("Handling the delete key");
 
-        buffer[cursor + 1] = ' ';
+        serial_print("\033[K");
+
+        buffer[cursor + 1] = '\0';
+        serial_print("\b \b");
+        serial_print(buffer + cursor);
 
         int temp_cursor = cursor + 1;
 
         while (buffer[temp_cursor + 1] != '\0')
         {
-
-          //serial_println("Entered delete while loop.");
-
           buffer[temp_cursor] = buffer[temp_cursor + 1];
-          buffer[temp_cursor + 1] = ' ';
+          buffer[temp_cursor + 1] = '\0';
           temp_cursor++;
         }
+
+        characters_in_buffer--;
+        cursor = characters_in_buffer;
       }
       else if (keyboard_character == '\033')
       { // HANDLEING FIRST CHARACTER FOR ARROW KEYS
@@ -165,28 +171,25 @@ int *polling(char *buffer, int *count)
 
         log[1] = keyboard_character;
       }
-      else if (log[0] == '\033' && log[1] == '[' && log[2] == '\0')
+      else if (log[0] == '\033' && log[1] == '[')
       { // HANDLEING LAST CHARACTER FOR ARROW KEYS
-
         log[2] = keyboard_character;
 
-        //serial_println("^");
-
-        if (log[2] == 'A')
+        if (keyboard_character == 'A')
         { //Up arrow
           //Call a history function from the commhand or do nothing
         }
-        else if (log[2] == 'B')
+        else if (keyboard_character == 'B')
         { //Down arrow
           //Call a history command from the commhand or do nothing
         }
-        else if (log[2] == 'C' && cursor != 99)
+        else if (keyboard_character == 'C' && cursor != 99)
         { //Right arrow
 
           serial_print("\033[C");
           cursor++;
         }
-        else if (log[2] == 'D' && cursor != 0)
+        else if (keyboard_character == 'D' && cursor != 0)
         { //Left arrow
 
           serial_print("\033[D");
@@ -198,23 +201,60 @@ int *polling(char *buffer, int *count)
       else
       {
 
-        //serial_println("Adding character to buffer");
+        if (cursor == 0 && buffer[cursor] == '\0') //Adding character at beginning of buffer
+        {
+          buffer[cursor] = keyboard_character;
+          serial_print(&keyboard_character);
+          cursor++;
+        }
+        else if (buffer[cursor] == '\0') //Adding character at the end of the buffer
+        {
+          buffer[cursor] = keyboard_character;
+          serial_print(&keyboard_character);
+          cursor++;
+        }
+        else //Inserting character to the middle of the buffer
+        {
+          char temp_buffer[strlen(buffer)];
+          memset(temp_buffer, '\0', strlen(buffer));
 
-        buffer[cursor] = keyboard_character;
-        outb(serial_port_out, keyboard_character);
-        cursor++;
+          int temp_cursor = 0;
+          while (temp_cursor <= characters_in_buffer) //Filling the temp_buffer with all of the characters from buffer, and inserting the new character.
+          {
+            if (temp_cursor < cursor)
+            {
+              temp_buffer[temp_cursor] = buffer[temp_cursor];
+            }
+            else if (temp_cursor > cursor)
+            {
+              temp_buffer[temp_cursor] = buffer[temp_cursor - 1];
+            }
+            else
+            { //temp_cursor == cursor
+              temp_buffer[temp_cursor] = keyboard_character;
+            }
+            temp_cursor++;
+          }
+
+          temp_cursor = 0;
+          int temp_buffer_size = strlen(temp_buffer);
+          while (temp_cursor <= temp_buffer_size) //Setting the contents of the buffer equal to the temp_buffer.
+          {
+            buffer[temp_cursor] = temp_buffer[temp_cursor];
+            temp_cursor++;
+          }
+
+          serial_print("\033[K");
+          serial_print(&keyboard_character);
+          serial_print(buffer + cursor + 1);
+          cursor++;
+        }
+        characters_in_buffer++;
       }
     }
   }
 
-  *count = cursor; // buffer count
-
-  // You must validat each key and handle special keys such as delete, back space, and
-  // arrow keys
-
-  // remove the following line after implementing your module, this is present
-  // just to allow the program to compile before R1 is complete
-  //strlen(buffer);
+  *count = characters_in_buffer; // buffer count
 
   return count;
 }
