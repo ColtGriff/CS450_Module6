@@ -17,6 +17,7 @@ typedef struct
     int count; //Keeps track of how many PCBs are in the queue.
     PCB *head; //Points to the PCB at the head(beginning/top) of the queue.
     PCB *tail; //Points to the PCB at the tail(end/bottom) of the queue.
+
 } queue;
 
 PCB *allocatePCB();
@@ -38,3 +39,4 @@ queue *getBlocked();
 queue *getSuspendedReady();
 
 queue *getSuspendedBlocked();
+PCB* searchPCB(queue*PCB_container, char*processName);
