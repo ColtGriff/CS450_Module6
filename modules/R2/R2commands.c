@@ -204,8 +204,8 @@ void showAll()
     */
 }
 
-void printPCBs(queue*PCB_container){
-    // PCBs_container has PCB*head and PCB*tail pointers
+void printPCBs(queue*PCB_container){ // Why is it giving unknown type 'queue'?
+    // PCB_container has PCB*head and PCB*tail pointers
     // check if the input queue exist
     if(strcmp(PCB_container,"ready"!=0)||strcmp(PCB_container,"blocked" !=0)// will need to revise this
         ||strcmp(PCB_container,"suspendedReady"!=0)||strcmp(PCB_container,"suspendedBlocked" !=0)){
@@ -220,7 +220,7 @@ void printPCBs(queue*PCB_container){
     // make pcb ptr to equal the head of the queue ptr. 
     // Now you have full access to the pcbs in the queue
     // use the pcb ptr to loop over the pcbs in any queue
-    
+
     queue*tempQueue;
 
     PCB*tempPtr =tempQueue->head; 

@@ -4,10 +4,10 @@
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
 
-queue ready;
-queue blocked;
-queue suspendedReady;
-queue suspendedBlocked;
+queue*ready;
+queue*blocked;
+queue*suspendedReady;
+queue*suspendedBlocked;
 
 PCB *allocatePCB() //Returns the created PCB pointer if successful, returns NULL if an error occurs.
 {
@@ -51,81 +51,76 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     (void)processName;
     // searching in ready queue
 
-    PCB**foundPCB; // this is a pointer to another pointer (** starts). Need testing!
-    foundPCB=searchPCB(ready, processName);
-    if(foundPCB){
-        return foundPCB;
+    PCB*found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
+    found_ready_pcb=searchPCB(ready, processName);
+    if(found_ready_pcb){
+        return found_ready_pcb;
     }
 
     // searching PCB in blocked queue
-    PCB**foundPCB;
-    foundPCB=searchPCB(blocked, processName);
-    if(foundPCB){
-        return foundPCB;
+    PCB*found_blocked_pcb;
+    found_blocked_pcb=searchPCB(blocked, processName);
+    if(found_blocked_pcb){
+        return found_blocked_pcb;
     }
 
     // searching PCB in suspendedReady queue
-    PCB**foundPCB;
-    foundPCB=searchPCB(suspendedReady, processName);
-    if(foundPCB){
-        return foundPCB;
+    PCB*found_suspended_ready_pcb;
+    found_suspended_ready_pcb=searchPCB(suspendedReady, processName);
+    if(found_suspended_ready_pcb){
+        return found_suspended_ready_pcb;
     }
 
     // searching PCB in suspendedBlocked queue
-    PCB**foundPCB;
-    foundPCB=searchPCB(getSuspendedBlocked, processName);
-    if(foundPCB){
-        return foundPCB;
+    PCB*found_suspended_blocked_pcb;
+    found_suspended_blocked_pcb=searchPCB(suspendedBlocked, processName);
+    if(found_suspended_blocked_pcb){
+        return found_suspended_blocked_pcb;
     }
 
 
-    //return NULL is done by searchPCB()
+    return NULL ;// for testing
 }
 
 PCB* searchPCB(queue*PCB_container,char*processName){
  // PCB_container has PCB*head and PCB*tail pointers
     queue*tempQueue;
-    PCB*tempPCB=tempQueue->head;
+
+    PCB*tempPtr =tempQueue->head; 
+
+    int count =PCB_container->count;// tempQueue->count;
 
     int found=0;// not found signal
     // detecting buffer overflow
     if(strlen(processName)>20){
 
        char error_message[30]="Invalid process name.";
-        int error_size=strlen(error);
+        int error_size=strlen(error_message);
         sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
+        //return cz we have to stop if the process name is too long
     }
-
-     // check if the queue exist.  WILL BE REMOVED because we now have control of what queue to search in.
-    if(strcmp(PCB_container,"ready"!=0)||strcmp(PCB_container,"blocked" !=0)// will need to revise this
-        ||strcmp(PCB_container,"suspendedReady"!=0)||strcmp(PCB_container,"suspendedBlocked" !=0)){
-        // the queue entered is invalid.
-        char error_message[30]="The queue does not exit.";
-        int error_size=strlen(error);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
-    }
-
-    while(tempPCB !=NULL){
-        if(strcmp(tempPCB->processName,processName)==0){
+    
+    int value=0;
+    while(value<=count){
+        if(strcmp(tempPtr->processName,processName)==0){
             found=1;// found signal
-            return tempPCB;
+            return tempPtr;
             break;
         }
 
-        tempPCB=tempPCB->nextPCB;
+        tempPtr = tempPtr->nextPCB;// don't know why this line is giving assignment from incompatible pointer type error.
+        value++;
         
     }
 
 
     if (found==0){
         char result_message[30]="The process was not found.";
-        int result_size=strlen(error);
+        int result_size=strlen(result_message);
         sys_req(WRITE, DEFAULT_DEVICE, result_message, &result_size);
-        return NULL;
+        return NULL; // Why are this return not recognized??
     }
-
+   return NULL; // for testing.
 }
 
 
@@ -152,20 +147,20 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, reurn 1 is error c
 
 queue *getReady()
 {
-    return &ready;
+    return ready;
 }
 
 queue *getBlocked()
 {
-    return &blocked;
+    return blocked;
 }
 
 queue *getSuspendedReady()
 {
-    return &suspendedReady;
+    return suspendedReady;
 }
 
 queue *getSuspendedBlocked()
 {
-    return &suspendedBlocked;
+    return suspendedBlocked;
 }
