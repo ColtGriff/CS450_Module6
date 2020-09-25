@@ -13,7 +13,9 @@ ASFLAGS = -f elf -g
 OBJFILES =\
 mpx_supt.o \
 R1/commhand.o \
-R1/R1commands.o
+R1/R1commands.o \
+R2/R2_Internal_Functions_And_Structures.o \
+R2/R2commands.o 
 
 .c.s:
 	$(CC) $(CFLAGS) -S -o $@ $<

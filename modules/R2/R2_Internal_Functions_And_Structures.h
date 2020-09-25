@@ -8,8 +8,8 @@ typedef struct
     unsigned char *stack[1024]; // Stack array.
     unsigned char *stackTop;    // Pointer to the top of the stack area for the PCB. (stackTop = PCB->stack + 1024)
     unsigned char *stackBase;   // Pointer to the base of the stack area for the PCB. (stackBase = PCB->stack)
-    PCB *nextPCB;               // Pointer to the next PCB in the queue.
-    PCB *PrevPCB;               // Pointer to the previous PCB in the queue.
+    struct PCB *nextPCB;        // Pointer to the next PCB in the queue.
+    struct PCB *PrevPCB;        // Pointer to the previous PCB in the queue.
 } PCB;
 
 typedef struct

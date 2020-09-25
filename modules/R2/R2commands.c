@@ -5,7 +5,7 @@
 
 //TEMPORARY USER COMMANDS - WILL BE REMOVED FOR R3/R4
 void createPCB(char *processName, unsigned char processClass, int processPriority)
-{ // BENJAMIN WILL PROGRAM THIS FUNCTION
+{   // BENJAMIN WILL PROGRAM THIS FUNCTION
     /*
     The createPCB command will call setupPCB() and insert the PCB in the appropriate queue
     */
@@ -16,10 +16,14 @@ void createPCB(char *processName, unsigned char processClass, int processPriorit
     Class must be valid.
     Priority must be valid.
     */
+
+    (void)processName;
+    (void)processClass;
+    (void)processPriority;
 }
 
 void deletePCB(char *processName)
-{ // BENJAMIN WILL PROGRAM THIS FUNCTION
+{   // BENJAMIN WILL PROGRAM THIS FUNCTION
     /*
     The deletePCB command will remove a PCB from the appropriate queue and then free all associated memory.
     This method will need to find the pcb, unlink it from the appropriate queue, and then free it.
@@ -29,6 +33,8 @@ void deletePCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 void blockPCB(char *processName)
@@ -42,6 +48,8 @@ void blockPCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 void unblockPCB(char *processName)
@@ -55,11 +63,13 @@ void unblockPCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 //PERMANENT USER COMMANDS
 void suspendPCB(char *processName)
-{ // COLTON WILL PROGRAM THIS FUNCTION
+{   // COLTON WILL PROGRAM THIS FUNCTION
     /*
     Places a PCB in the suspended state and reinserts it into the appropriate queue
     */
@@ -68,10 +78,12 @@ void suspendPCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 void resumePCB(char *processName)
-{ // COLTON WILL PROGRAM THIS FUNCTION
+{   // COLTON WILL PROGRAM THIS FUNCTION
     /*
     Places a PCB in the not suspended state and reinserts it into the appropriate queue
     */
@@ -80,10 +92,12 @@ void resumePCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 void setPCBPriority(char *processName, int newProcessPriority)
-{ // ANASTASE WILL PROGRAM THIS FUNCTION
+{   // ANASTASE WILL PROGRAM THIS FUNCTION
     /*
     Sets a PCB's priority and reinserts the process into the correct place in the correct queue
     */
@@ -93,10 +107,13 @@ void setPCBPriority(char *processName, int newProcessPriority)
     Name must be valid.
     newPriority
     */
+
+    (void)processName;
+    (void)newProcessPriority;
 }
 
 void showPCB(char *processName)
-{ // BENJAMIN WILL PROGRAM THIS FUNCTION
+{   // BENJAMIN WILL PROGRAM THIS FUNCTION
     /*
     Displays the following information for a PCB:
         Process Name
@@ -110,6 +127,8 @@ void showPCB(char *processName)
     Error Checking:
     Name must be valid.
     */
+
+    (void)processName;
 }
 
 void showReady()
