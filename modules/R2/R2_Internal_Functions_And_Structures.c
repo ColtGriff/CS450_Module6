@@ -84,9 +84,9 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
 PCB* searchPCB(queue*PCB_container,char*processName){
  // PCB_container has PCB*head and PCB*tail pointers
-    queue*tempQueue;
+    //queue*tempQueue;
 
-    PCB*tempPtr =tempQueue->head; 
+    PCB*tempPtr =PCB_container->head; 
 
     int count =PCB_container->count;// tempQueue->count;
 
