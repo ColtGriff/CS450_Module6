@@ -221,11 +221,11 @@ void printPCBs(queue*PCB_container){ // Why is it giving unknown type 'queue'?
     // Now you have full access to the pcbs in the queue
     // use the pcb ptr to loop over the pcbs in any queue
 
-    queue*tempQueue;
+    //queue*tempQueue;
 
-    PCB*tempPtr =tempQueue->head; 
+    PCB*tempPtr =PCB_container->head; 
 
-    int count =tempQueue->count;
+    int count =PCB_container->count;
 
     if(tempPtr==tail){
         // the queue is empty
