@@ -4,11 +4,11 @@
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
 
-// Allocate memory for the queues
 queue *ready;
 queue *blocked;
 queue *suspendedReady;
 queue *suspendedBlocked;
+// a function to allocate memory for the queues and initialize the queues.
 
 PCB *allocatePCB() //Returns the created PCB pointer if successful, returns NULL if an error occurs.
 {
@@ -26,8 +26,7 @@ int freePCB(PCB *PCB_to_free) //Return 0 is success code, reurn 1 is error code.
     //freePCB() will use sys_free_mem() to free all memory associated with a given PCB (the stack, the PCB itself, etc.)
 
     (void)PCB_to_free;
-
-    return 0;
+    return sys_free_mem(PCB_to_free);
 }
 
 PCB *setupPCB(char *processName, unsigned char processClass, int processPriority) //Returns the created PCB pointer if successful, returns NULL if an error occurs.
@@ -50,8 +49,84 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     //findPCB() will search all queues for a process with a given name.
 
     (void)processName;
+    // searching in ready queue
 
-    return NULL;
+    PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
+    found_ready_pcb = searchPCB(ready, processName);
+    if (found_ready_pcb)
+    {
+        return found_ready_pcb;
+    }
+
+    // searching PCB in blocked queue
+    PCB *found_blocked_pcb;
+    found_blocked_pcb = searchPCB(blocked, processName);
+    if (found_blocked_pcb)
+    {
+        return found_blocked_pcb;
+    }
+
+    // searching PCB in suspendedReady queue
+    PCB *found_suspended_ready_pcb;
+    found_suspended_ready_pcb = searchPCB(suspendedReady, processName);
+    if (found_suspended_ready_pcb)
+    {
+        return found_suspended_ready_pcb;
+    }
+
+    // searching PCB in suspendedBlocked queue
+    PCB *found_suspended_blocked_pcb;
+    found_suspended_blocked_pcb = searchPCB(suspendedBlocked, processName);
+    if (found_suspended_blocked_pcb)
+    {
+        return found_suspended_blocked_pcb;
+    }
+
+    return NULL; // for testing
+}
+
+PCB *searchPCB(queue *PCB_container, char *processName)
+{
+    // PCB_container has PCB*head and PCB*tail pointers
+    //queue*tempQueue;
+
+    PCB *tempPtr = PCB_container->head;
+
+    int count = PCB_container->count; // tempQueue->count;
+
+    int found = 0; // not found signal
+    // detecting buffer overflow
+    if (strlen(processName) > 20)
+    {
+
+        char error_message[30] = "Invalid process name.";
+        int error_size = strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        //return cz we have to stop if the process name is too long
+    }
+
+    int value = 0;
+    while (value <= count)
+    {
+        if (strcmp(tempPtr->processName, processName) == 0)
+        {
+            found = 1; // found signal
+            return tempPtr;
+            break;
+        }
+
+        tempPtr = tempPtr->nextPCB; // don't know why this line is giving assignment from incompatible pointer type error.
+        value++;
+    }
+
+    if (found == 0)
+    {
+        char result_message[30] = "The process was not found.";
+        int result_size = strlen(result_message);
+        sys_req(WRITE, DEFAULT_DEVICE, result_message, &result_size);
+        return NULL; // Why are this return not recognized??
+    }
+    return tempPtr; // for testing.
 }
 
 void insertPCB(PCB *PCB_to_insert)

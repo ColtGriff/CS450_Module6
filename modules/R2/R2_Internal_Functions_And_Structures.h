@@ -1,5 +1,6 @@
 typedef struct PCB
 {
+
     char processName[20];       // Name of the Process Control Block(PCB).
     unsigned char processClass; //'a'==application process, 's'==system process
     int priority;               // Range from 0-9. 0 is the lowest priority, 9 is the highest priority.
@@ -9,14 +10,16 @@ typedef struct PCB
     unsigned char *stackTop;    // Pointer to the top of the stack area for the PCB. (stackTop = PCB->stack + 1024)
     unsigned char *stackBase;   // Pointer to the base of the stack area for the PCB. (stackBase = PCB->stack)
     struct PCB *nextPCB;        // Pointer to the next PCB in the queue.
-    struct PCB *prevPCB;        // Pointer to the previous PCB in the queue.
+    struct PCB *PrevPCB;        // Pointer to the previous PCB in the queue.
 } PCB;
 
 typedef struct queue
 {
+
     int count; //Keeps track of how many PCBs are in the queue.
     PCB *head; //Points to the PCB at the head(beginning/top) of the queue.
     PCB *tail; //Points to the PCB at the tail(end/bottom) of the queue.
+
 } queue;
 
 PCB *allocatePCB();
@@ -38,3 +41,4 @@ queue *getBlocked();
 queue *getSuspendedReady();
 
 queue *getSuspendedBlocked();
+PCB *searchPCB(queue *PCB_container, char *processName);
