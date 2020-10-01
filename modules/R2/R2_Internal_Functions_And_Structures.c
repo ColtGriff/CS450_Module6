@@ -5,9 +5,14 @@
 #include "R2_Internal_Functions_And_Structures.h"
 
 queue*ready;
+//ready=sys_alloc_mem(600);
 queue*blocked;
+//sys_alloc_mem(ready);
 queue*suspendedReady;
+//sys_alloc_mem(suspendedReady);
 queue*suspendedBlocked;
+//sys_alloc_mem(suspendedBlocked);
+
 // a function to allocate memory for the queues and initialize the queues.
 
 PCB *allocatePCB() //Returns the created PCB pointer if successful, returns NULL if an error occurs.
@@ -26,7 +31,7 @@ int freePCB(PCB *PCB_to_free) //Return 0 is success code, reurn 1 is error code.
     //freePCB() will use sys_free_mem() to free all memory associated with a given PCB (the stack, the PCB itself, etc.)
 
     (void)PCB_to_free;
-    return sys_free_mem(PCB_to_free) ;
+    return sys_free_mem(PCB_to_free);
 
 }
 
