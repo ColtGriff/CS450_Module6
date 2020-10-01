@@ -89,8 +89,6 @@ void deletePCB(char *processName)
 void blockPCB(char *processName)
 { // ANASTASE WILL PROGRAM THIS FUNCTION
 
-
-    (void)processName;
     // find pcb and validate process name
     PCB *pcb_to_block = findPCB(processName);
 
@@ -114,8 +112,6 @@ void unblockPCB(char *processName)
 
     */
 
-    (void)processName;
-
     PCB *pcb_to_unblock = findPCB(processName);
     if (pcb_to_unblock)
     {
@@ -136,19 +132,20 @@ void suspendPCB(char *processName)
     ///////Name must be valid.
     ///////*/
 
-    PCB* PCBtoSuspend = findPCB(processName);
+    PCB *PCBtoSuspend = findPCB(processName);
     removePCB(PCBtoSuspend);
 
-    if(PCBtoSuspend == NULL || strlen(processName) > 20){
+    if (PCBtoSuspend == NULL || strlen(processName) > 20)
+    {
         char nameError[] = "This is not a valid name.\n";
         int printCount = strlen(nameError);
         sys_req(WRITE, DEFAULT_DEVICE, nameError, &printCount);
     }
-    else{
+    else
+    {
         PCBtoSuspend->suspendedStatus = 0;
         insertPCB(PCBtoSuspend);
     }
-
 }
 
 void resumePCB(char *processName)
@@ -161,15 +158,17 @@ void resumePCB(char *processName)
     //////Name must be valid.
     //////*/
 
-    PCB* PCBtoResume = findPCB(processName);
+    PCB *PCBtoResume = findPCB(processName);
     removePCB(PCBtoResume);
-    
-    if(PCBtoResume == NULL || strlen(processName) > 20){
+
+    if (PCBtoResume == NULL || strlen(processName) > 20)
+    {
         char nameError[] = "This is not a valid name.\n";
         int printCount = strlen(nameError);
         sys_req(WRITE, DEFAULT_DEVICE, nameError, &printCount);
     }
-    else{
+    else
+    {
         PCBtoResume->suspendedStatus = 1;
         insertPCB(PCBtoResume);
     }
@@ -180,15 +179,11 @@ void setPCBPriority(char *processName, int newProcessPriority)
 
     // Sets a PCB's priority and reinserts the process into the correct place in the correct queue
 
-
     /*
     Error Checking:
     Name must be valid.
     newPriority
     */
-
-    (void)processName;
-    (void)newProcessPriority;
 
     // find the process and validate the name
     PCB *tempPCB = findPCB(processName);
@@ -392,20 +387,20 @@ void showReady()
     char spacer[1] = "\n";
     int spaceCount = strlen(spacer);
 
-
     char message[] = "Printing the ready queue:\n";
     int messLength = strlen(message);
     sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
 
-    queue* tempQueue = getReady();
-    PCB* tempPCB = tempQueue->head;
-    
+    queue *tempQueue = getReady();
+    PCB *tempPCB = tempQueue->head;
+
     int loop = 0;
     int count = tempQueue->count;
 
-    while(loop <= count && tempPCB->nextPCB != NULL){
+    while (loop <= count && tempPCB->nextPCB != NULL)
+    {
 
-        PCB* tempNext = tempPCB->nextPCB;
+        PCB *tempNext = tempPCB->nextPCB;
 
         char name[20];
         strcpy(name, tempPCB->processName);
@@ -442,13 +437,10 @@ void showReady()
         sys_req(WRITE, DEFAULT_DEVICE, test3, &length3);
         sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
 
-
         loop++;
         tempPCB = tempNext;
     }
-
 }
-
 
 void showSuspendedReady()
 { // COLTON WILL PROGRAM THIS FUNCTION
@@ -468,20 +460,20 @@ void showSuspendedReady()
     char spacer[1] = "\n";
     int spaceCount = strlen(spacer);
 
-
     char message[] = "Printing the suspended ready queue:\n";
     int messLength = strlen(message);
     sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
 
-    queue* tempQueue = getSuspendedReady();
-    PCB* tempPCB = tempQueue->head;
-    
+    queue *tempQueue = getSuspendedReady();
+    PCB *tempPCB = tempQueue->head;
+
     int loop = 0;
     int count = tempQueue->count;
 
-    while(loop < count && tempPCB->nextPCB != NULL){
+    while (loop < count && tempPCB->nextPCB != NULL)
+    {
 
-        PCB* tempNext = tempPCB->nextPCB;
+        PCB *tempNext = tempPCB->nextPCB;
 
         char name[20];
         strcpy(name, tempPCB->processName);
@@ -521,7 +513,6 @@ void showSuspendedReady()
         loop++;
         tempPCB = tempNext;
     }
-
 }
 
 void showSuspendedBlocked()
@@ -542,20 +533,20 @@ void showSuspendedBlocked()
     char spacer[1] = "\n";
     int spaceCount = strlen(spacer);
 
-
     char message[] = "Printing the suspended blocked queue:\n";
     int messLength = strlen(message);
     sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
 
-    queue* tempQueue = getSuspendedBlocked();
-    PCB* tempPCB = tempQueue->head;
-    
+    queue *tempQueue = getSuspendedBlocked();
+    PCB *tempPCB = tempQueue->head;
+
     int loop = 0;
     int count = tempQueue->count;
 
-    while(loop < count && tempPCB->nextPCB != NULL){
+    while (loop < count && tempPCB->nextPCB != NULL)
+    {
 
-        PCB* tempNext = tempPCB->nextPCB;
+        PCB *tempNext = tempPCB->nextPCB;
 
         char name[20];
         strcpy(name, tempPCB->processName);
@@ -592,11 +583,9 @@ void showSuspendedBlocked()
         sys_req(WRITE, DEFAULT_DEVICE, test3, &length3);
         sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
 
-
         loop++;
         tempPCB = tempNext;
     }
-
 }
 
 void showBlocked()
@@ -615,8 +604,7 @@ void showBlocked()
     None
     */
 
-        // check
-
+    // check
 
     char print_message[30] = "The blocked queue:\n";
     int message_size = strlen(print_message);
@@ -719,7 +707,6 @@ void showBlocked()
         tempPtr = tempPtr->nextPCB;
         value++;
     }
-
 }
 
 void showAll()
@@ -737,12 +724,8 @@ void showAll()
     None
     */
 
-
     showReady();
     showSuspendedReady();
     showBlocked();
     showSuspendedBlocked();
-    
 }
-
-
