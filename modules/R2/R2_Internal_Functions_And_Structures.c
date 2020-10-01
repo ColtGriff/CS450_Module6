@@ -8,6 +8,7 @@ queue*ready;
 queue*blocked;
 queue*suspendedReady;
 queue*suspendedBlocked;
+// a function to allocate memory for the queues and initialize the queues.
 
 PCB *allocatePCB() //Returns the created PCB pointer if successful, returns NULL if an error occurs.
 {
@@ -120,11 +121,11 @@ PCB* searchPCB(queue*PCB_container,char*processName){
         sys_req(WRITE, DEFAULT_DEVICE, result_message, &result_size);
         return NULL; // Why are this return not recognized??
     }
-   return NULL; // for testing.
+   return tempPtr; // for testing.
 }
 
 
-void insertPcb(PCB *PCB_to_insert)
+void insertPCB(PCB *PCB_to_insert)
 {
     //BENJAMIN WILL PROGRAM THIS FUNCTION
 

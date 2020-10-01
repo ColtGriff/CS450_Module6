@@ -19,5 +19,5 @@ void showReady();
 void showBlocked();
 
 void showAll();
-char* int_to_char(int value);
+//char* int_to_char(int value);
 //void printPCBs(queue*PCB_container);

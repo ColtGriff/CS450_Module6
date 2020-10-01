@@ -28,7 +28,7 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
 
 PCB *findPCB(char *processName);
 
-void insertPcb(PCB *PCB_to_insert);
+void insertPCB(PCB *PCB_to_insert);
 
 int removePCB(PCB *PCB_to_remove);
 

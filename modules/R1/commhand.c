@@ -51,6 +51,13 @@ int commhand()
 		{
 			setTime();
 		}
+		// Testing my functions
+		else if (strcmp(cmdBuffer, "showBlocked") == 0)
+		{
+			showBlocked();
+		}
+
+		// 
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();

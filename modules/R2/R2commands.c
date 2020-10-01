@@ -2,6 +2,10 @@
 
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
+#include "R2commands.h"
+#include <string.h>
+#include <core/serial.h>
+
 
 //TEMPORARY USER COMMANDS - WILL BE REMOVED FOR R3/R4
 void createPCB(char *processName, unsigned char processClass, int processPriority)
@@ -71,7 +75,7 @@ void unblockPCB(char *processName)
     PCB*pcb_to_unblock=findPCB(processName);
     if(pcb_to_unblock){
         pcb_to_unblock->runningStatus=0;// ready
-        removePCB(processName); // is this the right place to put that function? 
+        removePCB(pcb_to_unblock); // is this the right place to put that function? 
         insertPCB(pcb_to_unblock);
     }
     
@@ -109,8 +113,8 @@ void resumePCB(char *processName)
 
 void setPCBPriority(char *processName, int newProcessPriority)
 {   // ANASTASE WILL PROGRAM THIS FUNCTION
-    /*
-    Sets a PCB's priority and reinserts the process into the correct place in the correct queue 
+    
+   // Sets a PCB's priority and reinserts the process into the correct place in the correct queue 
 
     /*
     Error Checking:
@@ -176,14 +180,102 @@ void showBlocked()
         State
         Suspended Status
         Priority
+        // check
 
     */
 
-    char print_message[30]="The blocked queue has:\n";
-    int message_size=strlen(error);
+    char print_message[30]="The blocked queue:\n";
+    int message_size=strlen(print_message);
     sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
     
-    printPCBs(blocked);
+    // printPCBs(blocked);
+     queue*tempQueue=getBlocked();
+     PCB*tempPtr =tempQueue->head; //PCB_container->head; 
+    int count =tempQueue->count;
+     serial_println("made blocked queue"); 
+
+    if(count ==0){
+        serial_println("queue is epty");      // the queue is empty
+        char error_message[30]="The queue is empty.";
+        int error_size=strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        return;
+    }
+    // The queue is not empty
+
+    int value=0;
+    // Testing purpose
+    //char print_message[38]="The blocke queue testing:\n";
+    //int message_size=strlen(print_message);
+    //sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
+
+    while(value<=count){ // testing for <== or <
+        // Print process name
+        int len=strlen(tempPtr->processName);
+        sys_req(WRITE, DEFAULT_DEVICE,tempPtr->processName, &len);
+        // Spacing
+        char space[2]="\n";
+        int size=strlen(space);
+        sys_req(WRITE, DEFAULT_DEVICE,space, &size);
+        
+        // print process Class
+        //char processClass[2];
+        //processClass[2]=tempPtr->processClass;
+        char class[30];
+        if (tempPtr-> processClass =='a'){
+            strcpy(class,"ProcessClass:Application\n");
+        }else{
+            strcpy(class,"ProcessClass:SystemProcess\n");
+        }
+
+        len=strlen(class);
+        sys_req(WRITE, DEFAULT_DEVICE, class, &len);
+
+        //print process running status,which  is -1 if blocked, 0 for ready, and 1 for a running process
+        //char runningStatus[17];
+        //strcpy(runningStatus,"RunningStatus: \0");
+       // runningStatus[15] =tempPtr->runningStatus +'0'; 
+        char runningStatus_message[25];
+        if( tempPtr->runningStatus == -1){
+
+           strcpy(runningStatus_message,"RunningStatus:Blocked\n");
+
+        }else if(tempPtr->runningStatus==0){
+
+            strcpy(runningStatus_message,"RunningStatus:Ready\n");
+
+        }else{
+            strcpy(runningStatus_message,"RunningStatus:Running\n");
+        }
+
+        len=strlen(runningStatus_message); 
+        sys_req(WRITE, DEFAULT_DEVICE,runningStatus_message , &len);
+        
+        // print process suspended status
+        //char suspendedStatus[19]= "SuspendedStatus: \0";
+        //suspendedStatus[17]=tempPtr->suspendedStatus +'0';
+        char message[30];
+        if(tempPtr->suspendedStatus==0){
+            strcpy(message,"SuspendedStatus:Suspended\n");
+        }else{
+            strcpy(message,"SuspendedStatus:Not_suspended\n");
+        }
+       
+        len=strlen(message);
+        sys_req(WRITE, DEFAULT_DEVICE,message, &len);
+        
+        // print process priority
+        char priority [12]= "Priority: \0";
+        priority[10]=tempPtr->priority +'0';
+        len=strlen(priority);
+        sys_req(WRITE, DEFAULT_DEVICE,priority, &len);
+        
+        // increment pcb*tempPtr, the loop variable.
+        tempPtr=tempPtr->nextPCB;
+        value++;
+
+    }
+
     
 }
 
@@ -203,6 +295,7 @@ void showAll()
     None
     */
 }
+/*
 
 void printPCBs(queue*PCB_container){ // Why is it giving unknown type 'queue'?
     // PCB_container has PCB*head and PCB*tail pointers
@@ -266,6 +359,7 @@ void printPCBs(queue*PCB_container){ // Why is it giving unknown type 'queue'?
 
 }
 
+
 char* int_to_char(int value){
     // changes only an integer less than 10 to its equivalent character.
      
@@ -279,5 +373,5 @@ char* int_to_char(int value){
     }
     
 }
-
+*/
     
