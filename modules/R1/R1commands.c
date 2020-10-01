@@ -73,7 +73,7 @@ int help()
 int version()
 {
 
-	char version[] = "Version 1.0\n";
+	char version[] = "Version 2.0\n";
 
 	int tempBuffer = strlen(version);
 

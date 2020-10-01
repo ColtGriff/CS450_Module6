@@ -10,6 +10,10 @@
 int commhand()
 {
 
+	char welcomeMSG[] = "Welcome to our CS 450 Project! Type 'help' to see what you can do!\n";
+	int welcomeLength = strlen(welcomeMSG);
+	sys_req(WRITE, DEFAULT_DEVICE, welcomeMSG, &welcomeLength);
+
 	char cmdBuffer[100];
 	int bufferSize;
 
