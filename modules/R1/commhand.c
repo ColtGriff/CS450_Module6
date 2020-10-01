@@ -25,7 +25,9 @@ int commhand()
 
 		sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 
-		serial_print("\n");
+		char newLine[] = "\n";
+		int newLineCount = 1;
+		sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
 
 		if (strcmp(cmdBuffer, "help") == 0)
 		{
@@ -55,8 +57,6 @@ int commhand()
 		{
 			quitFlag = quit();
 
-			char newLine[] = "\n";
-			int newLineCount = 1;
 			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
 		}
 		else

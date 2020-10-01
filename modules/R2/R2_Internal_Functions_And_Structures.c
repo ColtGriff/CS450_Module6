@@ -4,10 +4,11 @@
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
 
-queue ready;
-queue blocked;
-queue suspendedReady;
-queue suspendedBlocked;
+// Allocate memory for the queues
+queue *ready;
+queue *blocked;
+queue *suspendedReady;
+queue *suspendedBlocked;
 
 PCB *allocatePCB() //Returns the created PCB pointer if successful, returns NULL if an error occurs.
 {
@@ -53,43 +54,145 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     return NULL;
 }
 
-void insertPcb(PCB *PCB_to_insert)
+void insertPCB(PCB *PCB_to_insert)
 {
     //BENJAMIN WILL PROGRAM THIS FUNCTION
 
     //insertPCB() will insert a PCB into the appropriate queue.
     //Note: The ready queue is a priority queue and the blocked queue is a FIFO queue.
 
-    (void)PCB_to_insert;
+    if (PCB_to_insert->runningStatus == 0 && PCB_to_insert->suspendedStatus == 1)
+    { // Insert into ready queue
+
+        queue *ready = getReady();
+        PCB *tempPtr = ready->head;
+
+        if (tempPtr != NULL)
+        {
+            int temp = 0;
+            while (temp < ready->count)
+            {
+                if (PCB_to_insert->priority < tempPtr->priority)
+                {
+                    tempPtr = tempPtr->nextPCB;
+                }
+                else if (PCB_to_insert->priority >= tempPtr->priority)
+                {
+                    PCB_to_insert->nextPCB = tempPtr;
+                    PCB_to_insert->prevPCB = tempPtr->prevPCB;
+                    tempPtr->prevPCB = PCB_to_insert;
+                }
+                else if (PCB_to_insert->priority < tempPtr->priority && tempPtr->nextPCB == NULL)
+                {
+                    tempPtr->nextPCB = PCB_to_insert;
+                    PCB_to_insert->prevPCB = tempPtr;
+                }
+                temp++;
+            }
+            ready->count++;
+        }
+        else
+        {
+            tempPtr = PCB_to_insert;
+            ready->count++;
+        }
+    }
+    else if (PCB_to_insert->runningStatus == 0 && PCB_to_insert->suspendedStatus == 0)
+    { // Insert into suspended ready queue
+        queue *suspendedReady = getSuspendedReady();
+        PCB *tempPtr = suspendedReady->head;
+
+        if (tempPtr != NULL)
+        {
+            int temp = 0;
+            while (temp < suspendedReady->count)
+            {
+                if (PCB_to_insert->priority < tempPtr->priority)
+                {
+                    tempPtr = tempPtr->nextPCB;
+                }
+                else if (PCB_to_insert->priority >= tempPtr->priority)
+                {
+                    PCB_to_insert->nextPCB = tempPtr;
+                    PCB_to_insert->prevPCB = tempPtr->prevPCB;
+                    tempPtr->prevPCB = PCB_to_insert;
+                }
+                else if (PCB_to_insert->priority < tempPtr->priority && tempPtr->nextPCB == NULL)
+                {
+                    tempPtr->nextPCB = PCB_to_insert;
+                    PCB_to_insert->prevPCB = tempPtr;
+                }
+                temp++;
+            }
+            suspendedReady->count++;
+        }
+        else
+        {
+            tempPtr = PCB_to_insert;
+            suspendedReady->count++;
+        }
+    }
+    else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 1)
+    { // Insert into blocked queue
+        queue *blocked = getBlocked();
+        PCB *tempPtr = blocked->tail;
+
+        tempPtr->nextPCB = PCB_to_insert;
+        PCB_to_insert->prevPCB = tempPtr;
+    }
+    else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 0)
+    { // Insert into suspended blocked queue
+        queue *suspendedBlocked = getSuspendedBlocked();
+        PCB *tempPtr = suspendedBlocked->tail;
+
+        tempPtr->nextPCB = PCB_to_insert;
+        PCB_to_insert->prevPCB = tempPtr;
+    }
 }
 
-int removePCB(PCB *PCB_to_remove) //Return 0 is success code, reurn 1 is error code.
+int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error code.
 {
     //BENJAMIN WILL PROGRAM THIS FUNCTION
 
     //removePCB() will remove a PCB from the queue in which it is currently stored.
 
-    (void)PCB_to_remove;
+    PCB *tempPrev = PCB_to_remove->prevPCB;
+    PCB *tempNext = PCB_to_remove->nextPCB;
 
-    return 0;
+    tempPrev->nextPCB = tempNext;
+    tempNext->prevPCB = tempPrev;
+
+    PCB_to_remove->nextPCB = NULL;
+    PCB_to_remove->prevPCB = NULL;
+
+    int result = sys_free_mem(PCB_to_remove);
+
+    if (result == -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 queue *getReady()
 {
-    return &ready;
+    return ready;
 }
 
 queue *getBlocked()
 {
-    return &blocked;
+    return blocked;
 }
 
 queue *getSuspendedReady()
 {
-    return &suspendedReady;
+    return suspendedReady;
 }
 
 queue *getSuspendedBlocked()
 {
-    return &suspendedBlocked;
+    return suspendedBlocked;
 }
