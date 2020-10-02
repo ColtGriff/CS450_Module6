@@ -133,8 +133,7 @@ void suspendPCB(char *processName)
     ///////*/
 
     PCB *PCBtoSuspend = findPCB(processName);
-    removePCB(PCBtoSuspend);
-
+    
     if (PCBtoSuspend == NULL || strlen(processName) > 20)
     {
         char nameError[] = "This is not a valid name.\n";
@@ -143,6 +142,7 @@ void suspendPCB(char *processName)
     }
     else
     {
+        removePCB(PCBtoSuspend);
         PCBtoSuspend->suspendedStatus = 0;
         insertPCB(PCBtoSuspend);
     }
@@ -159,7 +159,6 @@ void resumePCB(char *processName)
     //////*/
 
     PCB *PCBtoResume = findPCB(processName);
-    removePCB(PCBtoResume);
 
     if (PCBtoResume == NULL || strlen(processName) > 20)
     {
@@ -169,6 +168,7 @@ void resumePCB(char *processName)
     }
     else
     {
+        removePCB(PCBtoResume);
         PCBtoResume->suspendedStatus = 1;
         insertPCB(PCBtoResume);
     }
@@ -396,7 +396,7 @@ void showReady()
 
     int loop = 0;
     int count = tempQueue->count;
-    
+
     if (count == 0)
     {
         // the queue is empty
