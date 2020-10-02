@@ -397,7 +397,7 @@ void showReady()
     int loop = 0;
     int count = tempQueue->count;
 
-    while (loop <= count && tempPCB->nextPCB != NULL)
+    while (loop <= count && tempPCB->nextPCB != NULL && count > 0)
     {
 
         PCB *tempNext = tempPCB->nextPCB;
@@ -470,7 +470,7 @@ void showSuspendedReady()
     int loop = 0;
     int count = tempQueue->count;
 
-    while (loop < count && tempPCB->nextPCB != NULL)
+    while (loop < count && tempPCB->nextPCB != NULL && count > 0)
     {
 
         PCB *tempNext = tempPCB->nextPCB;
@@ -543,7 +543,7 @@ void showSuspendedBlocked()
     int loop = 0;
     int count = tempQueue->count;
 
-    while (loop < count && tempPCB->nextPCB != NULL)
+    while (loop < count && tempPCB->nextPCB != NULL && count > 0)
     {
 
         PCB *tempNext = tempPCB->nextPCB;
