@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">2</span>
    </div>
   </td>
  </tr>
@@ -51,22 +47,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -85,6 +65,10 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 <div class="textblock">Here is a list of all file members with links to the files they belong to:</div>
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>searchPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a9a281aed8d219ff76ce90daaefe09e51">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a9a281aed8d219ff76ce90daaefe09e51">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>segment_not_present()
 : <a class="el" href="interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e">interrupts.c</a>
 </li>
@@ -118,9 +102,41 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 : <a class="el" href="R1commands_8c.html#a21c02ca927851e19e2d2bd23daad0e31">R1commands.c</a>
 , <a class="el" href="R1commands_8h.html#aa155fdc926b45ca3c91ebec313e5acf9">R1commands.h</a>
 </li>
+<li>setPCBPriority()
+: <a class="el" href="R2commands_8c.html#a4435ff543d9c20f05a48e478369a8869">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a4435ff543d9c20f05a48e478369a8869">R2commands.h</a>
+</li>
 <li>setTime()
 : <a class="el" href="R1commands_8c.html#a854929a3dfe97fb3bcb65a358da1192f">R1commands.c</a>
 , <a class="el" href="R1commands_8h.html#afc443fe98a5312e4b6f8d5fe13baf7cb">R1commands.h</a>
+</li>
+<li>setupPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a410acbffbc7a41f58ff2a6b2173ee3c4">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a410acbffbc7a41f58ff2a6b2173ee3c4">R2_Internal_Functions_And_Structures.h</a>
+</li>
+<li>showAll()
+: <a class="el" href="R2commands_8c.html#ab84bd3554f8a0c6dbc675a672586e69d">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ab84bd3554f8a0c6dbc675a672586e69d">R2commands.h</a>
+</li>
+<li>showBlocked()
+: <a class="el" href="R2commands_8c.html#af71dc2eb68fb81525967d8454b3ad336">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#af71dc2eb68fb81525967d8454b3ad336">R2commands.h</a>
+</li>
+<li>showPCB()
+: <a class="el" href="R2commands_8c.html#ac07ffb030ac7241e316f9874b5668ef4">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ac07ffb030ac7241e316f9874b5668ef4">R2commands.h</a>
+</li>
+<li>showReady()
+: <a class="el" href="R2commands_8c.html#a284cd3bedf3fafb973e9290bb776253b">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a284cd3bedf3fafb973e9290bb776253b">R2commands.h</a>
+</li>
+<li>showSuspendedBlocked()
+: <a class="el" href="R2commands_8c.html#a8df5448a1752885b56efb93b499f4c9c">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a8df5448a1752885b56efb93b499f4c9c">R2commands.h</a>
+</li>
+<li>showSuspendedReady()
+: <a class="el" href="R2commands_8c.html#ac6da97b81b9bf10facf2790df91cf53d">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ac6da97b81b9bf10facf2790df91cf53d">R2commands.h</a>
 </li>
 <li>size_t
 : <a class="el" href="system_8h.html#a7c94ea6f8948649f8d181ae55911eeaf">system.h</a>
@@ -143,22 +159,32 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 , <a class="el" href="string_8c.html#a11bd144d7d44914099a3aeddf1c8567d">string.c</a>
 </li>
 <li>strcpy()
-: <a class="el" href="string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e">string.c</a>
-, <a class="el" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e">string.h</a>
+: <a class="el" href="string_8h.html#a1eb9cae61e6a6282c28dbc298ef7297e">string.h</a>
+, <a class="el" href="string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e">string.c</a>
 </li>
 <li>strlen()
 : <a class="el" href="string_8h.html#a2dee044e4e667b5b789b493abd21cfa4">string.h</a>
 , <a class="el" href="string_8c.html#a2dee044e4e667b5b789b493abd21cfa4">string.c</a>
 </li>
 <li>strtok()
-: <a class="el" href="string_8c.html#af1a867dcea42fc1215d0eddf19283ef3">string.c</a>
-, <a class="el" href="string_8h.html#af1a867dcea42fc1215d0eddf19283ef3">string.h</a>
+: <a class="el" href="string_8h.html#af1a867dcea42fc1215d0eddf19283ef3">string.h</a>
+, <a class="el" href="string_8c.html#af1a867dcea42fc1215d0eddf19283ef3">string.c</a>
 </li>
 <li>student_free
 : <a class="el" href="mpx__supt_8c.html#a19c47c02b0338bc13716d98305bb8a34">mpx_supt.c</a>
 </li>
 <li>student_malloc
 : <a class="el" href="mpx__supt_8c.html#a421e2b48efb5facc71d16979252710e2">mpx_supt.c</a>
+</li>
+<li>suspendedBlocked
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#ada2fb28f9db0fefa62613e962f13eda4">R2_Internal_Functions_And_Structures.c</a>
+</li>
+<li>suspendedReady
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a60e6329405c3fe5acbeb734c32e9ab7c">R2_Internal_Functions_And_Structures.c</a>
+</li>
+<li>suspendPCB()
+: <a class="el" href="R2commands_8h.html#a69f2ae0d18292b4ca844c7d656d6b25f">R2commands.h</a>
+, <a class="el" href="R2commands_8c.html#a69f2ae0d18292b4ca844c7d656d6b25f">R2commands.c</a>
 </li>
 <li>sys_alloc_mem()
 : <a class="el" href="mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">mpx_supt.h</a>
@@ -173,8 +199,8 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 , <a class="el" href="mpx__supt_8c.html#aaa3eb70f93cb8acf38ec0d028b9874f0">mpx_supt.c</a>
 </li>
 <li>sys_set_free()
-: <a class="el" href="mpx__supt_8c.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.c</a>
-, <a class="el" href="mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.h</a>
+: <a class="el" href="mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.h</a>
+, <a class="el" href="mpx__supt_8c.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.c</a>
 </li>
 <li>sys_set_malloc()
 : <a class="el" href="mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">mpx_supt.h</a>
@@ -182,12 +208,9 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0
+</small></address>
 </body>
 </html>

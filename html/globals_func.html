@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">2</span>
    </div>
   </td>
  </tr>
@@ -51,22 +47,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('globals_func.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -100,9 +80,17 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 : <a class="el" href="heap_8h.html#a2b1d5a9ba11695605f74fc10cd719af5">heap.h</a>
 , <a class="el" href="heap_8c.html#a06dae34c7e7c73d518de00212a7c92da">heap.c</a>
 </li>
+<li>allocatePCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.h</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.c</a>
+</li>
+<li>allocateQueues()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>atoi()
-: <a class="el" href="string_8h.html#a30670a60464f77af17dfb353353d6df8">string.h</a>
-, <a class="el" href="string_8c.html#a30670a60464f77af17dfb353353d6df8">string.c</a>
+: <a class="el" href="string_8c.html#a30670a60464f77af17dfb353353d6df8">string.c</a>
+, <a class="el" href="string_8h.html#a30670a60464f77af17dfb353353d6df8">string.h</a>
 </li>
 </ul>
 
@@ -111,6 +99,10 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 <li>BCDtoChar()
 : <a class="el" href="R1commands_8c.html#ae8b9184465641fb2c95b1b9069a2c8fc">R1commands.c</a>
 , <a class="el" href="R1commands_8h.html#ae8b9184465641fb2c95b1b9069a2c8fc">R1commands.h</a>
+</li>
+<li>blockPCB()
+: <a class="el" href="R2commands_8h.html#abee2a76e6a4ccbd6d15be5605d370b37">R2commands.h</a>
+, <a class="el" href="R2commands_8c.html#abee2a76e6a4ccbd6d15be5605d370b37">R2commands.c</a>
 </li>
 <li>bounds()
 : <a class="el" href="interrupts_8c.html#a96724d36ad85f9a02231d8e6fe0434df">interrupts.c</a>
@@ -123,12 +115,11 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>change_int_to_binary()
-: <a class="el" href="R1commands_8c.html#aa295511832f44ad4384175ff091dbdf4">R1commands.c</a>
-, <a class="el" href="R1commands_8h.html#a50895fa4f0317d479a30731917048acb">R1commands.h</a>
+: <a class="el" href="R1commands_8h.html#a50895fa4f0317d479a30731917048acb">R1commands.h</a>
 </li>
 <li>clear_bit()
-: <a class="el" href="paging_8c.html#adcef508c82c20a032508f871e79e1b92">paging.c</a>
-, <a class="el" href="paging_8h.html#adcef508c82c20a032508f871e79e1b92">paging.h</a>
+: <a class="el" href="paging_8h.html#adcef508c82c20a032508f871e79e1b92">paging.h</a>
+, <a class="el" href="paging_8c.html#adcef508c82c20a032508f871e79e1b92">paging.c</a>
 </li>
 <li>commhand()
 : <a class="el" href="commhand_8c.html#a14d85617242501c323a203ee196d3efa">commhand.c</a>
@@ -140,12 +131,20 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 <li>coprocessor_segment()
 : <a class="el" href="interrupts_8c.html#a1d688a0a370977c03fa98884a6e771e9">interrupts.c</a>
 </li>
+<li>createPCB()
+: <a class="el" href="R2commands_8c.html#a1bc9f7851d445a08c3ce6f3f657d81d2">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a1bc9f7851d445a08c3ce6f3f657d81d2">R2commands.h</a>
+</li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>debug()
 : <a class="el" href="interrupts_8c.html#a0d0105433f9c65c14928027b3f0966b7">interrupts.c</a>
+</li>
+<li>deletePCB()
+: <a class="el" href="R2commands_8c.html#a131b5783fe30c76a0b35325c3f43aa2c">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a131b5783fe30c76a0b35325c3f43aa2c">R2commands.h</a>
 </li>
 <li>device_not_available()
 : <a class="el" href="interrupts_8c.html#abe88cd1dcc26cb58ee785c714e016f72">interrupts.c</a>
@@ -217,8 +216,16 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 <li>find_free()
 : <a class="el" href="paging_8c.html#abe201f9294ab23125146fff36fe95187">paging.c</a>
 </li>
+<li>findPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a2e9694bcc8559834a0e4749509faf4be">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a2e9694bcc8559834a0e4749509faf4be">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>first_free()
 : <a class="el" href="paging_8h.html#acb3c25257061521382c7ba900c1c1ab4">paging.h</a>
+</li>
+<li>freePCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#ac4c4e09a49b5b38d9085f32417271760">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#ac4c4e09a49b5b38d9085f32417271760">R2_Internal_Functions_And_Structures.h</a>
 </li>
 </ul>
 
@@ -236,16 +243,32 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 , <a class="el" href="paging_8c.html#a317b4797bc81f65bd01cfa190800ecdd">paging.c</a>
 </li>
 <li>get_page()
-: <a class="el" href="paging_8c.html#a69b165b3d1adf3aeaae126ca7a5aac3e">paging.c</a>
-, <a class="el" href="paging_8h.html#a69b165b3d1adf3aeaae126ca7a5aac3e">paging.h</a>
+: <a class="el" href="paging_8h.html#a69b165b3d1adf3aeaae126ca7a5aac3e">paging.h</a>
+, <a class="el" href="paging_8c.html#a69b165b3d1adf3aeaae126ca7a5aac3e">paging.c</a>
+</li>
+<li>getBlocked()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a5076bec4ed01e0c63e90fb19b1bafa3f">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a5076bec4ed01e0c63e90fb19b1bafa3f">R2_Internal_Functions_And_Structures.h</a>
 </li>
 <li>getDate()
-: <a class="el" href="R1commands_8h.html#affb6f9c7b2c1d585677a5bba1da35c06">R1commands.h</a>
-, <a class="el" href="R1commands_8c.html#affb6f9c7b2c1d585677a5bba1da35c06">R1commands.c</a>
+: <a class="el" href="R1commands_8c.html#affb6f9c7b2c1d585677a5bba1da35c06">R1commands.c</a>
+, <a class="el" href="R1commands_8h.html#affb6f9c7b2c1d585677a5bba1da35c06">R1commands.h</a>
+</li>
+<li>getReady()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#acc4c78320b3fb77214d451133e90df5d">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#acc4c78320b3fb77214d451133e90df5d">R2_Internal_Functions_And_Structures.h</a>
+</li>
+<li>getSuspendedBlocked()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#ae5e140605a1febc32ce3b59f6b56b55f">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#ae5e140605a1febc32ce3b59f6b56b55f">R2_Internal_Functions_And_Structures.h</a>
+</li>
+<li>getSuspendedReady()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a5c800899e50bc0eb8e12f8ab6b3bfba2">R2_Internal_Functions_And_Structures.h</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a5c800899e50bc0eb8e12f8ab6b3bfba2">R2_Internal_Functions_And_Structures.c</a>
 </li>
 <li>getTime()
-: <a class="el" href="R1commands_8c.html#a1c7c164fd3c7dea7004ece3c6251fc94">R1commands.c</a>
-, <a class="el" href="R1commands_8h.html#a1c7c164fd3c7dea7004ece3c6251fc94">R1commands.h</a>
+: <a class="el" href="R1commands_8h.html#a1c7c164fd3c7dea7004ece3c6251fc94">R1commands.h</a>
+, <a class="el" href="R1commands_8c.html#a1c7c164fd3c7dea7004ece3c6251fc94">R1commands.c</a>
 </li>
 </ul>
 
@@ -294,6 +317,10 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 : <a class="el" href="serial_8h.html#a7078c07ff8b2c48780558549a8f7cf90">serial.h</a>
 , <a class="el" href="serial_8c.html#a7078c07ff8b2c48780558549a8f7cf90">serial.c</a>
 </li>
+<li>insertPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a64667c0bd1ab46d8e14c4b26d6e3f975">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a64667c0bd1ab46d8e14c4b26d6e3f975">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>intToBCD()
 : <a class="el" href="R1commands_8c.html#a79c7196b29284054f33f17b2b9b1d5ec">R1commands.c</a>
 </li>
@@ -302,6 +329,9 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 </li>
 <li>invalid_tss()
 : <a class="el" href="interrupts_8c.html#a972be67f6a5432cc8eab8d27755fb00f">interrupts.c</a>
+</li>
+<li>irq_on()
+: <a class="el" href="system_8h.html#afeb86486e42faf6fe24c7065db580810">system.h</a>
 </li>
 <li>isr0()
 : <a class="el" href="interrupts_8c.html#af88eb8e98d943aa0461c01de3cb53493">interrupts.c</a>
@@ -388,9 +418,25 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 </ul>
 
 
+<h3><a id="index_q"></a>- q -</h3><ul>
+<li>quit()
+: <a class="el" href="R1commands_8c.html#a041c4fd02fe320e833aa34a820274935">R1commands.c</a>
+, <a class="el" href="R1commands_8h.html#a041c4fd02fe320e833aa34a820274935">R1commands.h</a>
+</li>
+</ul>
+
+
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>removePCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a7c5d1dea8311ecc31306a370d2877616">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a7c5d1dea8311ecc31306a370d2877616">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>reserved()
 : <a class="el" href="interrupts_8c.html#ad686e3fee8ec8346a6d8e98d970a02dd">interrupts.c</a>
+</li>
+<li>resumePCB()
+: <a class="el" href="R2commands_8c.html#a61e9f5e9dab6fb2f3b496f49bb84aeea">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a61e9f5e9dab6fb2f3b496f49bb84aeea">R2commands.h</a>
 </li>
 <li>rtc_isr()
 : <a class="el" href="interrupts_8c.html#a52f2615cebbdeab188085a03c913fcf9">interrupts.c</a>
@@ -399,6 +445,10 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>searchPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a9a281aed8d219ff76ce90daaefe09e51">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a9a281aed8d219ff76ce90daaefe09e51">R2_Internal_Functions_And_Structures.h</a>
+</li>
 <li>segment_not_present()
 : <a class="el" href="interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e">interrupts.c</a>
 </li>
@@ -426,9 +476,41 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 : <a class="el" href="R1commands_8c.html#a21c02ca927851e19e2d2bd23daad0e31">R1commands.c</a>
 , <a class="el" href="R1commands_8h.html#aa155fdc926b45ca3c91ebec313e5acf9">R1commands.h</a>
 </li>
+<li>setPCBPriority()
+: <a class="el" href="R2commands_8c.html#a4435ff543d9c20f05a48e478369a8869">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a4435ff543d9c20f05a48e478369a8869">R2commands.h</a>
+</li>
 <li>setTime()
 : <a class="el" href="R1commands_8c.html#a854929a3dfe97fb3bcb65a358da1192f">R1commands.c</a>
 , <a class="el" href="R1commands_8h.html#afc443fe98a5312e4b6f8d5fe13baf7cb">R1commands.h</a>
+</li>
+<li>setupPCB()
+: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a410acbffbc7a41f58ff2a6b2173ee3c4">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a410acbffbc7a41f58ff2a6b2173ee3c4">R2_Internal_Functions_And_Structures.h</a>
+</li>
+<li>showAll()
+: <a class="el" href="R2commands_8c.html#ab84bd3554f8a0c6dbc675a672586e69d">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ab84bd3554f8a0c6dbc675a672586e69d">R2commands.h</a>
+</li>
+<li>showBlocked()
+: <a class="el" href="R2commands_8c.html#af71dc2eb68fb81525967d8454b3ad336">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#af71dc2eb68fb81525967d8454b3ad336">R2commands.h</a>
+</li>
+<li>showPCB()
+: <a class="el" href="R2commands_8c.html#ac07ffb030ac7241e316f9874b5668ef4">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ac07ffb030ac7241e316f9874b5668ef4">R2commands.h</a>
+</li>
+<li>showReady()
+: <a class="el" href="R2commands_8c.html#a284cd3bedf3fafb973e9290bb776253b">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a284cd3bedf3fafb973e9290bb776253b">R2commands.h</a>
+</li>
+<li>showSuspendedBlocked()
+: <a class="el" href="R2commands_8h.html#a8df5448a1752885b56efb93b499f4c9c">R2commands.h</a>
+, <a class="el" href="R2commands_8c.html#a8df5448a1752885b56efb93b499f4c9c">R2commands.c</a>
+</li>
+<li>showSuspendedReady()
+: <a class="el" href="R2commands_8c.html#ac6da97b81b9bf10facf2790df91cf53d">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#ac6da97b81b9bf10facf2790df91cf53d">R2commands.h</a>
 </li>
 <li>stack_segment()
 : <a class="el" href="interrupts_8c.html#a1ccc3198890318741629a03bb88bee6f">interrupts.c</a>
@@ -446,32 +528,44 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 , <a class="el" href="string_8c.html#a1eb9cae61e6a6282c28dbc298ef7297e">string.c</a>
 </li>
 <li>strlen()
-: <a class="el" href="string_8h.html#a2dee044e4e667b5b789b493abd21cfa4">string.h</a>
-, <a class="el" href="string_8c.html#a2dee044e4e667b5b789b493abd21cfa4">string.c</a>
+: <a class="el" href="string_8c.html#a2dee044e4e667b5b789b493abd21cfa4">string.c</a>
+, <a class="el" href="string_8h.html#a2dee044e4e667b5b789b493abd21cfa4">string.h</a>
 </li>
 <li>strtok()
-: <a class="el" href="string_8h.html#af1a867dcea42fc1215d0eddf19283ef3">string.h</a>
-, <a class="el" href="string_8c.html#af1a867dcea42fc1215d0eddf19283ef3">string.c</a>
+: <a class="el" href="string_8c.html#af1a867dcea42fc1215d0eddf19283ef3">string.c</a>
+, <a class="el" href="string_8h.html#af1a867dcea42fc1215d0eddf19283ef3">string.h</a>
+</li>
+<li>suspendPCB()
+: <a class="el" href="R2commands_8h.html#a69f2ae0d18292b4ca844c7d656d6b25f">R2commands.h</a>
+, <a class="el" href="R2commands_8c.html#a69f2ae0d18292b4ca844c7d656d6b25f">R2commands.c</a>
 </li>
 <li>sys_alloc_mem()
 : <a class="el" href="mpx__supt_8c.html#a61adad2abba0a3a225c2290b3de1fe93">mpx_supt.c</a>
 , <a class="el" href="mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">mpx_supt.h</a>
 </li>
 <li>sys_free_mem()
-: <a class="el" href="mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">mpx_supt.h</a>
-, <a class="el" href="mpx__supt_8c.html#a950663d39dbb073c9dff9cf3b5d3392c">mpx_supt.c</a>
+: <a class="el" href="mpx__supt_8c.html#a950663d39dbb073c9dff9cf3b5d3392c">mpx_supt.c</a>
+, <a class="el" href="mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">mpx_supt.h</a>
 </li>
 <li>sys_req()
-: <a class="el" href="mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">mpx_supt.h</a>
-, <a class="el" href="mpx__supt_8c.html#aaa3eb70f93cb8acf38ec0d028b9874f0">mpx_supt.c</a>
+: <a class="el" href="mpx__supt_8c.html#aaa3eb70f93cb8acf38ec0d028b9874f0">mpx_supt.c</a>
+, <a class="el" href="mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">mpx_supt.h</a>
 </li>
 <li>sys_set_free()
-: <a class="el" href="mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.h</a>
-, <a class="el" href="mpx__supt_8c.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.c</a>
+: <a class="el" href="mpx__supt_8c.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.c</a>
+, <a class="el" href="mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">mpx_supt.h</a>
 </li>
 <li>sys_set_malloc()
 : <a class="el" href="mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">mpx_supt.h</a>
 , <a class="el" href="mpx__supt_8c.html#a4a28bb188c9fed51228c46980b20e605">mpx_supt.c</a>
+</li>
+</ul>
+
+
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>unblockPCB()
+: <a class="el" href="R2commands_8c.html#a9c18b93fb833ed870f49f05cca5c5e3a">R2commands.c</a>
+, <a class="el" href="R2commands_8h.html#a9c18b93fb833ed870f49f05cca5c5e3a">R2commands.h</a>
 </li>
 </ul>
 
@@ -493,12 +587,9 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0
+</small></address>
 </body>
 </html>

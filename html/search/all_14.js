@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['version_238',['version',['../R1commands_8c.html#ae64f17a84dc9c7144d1036498ff26fd9',1,'version():&#160;R1commands.c'],['../R1commands_8h.html#aadd58a2bd505eba3564c7483be1a6140',1,'version():&#160;R1commands.c']]],
-  ['volatile_239',['volatile',['../system_8h.html#af55a5e48555be7d32ad73e76cf5d4db0',1,'system.h']]]
+  ['u16int_284',['u16int',['../system_8h.html#a863d9497073aad2b991aeab2211d87af',1,'system.h']]],
+  ['u32int_285',['u32int',['../system_8h.html#a757de76cafbcddaac0d1632902fe4cb8',1,'system.h']]],
+  ['u8int_286',['u8int',['../system_8h.html#a1026e682ffdadc1701c42cd44ce9efcf',1,'system.h']]],
+  ['unblockpcb_287',['unblockPCB',['../R2commands_8c.html#a9c18b93fb833ed870f49f05cca5c5e3a',1,'unblockPCB(char *processName):&#160;R2commands.c'],['../R2commands_8h.html#a9c18b93fb833ed870f49f05cca5c5e3a',1,'unblockPCB(char *processName):&#160;R2commands.c']]],
+  ['usermode_288',['usermode',['../structpage__entry.html#a2beafd3900a1f36f09af9c35a9a14f18',1,'page_entry']]]
 ];

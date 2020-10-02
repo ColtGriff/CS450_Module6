@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['write_5fgdt_5fptr_377',['write_gdt_ptr',['../tables_8c.html#ab603373c64fb0a6d51482121d0800be4',1,'tables.c']]],
-  ['write_5fidt_5fptr_378',['write_idt_ptr',['../tables_8c.html#a77fec66a455d3275b67be5c3d7868555',1,'tables.c']]]
+  ['unblockpcb_459',['unblockPCB',['../R2commands_8c.html#a9c18b93fb833ed870f49f05cca5c5e3a',1,'unblockPCB(char *processName):&#160;R2commands.c'],['../R2commands_8h.html#a9c18b93fb833ed870f49f05cca5c5e3a',1,'unblockPCB(char *processName):&#160;R2commands.c']]]
 ];
