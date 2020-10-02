@@ -396,7 +396,15 @@ void showReady()
 
     int loop = 0;
     int count = tempQueue->count;
-
+    
+    if (count == 0)
+    {
+        // the queue is empty
+        char error_message[30] = "The queue is empty.\n";
+        int error_size = strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        return;
+    }
 
     while (loop <= count && tempPCB->nextPCB != NULL && count > 0)
     {
@@ -472,6 +480,14 @@ void showSuspendedReady()
     int loop = 0;
     int count = tempQueue->count;
 
+    if (count == 0)
+    {
+        // the queue is empty
+        char error_message[30] = "The queue is empty.\n";
+        int error_size = strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        return;
+    }
 
     while (loop < count && tempPCB->nextPCB != NULL && count > 0)
     {
@@ -547,6 +563,14 @@ void showSuspendedBlocked()
     int loop = 0;
     int count = tempQueue->count;
 
+    if (count == 0)
+    {
+        // the queue is empty
+        char error_message[30] = "The queue is empty.\n";
+        int error_size = strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        return;
+    }
 
     while (loop < count && tempPCB->nextPCB != NULL && count > 0)
     {
