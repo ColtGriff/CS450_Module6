@@ -44,7 +44,6 @@ int freePCB(PCB *PCB_to_free) //Return 0 is success code, reurn 1 is error code.
 
     //freePCB() will use sys_free_mem() to free all memory associated with a given PCB (the stack, the PCB itself, etc.)
 
-    (void)PCB_to_free;
     return sys_free_mem(PCB_to_free);
 
 }
@@ -90,7 +89,6 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
     //findPCB() will search all queues for a process with a given name.
 
-    (void)processName;
     // searching in ready queue
 
     PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
@@ -295,6 +293,14 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error 
     {
         return 0;
     }
+}
+
+void allocateQueues()
+{
+    ready = sys_alloc_mem(sizeof(queue));
+    blocked = sys_alloc_mem(sizeof(queue));
+    suspendedReady = sys_alloc_mem(sizeof(queue));
+    suspendedBlocked = sys_alloc_mem(sizeof(queue));
 }
 
 queue *getReady()
