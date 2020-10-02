@@ -59,6 +59,110 @@ int help()
 	sys_req(WRITE, DEFAULT_DEVICE, (char *)setDateDesc, &tempBuffer);
 	memset(setDateDesc, '\0', tempBuffer);
 
+	// createPCb Description section
+	char createPCBDesc[] = "createPCB: Will create a PCB and put it into the ready queue by default.\n";
+
+	tempBuffer = strlen(createPCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)createPCBDesc, &tempBuffer);
+	memset(createPCBDesc, '\0', tempBuffer);
+
+	// deletePCB Description section
+	char deletePCBDesc[] = "deletePCB: Will delete a specific PCB from what ever queue it is in.\n";
+
+	tempBuffer = strlen(deletePCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)deletePCBDesc, &tempBuffer);
+	memset(deletePCBDesc, '\0', tempBuffer);
+
+	// blockPCB Description section
+	char blockPCBDesc[] = "blockPCB: Will change a specific PCB's state to blocked.\n";
+
+	tempBuffer = strlen(blockPCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)blockPCBDesc, &tempBuffer);
+	memset(blockPCBDesc, '\0', tempBuffer);
+
+	// unblockPCB Description section
+	char unblockPCBDesc[] = "unblockPCB: Will change a specific PCB's state to ready.\n";
+
+	tempBuffer = strlen(unblockPCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)unblockPCBDesc, &tempBuffer);
+	memset(unblockPCBDesc, '\0', tempBuffer);
+
+	// suspendPCB Description section
+	char suspendPCBDesc[] = "suspendPCB: Will suspend a specific PCB.\n";
+
+	tempBuffer = strlen(suspendPCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)suspendPCBDesc, &tempBuffer);
+	memset(suspendPCBDesc, '\0', tempBuffer);
+
+	// resumePCB Description section
+	char resumePCBDesc[] = "resumePCB: Will unsuspend a specific PCB.\n";
+
+	tempBuffer = strlen(resumePCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)resumePCBDesc, &tempBuffer);
+	memset(resumePCBDesc, '\0', tempBuffer);
+
+	// setPCBPriority Description section
+	char setPCBPriorityDesc[] = "setPCBPriority: Will change the priority of a specific PCB.\n";
+
+	tempBuffer = strlen(setPCBPriorityDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)setPCBPriorityDesc, &tempBuffer);
+	memset(setPCBPriorityDesc, '\0', tempBuffer);
+
+	// showPCB Description section
+	char showPCBDesc[] = "showPCB: Will display the name, class, state, suspended status, and priority of a specific PCB.\n";
+
+	tempBuffer = strlen(showPCBDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showPCBDesc, &tempBuffer);
+	memset(showPCBDesc, '\0', tempBuffer);
+
+	// showReady Description section
+	char showReadyDesc[] = "showReady: Will display the name, class, state, suspended status, and priority of every PCB in the ready queue.\n";
+
+	tempBuffer = strlen(showReadyDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showReadyDesc, &tempBuffer);
+	memset(showReadyDesc, '\0', tempBuffer);
+
+	// showSuspendedReady Description section
+	char showSuspendedReadyDesc[] = "showSuspendedReady: Will display the name, class, state, suspended status, and priority of every PCB in the suspended ready queue.\n";
+
+	tempBuffer = strlen(showSuspendedReadyDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showSuspendedReadyDesc, &tempBuffer);
+	memset(showSuspendedReadyDesc, '\0', tempBuffer);
+
+	// showSuspendedBlocked Description section
+	char showSuspendedBlockedDesc[] = "showSuspendedBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the suspended blocked queue.\n";
+
+	tempBuffer = strlen(showSuspendedBlockedDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showSuspendedBlockedDesc, &tempBuffer);
+	memset(showSuspendedBlockedDesc, '\0', tempBuffer);
+
+	// showBlocked Description section
+	char showBlockedDesc[] = "showBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the blocked queue.\n";
+
+	tempBuffer = strlen(showBlockedDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showBlockedDesc, &tempBuffer);
+	memset(showBlockedDesc, '\0', tempBuffer);
+
+	// showAll Description section
+	char showAllDesc[] = "showReady: Will display the name, class, state, suspended status, and priority of every PCB in all 4 queues.\n";
+
+	tempBuffer = strlen(showAllDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)showAllDesc, &tempBuffer);
+	memset(showAllDesc, '\0', tempBuffer);
+
 	// quit Description section
 	char quitDesc[] = "quit: Allows the user to shut the system down.\n";
 

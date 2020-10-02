@@ -1,4 +1,4 @@
-void createPCB(char *processName, unsigned char processClass, int processPriority);
+void createPCB(char *processName, char processClass, int processPriority);
 
 void deletePCB(char *processName);
 

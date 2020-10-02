@@ -10,7 +10,7 @@
 int commhand()
 {
 
-	char welcomeMSG[] = "Welcome to our CS 450 Project! Type 'help' to see what you can do!\n";
+	char welcomeMSG[] = "\nWelcome to our CS 450 Project!\nType help to see what you can do!\n\n";
 	int welcomeLength = strlen(welcomeMSG);
 	sys_req(WRITE, DEFAULT_DEVICE, welcomeMSG, &welcomeLength);
 
@@ -61,7 +61,7 @@ int commhand()
 		else if (strcmp(cmdBuffer, "createPCB") == 0)
 		{
 			char processName[20];
-			unsigned char processClass;
+			char processClass;
 			int processPriority;
 
 			char nameMsg[] = "Please enter a name for the PCB you wish to create. (The name can be no more than 20 characters)\n";
@@ -70,13 +70,26 @@ int commhand()
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
 			strcpy(processName, cmdBuffer);
+			memset(cmdBuffer, '\0', 100);
 
 			char classMsg[] = "Please enter a class for the PCB you wish to create. ('a' for application or 's' for system)\n";
 			int classMsgLen = strlen(classMsg);
 			sys_req(WRITE, DEFAULT_DEVICE, classMsg, &classMsgLen);
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
-			processClass = (unsigned char)cmdBuffer[0];
+			if (strcmp(cmdBuffer, "a") == 0)
+			{
+				processClass = 'a';
+			}
+			else if (strcmp(cmdBuffer, "s") == 0)
+			{
+				processClass = 's';
+			}
+			else
+			{
+				processClass = '\0';
+			}
+			memset(cmdBuffer, '\0', 100);
 
 			char priorityMsg[] = "Please enter a priority for the PCB you wish to create. (The priorities range from 0 to 9)\n";
 			int priorityMsgLen = strlen(priorityMsg);
