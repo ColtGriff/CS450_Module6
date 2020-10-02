@@ -143,8 +143,7 @@ void suspendPCB(char *processName)
     ///////*/
 
     PCB *PCBtoSuspend = findPCB(processName);
-    removePCB(PCBtoSuspend);
-
+    
     if (PCBtoSuspend == NULL || strlen(processName) > 20)
     {
         char nameError[] = "This is not a valid name.\n";
@@ -153,6 +152,7 @@ void suspendPCB(char *processName)
     }
     else
     {
+        removePCB(PCBtoSuspend);
         PCBtoSuspend->suspendedStatus = 0;
         insertPCB(PCBtoSuspend);
     }
