@@ -64,7 +64,7 @@ int commhand()
 			showBlocked();
 		}
 
-		// 
+		//
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();
