@@ -16,6 +16,7 @@ int commhand()
 
 	char cmdBuffer[100];
 	int bufferSize;
+	allocateQueues();
 
 	int quitFlag = 0;
 
@@ -63,7 +64,7 @@ int commhand()
 			showBlocked();
 		}
 
-		// 
+		//
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();

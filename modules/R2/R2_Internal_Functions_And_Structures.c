@@ -288,6 +288,14 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error 
     }
 }
 
+void allocateQueues()
+{
+    ready = sys_alloc_mem(sizeof(queue));
+    blocked = sys_alloc_mem(sizeof(queue));
+    suspendedReady = sys_alloc_mem(sizeof(queue));
+    suspendedBlocked = sys_alloc_mem(sizeof(queue));
+}
+
 queue *getReady()
 {
     return ready;

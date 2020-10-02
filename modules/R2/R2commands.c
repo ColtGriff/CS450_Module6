@@ -614,12 +614,15 @@ void showBlocked()
     queue *tempQueue = getBlocked();
     PCB *tempPtr = tempQueue->head; //PCB_container->head;
     int count = tempQueue->count;
-    serial_println("made blocked queue");
+
+    char madeMsg[30] = "made blocked queue\n";
+    int madeMsgLen = strlen(print_message);
+    sys_req(WRITE, DEFAULT_DEVICE, madeMsg, &madeMsgLen);
 
     if (count == 0)
     {
-        serial_println("queue is epty"); // the queue is empty
-        char error_message[30] = "The queue is empty.";
+        // the queue is empty
+        char error_message[30] = "The queue is empty.\n";
         int error_size = strlen(error_message);
         sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
         return;
