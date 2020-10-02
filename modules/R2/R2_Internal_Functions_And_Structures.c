@@ -89,7 +89,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
     PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
     found_ready_pcb = searchPCB(ready, processName);
-    if (found_ready_pcb)
+    if (found_ready_pcb != NULL)
     {
         return found_ready_pcb;
     }
@@ -97,7 +97,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     // searching PCB in blocked queue
     PCB *found_blocked_pcb;
     found_blocked_pcb = searchPCB(blocked, processName);
-    if (found_blocked_pcb)
+    if (found_blocked_pcb != NULL)
     {
         return found_blocked_pcb;
     }
@@ -105,7 +105,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     // searching PCB in suspendedReady queue
     PCB *found_suspended_ready_pcb;
     found_suspended_ready_pcb = searchPCB(suspendedReady, processName);
-    if (found_suspended_ready_pcb)
+    if (found_suspended_ready_pcb != NULL)
     {
         return found_suspended_ready_pcb;
     }
@@ -113,7 +113,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     // searching PCB in suspendedBlocked queue
     PCB *found_suspended_blocked_pcb;
     found_suspended_blocked_pcb = searchPCB(suspendedBlocked, processName);
-    if (found_suspended_blocked_pcb)
+    if (found_suspended_blocked_pcb != NULL)
     {
         return found_suspended_blocked_pcb;
     }

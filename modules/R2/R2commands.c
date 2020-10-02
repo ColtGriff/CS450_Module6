@@ -68,21 +68,31 @@ void deletePCB(char *processName)
     }
 
     PCB *PCB_to_delete = findPCB(processName);
-    int result = removePCB(PCB_to_delete);
 
-    if (result == 1)
+    if (PCB_to_delete == NULL)
     {
-        char errMsg[50];
-        strcpy(errMsg, "The PCB could not be successfully deleted\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        char errMsg[42] = "The PCB you want to remove does not eist\n";
+        int errMsgLen = 42;
+        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
     }
     else
     {
-        char msg[50];
-        strcpy(msg, "The desired PCB was deleted\n");
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        int result = removePCB(PCB_to_delete);
+
+        if (result == 1)
+        {
+            char errMsg[50];
+            strcpy(errMsg, "The PCB could not be successfully deleted\n");
+            int errLen = strlen(errMsg);
+            sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        }
+        else
+        {
+            char msg[50];
+            strcpy(msg, "The desired PCB was deleted\n");
+            int msgLen = strlen(msg);
+            sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        }
     }
 }
 
@@ -92,7 +102,7 @@ void blockPCB(char *processName)
     // find pcb and validate process name
     PCB *pcb_to_block = findPCB(processName);
 
-    if (pcb_to_block)
+    if (pcb_to_block != NULL)
     {
         pcb_to_block->runningStatus = -1; // blocked
         removePCB(pcb_to_block);
@@ -113,7 +123,7 @@ void unblockPCB(char *processName)
     */
 
     PCB *pcb_to_unblock = findPCB(processName);
-    if (pcb_to_unblock)
+    if (pcb_to_unblock != NULL)
     {
         pcb_to_unblock->runningStatus = 0; // ready
         removePCB(pcb_to_unblock);         // is this the right place to put that function?
@@ -188,7 +198,7 @@ void setPCBPriority(char *processName, int newProcessPriority)
     // find the process and validate the name
     PCB *tempPCB = findPCB(processName);
 
-    if ((tempPCB) && (newProcessPriority >= 0) && (newProcessPriority < 10))
+    if ((tempPCB != NULL) && (newProcessPriority >= 0) && (newProcessPriority < 10))
     {
         tempPCB->priority = newProcessPriority;
         removePCB(tempPCB);
@@ -396,7 +406,7 @@ void showReady()
 
     int loop = 0;
     int count = tempQueue->count;
-    
+
     if (count == 0)
     {
         // the queue is empty
@@ -408,7 +418,6 @@ void showReady()
 
     while (loop <= count && tempPCB->nextPCB != NULL && count > 0)
     {
-
 
         PCB *tempNext = tempPCB->nextPCB;
 
@@ -491,7 +500,6 @@ void showSuspendedReady()
 
     while (loop < count && tempPCB->nextPCB != NULL && count > 0)
     {
-
 
         PCB *tempNext = tempPCB->nextPCB;
 
