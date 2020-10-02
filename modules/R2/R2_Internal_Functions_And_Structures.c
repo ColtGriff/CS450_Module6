@@ -3,6 +3,7 @@
 #include <string.h>
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
+// #include "../R3/R3commands.h"
 
 queue *ready;
 queue *blocked;
@@ -69,6 +70,10 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
         returnedPCB->priority = processPriority;
         returnedPCB->runningStatus = 0;
         returnedPCB->suspendedStatus = 1;
+        returnedPCB->stackBase = returnedPCB->stack;
+        returnedPCB->stackTop = returnedPCB->stack + 1024;
+        returnedPCB->nextPCB = NULL;
+        returnedPCB->prevPCB = NULL;
     }
 
     return returnedPCB;
