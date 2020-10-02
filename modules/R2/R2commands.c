@@ -8,7 +8,7 @@
 #include <core/serial.h>
 
 //TEMPORARY USER COMMANDS - WILL BE REMOVED FOR R3/R4
-void createPCB(char *processName, unsigned char processClass, int processPriority)
+void createPCB(char *processName, char processClass, int processPriority)
 { // BENJAMIN WILL PROGRAM THIS FUNCTION
     /*
     The createPCB command will call setupPCB() and insert the PCB in the appropriate queue
@@ -27,7 +27,7 @@ void createPCB(char *processName, unsigned char processClass, int processPriorit
         int errLen = strlen(errMsg);
         sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
     }
-    else if (processClass != 'a' || processClass != 's')
+    else if (processClass != 'a' && processClass != 's')
     { // Check if the process has a valid class.
         char errMsg[100];
         strcpy(errMsg, "The PCB could not be created as it does not have a valid class!\n");
@@ -44,6 +44,11 @@ void createPCB(char *processName, unsigned char processClass, int processPriorit
     else
     { // Make the PCB
         PCB *createdPCB = setupPCB(processName, processClass, processPriority);
+
+        char msg[] = "The PCB was created!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+
         insertPCB(createdPCB);
     }
 }
@@ -71,27 +76,36 @@ void deletePCB(char *processName)
 
     if (PCB_to_delete == NULL)
     {
-        char errMsg[42] = "The PCB you want to remove does not eist\n";
+        char errMsg[42] = "The PCB you want to remove does not exist\n";
         int errMsgLen = 42;
         sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
     }
     else
     {
-        int result = removePCB(PCB_to_delete);
-
-        if (result == 1)
+        int removed = removePCB(PCB_to_delete);
+        if (removed == 1)
         {
-            char errMsg[50];
-            strcpy(errMsg, "The PCB could not be successfully deleted\n");
-            int errLen = strlen(errMsg);
-            sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+            char errMsg[] = "The PCB could not be unlinked.\n";
+            int errMsgLen = strlen(errMsg);
+            sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
         }
         else
         {
-            char msg[50];
-            strcpy(msg, "The desired PCB was deleted\n");
-            int msgLen = strlen(msg);
-            sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+            int result = sys_free_mem(PCB_to_delete);
+            if (result == -1)
+            {
+                char errMsg[50];
+                strcpy(errMsg, "The PCB could not be successfully deleted\n");
+                int errLen = strlen(errMsg);
+                sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+            }
+            else
+            {
+                char msg[50];
+                strcpy(msg, "The desired PCB was deleted\n");
+                int msgLen = strlen(msg);
+                sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+            }
         }
     }
 }
@@ -107,6 +121,10 @@ void blockPCB(char *processName)
         pcb_to_block->runningStatus = -1; // blocked
         removePCB(pcb_to_block);
         insertPCB(pcb_to_block);
+
+        char msg[] = "The PCB was successfully blocked!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
     }
 }
 
@@ -128,6 +146,10 @@ void unblockPCB(char *processName)
         pcb_to_unblock->runningStatus = 0; // ready
         removePCB(pcb_to_unblock);         // is this the right place to put that function?
         insertPCB(pcb_to_unblock);
+
+        char msg[] = "The PCB was successfully unblocked!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
     }
 }
 
@@ -143,7 +165,7 @@ void suspendPCB(char *processName)
     ///////*/
 
     PCB *PCBtoSuspend = findPCB(processName);
-    
+
     if (PCBtoSuspend == NULL || strlen(processName) > 20)
     {
         char nameError[] = "This is not a valid name.\n";
@@ -155,6 +177,10 @@ void suspendPCB(char *processName)
         removePCB(PCBtoSuspend);
         PCBtoSuspend->suspendedStatus = 0;
         insertPCB(PCBtoSuspend);
+
+        char msg[] = "The PCB was successfully suspended!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
     }
 }
 
@@ -181,6 +207,10 @@ void resumePCB(char *processName)
         removePCB(PCBtoResume);
         PCBtoResume->suspendedStatus = 1;
         insertPCB(PCBtoResume);
+
+        char msg[] = "The PCB was successfully resumed!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
     }
 }
 
@@ -203,6 +233,10 @@ void setPCBPriority(char *processName, int newProcessPriority)
         tempPCB->priority = newProcessPriority;
         removePCB(tempPCB);
         insertPCB(tempPCB);
+
+        char msg[] = "The PCB's priority was successfully changed!\n";
+        int msgLen = strlen(msg);
+        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
     }
 }
 
@@ -427,7 +461,7 @@ void showReady()
         return;
     }
 
-    while (loop <= count && tempPCB->nextPCB != NULL && count > 0)
+    while (loop < count)
     {
         showPCB(tempPCB->processName);
         PCB *tempNext = tempPCB->nextPCB;
@@ -470,7 +504,7 @@ void showSuspendedReady()
         return;
     }
 
-    while (loop < count && tempPCB->nextPCB != NULL && count > 0)
+    while (loop < count)
     {
         showPCB(tempPCB->processName);
         PCB *tempNext = tempPCB->nextPCB;
@@ -513,7 +547,7 @@ void showSuspendedBlocked()
         return;
     }
 
-    while (loop < count && tempPCB->nextPCB != NULL && count > 0)
+    while (loop < count)
     {
         showPCB(tempPCB->processName);
         PCB *tempNext = tempPCB->nextPCB;
@@ -565,7 +599,7 @@ void showBlocked()
     //int message_size=strlen(print_message);
     //sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
 
-    while (value <= count)
+    while (value < count)
     { // testing for <== or <
         // Print out the process
         showPCB(tempPtr->processName);

@@ -1,15 +1,15 @@
 typedef struct PCB
 {
-    char processName[20];       // Name of the Process Control Block(PCB).
-    unsigned char processClass; //'a'==application process, 's'==system process
-    int priority;               // Range from 0-9. 0 is the lowest priority, 9 is the highest priority.
-    int runningStatus;          // 0==ready, 1==running, -1==blocked.
-    int suspendedStatus;        // 0==suspended, 1==not suspended.
-    unsigned char stack[1024];  // Stack array.
-    unsigned char *stackTop;    // Pointer to the top of the stack area for the PCB. (stackTop = PCB->stack + 1024)
-    unsigned char *stackBase;   // Pointer to the base of the stack area for the PCB. (stackBase = PCB->stack)
-    struct PCB *nextPCB;        // Pointer to the next PCB in the queue.
-    struct PCB *prevPCB;        // Pointer to the previous PCB in the queue.
+    char processName[20];      // Name of the Process Control Block(PCB).
+    char processClass;         //'a'==application process, 's'==system process
+    int priority;              // Range from 0-9. 0 is the lowest priority, 9 is the highest priority.
+    int runningStatus;         // 0==ready, 1==running, -1==blocked.
+    int suspendedStatus;       // 0==suspended, 1==not suspended.
+    unsigned char stack[1024]; // Stack array.
+    unsigned char *stackTop;   // Pointer to the top of the stack area for the PCB. (stackTop = PCB->stack + 1024)
+    unsigned char *stackBase;  // Pointer to the base of the stack area for the PCB. (stackBase = PCB->stack)
+    struct PCB *nextPCB;       // Pointer to the next PCB in the queue.
+    struct PCB *prevPCB;       // Pointer to the previous PCB in the queue.
 } PCB;
 
 typedef struct queue
@@ -41,5 +41,3 @@ queue *getBlocked();
 queue *getSuspendedReady();
 
 queue *getSuspendedBlocked();
-
-PCB *searchPCB(queue *PCB_container, char *processName);

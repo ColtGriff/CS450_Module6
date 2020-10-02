@@ -51,13 +51,10 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
 
     //setupPcb() will call allocatePCB() to create an empty PCB, initializes the PCB information, sets the PCB state to ready, not suspended.
 
-    PCB *tempPCB = allocatePCB();
-
-    PCB *returnedPCB;
+    PCB *returnedPCB = allocatePCB();
 
     if (findPCB(processName)->processName == processName)
     {
-
         char message[] = "There is already a PCB with this name.\n";
         int messLength = strlen(message);
         sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
@@ -67,13 +64,11 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
     else
     {
 
-        strcpy(tempPCB->processName, processName);
-        tempPCB->processClass = processClass;
-        tempPCB->priority = processPriority;
-        tempPCB->runningStatus = 0;
-        tempPCB->suspendedStatus = 1;
-
-        returnedPCB = tempPCB;
+        strcpy(returnedPCB->processName, processName);
+        returnedPCB->processClass = processClass;
+        returnedPCB->priority = processPriority;
+        returnedPCB->runningStatus = 0;
+        returnedPCB->suspendedStatus = 1;
     }
 
     return returnedPCB;
@@ -96,78 +91,68 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     }
     else
     {
-
-        // searching in ready queue
-
-        PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
-        found_ready_pcb = searchPCB(ready, processName);
-        if (found_ready_pcb != NULL)
+        PCB *tempPCB = ready->head;
+        int value = 0;
+        while (value <= ready->count)
         {
-            return found_ready_pcb;
+            if (strcmp(tempPCB->processName, processName) == 0)
+            {
+                return tempPCB;
+            }
+            else
+            {
+                tempPCB = tempPCB->nextPCB;
+                value++;
+            }
         }
 
-        // searching PCB in blocked queue
-        PCB *found_blocked_pcb;
-        found_blocked_pcb = searchPCB(blocked, processName);
-        if (found_blocked_pcb != NULL)
+        tempPCB = blocked->head;
+        value = 0;
+        while (value <= blocked->count)
         {
-            return found_blocked_pcb;
+            if (strcmp(tempPCB->processName, processName) == 0)
+            {
+                return tempPCB;
+            }
+            else
+            {
+                tempPCB = tempPCB->nextPCB;
+                value++;
+            }
         }
 
-        // searching PCB in suspendedReady queue
-        PCB *found_suspended_ready_pcb;
-        found_suspended_ready_pcb = searchPCB(suspendedReady, processName);
-        if (found_suspended_ready_pcb != NULL)
+        tempPCB = suspendedBlocked->head;
+        value = 0;
+        while (value <= suspendedBlocked->count)
         {
-            return found_suspended_ready_pcb;
+            if (strcmp(tempPCB->processName, processName) == 0)
+            {
+                return tempPCB;
+            }
+            else
+            {
+                tempPCB = tempPCB->nextPCB;
+                value++;
+            }
         }
 
-        // searching PCB in suspendedBlocked queue
-        PCB *found_suspended_blocked_pcb;
-        found_suspended_blocked_pcb = searchPCB(suspendedBlocked, processName);
-        if (found_suspended_blocked_pcb != NULL)
+        tempPCB = suspendedReady->head;
+        value = 0;
+        while (value <= suspendedReady->count)
         {
-            return found_suspended_blocked_pcb;
+            if (strcmp(tempPCB->processName, processName) == 0)
+            {
+                return tempPCB;
+            }
+            else
+            {
+                tempPCB = tempPCB->nextPCB;
+                value++;
+            }
         }
 
-        char errMsg[] = "The process was not found.\n";
-        int errMsgLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
         return NULL;
     }
-}
-
-PCB *searchPCB(queue *PCB_container, char *processName)
-{
-    // PCB_container has PCB*head and PCB*tail pointers
-    //queue*tempQueue;
-
-    PCB *tempPtr = PCB_container->head;
-
-    int count = PCB_container->count; // tempQueue->count;
-
-    int found = 0; // not found signal
-    // detecting buffer overflow
-
-    int value = 0;
-    while (value <= count)
-    {
-        if (strcmp(tempPtr->processName, processName) == 0)
-        {
-            found = 1; // found signal
-            return tempPtr;
-            break;
-        }
-
-        tempPtr = tempPtr->nextPCB; // don't know why this line is giving assignment from incompatible pointer type error.
-        value++;
-    }
-
-    if (found == 0)
-    {
-        return NULL; // Why are this return not recognized??
-    }
-    return tempPtr; // for testing.
 }
 
 void insertPCB(PCB *PCB_to_insert)
@@ -179,14 +164,12 @@ void insertPCB(PCB *PCB_to_insert)
 
     if (PCB_to_insert->runningStatus == 0 && PCB_to_insert->suspendedStatus == 1)
     { // Insert into ready queue
-
-        queue *ready = getReady();
         PCB *tempPtr = ready->head;
 
         if (tempPtr != NULL)
         {
             int temp = 0;
-            while (temp < ready->count)
+            while (temp <= ready->count)
             {
                 if (PCB_to_insert->priority < tempPtr->priority)
                 {
@@ -202,6 +185,7 @@ void insertPCB(PCB *PCB_to_insert)
                 {
                     tempPtr->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = tempPtr;
+                    ready->tail = PCB_to_insert;
                 }
                 temp++;
             }
@@ -209,19 +193,19 @@ void insertPCB(PCB *PCB_to_insert)
         }
         else
         {
-            tempPtr = PCB_to_insert;
             ready->count++;
+            ready->head = PCB_to_insert;
+            ready->tail = PCB_to_insert;
         }
     }
     else if (PCB_to_insert->runningStatus == 0 && PCB_to_insert->suspendedStatus == 0)
     { // Insert into suspended ready queue
-        queue *suspendedReady = getSuspendedReady();
         PCB *tempPtr = suspendedReady->head;
 
         if (tempPtr != NULL)
         {
             int temp = 0;
-            while (temp < suspendedReady->count)
+            while (temp <= suspendedReady->count)
             {
                 if (PCB_to_insert->priority < tempPtr->priority)
                 {
@@ -237,6 +221,7 @@ void insertPCB(PCB *PCB_to_insert)
                 {
                     tempPtr->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = tempPtr;
+                    suspendedReady->tail = PCB_to_insert;
                 }
                 temp++;
             }
@@ -244,25 +229,26 @@ void insertPCB(PCB *PCB_to_insert)
         }
         else
         {
-            tempPtr = PCB_to_insert;
             suspendedReady->count++;
+            suspendedReady->head = PCB_to_insert;
+            suspendedReady->tail = PCB_to_insert;
         }
     }
     else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 1)
     { // Insert into blocked queue
-        queue *blocked = getBlocked();
         PCB *tempPtr = blocked->tail;
 
         tempPtr->nextPCB = PCB_to_insert;
         PCB_to_insert->prevPCB = tempPtr;
+        blocked->tail = PCB_to_insert;
     }
     else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 0)
     { // Insert into suspended blocked queue
-        queue *suspendedBlocked = getSuspendedBlocked();
         PCB *tempPtr = suspendedBlocked->tail;
 
         tempPtr->nextPCB = PCB_to_insert;
         PCB_to_insert->prevPCB = tempPtr;
+        suspendedBlocked->tail = PCB_to_insert;
     }
 }
 
@@ -272,23 +258,118 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error 
 
     //removePCB() will remove a PCB from the queue in which it is currently stored.
 
-    PCB *tempPrev = PCB_to_remove->prevPCB;
-    PCB *tempNext = PCB_to_remove->nextPCB;
-
-    tempPrev->nextPCB = tempNext;
-    tempNext->prevPCB = tempPrev;
-
-    PCB_to_remove->nextPCB = NULL;
-    PCB_to_remove->prevPCB = NULL;
-
-    int result = sys_free_mem(PCB_to_remove);
-
-    if (result == -1)
+    PCB *removedPCB = findPCB(PCB_to_remove->processName);
+    if (removedPCB == NULL)
     {
         return 1;
     }
+    else if (removedPCB == ready->head)
+    {
+        PCB *removedNext = removedPCB->nextPCB;
+
+        ready->head = removedNext;
+        removedNext->prevPCB = NULL;
+        removedPCB->nextPCB = NULL;
+        ready->count--;
+        return 0;
+    }
+    else if (removedPCB == blocked->head)
+    {
+        PCB *removedNext = removedPCB->nextPCB;
+        blocked->head = removedNext;
+        removedNext->prevPCB = NULL;
+        removedPCB->nextPCB = NULL;
+        blocked->count--;
+        return 0;
+    }
+    else if (removedPCB == suspendedReady->head)
+    {
+        PCB *removedNext = removedPCB->nextPCB;
+
+        suspendedReady->head = removedNext;
+        removedNext->prevPCB = NULL;
+        removedPCB->nextPCB = NULL;
+        suspendedReady->count--;
+        return 0;
+    }
+    else if (removedPCB == suspendedBlocked->head)
+    {
+        PCB *removedNext = removedPCB->nextPCB;
+
+        suspendedBlocked->head = removedNext;
+        removedNext->prevPCB = NULL;
+        removedPCB->nextPCB = NULL;
+        suspendedBlocked->count--;
+        return 0;
+    }
+    else if (removedPCB == ready->tail)
+    {
+        PCB *removedPrev = removedPCB->prevPCB;
+
+        ready->tail = removedPrev;
+        removedPrev->nextPCB = NULL;
+        removedPCB->prevPCB = NULL;
+        ready->count--;
+        return 0;
+    }
+    else if (removedPCB == blocked->tail)
+    {
+        PCB *removedPrev = removedPCB->prevPCB;
+
+        blocked->tail = removedPrev;
+        removedPrev->nextPCB = NULL;
+        removedPCB->prevPCB = NULL;
+        blocked->count--;
+        return 0;
+    }
+    else if (removedPCB == suspendedReady->tail)
+    {
+        PCB *removedPrev = removedPCB->prevPCB;
+
+        suspendedReady->tail = removedPrev;
+        removedPrev->nextPCB = NULL;
+        removedPCB->prevPCB = NULL;
+        suspendedReady->count--;
+        return 0;
+    }
+    else if (removedPCB == suspendedBlocked->tail)
+    {
+        PCB *removedPrev = removedPCB->prevPCB;
+
+        suspendedBlocked->tail = removedPrev;
+        removedPrev->nextPCB = NULL;
+        removedPCB->prevPCB = NULL;
+        suspendedBlocked->count--;
+        return 0;
+    }
     else
     {
+        PCB *tempPrev = removedPCB->prevPCB;
+        PCB *tempNext = removedPCB->nextPCB;
+
+        tempPrev->nextPCB = tempNext;
+        tempNext->prevPCB = tempPrev;
+
+        removedPCB->nextPCB = NULL;
+        removedPCB->prevPCB = NULL;
+
+        if (removedPCB->runningStatus == 0 && removedPCB->suspendedStatus == 1)
+        {
+            ready->count--;
+        }
+        else if (removedPCB->runningStatus == -1 && removedPCB->suspendedStatus == 1)
+        {
+            blocked->count--;
+        }
+        else if (removedPCB->runningStatus == 0 && removedPCB->suspendedStatus == 0)
+        {
+            suspendedReady->count--;
+        }
+        else if (removedPCB->runningStatus == -1 && removedPCB->suspendedStatus == 0)
+        {
+            suspendedBlocked->count--;
+        }
+
         return 0;
     }
 }
@@ -296,9 +377,21 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error 
 void allocateQueues()
 {
     ready = sys_alloc_mem(sizeof(queue));
+    ready->count = 0;
+    ready->head = NULL;
+    ready->tail = NULL;
     blocked = sys_alloc_mem(sizeof(queue));
+    blocked->count = 0;
+    blocked->head = NULL;
+    blocked->tail = NULL;
     suspendedReady = sys_alloc_mem(sizeof(queue));
+    suspendedReady->count = 0;
+    suspendedReady->head = NULL;
+    suspendedReady->tail = NULL;
     suspendedBlocked = sys_alloc_mem(sizeof(queue));
+    suspendedBlocked->count = 0;
+    suspendedBlocked->head = NULL;
+    suspendedBlocked->tail = NULL;
 }
 
 queue *getReady()
