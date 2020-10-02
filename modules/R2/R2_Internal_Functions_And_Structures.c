@@ -85,40 +85,56 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
     //findPCB() will search all queues for a process with a given name.
 
-    // searching in ready queue
-
-    PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
-    found_ready_pcb = searchPCB(ready, processName);
-    if (found_ready_pcb != NULL)
+    if (strlen(processName) > 20)
     {
-        return found_ready_pcb;
-    }
 
-    // searching PCB in blocked queue
-    PCB *found_blocked_pcb;
-    found_blocked_pcb = searchPCB(blocked, processName);
-    if (found_blocked_pcb != NULL)
+        char error_message[30] = "Invalid process name.\n";
+        int error_size = strlen(error_message);
+        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        return NULL;
+        //return cz we have to stop if the process name is too long
+    }
+    else
     {
-        return found_blocked_pcb;
-    }
 
-    // searching PCB in suspendedReady queue
-    PCB *found_suspended_ready_pcb;
-    found_suspended_ready_pcb = searchPCB(suspendedReady, processName);
-    if (found_suspended_ready_pcb != NULL)
-    {
-        return found_suspended_ready_pcb;
-    }
+        // searching in ready queue
 
-    // searching PCB in suspendedBlocked queue
-    PCB *found_suspended_blocked_pcb;
-    found_suspended_blocked_pcb = searchPCB(suspendedBlocked, processName);
-    if (found_suspended_blocked_pcb != NULL)
-    {
-        return found_suspended_blocked_pcb;
-    }
+        PCB *found_ready_pcb; // this is a pointer to another pointer (** starts). Need testing!
+        found_ready_pcb = searchPCB(ready, processName);
+        if (found_ready_pcb != NULL)
+        {
+            return found_ready_pcb;
+        }
 
-    return NULL; // for testing
+        // searching PCB in blocked queue
+        PCB *found_blocked_pcb;
+        found_blocked_pcb = searchPCB(blocked, processName);
+        if (found_blocked_pcb != NULL)
+        {
+            return found_blocked_pcb;
+        }
+
+        // searching PCB in suspendedReady queue
+        PCB *found_suspended_ready_pcb;
+        found_suspended_ready_pcb = searchPCB(suspendedReady, processName);
+        if (found_suspended_ready_pcb != NULL)
+        {
+            return found_suspended_ready_pcb;
+        }
+
+        // searching PCB in suspendedBlocked queue
+        PCB *found_suspended_blocked_pcb;
+        found_suspended_blocked_pcb = searchPCB(suspendedBlocked, processName);
+        if (found_suspended_blocked_pcb != NULL)
+        {
+            return found_suspended_blocked_pcb;
+        }
+
+        char errMsg[] = "The process was not found.\n";
+        int errMsgLen = strlen(errMsg);
+        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
+        return NULL;
+    }
 }
 
 PCB *searchPCB(queue *PCB_container, char *processName)
@@ -132,14 +148,6 @@ PCB *searchPCB(queue *PCB_container, char *processName)
 
     int found = 0; // not found signal
     // detecting buffer overflow
-    if (strlen(processName) > 20)
-    {
-
-        char error_message[30] = "Invalid process name.";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        //return cz we have to stop if the process name is too long
-    }
 
     int value = 0;
     while (value <= count)
@@ -157,9 +165,6 @@ PCB *searchPCB(queue *PCB_container, char *processName)
 
     if (found == 0)
     {
-        char result_message[30] = "The process was not found.";
-        int result_size = strlen(result_message);
-        sys_req(WRITE, DEFAULT_DEVICE, result_message, &result_size);
         return NULL; // Why are this return not recognized??
     }
     return tempPtr; // for testing.

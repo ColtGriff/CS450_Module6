@@ -58,13 +58,154 @@ int commhand()
 		{
 			setTime();
 		}
-		// Testing my functions
+		else if (strcmp(cmdBuffer, "createPCB") == 0)
+		{
+			char processName[20];
+			unsigned char processClass;
+			int processPriority;
+
+			char nameMsg[] = "Please enter a name for the PCB you wish to create. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			char classMsg[] = "Please enter a class for the PCB you wish to create. ('a' for application or 's' for system)\n";
+			int classMsgLen = strlen(classMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, classMsg, &classMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			processClass = (unsigned char)cmdBuffer[0];
+
+			char priorityMsg[] = "Please enter a priority for the PCB you wish to create. (The priorities range from 0 to 9)\n";
+			int priorityMsgLen = strlen(priorityMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			processPriority = atoi(cmdBuffer);
+
+			createPCB(processName, processClass, processPriority);
+		}
+		else if (strcmp(cmdBuffer, "deletePCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to delete. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			deletePCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "blockPCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to block. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			blockPCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "unblockPCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to unblock. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			unblockPCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "suspendPCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to suspend. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			suspendPCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "resumePCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to resume. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			resumePCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "setPCBPriority") == 0)
+		{
+			char processName[20];
+			int newProcessPriority;
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to change priorities for. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			char priorityMsg[] = "Please enter a priority for the PCB you wish to change priorities for. (The priorities range from 0 to 9)\n";
+			int priorityMsgLen = strlen(priorityMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			newProcessPriority = atoi(cmdBuffer);
+
+			setPCBPriority(processName, newProcessPriority);
+		}
+		else if (strcmp(cmdBuffer, "showPCB") == 0)
+		{
+			char processName[20];
+
+			char nameMsg[] = "Please enter the name for the PCB you wish to see. (The name can be no more than 20 characters)\n";
+			int nameMsgLen = strlen(nameMsg);
+			sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+			strcpy(processName, cmdBuffer);
+
+			showPCB(processName);
+		}
+		else if (strcmp(cmdBuffer, "showReady") == 0)
+		{
+			showReady();
+		}
+		else if (strcmp(cmdBuffer, "showSuspendedReady") == 0)
+		{
+			showSuspendedReady();
+		}
+		else if (strcmp(cmdBuffer, "showSuspendedBlocked") == 0)
+		{
+			showSuspendedBlocked();
+		}
 		else if (strcmp(cmdBuffer, "showBlocked") == 0)
 		{
 			showBlocked();
 		}
-
-		//
+		else if (strcmp(cmdBuffer, "showAll") == 0)
+		{
+			showAll();
+		}
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();

@@ -16,6 +16,10 @@ void showPCB(char *processName);
 
 void showReady();
 
+void showSuspendedBlocked();
+
+void showSuspendedReady();
+
 void showBlocked();
 
 void showAll();
