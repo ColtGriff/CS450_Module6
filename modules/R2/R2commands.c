@@ -94,10 +94,10 @@ void deletePCB(char *processName)
             int result = sys_free_mem(PCB_to_delete);
             if (result == -1)
             {
-                char errMsg[50];
-                strcpy(errMsg, "The PCB could not be successfully deleted\n");
-                int errLen = strlen(errMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+                // char errMsg[50];
+                // strcpy(errMsg, "The PCB could not be successfully deleted\n");
+                // int errLen = strlen(errMsg);
+                // sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
             }
             else
             {
@@ -424,6 +424,10 @@ void showPCB(char *processName)
                 break;
             }
         }
+        char newLine[1];
+        strcpy(newLine, "\n");
+        int newLineLen = strlen(newLine);
+        sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
     }
 }
 
@@ -442,14 +446,13 @@ void showReady()
     None
     */
 
-    char message[] = "Printing the ready queue:\n";
-    int messLength = strlen(message);
-    sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
+    char print_message[30] = "The ready queue:\n";
+    int message_size = strlen(print_message);
+    sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
 
+    // printPCBs(blocked);
     queue *tempQueue = getReady();
-    PCB *tempPCB = tempQueue->head;
-
-    int loop = 0;
+    PCB *tempPtr = tempQueue->head; //PCB_container->head;
     int count = tempQueue->count;
 
     if (count == 0)
@@ -460,13 +463,21 @@ void showReady()
         sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
         return;
     }
+    // The queue is not empty
 
-    while (loop < count)
-    {
-        showPCB(tempPCB->processName);
-        PCB *tempNext = tempPCB->nextPCB;
-        loop++;
-        tempPCB = tempNext;
+    int value = 1;
+    // Testing purpose
+    //char print_message[38]="The blocke queue testing:\n";
+    //int message_size=strlen(print_message);
+    //sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
+
+    while (value < count)
+    { // testing for <== or <
+        // Print out the process
+        showPCB(tempPtr->processName);
+        // increment pcb*tempPtr, the loop variable.
+        tempPtr = tempPtr->nextPCB;
+        value++;
     }
 }
 
@@ -625,7 +636,18 @@ void showAll()
     */
 
     showReady();
+    char newLine[1] = "\n";
+    int newLineLen = strlen(newLine);
+    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+
     showSuspendedReady();
+    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+
     showBlocked();
+    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+
     showSuspendedBlocked();
+    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+
+    memset(newLine, 1, '\0');
 }

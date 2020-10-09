@@ -98,7 +98,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     {
         PCB *tempPCB = ready->head;
         int value = 0;
-        while (value <= ready->count)
+        while (value < ready->count)
         {
             if (strcmp(tempPCB->processName, processName) == 0)
             {
@@ -113,7 +113,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
         tempPCB = blocked->head;
         value = 0;
-        while (value <= blocked->count)
+        while (value < blocked->count)
         {
             if (strcmp(tempPCB->processName, processName) == 0)
             {
@@ -128,7 +128,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
         tempPCB = suspendedBlocked->head;
         value = 0;
-        while (value <= suspendedBlocked->count)
+        while (value < suspendedBlocked->count)
         {
             if (strcmp(tempPCB->processName, processName) == 0)
             {
@@ -143,7 +143,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
 
         tempPCB = suspendedReady->head;
         value = 0;
-        while (value <= suspendedReady->count)
+        while (value < suspendedReady->count)
         {
             if (strcmp(tempPCB->processName, processName) == 0)
             {
@@ -174,23 +174,41 @@ void insertPCB(PCB *PCB_to_insert)
         if (tempPtr != NULL)
         {
             int temp = 0;
-            while (temp <= ready->count)
+            while (temp < ready->count)
             {
-                if (PCB_to_insert->priority < tempPtr->priority)
-                {
-                    tempPtr = tempPtr->nextPCB;
-                }
-                else if (PCB_to_insert->priority >= tempPtr->priority)
-                {
+                if (PCB_to_insert->priority >= ready->head->priority)
+                { // insert at head
                     PCB_to_insert->nextPCB = tempPtr;
-                    PCB_to_insert->prevPCB = tempPtr->prevPCB;
                     tempPtr->prevPCB = PCB_to_insert;
+                    ready->head = PCB_to_insert;
+                    ready->count++;
+                    break;
                 }
-                else if (PCB_to_insert->priority < tempPtr->priority && tempPtr->nextPCB == NULL)
-                {
+                else if (PCB_to_insert->priority < ready->tail->priority)
+                { // insert at tail
                     tempPtr->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = tempPtr;
                     ready->tail = PCB_to_insert;
+                    ready->count++;
+                    break;
+                }
+                else if (PCB_to_insert->priority >= tempPtr->priority)
+                { // insert at middle
+                    PCB *prevPtr = tempPtr->prevPCB;
+
+                    prevPtr->nextPCB = PCB_to_insert;
+
+                    PCB_to_insert->prevPCB = prevPtr;
+                    PCB_to_insert->nextPCB = tempPtr;
+
+                    tempPtr->prevPCB = PCB_to_insert;
+
+                    ready->count++;
+                    break;
+                }
+                else
+                { // move tempPtr through the queue
+                    tempPtr = tempPtr->nextPCB;
                 }
                 temp++;
             }
@@ -198,9 +216,9 @@ void insertPCB(PCB *PCB_to_insert)
         }
         else
         {
-            ready->count++;
             ready->head = PCB_to_insert;
             ready->tail = PCB_to_insert;
+            ready->count++;
         }
     }
     else if (PCB_to_insert->runningStatus == 0 && PCB_to_insert->suspendedStatus == 0)
@@ -210,23 +228,41 @@ void insertPCB(PCB *PCB_to_insert)
         if (tempPtr != NULL)
         {
             int temp = 0;
-            while (temp <= suspendedReady->count)
+            while (temp < suspendedReady->count)
             {
-                if (PCB_to_insert->priority < tempPtr->priority)
-                {
-                    tempPtr = tempPtr->nextPCB;
-                }
-                else if (PCB_to_insert->priority >= tempPtr->priority)
-                {
+                if (PCB_to_insert->priority >= suspendedReady->head->priority)
+                { // insert at head
                     PCB_to_insert->nextPCB = tempPtr;
-                    PCB_to_insert->prevPCB = tempPtr->prevPCB;
                     tempPtr->prevPCB = PCB_to_insert;
+                    suspendedReady->head = PCB_to_insert;
+                    suspendedReady->count++;
+                    break;
                 }
-                else if (PCB_to_insert->priority < tempPtr->priority && tempPtr->nextPCB == NULL)
-                {
+                else if (PCB_to_insert->priority < suspendedReady->tail->priority)
+                { // insert at tail
                     tempPtr->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = tempPtr;
                     suspendedReady->tail = PCB_to_insert;
+                    suspendedReady->count++;
+                    break;
+                }
+                else if (PCB_to_insert->priority >= tempPtr->priority)
+                { // insert at middle
+                    PCB *prevPtr = tempPtr->prevPCB;
+
+                    prevPtr->nextPCB = PCB_to_insert;
+
+                    PCB_to_insert->prevPCB = prevPtr;
+                    PCB_to_insert->nextPCB = tempPtr;
+
+                    tempPtr->prevPCB = PCB_to_insert;
+
+                    ready->count++;
+                    break;
+                }
+                else
+                { // move tempPtr through the queue
+                    tempPtr = tempPtr->nextPCB;
                 }
                 temp++;
             }
@@ -241,19 +277,37 @@ void insertPCB(PCB *PCB_to_insert)
     }
     else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 1)
     { // Insert into blocked queue
-        PCB *tempPtr = blocked->tail;
+        if (blocked->head != NULL)
+        {
+            PCB *tempPtr = blocked->tail;
 
-        tempPtr->nextPCB = PCB_to_insert;
-        PCB_to_insert->prevPCB = tempPtr;
-        blocked->tail = PCB_to_insert;
+            tempPtr->nextPCB = PCB_to_insert;
+            PCB_to_insert->prevPCB = tempPtr;
+            tempPtr = PCB_to_insert;
+            blocked->count++;
+        }
+        else
+        {
+            blocked->head = PCB_to_insert;
+            blocked->tail = PCB_to_insert;
+            blocked->count++;
+        }
     }
     else if (PCB_to_insert->runningStatus == -1 && PCB_to_insert->suspendedStatus == 0)
     { // Insert into suspended blocked queue
-        PCB *tempPtr = suspendedBlocked->tail;
-
-        tempPtr->nextPCB = PCB_to_insert;
-        PCB_to_insert->prevPCB = tempPtr;
-        suspendedBlocked->tail = PCB_to_insert;
+        if (suspendedBlocked->head != NULL)
+        {
+            suspendedBlocked->tail->nextPCB = PCB_to_insert;
+            PCB_to_insert->prevPCB = suspendedBlocked->tail;
+            suspendedBlocked->tail = PCB_to_insert;
+            suspendedBlocked->count++;
+        }
+        else
+        {
+            suspendedBlocked->head = PCB_to_insert;
+            suspendedBlocked->tail = PCB_to_insert;
+            suspendedBlocked->count++;
+        }
     }
 }
 
