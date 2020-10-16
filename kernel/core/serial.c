@@ -202,13 +202,13 @@ int *polling(char *buffer, int *count)
         if (cursor == 0 && buffer[cursor] == '\0') //Adding character at beginning of buffer
         {
           buffer[cursor] = keyboard_character;
-          serial_print(&keyboard_character);
+          serial_print(buffer + cursor);
           cursor++;
         }
         else if (buffer[cursor] == '\0') //Adding character at the end of the buffer
         {
           buffer[cursor] = keyboard_character;
-          serial_print(&keyboard_character);
+          serial_print(buffer + cursor);
           cursor++;
         }
         else //Inserting character to the middle of the buffer
