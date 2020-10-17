@@ -1,8 +1,10 @@
 //C structures
 
 #include <string.h>
+#include <core/serial.h>
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
+#include "../R3/R3commands.h"
 // #include "../R3/R3commands.h"
 
 queue *ready;
@@ -71,7 +73,7 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
         returnedPCB->runningStatus = 0;
         returnedPCB->suspendedStatus = 1;
         returnedPCB->stackBase = returnedPCB->stack;
-        returnedPCB->stackTop = returnedPCB->stack + 1024;
+        returnedPCB->stackTop = returnedPCB->stack + 1024 - sizeof(context);
         returnedPCB->nextPCB = NULL;
         returnedPCB->prevPCB = NULL;
     }
@@ -176,7 +178,7 @@ void insertPCB(PCB *PCB_to_insert)
             int temp = 0;
             while (temp < ready->count)
             {
-                if (PCB_to_insert->priority >= ready->head->priority)
+                if (PCB_to_insert->priority > ready->head->priority)
                 { // insert at head
                     PCB_to_insert->nextPCB = tempPtr;
                     tempPtr->prevPCB = PCB_to_insert;
@@ -186,13 +188,13 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 else if (PCB_to_insert->priority < ready->tail->priority)
                 { // insert at tail
-                    tempPtr->nextPCB = PCB_to_insert;
-                    PCB_to_insert->prevPCB = tempPtr;
+                    ready->tail->nextPCB = PCB_to_insert;
+                    PCB_to_insert->prevPCB = ready->tail;
                     ready->tail = PCB_to_insert;
                     ready->count++;
                     break;
                 }
-                else if (PCB_to_insert->priority >= tempPtr->priority)
+                else if (PCB_to_insert->priority > tempPtr->priority)
                 { // insert at middle
                     PCB *prevPtr = tempPtr->prevPCB;
 
@@ -230,7 +232,7 @@ void insertPCB(PCB *PCB_to_insert)
             int temp = 0;
             while (temp < suspendedReady->count)
             {
-                if (PCB_to_insert->priority >= suspendedReady->head->priority)
+                if (PCB_to_insert->priority > suspendedReady->head->priority)
                 { // insert at head
                     PCB_to_insert->nextPCB = tempPtr;
                     tempPtr->prevPCB = PCB_to_insert;
@@ -240,13 +242,13 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 else if (PCB_to_insert->priority < suspendedReady->tail->priority)
                 { // insert at tail
-                    tempPtr->nextPCB = PCB_to_insert;
-                    PCB_to_insert->prevPCB = tempPtr;
+                    suspendedReady->tail->nextPCB = PCB_to_insert;
+                    PCB_to_insert->prevPCB = suspendedReady->tail;
                     suspendedReady->tail = PCB_to_insert;
                     suspendedReady->count++;
                     break;
                 }
-                else if (PCB_to_insert->priority >= tempPtr->priority)
+                else if (PCB_to_insert->priority > tempPtr->priority)
                 { // insert at middle
                     PCB *prevPtr = tempPtr->prevPCB;
 
@@ -279,11 +281,9 @@ void insertPCB(PCB *PCB_to_insert)
     { // Insert into blocked queue
         if (blocked->head != NULL)
         {
-            PCB *tempPtr = blocked->tail;
-
-            tempPtr->nextPCB = PCB_to_insert;
-            PCB_to_insert->prevPCB = tempPtr;
-            tempPtr = PCB_to_insert;
+            blocked->tail->nextPCB = PCB_to_insert;
+            PCB_to_insert->prevPCB = blocked->tail;
+            blocked->tail = PCB_to_insert;
             blocked->count++;
         }
         else
@@ -439,14 +439,17 @@ void allocateQueues()
     ready->count = 0;
     ready->head = NULL;
     ready->tail = NULL;
+
     blocked = sys_alloc_mem(sizeof(queue));
     blocked->count = 0;
     blocked->head = NULL;
     blocked->tail = NULL;
+
     suspendedReady = sys_alloc_mem(sizeof(queue));
     suspendedReady->count = 0;
     suspendedReady->head = NULL;
     suspendedReady->tail = NULL;
+
     suspendedBlocked = sys_alloc_mem(sizeof(queue));
     suspendedBlocked->count = 0;
     suspendedBlocked->head = NULL;

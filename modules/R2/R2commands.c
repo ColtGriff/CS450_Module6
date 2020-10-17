@@ -465,7 +465,7 @@ void showReady()
     }
     // The queue is not empty
 
-    int value = 1;
+    int value = 0;
     // Testing purpose
     //char print_message[38]="The blocke queue testing:\n";
     //int message_size=strlen(print_message);

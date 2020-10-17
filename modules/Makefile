@@ -15,7 +15,8 @@ mpx_supt.o \
 R1/commhand.o \
 R1/R1commands.o \
 R2/R2_Internal_Functions_And_Structures.o \
-R2/R2commands.o 
+R2/R2commands.o \
+R3/R3commands.o 
 
 .c.s:
 	$(CC) $(CFLAGS) -S -o $@ $<

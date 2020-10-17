@@ -7,38 +7,12 @@
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R2/R2commands.h"
 #include "R3commands.h"
+#include "procsr3.h"
 
 param params;
 
 PCB *COP;
 context *callerContext;
-
-void sys_call_isr()
-{
-    // Push all general purpose register values to the stack.
-    callerContext->edi = COP->stack[0];
-    callerContext->esi = COP->stack[1];
-    callerContext->ebp = COP->stack[2];
-    callerContext->esp = COP->stack[3];
-    callerContext->ebx = COP->stack[4];
-    callerContext->edx = COP->stack[5];
-    callerContext->ecx = COP->stack[6];
-    callerContext->eax = COP->stack[7];
-    callerContext->eip = COP->stack[8];
-    callerContext->cs = COP->stack[9];
-    callerContext->eflags = COP->stack[10];
-
-    // Push the segment register values to the stack.
-    callerContext->ds = COP->stack[11];
-    callerContext->es = COP->stack[12];
-    callerContext->fs = COP->stack[13];
-    callerContext->gs = COP->stack[14];
-
-    // Call sys_call and set a new stack pointer.
-    callerContext->eax = sys_call(callerContext->esp);
-
-    COP->stack[14] = callerContext->gs;
-}
 
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
@@ -50,7 +24,7 @@ u32int *sys_call(context *registers)
     {
         if (params.op_code == IDLE)
         { // Save the context (reassign COP's stack top).
-            COP = COP->stackTop;
+            COP->stackTop = (unsigned char *)registers;
         }
         else if (params.op_code == EXIT)
         { // free COP.
@@ -68,13 +42,10 @@ u32int *sys_call(context *registers)
         {
             tempPtr->runningStatus = 1;
             COP = tempPtr;
-            return COP->stackTop;
+            return (u32int *)COP->stackTop;
         }
     }
-    else
-    {
-        return registers;
-    }
+    return (u32int *)registers;
 }
 
 void yield()
@@ -85,5 +56,79 @@ void yield()
 PCB *loadr3()
 {
     //loadr3 will load all r3 "processes" (proc3.c file eCampus) into memory in a suspended ready state at any priority of your choosing.
-    return NULL;
+
+    createPCB("Process1", 'a', 1);
+    suspendPCB("Process1");
+    PCB *new_pcb = findPCB("Process1");
+    context *cp = (context *)(new_pcb->stackTop);
+    memset(cp, 0, sizeof(context));
+    cp->fs = 0x10;
+    cp->gs = 0x10;
+    cp->ds = 0x10;
+    cp->es = 0x10;
+    cp->cs = 0x8;
+    cp->ebp = (u32int)(new_pcb->stack);
+    cp->esp = (u32int)(new_pcb->stackTop);
+    cp->eip = (u32int)proc1; // The function correlating to the process, ie. Proc1
+    cp->eflags = 0x202;
+
+    createPCB("Process2", 'a', 1);
+    suspendPCB("Process2");
+    PCB *new_pcb = findPCB("Process2");
+    context *cp = (context *)(new_pcb->stackTop);
+    memset(cp, 0, sizeof(context));
+    cp->fs = 0x10;
+    cp->gs = 0x10;
+    cp->ds = 0x10;
+    cp->es = 0x10;
+    cp->cs = 0x8;
+    cp->ebp = (u32int)(new_pcb->stack);
+    cp->esp = (u32int)(new_pcb->stackTop);
+    cp->eip = (u32int)proc2; // The function correlating to the process, ie. Proc1
+    cp->eflags = 0x202;
+
+    createPCB("Process3", 'a', 1);
+    suspendPCB("Process3");
+    PCB *new_pcb = findPCB("Process3");
+    context *cp = (context *)(new_pcb->stackTop);
+    memset(cp, 0, sizeof(context));
+    cp->fs = 0x10;
+    cp->gs = 0x10;
+    cp->ds = 0x10;
+    cp->es = 0x10;
+    cp->cs = 0x8;
+    cp->ebp = (u32int)(new_pcb->stack);
+    cp->esp = (u32int)(new_pcb->stackTop);
+    cp->eip = (u32int)proc3; // The function correlating to the process, ie. Proc1
+    cp->eflags = 0x202;
+
+    createPCB("Process4", 'a', 1);
+    suspendPCB("Process4");
+    PCB *new_pcb = findPCB("Process4");
+    context *cp = (context *)(new_pcb->stackTop);
+    memset(cp, 0, sizeof(context));
+    cp->fs = 0x10;
+    cp->gs = 0x10;
+    cp->ds = 0x10;
+    cp->es = 0x10;
+    cp->cs = 0x8;
+    cp->ebp = (u32int)(new_pcb->stack);
+    cp->esp = (u32int)(new_pcb->stackTop);
+    cp->eip = (u32int)proc4; // The function correlating to the process, ie. Proc1
+    cp->eflags = 0x202;
+
+    createPCB("Process5", 'a', 1);
+    suspendPCB("Process5");
+    PCB *new_pcb = findPCB("Process5");
+    context *cp = (context *)(new_pcb->stackTop);
+    memset(cp, 0, sizeof(context));
+    cp->fs = 0x10;
+    cp->gs = 0x10;
+    cp->ds = 0x10;
+    cp->es = 0x10;
+    cp->cs = 0x8;
+    cp->ebp = (u32int)(new_pcb->stack);
+    cp->esp = (u32int)(new_pcb->stackTop);
+    cp->eip = (u32int)proc5; // The function correlating to the process, ie. Proc1
+    cp->eflags = 0x202;
 }
