@@ -163,6 +163,22 @@ int help()
 	sys_req(WRITE, DEFAULT_DEVICE, (char *)showAllDesc, &tempBuffer);
 	memset(showAllDesc, '\0', tempBuffer);
 
+	// yield Description section
+	char yieldDesc[] = "yield: Will cause commhand to voluntarily allow other processes to use the CPU.\n";
+
+	tempBuffer = strlen(yieldDesc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)yieldDesc, &tempBuffer);
+	memset(yieldDesc, '\0', tempBuffer);
+
+	// loadr3 Description section
+	char loadr3Desc[] = "loadr3: Will load all processes for R3. \n";
+
+	tempBuffer = strlen(loadr3Desc);
+
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)loadr3Desc, &tempBuffer);
+	memset(loadr3Desc, '\0', tempBuffer);
+
 	// quit Description section
 	char quitDesc[] = "quit: Allows the user to shut the system down.\n";
 
