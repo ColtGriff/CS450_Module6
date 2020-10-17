@@ -1,5 +1,7 @@
-// //R4commands.h
+//R4commands.h
 
-// void alarmPCB();
+void alarmPCB();
 
-// void infinitePCB();
+void infinitePCB();
+
+void infiniteFunc();

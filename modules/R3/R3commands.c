@@ -53,7 +53,7 @@ void yield()
     asm volatile("int $60");
 }
 
-PCB *loadr3()
+void loadr3()
 {
     //loadr3 will load all r3 "processes" (proc3.c file eCampus) into memory in a suspended ready state at any priority of your choosing.
 
@@ -140,5 +140,4 @@ PCB *loadr3()
     cp5->eip = (u32int)proc5; // The function correlating to the process, ie. Proc1
     cp5->eflags = 0x202;
 
-    //return ????;
 }
