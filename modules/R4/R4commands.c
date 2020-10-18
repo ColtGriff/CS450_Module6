@@ -38,10 +38,10 @@ void infiniteFunc()
 
 		char idleMSG[] = "Infinite Process Executing.\n";
 		int idleLength = strlen(idleMSG);
+        sys_req(WRITE, DEFAULT_DEVICE, idleMSG, &idleLength);
 
 		sys_req(IDLE, DEFAULT_DEVICE, idleMSG, &idleLength);
 
-		sys_req(WRITE, DEFAULT_DEVICE, idleMSG, &idleLength);
-
+		
 	}
 }
