@@ -183,7 +183,7 @@ void idle()
 	count = strlen(msg);
   
   while(1){
-	sys_req( WRITE, DEFAULT_DEVICE, msg, &count);
+	  sys_req( WRITE, DEFAULT_DEVICE, msg, &count);
     sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);
   }
 }
@@ -215,6 +215,7 @@ u32int *sys_call(context *registers)
 
     queue *ready = getReady();
     COP = ready->head;
+
 
     if (COP != NULL)
     {
