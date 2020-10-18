@@ -5,7 +5,7 @@
 #include "../mpx_supt.h"
 #include "R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
-// #include "../R3/R3commands.h"
+
 
 queue *ready;
 queue *blocked;
@@ -186,7 +186,7 @@ void insertPCB(PCB *PCB_to_insert)
                     ready->count++;
                     break;
                 }
-                else if (PCB_to_insert->priority < ready->tail->priority)
+                else if (PCB_to_insert->priority <= ready->tail->priority)
                 { // insert at tail
                     ready->tail->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = ready->tail;
@@ -214,7 +214,7 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 temp++;
             }
-            ready->count++;
+            //ready->count++;
         }
         else
         {
@@ -240,13 +240,15 @@ void insertPCB(PCB *PCB_to_insert)
                     suspendedReady->count++;
                     break;
                 }
-                else if (PCB_to_insert->priority < suspendedReady->tail->priority)
+                else if (PCB_to_insert->priority <= suspendedReady->tail->priority)
                 { // insert at tail
+
                     suspendedReady->tail->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = suspendedReady->tail;
                     suspendedReady->tail = PCB_to_insert;
                     suspendedReady->count++;
                     break;
+
                 }
                 else if (PCB_to_insert->priority > tempPtr->priority)
                 { // insert at middle
@@ -268,7 +270,7 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 temp++;
             }
-            suspendedReady->count++;
+            //suspendedReady->count++;
         }
         else
         {

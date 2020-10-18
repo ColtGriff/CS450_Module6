@@ -6,6 +6,7 @@
 #include "R1commands.h"
 #include "../R2/R2commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
+#include "../R3/R3commands.h"
 
 int commhand()
 {
@@ -224,6 +225,12 @@ int commhand()
 			quitFlag = quit();
 
 			sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineCount);
+		}
+		else if (strcmp(cmdBuffer, "yield") == 0 ){
+			yield();
+		}
+		else if(strcmp(cmdBuffer, "loadr3") == 0 ){
+			loadr3();
 		}
 		else
 		{
