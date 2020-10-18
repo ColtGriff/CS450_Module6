@@ -9,8 +9,6 @@ typedef struct context
 
 void sys_call_isr();
 
-u32int *sys_call(context *registers);
-
 void yield();
 
 void loadr3();

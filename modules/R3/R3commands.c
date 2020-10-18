@@ -9,44 +9,6 @@
 #include "R3commands.h"
 #include "procsr3.h"
 
-param params;
-
-PCB *COP;
-context *callerContext;
-
-u32int *sys_call(context *registers)
-{ // Benjamin and Anastase programmed this function
-    if (COP == NULL)
-    { // sys_call has not been called yet.
-        callerContext = registers;
-    }
-    else
-    {
-        if (params.op_code == IDLE)
-        { // Save the context (reassign COP's stack top).
-            COP->stackTop = (unsigned char *)registers;
-        }
-        else if (params.op_code == EXIT)
-        { // free COP.
-            sys_free_mem(COP);
-        }
-    }
-
-    queue *ready = getReady();
-    PCB *tempPtr = ready->head;
-
-    if (tempPtr != NULL)
-    {
-        int removed = removePCB(tempPtr);
-        if (removed == 0)
-        {
-            tempPtr->runningStatus = 1;
-            COP = tempPtr;
-            return (u32int *)COP->stackTop;
-        }
-    }
-    return (u32int *)registers;
-}
 
 void yield()
 { // temporary command - only in R3
@@ -56,7 +18,7 @@ void yield()
 void loadr3()
 {
     //loadr3 will load all r3 "processes" (proc3.c file eCampus) into memory in a suspended ready state at any priority of your choosing.
-
+    // We may want to change these to use setupPCB instead of createPCB and suspendPCB
     char message[] = "Loading R3 Processes.\n";
     int tempBuffer = strlen(message);
     sys_req(WRITE, DEFAULT_DEVICE, (char *)message, &tempBuffer);
