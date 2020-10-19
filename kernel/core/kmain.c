@@ -91,6 +91,8 @@ void kmain(void)
    klogv("Transferring control to commhand...");
    //commhand(); //Removed for R4
 
+   allocateQueues();
+
    createPCB("Commhand", 's', 9);
    PCB *new_pcb = findPCB("Commhand");
    context *cp = (context *)(new_pcb->stackTop);
@@ -120,6 +122,22 @@ void kmain(void)
    cpIDLE->esp = (u32int)(idlePCB->stackTop);
    cpIDLE->eip = (u32int)idle; // The function correlating to the process, ie. Proc1
    cpIDLE->eflags = 0x202;
+
+   createPCB("Idle1", 's', 1);
+   PCB *idlePCB1 = findPCB("Idle1");
+   context *cpIDLE1 = (context *)(idlePCB1->stackTop);
+   memset(cpIDLE1, 0, sizeof(context));
+   cpIDLE1->fs = 0x10;
+   cpIDLE1->gs = 0x10;
+   cpIDLE1->ds = 0x10;
+   cpIDLE1->es = 0x10;
+   cpIDLE1->cs = 0x8;
+   cpIDLE1->ebp = (u32int)(idlePCB1->stack);
+   cpIDLE1->esp = (u32int)(idlePCB1->stackTop);
+   cpIDLE1->eip = (u32int)idle; // The function correlating to the process, ie. Proc1
+   cpIDLE1->eflags = 0x202;
+
+   showAll();
 
    asm volatile ("int $60");
 

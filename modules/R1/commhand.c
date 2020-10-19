@@ -8,7 +8,7 @@
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
 
-int commhand()
+void commhand()
 {
 
 	char welcomeMSG[] = "\nWelcome to our CS 450 Project!\nType help to see what you can do!\n\n";
@@ -17,7 +17,6 @@ int commhand()
 
 	char cmdBuffer[100];
 	int bufferSize;
-	allocateQueues();
 
 	int quitFlag = 0;
 
@@ -241,9 +240,10 @@ int commhand()
 			sys_req(WRITE, DEFAULT_DEVICE, (char *)message, &tempBuffer);
 		}
 
+		sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);
+
 		// process the command: take array buffer chars and make a string. Decide what the cmd wants to do
 		// see if quit was entered: if string == quit = 1
 	}
 
-	return 0;
 }

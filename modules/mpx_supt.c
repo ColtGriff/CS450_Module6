@@ -190,22 +190,26 @@ void idle()
 
 PCB *COP;
 context *callerContext;
-
+// need a tempPCB 
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
+  
+  PCB* tempOOP = NULL;
     if (COP == NULL)
     { // sys_call has not been called yet.
+      
         callerContext = registers;
     }
     else
     {
+     
         // Need to work on this, insertPCB needs to be moved or commhand might run forever
         // Probably move it to be below COP = ready->head
         if (params.op_code == IDLE)
         { // Save the context (reassign COP's stack top).
             COP->runningStatus = 0;
             COP->stackTop = (unsigned char *)registers;
-            insertPCB(COP);
+            tempOOP = COP;
         }
         else if (params.op_code == EXIT)
         { // free COP.
@@ -214,15 +218,32 @@ u32int *sys_call(context *registers)
     }
 
     queue *ready = getReady();
-    COP = ready->head;
+    //COP = ready->head;
 
+    
 
-    if (COP != NULL)
+    if (ready->head != NULL)
     {
+        serial_print("checking swap if in sys_call.\n");
+        COP = ready->head;
+        serial_print("checking first.\n");
         removePCB(COP);
+        serial_print("checking second---.\n");
+        //showReady(); // This is where it was breaking.  It printed all the checks before (actualy had to work a little on removePCB to get past that). 
+        //serial_print("checking show ready.\n");
         COP->runningStatus = 1;
+        serial_print("checking third---------.\n");
+
+        if(tempOOP != NULL)
+        {
+      
+            insertPCB(tempOOP);
+        }
+
         return (u32int *)COP->stackTop;
         
     }
+
+    serial_print("checking if making to callerContext sys_call.\n");
     return (u32int *)callerContext;
 }
