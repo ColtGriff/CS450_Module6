@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d4/dc1/structpage__table" kind="struct" language="C++" prot="public">
+    <compoundname>page_table</compoundname>
+    <includes refid="d4/df4/paging_8h" local="no">paging.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d4/dc1/structpage__table_1aa066e0fa847ce2fafb6a2feddfa340ff" prot="public" static="no" mutable="no">
+        <type><ref refid="d4/d79/structpage__entry" kindref="compound">page_entry</ref></type>
+        <definition>page_entry page_table::pages[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>pages</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="27" column="14" bodyfile="include/mem/paging.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>page_entry</label>
+        <link refid="d4/d79/structpage__entry"/>
+      </node>
+      <node id="1">
+        <label>page_table</label>
+        <link refid="d4/dc1/structpage__table"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pages</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mem/paging.h" line="26" column="1" bodyfile="include/mem/paging.h" bodystart="26" bodyend="28"/>
+    <listofallmembers>
+      <member refid="d4/dc1/structpage__table_1aa066e0fa847ce2fafb6a2feddfa340ff" prot="public" virt="non-virtual"><scope>page_table</scope><name>pages</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

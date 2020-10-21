@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="da/ddb/heap_8h" kind="file" language="C++">
+    <compoundname>heap.h</compoundname>
+    <includedby refid="d5/d27/kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <includedby refid="d2/d29/heap_8c" local="no">kernel/mem/heap.c</includedby>
+    <includedby refid="de/d38/paging_8c" local="yes">kernel/mem/paging.c</includedby>
+    <includedby refid="d6/d3d/mpx__supt_8c" local="no">modules/mpx_supt.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="d5/d27/kmain_8c"/>
+      </node>
+      <node id="3">
+        <label>kernel/mem/heap.c</label>
+        <link refid="d2/d29/heap_8c"/>
+      </node>
+      <node id="4">
+        <label>kernel/mem/paging.c</label>
+        <link refid="de/d38/paging_8c"/>
+      </node>
+      <node id="1">
+        <label>include/mem/heap.h</label>
+        <link refid="da/ddb/heap_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>modules/mpx_supt.c</label>
+        <link refid="d6/d3d/mpx__supt_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d5/d65/structheader" prot="public">header</innerclass>
+    <innerclass refid="dc/d2c/structfooter" prot="public">footer</innerclass>
+    <innerclass refid="d8/d40/structindex__entry" prot="public">index_entry</innerclass>
+    <innerclass refid="d1/d69/structindex__table" prot="public">index_table</innerclass>
+    <innerclass refid="db/dc3/structheap" prot="public">heap</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="da/ddb/heap_8h_1a032503e76d6f69bc67e99e909c8125da" prot="public" static="no">
+        <name>TABLE_SIZE</name>
+        <initializer>0x1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="5" column="9" bodyfile="include/mem/heap.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/ddb/heap_8h_1a15073b9742f7e29d8174509197eb4ab9" prot="public" static="no">
+        <name>KHEAP_BASE</name>
+        <initializer>0xD000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="6" column="9" bodyfile="include/mem/heap.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/ddb/heap_8h_1aee52619f74498ad224eb8e4354b89e40" prot="public" static="no">
+        <name>KHEAP_MIN</name>
+        <initializer>0x10000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="7" column="9" bodyfile="include/mem/heap.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/ddb/heap_8h_1a0f2696767a10e6efffc64e9b459c4ea6" prot="public" static="no">
+        <name>KHEAP_SIZE</name>
+        <initializer>0x1000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="8" column="9" bodyfile="include/mem/heap.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="da/ddb/heap_8h_1a9bfb8053c2382598ef5b2175f475d49a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int _kmalloc</definition>
+        <argsstring>(u32int size, int align, u32int *phys_addr)</argsstring>
+        <name>_kmalloc</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>align</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref> *</type>
+          <declname>phys_addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="46" column="8" bodyfile="kernel/mem/heap.c" bodystart="24" bodyend="50" declfile="include/mem/heap.h" declline="46" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddb/heap_8h_1a15d6a52c5c080c8c7ffc73e336d8e574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int kmalloc</definition>
+        <argsstring>(u32int size)</argsstring>
+        <name>kmalloc</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="53" column="8" bodyfile="kernel/mem/heap.c" bodystart="52" bodyend="55" declfile="include/mem/heap.h" declline="53" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddb/heap_8h_1aa2a6fb2aa05727dc1e7d72cbc108e63c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int kfree</definition>
+        <argsstring>()</argsstring>
+        <name>kfree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="59" column="8" declfile="include/mem/heap.h" declline="59" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddb/heap_8h_1a755a69ff831b6e23a808dcf4b9944854" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_kheap</definition>
+        <argsstring>()</argsstring>
+        <name>init_kheap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="65" column="6" declfile="include/mem/heap.h" declline="65" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddb/heap_8h_1a2b1d5a9ba11695605f74fc10cd719af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int alloc</definition>
+        <argsstring>(u32int size, heap *hp, int align)</argsstring>
+        <name>alloc</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="db/dc3/structheap" kindref="compound">heap</ref> *</type>
+          <declname>hp</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>align</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="71" column="8" bodyfile="kernel/mem/heap.c" bodystart="57" bodyend="69" declfile="include/mem/heap.h" declline="71" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddb/heap_8h_1a686135c02695aef4208f93d4549a15d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/dc3/structheap" kindref="compound">heap</ref> *</type>
+        <definition>heap* make_heap</definition>
+        <argsstring>(u32int base, u32int max, u32int min)</argsstring>
+        <name>make_heap</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="80" column="6" bodyfile="kernel/mem/heap.c" bodystart="71" bodyend="75" declfile="include/mem/heap.h" declline="80" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_HEAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_HEAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Kernel<sp/>heap<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="da/ddb/heap_8h_1a032503e76d6f69bc67e99e909c8125da" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TABLE_SIZE<sp/>0x1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="da/ddb/heap_8h_1a15073b9742f7e29d8174509197eb4ab9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KHEAP_BASE<sp/>0xD000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="da/ddb/heap_8h_1aee52619f74498ad224eb8e4354b89e40" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KHEAP_MIN<sp/><sp/>0x10000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="da/ddb/heap_8h_1a0f2696767a10e6efffc64e9b459c4ea6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KHEAP_SIZE<sp/>0x1000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Heap<sp/>allocation<sp/>header<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="d5/d65/structheader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12" refid="d5/d65/structheader_1af8cc659f702446226bc2ebabba437d5d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d5/d65/structheader_1af8cc659f702446226bc2ebabba437d5d" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="13" refid="d5/d65/structheader_1aec42bcd6139d12f84d54b5e6a149b276" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d5/d65/structheader_1aec42bcd6139d12f84d54b5e6a149b276" kindref="member">index_id</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}<sp/><ref refid="d5/d65/structheader" kindref="compound">header</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="dc/d2c/structfooter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17" refid="dc/d2c/structfooter_1acae33dac61c9505ff5b850f88d32dd0b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="d5/d65/structheader" kindref="compound">header</ref><sp/><ref refid="dc/d2c/structfooter_1acae33dac61c9505ff5b850f88d32dd0b" kindref="member">head</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}<sp/><ref refid="dc/d2c/structfooter" kindref="compound">footer</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="d8/d40/structindex__entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21" refid="d8/d40/structindex__entry_1a2b0247aae5c7f9884f8eef1ee121adb0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d40/structindex__entry_1a2b0247aae5c7f9884f8eef1ee121adb0" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="22" refid="d8/d40/structindex__entry_1afdbdffb4bd17e4ab003b94be3d5bade7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d8/d40/structindex__entry_1afdbdffb4bd17e4ab003b94be3d5bade7" kindref="member">empty</ref>;</highlight></codeline>
+<codeline lineno="23" refid="d8/d40/structindex__entry_1a0a8d4dc0595b5f2ef42e7080c5221c1f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="d8/d40/structindex__entry_1a0a8d4dc0595b5f2ef42e7080c5221c1f" kindref="member">block</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/><ref refid="d8/d40/structindex__entry" kindref="compound">index_entry</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Kernel<sp/>heap<sp/>index<sp/>table<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="d1/d69/structindex__table" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28" refid="d1/d69/structindex__table_1ae2ad2b37d737f17e04b2d8ceadfeca62" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="d8/d40/structindex__entry" kindref="compound">index_entry</ref><sp/>table[<ref refid="da/ddb/heap_8h_1a032503e76d6f69bc67e99e909c8125da" kindref="member">TABLE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="29" refid="d1/d69/structindex__table_1a6e0e8e27a6a47e8ae2078b6fa447087f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d1/d69/structindex__table_1a6e0e8e27a6a47e8ae2078b6fa447087f" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}<sp/><ref refid="d1/d69/structindex__table" kindref="compound">index_table</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Heap<sp/>structure<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="db/dc3/structheap" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34" refid="db/dc3/structheap_1a8fe6ce2a8b45088990071e9b1d35add2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="d1/d69/structindex__table" kindref="compound">index_table</ref><sp/><ref refid="db/dc3/structheap_1a8fe6ce2a8b45088990071e9b1d35add2" kindref="member">index</ref>;</highlight></codeline>
+<codeline lineno="35" refid="db/dc3/structheap_1a744634662f1ffdb4d85632e68c063e51" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="db/dc3/structheap_1a744634662f1ffdb4d85632e68c063e51" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="36" refid="db/dc3/structheap_1ad2e0262828735d6e437facbfce37d6b0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="db/dc3/structheap_1ad2e0262828735d6e437facbfce37d6b0" kindref="member">max_size</ref>;</highlight></codeline>
+<codeline lineno="37" refid="db/dc3/structheap_1a7b4422774c5ca7ac8ed5ddfe95f5c8ec" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="db/dc3/structheap_1a7b4422774c5ca7ac8ed5ddfe95f5c8ec" kindref="member">min_size</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/><ref refid="db/dc3/structheap" kindref="compound">heap</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>_kmalloc</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/>Description..:<sp/>Base-level<sp/>kernel<sp/>memory<sp/>allocation<sp/>routine.<sp/>Used<sp/>to</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>provide<sp/>page<sp/>alignment<sp/>and<sp/>access<sp/>physical<sp/>addresses<sp/>of<sp/>allocations.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Called<sp/>by<sp/>kmalloc<sp/>with<sp/>align=0,<sp/>physical_address=0.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="da/ddb/heap_8h_1a9bfb8053c2382598ef5b2175f475d49a" kindref="member">_kmalloc</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>align,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*phys_addr);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>kmalloc</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/>Description..:<sp/>Standard<sp/>kernel<sp/>memory<sp/>allocation<sp/>rountine.<sp/>Use<sp/>this<sp/>unless<sp/>you</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>need<sp/>to<sp/>specify<sp/>alignment<sp/>or<sp/>obtain<sp/>a<sp/>physical<sp/>address.<sp/>Calls<sp/>_kmalloc.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="da/ddb/heap_8h_1a15d6a52c5c080c8c7ffc73e336d8e574" kindref="member">kmalloc</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>kfree</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/>Description..:<sp/>Free<sp/>kernel<sp/>memory.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="da/ddb/heap_8h_1aa2a6fb2aa05727dc1e7d72cbc108e63c" refkind="member"><highlight class="normal"><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="da/ddb/heap_8h_1aa2a6fb2aa05727dc1e7d72cbc108e63c" kindref="member">kfree</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_kheap</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/>Description..:<sp/>Initialize<sp/>the<sp/>kernel<sp/>heap,<sp/>and<sp/>set<sp/>it<sp/>as<sp/>the<sp/>current<sp/>heap.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="da/ddb/heap_8h_1a755a69ff831b6e23a808dcf4b9944854" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddb/heap_8h_1a755a69ff831b6e23a808dcf4b9944854" kindref="member">init_kheap</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>alloc</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/>Description..:<sp/>Allocate<sp/>some<sp/>memory<sp/>using<sp/>the<sp/>given<sp/>heap.<sp/>Can<sp/>specify<sp/>page-alignment.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="da/ddb/heap_8h_1a2b1d5a9ba11695605f74fc10cd719af5" kindref="member">alloc</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size,<sp/><ref refid="db/dc3/structheap" kindref="compound">heap</ref><sp/>*hp,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>align);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>make_heap</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/>Description..:<sp/>Create<sp/>a<sp/>new<sp/>heap.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/>Parameters..:<sp/>base<sp/>-<sp/>physical<sp/>start<sp/>address<sp/>of<sp/>the<sp/>heap</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/><sp/>-<sp/>maximum<sp/>size<sp/>the<sp/>heap<sp/>may<sp/>grow<sp/>to</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>min<sp/><sp/>-<sp/>minimum/initial<sp/>size</highlight></codeline>
+<codeline lineno="79"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><ref refid="db/dc3/structheap" kindref="compound">heap</ref>*<sp/><ref refid="da/ddb/heap_8h_1a686135c02695aef4208f93d4549a15d0" kindref="member">make_heap</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>max,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>min);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/mem/heap.h"/>
+  </compounddef>
+</doxygen>

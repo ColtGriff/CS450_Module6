@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dir_80c24e34c1eb02a0752036d06756ef82" kind="dir">
+    <compoundname>modules/R3</compoundname>
+    <innerfile refid="d6/d2d/procsr3_8c">procsr3.c</innerfile>
+    <innerfile refid="d4/d92/procsr3_8h">procsr3.h</innerfile>
+    <innerfile refid="d9/d22/R3commands_8c">R3commands.c</innerfile>
+    <innerfile refid="d6/d7b/R3commands_8h">R3commands.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/R3/"/>
+  </compounddef>
+</doxygen>

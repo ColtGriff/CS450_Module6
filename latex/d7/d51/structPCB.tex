@@ -1,0 +1,144 @@
+\hypertarget{structPCB}{}\doxysection{P\+CB Struct Reference}
+\label{structPCB}\index{PCB@{PCB}}
+
+
+{\ttfamily \#include $<$R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structPCB_a44e929ccb815e17418d0ef8833351311}{process\+Name}} \mbox{[}20\mbox{]}
+\item 
+char \mbox{\hyperlink{structPCB_a115846989a59a5ac979e0af6e8709920}{process\+Class}}
+\item 
+int \mbox{\hyperlink{structPCB_a84a8d888cc661a040f4f1a081807d5b4}{priority}}
+\item 
+int \mbox{\hyperlink{structPCB_a1ad17e453fc473c4b4f467fb58e2b9ca}{running\+Status}}
+\item 
+int \mbox{\hyperlink{structPCB_a456c256ee9bfd4792e4ace6a95a56e83}{suspended\+Status}}
+\item 
+unsigned char \mbox{\hyperlink{structPCB_ad16b941b22b8d62d7b63c7d4ca15210d}{stack}} \mbox{[}1024\mbox{]}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{structPCB_a927da593bccc4abb835f48da1557df42}{stack\+Top}}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{structPCB_a3c1d1cc97f4465313d70310ece157708}{stack\+Base}}
+\item 
+struct \mbox{\hyperlink{structPCB}{P\+CB}} $\ast$ \mbox{\hyperlink{structPCB_abf4e18b4443517531516516527cef23c}{next\+P\+CB}}
+\item 
+struct \mbox{\hyperlink{structPCB}{P\+CB}} $\ast$ \mbox{\hyperlink{structPCB_a96480a004c14ac43a7c7286e158cf7cb}{prev\+P\+CB}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 1 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structPCB_abf4e18b4443517531516516527cef23c}\label{structPCB_abf4e18b4443517531516516527cef23c}} 
+\index{PCB@{PCB}!nextPCB@{nextPCB}}
+\index{nextPCB@{nextPCB}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{nextPCB}{nextPCB}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structPCB}{P\+CB}}$\ast$ P\+C\+B\+::next\+P\+CB}
+
+
+
+Definition at line 11 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a96480a004c14ac43a7c7286e158cf7cb}\label{structPCB_a96480a004c14ac43a7c7286e158cf7cb}} 
+\index{PCB@{PCB}!prevPCB@{prevPCB}}
+\index{prevPCB@{prevPCB}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{prevPCB}{prevPCB}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structPCB}{P\+CB}}$\ast$ P\+C\+B\+::prev\+P\+CB}
+
+
+
+Definition at line 12 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a84a8d888cc661a040f4f1a081807d5b4}\label{structPCB_a84a8d888cc661a040f4f1a081807d5b4}} 
+\index{PCB@{PCB}!priority@{priority}}
+\index{priority@{priority}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{priority}{priority}}
+{\footnotesize\ttfamily int P\+C\+B\+::priority}
+
+
+
+Definition at line 5 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a115846989a59a5ac979e0af6e8709920}\label{structPCB_a115846989a59a5ac979e0af6e8709920}} 
+\index{PCB@{PCB}!processClass@{processClass}}
+\index{processClass@{processClass}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{processClass}{processClass}}
+{\footnotesize\ttfamily char P\+C\+B\+::process\+Class}
+
+
+
+Definition at line 4 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a44e929ccb815e17418d0ef8833351311}\label{structPCB_a44e929ccb815e17418d0ef8833351311}} 
+\index{PCB@{PCB}!processName@{processName}}
+\index{processName@{processName}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{processName}{processName}}
+{\footnotesize\ttfamily char P\+C\+B\+::process\+Name\mbox{[}20\mbox{]}}
+
+
+
+Definition at line 3 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a1ad17e453fc473c4b4f467fb58e2b9ca}\label{structPCB_a1ad17e453fc473c4b4f467fb58e2b9ca}} 
+\index{PCB@{PCB}!runningStatus@{runningStatus}}
+\index{runningStatus@{runningStatus}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{runningStatus}{runningStatus}}
+{\footnotesize\ttfamily int P\+C\+B\+::running\+Status}
+
+
+
+Definition at line 6 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_ad16b941b22b8d62d7b63c7d4ca15210d}\label{structPCB_ad16b941b22b8d62d7b63c7d4ca15210d}} 
+\index{PCB@{PCB}!stack@{stack}}
+\index{stack@{stack}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{stack}{stack}}
+{\footnotesize\ttfamily unsigned char P\+C\+B\+::stack\mbox{[}1024\mbox{]}}
+
+
+
+Definition at line 8 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a3c1d1cc97f4465313d70310ece157708}\label{structPCB_a3c1d1cc97f4465313d70310ece157708}} 
+\index{PCB@{PCB}!stackBase@{stackBase}}
+\index{stackBase@{stackBase}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{stackBase}{stackBase}}
+{\footnotesize\ttfamily unsigned char$\ast$ P\+C\+B\+::stack\+Base}
+
+
+
+Definition at line 10 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a927da593bccc4abb835f48da1557df42}\label{structPCB_a927da593bccc4abb835f48da1557df42}} 
+\index{PCB@{PCB}!stackTop@{stackTop}}
+\index{stackTop@{stackTop}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{stackTop}{stackTop}}
+{\footnotesize\ttfamily unsigned char$\ast$ P\+C\+B\+::stack\+Top}
+
+
+
+Definition at line 9 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+\mbox{\Hypertarget{structPCB_a456c256ee9bfd4792e4ace6a95a56e83}\label{structPCB_a456c256ee9bfd4792e4ace6a95a56e83}} 
+\index{PCB@{PCB}!suspendedStatus@{suspendedStatus}}
+\index{suspendedStatus@{suspendedStatus}!PCB@{PCB}}
+\doxysubsubsection{\texorpdfstring{suspendedStatus}{suspendedStatus}}
+{\footnotesize\ttfamily int P\+C\+B\+::suspended\+Status}
+
+
+
+Definition at line 7 of file R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/\+R2/\mbox{\hyperlink{R2__Internal__Functions__And__Structures_8h}{R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h}}\end{DoxyCompactItemize}

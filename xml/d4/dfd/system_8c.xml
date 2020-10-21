@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d4/dfd/system_8c" kind="file" language="C++">
+    <compoundname>system.c</compoundname>
+    <includes refid="da/d66/string_8h" local="no">string.h</includes>
+    <includes refid="dc/db2/system_8h" local="no">system.h</includes>
+    <includes refid="db/d11/serial_8h" local="no">core/serial.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>system.h</label>
+        <link refid="dc/db2/system_8h"/>
+      </node>
+      <node id="1">
+        <label>kernel/core/system.c</label>
+        <link refid="d4/dfd/system_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>core/serial.h</label>
+        <link refid="db/d11/serial_8h"/>
+      </node>
+      <node id="2">
+        <label>string.h</label>
+        <link refid="da/d66/string_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/dfd/system_8c_1abdb09834267dd4a2a0d07d43ca4d230d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void klogv</definition>
+        <argsstring>(const char *msg)</argsstring>
+        <name>klogv</name>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/system.c" line="11" column="6" bodyfile="kernel/core/system.c" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/dfd/system_8c_1aff8473f901d828d76d3548130731c41d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void kpanic</definition>
+        <argsstring>(const char *msg)</argsstring>
+        <name>kpanic</name>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/system.c" line="24" column="6" bodyfile="kernel/core/system.c" bodystart="24" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;<ref refid="da/d66/string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="dc/db2/system_8h" kindref="compound">system.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="db/d11/serial_8h" kindref="compound">core/serial.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>klogv</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/>Description..:<sp/>Kernel<sp/>log<sp/>messages.<sp/>Sent<sp/>to<sp/>active</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>serial<sp/>device.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="d4/dfd/system_8c_1abdb09834267dd4a2a0d07d43ca4d230d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dfd/system_8c_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>logmsg[64]<sp/>=<sp/>{</highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">},<sp/>prefix[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;klogv:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><ref refid="da/d66/string_8h_1a8908188ae9fc2f05d993257ef001d553" kindref="member">strcat</ref>(logmsg,<sp/>prefix);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><ref refid="da/d66/string_8h_1a8908188ae9fc2f05d993257ef001d553" kindref="member">strcat</ref>(logmsg,<sp/>msg);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><ref refid="db/d11/serial_8h_1a3514f7abff236a4e00a6c46021ce5e22" kindref="member">serial_println</ref>(logmsg);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>kpanic</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/><sp/>Description..:<sp/>Kernel<sp/>panic.<sp/>Prints<sp/>an<sp/>error<sp/>message</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>halts.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="d4/dfd/system_8c_1aff8473f901d828d76d3548130731c41d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/dfd/system_8c_1aff8473f901d828d76d3548130731c41d" kindref="member">kpanic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a68c330e94fe121eba993e5a5973c3162" kindref="member">cli</ref>();<sp/></highlight><highlight class="comment">//disable<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>logmsg[64]<sp/>=<sp/>{</highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">},<sp/>prefix[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Panic:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="da/d66/string_8h_1a8908188ae9fc2f05d993257ef001d553" kindref="member">strcat</ref>(logmsg,<sp/>prefix);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><ref refid="da/d66/string_8h_1a8908188ae9fc2f05d993257ef001d553" kindref="member">strcat</ref>(logmsg,<sp/>msg);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="d4/dfd/system_8c_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(logmsg);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a954b0134ce21d80f0efb22c77e821da3" kindref="member">hlt</ref>();<sp/></highlight><highlight class="comment">//halt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="kernel/core/system.c"/>
+  </compounddef>
+</doxygen>

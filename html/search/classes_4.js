@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['idt_5fentry_5fstruct_303',['idt_entry_struct',['../structidt__entry__struct.html',1,'']]],
-  ['idt_5fstruct_304',['idt_struct',['../structidt__struct.html',1,'']]],
-  ['index_5fentry_305',['index_entry',['../structindex__entry.html',1,'']]],
-  ['index_5ftable_306',['index_table',['../structindex__table.html',1,'']]]
+  ['gdt_5fdescriptor_5fstruct_370',['gdt_descriptor_struct',['../d7/d25/structgdt__descriptor__struct.html',1,'']]],
+  ['gdt_5fentry_5fstruct_371',['gdt_entry_struct',['../d1/d8f/structgdt__entry__struct.html',1,'']]]
 ];

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d3/d36/structalarm" kind="struct" language="C++" prot="public">
+    <compoundname>alarm</compoundname>
+    <includes refid="dc/d62/R4commands_8h" local="no">R4commands.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/d36/structalarm_1a24fcd163c717cda1a4cb58d6baad5f6b" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char alarm::alarmName[20]</definition>
+        <argsstring>[20]</argsstring>
+        <name>alarmName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R4/R4commands.h" line="5" column="10" bodyfile="modules/R4/R4commands.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d36/structalarm_1a26697f4c90721e02dba11276a87fcfec" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int alarm::alarmTime</definition>
+        <argsstring></argsstring>
+        <name>alarmTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R4/R4commands.h" line="6" column="9" bodyfile="modules/R4/R4commands.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d36/structalarm_1a164a5961b006d0c46088c42339c0a81c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d3/d36/structalarm" kindref="compound">alarm</ref> *</type>
+        <definition>struct alarm* alarm::nextAlarm</definition>
+        <argsstring></argsstring>
+        <name>nextAlarm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R4/R4commands.h" line="7" column="16" bodyfile="modules/R4/R4commands.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d36/structalarm_1a3462048dc81053bc82ad9f9723eb1dfd" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="d3/d36/structalarm" kindref="compound">alarm</ref> *</type>
+        <definition>struct alarm* alarm::prevAlarm</definition>
+        <argsstring></argsstring>
+        <name>prevAlarm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R4/R4commands.h" line="8" column="16" bodyfile="modules/R4/R4commands.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>alarm</label>
+        <link refid="d3/d36/structalarm"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nextAlarm</edgelabel>
+          <edgelabel>prevAlarm</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="modules/R4/R4commands.h" line="3" column="1" bodyfile="modules/R4/R4commands.h" bodystart="4" bodyend="9"/>
+    <listofallmembers>
+      <member refid="d3/d36/structalarm_1a24fcd163c717cda1a4cb58d6baad5f6b" prot="public" virt="non-virtual"><scope>alarm</scope><name>alarmName</name></member>
+      <member refid="d3/d36/structalarm_1a26697f4c90721e02dba11276a87fcfec" prot="public" virt="non-virtual"><scope>alarm</scope><name>alarmTime</name></member>
+      <member refid="d3/d36/structalarm_1a164a5961b006d0c46088c42339c0a81c" prot="public" virt="non-virtual"><scope>alarm</scope><name>nextAlarm</name></member>
+      <member refid="d3/d36/structalarm_1a3462048dc81053bc82ad9f9723eb1dfd" prot="public" virt="non-virtual"><scope>alarm</scope><name>prevAlarm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dir_3d69f64eaf81436fe2b22361382717e5" kind="dir">
+    <compoundname>include/core</compoundname>
+    <innerfile refid="de/d21/asm_8h">asm.h</innerfile>
+    <innerfile refid="d6/ded/interrupts_8h">interrupts.h</innerfile>
+    <innerfile refid="dc/dac/io_8h">io.h</innerfile>
+    <innerfile refid="db/d11/serial_8h">serial.h</innerfile>
+    <innerfile refid="df/d2c/tables_8h">tables.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/"/>
+  </compounddef>
+</doxygen>

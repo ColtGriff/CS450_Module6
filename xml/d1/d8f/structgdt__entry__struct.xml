@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d1/d8f/structgdt__entry__struct" kind="struct" language="C++" prot="public">
+    <compoundname>gdt_entry_struct</compoundname>
+    <includes refid="df/d2c/tables_8h" local="no">tables.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1ada721fbdc3e8d3feae3b07d4b82a37bd" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int gdt_entry_struct::limit_low</definition>
+        <argsstring></argsstring>
+        <name>limit_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="32" column="10" bodyfile="include/core/tables.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1a90f05cd7f227a34e977a639843a23275" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int gdt_entry_struct::base_low</definition>
+        <argsstring></argsstring>
+        <name>base_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="33" column="10" bodyfile="include/core/tables.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1a0369f1e190c433425c5b0f40c2070715" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int gdt_entry_struct::base_mid</definition>
+        <argsstring></argsstring>
+        <name>base_mid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="34" column="10" bodyfile="include/core/tables.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1a7457cb21f29e919a8ea62fc0110ac238" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int gdt_entry_struct::access</definition>
+        <argsstring></argsstring>
+        <name>access</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="35" column="10" bodyfile="include/core/tables.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1afac75bdf53080168c8899c442862410a" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int gdt_entry_struct::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="36" column="10" bodyfile="include/core/tables.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d8f/structgdt__entry__struct_1aa03c14867c293012449a3b18a07f45f2" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int gdt_entry_struct::base_high</definition>
+        <argsstring></argsstring>
+        <name>base_high</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="37" column="10" bodyfile="include/core/tables.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/tables.h" line="30" column="1" bodyfile="include/core/tables.h" bodystart="31" bodyend="38"/>
+    <listofallmembers>
+      <member refid="d1/d8f/structgdt__entry__struct_1a7457cb21f29e919a8ea62fc0110ac238" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>access</name></member>
+      <member refid="d1/d8f/structgdt__entry__struct_1aa03c14867c293012449a3b18a07f45f2" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>base_high</name></member>
+      <member refid="d1/d8f/structgdt__entry__struct_1a90f05cd7f227a34e977a639843a23275" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>base_low</name></member>
+      <member refid="d1/d8f/structgdt__entry__struct_1a0369f1e190c433425c5b0f40c2070715" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>base_mid</name></member>
+      <member refid="d1/d8f/structgdt__entry__struct_1afac75bdf53080168c8899c442862410a" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>flags</name></member>
+      <member refid="d1/d8f/structgdt__entry__struct_1ada721fbdc3e8d3feae3b07d4b82a37bd" prot="public" virt="non-virtual"><scope>gdt_entry_struct</scope><name>limit_low</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d4/d3c/R2__Internal__Functions__And__Structures_8h" kind="file" language="C++">
+    <compoundname>R2_Internal_Functions_And_Structures.h</compoundname>
+    <includedby refid="d5/d27/kmain_8c" local="yes">kernel/core/kmain.c</includedby>
+    <includedby refid="d6/d3d/mpx__supt_8c" local="yes">modules/mpx_supt.c</includedby>
+    <includedby refid="db/d71/commhand_8c" local="yes">modules/R1/commhand.c</includedby>
+    <includedby refid="d2/d9c/R1commands_8c" local="yes">modules/R1/R1commands.c</includedby>
+    <includedby refid="d5/d3c/R2__Internal__Functions__And__Structures_8c" local="yes">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="d3/d62/R2commands_8c" local="yes">modules/R2/R2commands.c</includedby>
+    <includedby refid="d9/d22/R3commands_8c" local="yes">modules/R3/R3commands.c</includedby>
+    <includedby refid="df/d78/R4commands_8c" local="yes">modules/R4/R4commands.c</includedby>
+    <invincdepgraph>
+      <node id="9">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="df/d78/R4commands_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="d5/d27/kmain_8c"/>
+      </node>
+      <node id="7">
+        <label>modules/R2/R2commands.c</label>
+        <link refid="d3/d62/R2commands_8c"/>
+      </node>
+      <node id="4">
+        <label>modules/R1/commhand.c</label>
+        <link refid="db/d71/commhand_8c"/>
+      </node>
+      <node id="8">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="d9/d22/R3commands_8c"/>
+      </node>
+      <node id="5">
+        <label>modules/R1/R1commands.c</label>
+        <link refid="d2/d9c/R1commands_8c"/>
+      </node>
+      <node id="3">
+        <label>modules/mpx_supt.c</label>
+        <link refid="d6/d3d/mpx__supt_8c"/>
+      </node>
+      <node id="6">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="d5/d3c/R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+      <node id="1">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.h</label>
+        <link refid="d4/d3c/R2__Internal__Functions__And__Structures_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d7/d51/structPCB" prot="public">PCB</innerclass>
+    <innerclass refid="d2/d36/structqueue" prot="public">queue</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a86b56be801a071f739ce359b56ae24fd" prot="public" static="no">
+        <type>struct <ref refid="d7/d51/structPCB" kindref="compound">PCB</ref></type>
+        <definition>typedef struct PCB PCB</definition>
+        <argsstring></argsstring>
+        <name>PCB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="13" column="5"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a092902733e164e20a40f08447ef1705a" prot="public" static="no">
+        <type>struct <ref refid="d2/d36/structqueue" kindref="compound">queue</ref></type>
+        <definition>typedef struct queue queue</definition>
+        <argsstring></argsstring>
+        <name>queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="21" column="7"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a08e14856b0c743266c38c7aabc687c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* allocatePCB</definition>
+        <argsstring>()</argsstring>
+        <name>allocatePCB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="23" column="5" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="17" bodyend="40" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="23" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1ac4c4e09a49b5b38d9085f32417271760" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int freePCB</definition>
+        <argsstring>(PCB *PCB_to_free)</argsstring>
+        <name>freePCB</name>
+        <param>
+          <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+          <declname>PCB_to_free</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="25" column="5" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="42" bodyend="49" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="25" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a410acbffbc7a41f58ff2a6b2173ee3c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* setupPCB</definition>
+        <argsstring>(char *processName, unsigned char processClass, int processPriority)</argsstring>
+        <name>setupPCB</name>
+        <param>
+          <type>char *</type>
+          <declname>processName</declname>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>processClass</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>processPriority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="27" column="5" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="51" bodyend="80" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="27" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a2e9694bcc8559834a0e4749509faf4be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* findPCB</definition>
+        <argsstring>(char *processName)</argsstring>
+        <name>findPCB</name>
+        <param>
+          <type>char *</type>
+          <declname>processName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="29" column="5" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="82" bodyend="159" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="29" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a64667c0bd1ab46d8e14c4b26d6e3f975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void insertPCB</definition>
+        <argsstring>(PCB *PCB_to_insert)</argsstring>
+        <name>insertPCB</name>
+        <param>
+          <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+          <declname>PCB_to_insert</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="31" column="6" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="161" bodyend="307" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="31" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a7c5d1dea8311ecc31306a370d2877616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int removePCB</definition>
+        <argsstring>(PCB *PCB_to_remove)</argsstring>
+        <name>removePCB</name>
+        <param>
+          <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+          <declname>PCB_to_remove</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="33" column="5" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="309" bodyend="428" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="33" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1aa93ee76bdb5b9aac80f93031a9ea918e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void allocateQueues</definition>
+        <argsstring>()</argsstring>
+        <name>allocateQueues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="35" column="6" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="430" bodyend="451" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="35" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1acc4c78320b3fb77214d451133e90df5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d36/structqueue" kindref="compound">queue</ref> *</type>
+        <definition>queue* getReady</definition>
+        <argsstring>()</argsstring>
+        <name>getReady</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="37" column="7" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="453" bodyend="456" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="37" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a5076bec4ed01e0c63e90fb19b1bafa3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d36/structqueue" kindref="compound">queue</ref> *</type>
+        <definition>queue* getBlocked</definition>
+        <argsstring>()</argsstring>
+        <name>getBlocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="39" column="7" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="458" bodyend="461" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="39" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a5c800899e50bc0eb8e12f8ab6b3bfba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d36/structqueue" kindref="compound">queue</ref> *</type>
+        <definition>queue* getSuspendedReady</definition>
+        <argsstring>()</argsstring>
+        <name>getSuspendedReady</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="41" column="7" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="463" bodyend="466" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="41" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d3c/R2__Internal__Functions__And__Structures_8h_1ae5e140605a1febc32ce3b59f6b56b55f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d36/structqueue" kindref="compound">queue</ref> *</type>
+        <definition>queue* getSuspendedBlocked</definition>
+        <argsstring>()</argsstring>
+        <name>getSuspendedBlocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="43" column="7" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.c" bodystart="468" bodyend="471" declfile="modules/R2/R2_Internal_Functions_And_Structures.h" declline="43" declcolumn="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="d7/d51/structPCB" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref></highlight></codeline>
+<codeline lineno="2"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3" refid="d7/d51/structPCB_1a44e929ccb815e17418d0ef8833351311" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1a44e929ccb815e17418d0ef8833351311" kindref="member">processName</ref>[20];<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Name<sp/>of<sp/>the<sp/>Process<sp/>Control<sp/>Block(PCB).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="d7/d51/structPCB_1a115846989a59a5ac979e0af6e8709920" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1a115846989a59a5ac979e0af6e8709920" kindref="member">processClass</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&apos;a&apos;==application<sp/>process,<sp/>&apos;s&apos;==system<sp/>process</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="d7/d51/structPCB_1a84a8d888cc661a040f4f1a081807d5b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1a84a8d888cc661a040f4f1a081807d5b4" kindref="member">priority</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Range<sp/>from<sp/>0-9.<sp/>0<sp/>is<sp/>the<sp/>lowest<sp/>priority,<sp/>9<sp/>is<sp/>the<sp/>highest<sp/>priority.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="d7/d51/structPCB_1a1ad17e453fc473c4b4f467fb58e2b9ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1a1ad17e453fc473c4b4f467fb58e2b9ca" kindref="member">runningStatus</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0==ready,<sp/>1==running,<sp/>-1==blocked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="d7/d51/structPCB_1a456c256ee9bfd4792e4ace6a95a56e83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1a456c256ee9bfd4792e4ace6a95a56e83" kindref="member">suspendedStatus</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0==suspended,<sp/>1==not<sp/>suspended.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>[1024];<sp/></highlight><highlight class="comment">//<sp/>Stack<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>the<sp/>top<sp/>of<sp/>the<sp/>stack<sp/>area<sp/>for<sp/>the<sp/>PCB.<sp/>(stackTop<sp/>=<sp/>PCB-&gt;stack<sp/>+<sp/>1024)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="d7/d51/structPCB_1a3c1d1cc97f4465313d70310ece157708" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d7/d51/structPCB_1a3c1d1cc97f4465313d70310ece157708" kindref="member">stackBase</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>the<sp/>base<sp/>of<sp/>the<sp/>stack<sp/>area<sp/>for<sp/>the<sp/>PCB.<sp/>(stackBase<sp/>=<sp/>PCB-&gt;stack)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="d7/d51/structPCB_1abf4e18b4443517531516516527cef23c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d7/d51/structPCB_1abf4e18b4443517531516516527cef23c" kindref="member">nextPCB</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>the<sp/>next<sp/>PCB<sp/>in<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="d7/d51/structPCB_1a96480a004c14ac43a7c7286e158cf7cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d7/d51/structPCB_1a96480a004c14ac43a7c7286e158cf7cb" kindref="member">prevPCB</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>the<sp/>previous<sp/>PCB<sp/>in<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a86b56be801a071f739ce359b56ae24fd" refkind="member"><highlight class="normal">}<sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a86b56be801a071f739ce359b56ae24fd" kindref="member">PCB</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="d2/d36/structqueue" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d36/structqueue" kindref="compound">queue</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17" refid="d2/d36/structqueue_1ac71ad15edf9cf721b2fdb85524c51bf0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d2/d36/structqueue_1ac71ad15edf9cf721b2fdb85524c51bf0" kindref="member">count</ref>;<sp/></highlight><highlight class="comment">//Keeps<sp/>track<sp/>of<sp/>how<sp/>many<sp/>PCBs<sp/>are<sp/>in<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="d2/d36/structqueue_1a842af6c249ba80f2ab495e71c4233ddd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d2/d36/structqueue_1a842af6c249ba80f2ab495e71c4233ddd" kindref="member">head</ref>;<sp/></highlight><highlight class="comment">//Points<sp/>to<sp/>the<sp/>PCB<sp/>at<sp/>the<sp/>head(beginning/top)<sp/>of<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="d2/d36/structqueue_1aab402320242628ab44a30998f5c40d81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d2/d36/structqueue_1aab402320242628ab44a30998f5c40d81" kindref="member">tail</ref>;<sp/></highlight><highlight class="comment">//Points<sp/>to<sp/>the<sp/>PCB<sp/>at<sp/>the<sp/>tail(end/bottom)<sp/>of<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a092902733e164e20a40f08447ef1705a" refkind="member"><highlight class="normal">}<sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a092902733e164e20a40f08447ef1705a" kindref="member">queue</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a08e14856b0c743266c38c7aabc687c97" kindref="member">allocatePCB</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1ac4c4e09a49b5b38d9085f32417271760" kindref="member">freePCB</ref>(<ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*PCB_to_free);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a410acbffbc7a41f58ff2a6b2173ee3c4" kindref="member">setupPCB</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*processName,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>processClass,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>processPriority);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*processName);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a64667c0bd1ab46d8e14c4b26d6e3f975" kindref="member">insertPCB</ref>(<ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*PCB_to_insert);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a7c5d1dea8311ecc31306a370d2877616" kindref="member">removePCB</ref>(<ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*PCB_to_remove);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1aa93ee76bdb5b9aac80f93031a9ea918e" kindref="member">allocateQueues</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="d2/d36/structqueue" kindref="compound">queue</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1acc4c78320b3fb77214d451133e90df5d" kindref="member">getReady</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="d2/d36/structqueue" kindref="compound">queue</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a5076bec4ed01e0c63e90fb19b1bafa3f" kindref="member">getBlocked</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="d2/d36/structqueue" kindref="compound">queue</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1a5c800899e50bc0eb8e12f8ab6b3bfba2" kindref="member">getSuspendedReady</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><ref refid="d2/d36/structqueue" kindref="compound">queue</ref><sp/>*<ref refid="d4/d3c/R2__Internal__Functions__And__Structures_8h_1ae5e140605a1febc32ce3b59f6b56b55f" kindref="member">getSuspendedBlocked</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="modules/R2/R2_Internal_Functions_And_Structures.h"/>
+  </compounddef>
+</doxygen>

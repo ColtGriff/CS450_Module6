@@ -1,0 +1,382 @@
+\hypertarget{R4commands_8c}{}\doxysection{modules/\+R4/\+R4commands.c File Reference}
+\label{R4commands_8c}\index{modules/R4/R4commands.c@{modules/R4/R4commands.c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../mpx\+\_\+supt.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$core/serial.\+h$>$}\newline
+{\ttfamily \#include $<$core/io.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../\+R2/\+R2\+\_\+\+Internal\+\_\+\+Functions\+\_\+\+And\+\_\+\+Structures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+R2/\+R2commands.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+R3/\+R3commands.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R4commands.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+R1/\+R1commands.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{R4commands_8c_a2d57afc11c04ffa8dd85c39616d06ca1}{alarm\+P\+CB}} ()
+\item 
+void \mbox{\hyperlink{R4commands_8c_aef143494a33e3c8256161a1fe0144484}{infinite\+P\+CB}} ()
+\item 
+void \mbox{\hyperlink{R4commands_8c_ab08efb8d57e2b9f6c2b9f1be07342e75}{infinite\+Func}} ()
+\item 
+void \mbox{\hyperlink{R4commands_8c_a435753efa9eb2f8747246a592df3b8d7}{allocate\+Alarm\+Queue}} ()
+\item 
+\mbox{\hyperlink{structalarm}{alarm}} $\ast$ \mbox{\hyperlink{R4commands_8c_a6ec6f4cd7b31299f5c1b62d6236d9d82}{allocate\+Alarms}} ()
+\item 
+\mbox{\hyperlink{structalarmList}{alarm\+List}} $\ast$ \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{get\+Alarms}} ()
+\item 
+void \mbox{\hyperlink{R4commands_8c_a92f5695e9d440ad2a819e9a86c376fbf}{add\+Alarm}} ()
+\item 
+int \mbox{\hyperlink{R4commands_8c_a033a670c5cfab11ceeb69868c58dd01b}{convert\+Time}} (char $\ast$hours, char $\ast$minutes, char $\ast$seconds)
+\item 
+void \mbox{\hyperlink{R4commands_8c_a19f4cc956f2b457ef5bf9420fd33b0e1}{iterate\+Alarms}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structalarmList}{alarm\+List}} $\ast$ \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{R4commands_8c_a92f5695e9d440ad2a819e9a86c376fbf}\label{R4commands_8c_a92f5695e9d440ad2a819e9a86c376fbf}} 
+\index{R4commands.c@{R4commands.c}!addAlarm@{addAlarm}}
+\index{addAlarm@{addAlarm}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{addAlarm()}{addAlarm()}}
+{\footnotesize\ttfamily void add\+Alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86 \{}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \mbox{\hyperlink{R2commands_8c_a9c18b93fb833ed870f49f05cca5c5e3a}{unblockPCB}}(\textcolor{stringliteral}{"{}Alarm"{}});}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please enter a name for the alarm you want to create.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \mbox{\hyperlink{structalarm}{alarm}} *Alarm\_to\_insert = \mbox{\hyperlink{R4commands_8c_a6ec6f4cd7b31299f5c1b62d6236d9d82}{allocateAlarms}}();}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} nameLength = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(Alarm\_to\_insert-\/>\mbox{\hyperlink{structalarm_a24fcd163c717cda1a4cb58d6baad5f6b}{alarmName}});}
+\DoxyCodeLine{95     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, Alarm\_to\_insert-\/>\mbox{\hyperlink{structalarm_a24fcd163c717cda1a4cb58d6baad5f6b}{alarmName}}, \&nameLength);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired hours. I.E.: hh.\(\backslash\)n"{}});}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} hour[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \textcolor{keywordtype}{int} hourLength = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(hour);}
+\DoxyCodeLine{106         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, hour, \&hourLength);}
+\DoxyCodeLine{107         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hour) < 24 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hour) >= 0)}
+\DoxyCodeLine{108         \{}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{111             flag = 0;}
+\DoxyCodeLine{112         \}}
+\DoxyCodeLine{113         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{114         \{}
+\DoxyCodeLine{115             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid hours.\(\backslash\)n"{}});}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117             flag = 1;}
+\DoxyCodeLine{118         \}}
+\DoxyCodeLine{119     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{122     \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired minutes. I.E.: mm.\(\backslash\)n"{}});}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{keywordtype}{char} minute[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \textcolor{keywordtype}{int} minuteLength = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(minute);}
+\DoxyCodeLine{129         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, minute, \&minuteLength);}
+\DoxyCodeLine{130         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minute) < 60 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minute) >= 0)}
+\DoxyCodeLine{131         \{}
+\DoxyCodeLine{132             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{133             flag = 0;}
+\DoxyCodeLine{134         \}}
+\DoxyCodeLine{135         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{136         \{}
+\DoxyCodeLine{137             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid minutes.\(\backslash\)n"{}});}
+\DoxyCodeLine{138             flag = 1;}
+\DoxyCodeLine{139         \}}
+\DoxyCodeLine{140     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{143     \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired seconds. I.E.: ss.\(\backslash\)n"{}});}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{keywordtype}{char} second[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{148     \{}
+\DoxyCodeLine{149         \textcolor{keywordtype}{int} secondLength = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(second);}
+\DoxyCodeLine{150         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, second, \&secondLength);}
+\DoxyCodeLine{151         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(second) < 60 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(second) >= 0)}
+\DoxyCodeLine{152         \{}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{155             flag = 0;}
+\DoxyCodeLine{156         \}}
+\DoxyCodeLine{157         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{158         \{}
+\DoxyCodeLine{159             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid seconds.\(\backslash\)n"{}});}
+\DoxyCodeLine{160             flag = 1;}
+\DoxyCodeLine{161         \}}
+\DoxyCodeLine{162     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     \textcolor{comment}{// Storing time in the alarm to insert}}
+\DoxyCodeLine{165     Alarm\_to\_insert-\/>\mbox{\hyperlink{structalarm_a26697f4c90721e02dba11276a87fcfec}{alarmTime}} = \mbox{\hyperlink{R4commands_8c_a033a670c5cfab11ceeb69868c58dd01b}{convertTime}}(hour, minute, second);}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     \textcolor{comment}{// Inserting the alarm}}
+\DoxyCodeLine{168     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>head != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{169     \{}
+\DoxyCodeLine{170         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}}-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}} = Alarm\_to\_insert;}
+\DoxyCodeLine{171         Alarm\_to\_insert-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}} = \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}};}
+\DoxyCodeLine{172         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}} = Alarm\_to\_insert;}
+\DoxyCodeLine{173         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_a893a431c9a01d917447473fb79b26c92}{count}}++;}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{176     \{}
+\DoxyCodeLine{177         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}} = Alarm\_to\_insert;}
+\DoxyCodeLine{178         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}} = Alarm\_to\_insert;}
+\DoxyCodeLine{179         \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_a893a431c9a01d917447473fb79b26c92}{count}}++;}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{181 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_a2d57afc11c04ffa8dd85c39616d06ca1}\label{R4commands_8c_a2d57afc11c04ffa8dd85c39616d06ca1}} 
+\index{R4commands.c@{R4commands.c}!alarmPCB@{alarmPCB}}
+\index{alarmPCB@{alarmPCB}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{alarmPCB()}{alarmPCB()}}
+{\footnotesize\ttfamily void alarm\+P\+CB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}}-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}} == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}} \&\& \mbox{\hyperlink{R2__Internal__Functions__And__Structures_8c_a2e9694bcc8559834a0e4749509faf4be}{findPCB}}(\textcolor{stringliteral}{"{}Alarm"{}})-\/>runningStatus != -\/1)}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \mbox{\hyperlink{R2commands_8c_abee2a76e6a4ccbd6d15be5605d370b37}{blockPCB}}(\textcolor{stringliteral}{"{}Alarm"{}});}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         \mbox{\hyperlink{R4commands_8c_a19f4cc956f2b457ef5bf9420fd33b0e1}{iterateAlarms}}();}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_a435753efa9eb2f8747246a592df3b8d7}\label{R4commands_8c_a435753efa9eb2f8747246a592df3b8d7}} 
+\index{R4commands.c@{R4commands.c}!allocateAlarmQueue@{allocateAlarmQueue}}
+\index{allocateAlarmQueue@{allocateAlarmQueue}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{allocateAlarmQueue()}{allocateAlarmQueue()}}
+{\footnotesize\ttfamily void allocate\+Alarm\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58     \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}} = \mbox{\hyperlink{mpx__supt_8c_a61adad2abba0a3a225c2290b3de1fe93}{sys\_alloc\_mem}}(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structalarmList}{alarmList}}));}
+\DoxyCodeLine{59     \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}}-\/>\mbox{\hyperlink{structalarmList_a893a431c9a01d917447473fb79b26c92}{count}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{60     \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}}-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{61     \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}}-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_a6ec6f4cd7b31299f5c1b62d6236d9d82}\label{R4commands_8c_a6ec6f4cd7b31299f5c1b62d6236d9d82}} 
+\index{R4commands.c@{R4commands.c}!allocateAlarms@{allocateAlarms}}
+\index{allocateAlarms@{allocateAlarms}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{allocateAlarms()}{allocateAlarms()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structalarm}{alarm}}$\ast$ allocate\+Alarms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     \mbox{\hyperlink{structalarm}{alarm}} *newAlarm = (\mbox{\hyperlink{structalarm}{alarm}} *)\mbox{\hyperlink{mpx__supt_8c_a61adad2abba0a3a225c2290b3de1fe93}{sys\_alloc\_mem}}(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structalarm}{alarm}}));}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{char} name[20] = \textcolor{stringliteral}{"{}newAlarm"{}};}
+\DoxyCodeLine{69     \mbox{\hyperlink{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy}}(newAlarm-\/>\mbox{\hyperlink{structalarm_a24fcd163c717cda1a4cb58d6baad5f6b}{alarmName}}, name);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     newAlarm-\/>\mbox{\hyperlink{structalarm_a26697f4c90721e02dba11276a87fcfec}{alarmTime}} = 0;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Setting the alarms prev and next PCB}}
+\DoxyCodeLine{74     newAlarm-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{75     newAlarm-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordflow}{return} newAlarm;}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_a033a670c5cfab11ceeb69868c58dd01b}\label{R4commands_8c_a033a670c5cfab11ceeb69868c58dd01b}} 
+\index{R4commands.c@{R4commands.c}!convertTime@{convertTime}}
+\index{convertTime@{convertTime}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{convertTime()}{convertTime()}}
+{\footnotesize\ttfamily int convert\+Time (\begin{DoxyParamCaption}\item[{char $\ast$}]{hours,  }\item[{char $\ast$}]{minutes,  }\item[{char $\ast$}]{seconds }\end{DoxyParamCaption})}
+
+
+
+Definition at line 183 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     \textcolor{keywordtype}{int} result = (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hours) * 3600);}
+\DoxyCodeLine{186     result += (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minutes) * 60);}
+\DoxyCodeLine{187     result += (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(seconds));}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{190 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}\label{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}} 
+\index{R4commands.c@{R4commands.c}!getAlarms@{getAlarms}}
+\index{getAlarms@{getAlarms}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{getAlarms()}{getAlarms()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structalarmList}{alarm\+List}}$\ast$ get\+Alarms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82     \textcolor{keywordflow}{return} \mbox{\hyperlink{R4commands_8c_ada286b83368be279409d3ca741188504}{alarms}};}
+\DoxyCodeLine{83 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_ab08efb8d57e2b9f6c2b9f1be07342e75}\label{R4commands_8c_ab08efb8d57e2b9f6c2b9f1be07342e75}} 
+\index{R4commands.c@{R4commands.c}!infiniteFunc@{infiniteFunc}}
+\index{infiniteFunc@{infiniteFunc}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{infiniteFunc()}{infiniteFunc()}}
+{\footnotesize\ttfamily void infinite\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Infinite Process Executing.\(\backslash\)n"{}});}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_a9c21a7caee326d7803b94ae1952b27ca}{IDLE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}}, \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}});}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_aef143494a33e3c8256161a1fe0144484}\label{R4commands_8c_aef143494a33e3c8256161a1fe0144484}} 
+\index{R4commands.c@{R4commands.c}!infinitePCB@{infinitePCB}}
+\index{infinitePCB@{infinitePCB}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{infinitePCB()}{infinitePCB()}}
+{\footnotesize\ttfamily void infinite\+P\+CB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30     \mbox{\hyperlink{R2commands_8c_a3cd65702d00f1828d24a99898123fc7f}{createPCB}}(\textcolor{stringliteral}{"{}infinite"{}}, \textcolor{charliteral}{'a'}, 1);}
+\DoxyCodeLine{31     \mbox{\hyperlink{structPCB}{PCB}} *new\_pcb = \mbox{\hyperlink{R2__Internal__Functions__And__Structures_8c_a2e9694bcc8559834a0e4749509faf4be}{findPCB}}(\textcolor{stringliteral}{"{}infinite"{}});}
+\DoxyCodeLine{32     \mbox{\hyperlink{structcontext}{context}} *cp = (\mbox{\hyperlink{structcontext}{context}} *)(new\_pcb-\/>\mbox{\hyperlink{structPCB_a927da593bccc4abb835f48da1557df42}{stackTop}});}
+\DoxyCodeLine{33     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(cp, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcontext}{context}}));}
+\DoxyCodeLine{34     cp-\/>\mbox{\hyperlink{structcontext_a5e778314cc8c537f0a27726bfa673c8e}{fs}} = 0x10;}
+\DoxyCodeLine{35     cp-\/>\mbox{\hyperlink{structcontext_a54fa688ce896c5cca606323d33e1f68c}{gs}} = 0x10;}
+\DoxyCodeLine{36     cp-\/>\mbox{\hyperlink{structcontext_ae636622afec7fe9c8b18504168023d1e}{ds}} = 0x10;}
+\DoxyCodeLine{37     cp-\/>\mbox{\hyperlink{structcontext_aca480d54d4be09cb005dc21e4ff05da1}{es}} = 0x10;}
+\DoxyCodeLine{38     cp-\/>\mbox{\hyperlink{structcontext_a29cb887d9a426ddb24c04237bce5df6d}{cs}} = 0x8;}
+\DoxyCodeLine{39     cp-\/>\mbox{\hyperlink{structcontext_a7ed33e51ef51493c861cd20aa919f2f9}{ebp}} = (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})(new\_pcb-\/>\mbox{\hyperlink{structPCB_ad16b941b22b8d62d7b63c7d4ca15210d}{stack}});}
+\DoxyCodeLine{40     cp-\/>\mbox{\hyperlink{structcontext_a5d56c844a4aa0dd6b7a7bf5b421cbf88}{esp}} = (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})(new\_pcb-\/>\mbox{\hyperlink{structPCB_a927da593bccc4abb835f48da1557df42}{stackTop}});}
+\DoxyCodeLine{41     cp-\/>\mbox{\hyperlink{structcontext_a48807bac5338e9bcd6183f2f2061400b}{eip}} = (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{R4commands_8c_ab08efb8d57e2b9f6c2b9f1be07342e75}{infiniteFunc}}; \textcolor{comment}{// The function correlating to the process, ie. Proc1}}
+\DoxyCodeLine{42     cp-\/>\mbox{\hyperlink{structcontext_a70a4605bd1b897c096f5cc7f730214db}{eflags}} = 0x202;}
+\DoxyCodeLine{43 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R4commands_8c_a19f4cc956f2b457ef5bf9420fd33b0e1}\label{R4commands_8c_a19f4cc956f2b457ef5bf9420fd33b0e1}} 
+\index{R4commands.c@{R4commands.c}!iterateAlarms@{iterateAlarms}}
+\index{iterateAlarms@{iterateAlarms}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{iterateAlarms()}{iterateAlarms()}}
+{\footnotesize\ttfamily void iterate\+Alarms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 192 of file R4commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194     \textcolor{keywordtype}{char} hours[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{195     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x04); \textcolor{comment}{// getting current Hour value}}
+\DoxyCodeLine{196     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), hours);}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198     \textcolor{keywordtype}{char} minutes[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{199     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x02); \textcolor{comment}{// getting current Minute value}}
+\DoxyCodeLine{200     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), minutes);}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     \textcolor{keywordtype}{char} seconds[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{203     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x00); \textcolor{comment}{// getting current Minute value}}
+\DoxyCodeLine{204     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), seconds);}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206     \textcolor{keywordtype}{int} currentTime = \mbox{\hyperlink{R4commands_8c_a033a670c5cfab11ceeb69868c58dd01b}{convertTime}}(hours, minutes, seconds);}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \mbox{\hyperlink{structalarm}{alarm}} *tempAlarm = \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}};}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210     \textcolor{keywordflow}{while} (tempAlarm != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{211     \{}
+\DoxyCodeLine{212         \textcolor{keywordflow}{if} (currentTime >= \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>head-\/>alarmTime)}
+\DoxyCodeLine{213         \{}
+\DoxyCodeLine{214             \textcolor{comment}{// do something for alarm.}}
+\DoxyCodeLine{215             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>head-\/>alarmName);}
+\DoxyCodeLine{216             \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}} = \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_aa2e7596e9f0873be1bbfe8524face4c8}{head}}-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}};}
+\DoxyCodeLine{217         \}}
+\DoxyCodeLine{218         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (currentTime >= \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>tail-\/>alarmTime)}
+\DoxyCodeLine{219         \{}
+\DoxyCodeLine{220             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>tail-\/>alarmName);}
+\DoxyCodeLine{221             \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}} = \mbox{\hyperlink{R4commands_8c_ab91f877c24a0c7a03cdb778729a3d3c2}{getAlarms}}()-\/>\mbox{\hyperlink{structalarmList_abcb5b61411e285de64f5e8855d56263a}{tail}}-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}};}
+\DoxyCodeLine{222         \}}
+\DoxyCodeLine{223         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (currentTime >= tempAlarm-\/>\mbox{\hyperlink{structalarm_a26697f4c90721e02dba11276a87fcfec}{alarmTime}})}
+\DoxyCodeLine{224         \{}
+\DoxyCodeLine{225             \mbox{\hyperlink{R1commands_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(tempAlarm-\/>\mbox{\hyperlink{structalarm_a24fcd163c717cda1a4cb58d6baad5f6b}{alarmName}});}
+\DoxyCodeLine{226             tempAlarm-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}}-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}} = tempAlarm-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}};}
+\DoxyCodeLine{227             tempAlarm-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}}-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}} = tempAlarm-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}};}
+\DoxyCodeLine{228             tempAlarm-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{229             tempAlarm-\/>\mbox{\hyperlink{structalarm_a3462048dc81053bc82ad9f9723eb1dfd}{prevAlarm}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{230         \}}
+\DoxyCodeLine{231         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{232         \{}
+\DoxyCodeLine{233             \textcolor{comment}{// iterates if not time}}
+\DoxyCodeLine{234             tempAlarm = tempAlarm-\/>\mbox{\hyperlink{structalarm_a164a5961b006d0c46088c42339c0a81c}{nextAlarm}};}
+\DoxyCodeLine{235         \}}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{R4commands_8c_ada286b83368be279409d3ca741188504}\label{R4commands_8c_ada286b83368be279409d3ca741188504}} 
+\index{R4commands.c@{R4commands.c}!alarms@{alarms}}
+\index{alarms@{alarms}!R4commands.c@{R4commands.c}}
+\doxysubsubsection{\texorpdfstring{alarms}{alarms}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structalarmList}{alarm\+List}}$\ast$ alarms}
+
+
+
+Definition at line 14 of file R4commands.\+c.
+

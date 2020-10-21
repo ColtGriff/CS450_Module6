@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="de/de5/tables_8c" kind="file" language="C++">
+    <compoundname>tables.c</compoundname>
+    <includes refid="da/d66/string_8h" local="no">string.h</includes>
+    <includes refid="df/d2c/tables_8h" local="no">core/tables.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>system.h</label>
+        <link refid="dc/db2/system_8h"/>
+      </node>
+      <node id="4">
+        <label>core/tables.h</label>
+        <link refid="df/d2c/tables_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>kernel/core/tables.c</label>
+        <link refid="de/de5/tables_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string.h</label>
+        <link refid="da/d66/string_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" prot="public" static="no" mutable="no">
+        <type>gdt_descriptor</type>
+        <definition>gdt_descriptor gdt_ptr</definition>
+        <argsstring></argsstring>
+        <name>gdt_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="12" column="16" bodyfile="kernel/core/tables.c" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/de5/tables_8c_1ac64ff6d00454e0b88d43b55536418288" prot="public" static="no" mutable="no">
+        <type>gdt_entry</type>
+        <definition>gdt_entry gdt_entries[5]</definition>
+        <argsstring>[5]</argsstring>
+        <name>gdt_entries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="13" column="11" bodyfile="kernel/core/tables.c" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" prot="public" static="no" mutable="no">
+        <type>idt_descriptor</type>
+        <definition>idt_descriptor idt_ptr</definition>
+        <argsstring></argsstring>
+        <name>idt_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="16" column="16" bodyfile="kernel/core/tables.c" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" prot="public" static="no" mutable="no">
+        <type>idt_entry</type>
+        <definition>idt_entry idt_entries[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>idt_entries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="17" column="11" bodyfile="kernel/core/tables.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="de/de5/tables_8c_1ab603373c64fb0a6d51482121d0800be4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_gdt_ptr</definition>
+        <argsstring>(u32int, size_t)</argsstring>
+        <name>write_gdt_ptr</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a7c94ea6f8948649f8d181ae55911eeaf" kindref="member">size_t</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="20" column="13" declfile="kernel/core/tables.c" declline="20" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de5/tables_8c_1a77fec66a455d3275b67be5c3d7868555" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_idt_ptr</definition>
+        <argsstring>(u32int)</argsstring>
+        <name>write_idt_ptr</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="21" column="13" declfile="kernel/core/tables.c" declline="21" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de5/tables_8c_1a9eca3fe1465f8d7d383551d804853139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void idt_set_gate</definition>
+        <argsstring>(u8int idx, u32int base, u16int sel, u8int flags)</argsstring>
+        <name>idt_set_gate</name>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+          <declname>sel</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="27" column="6" bodyfile="kernel/core/tables.c" bodystart="27" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de5/tables_8c_1a35fe413107af682030ab7a4b6dff19b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_idt</definition>
+        <argsstring>()</argsstring>
+        <name>init_idt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="43" column="6" bodyfile="kernel/core/tables.c" bodystart="43" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gdt_init_entry</definition>
+        <argsstring>(int idx, u32int base, u32int limit, u8int access, u8int flags)</argsstring>
+        <name>gdt_init_entry</name>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>limit</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+          <declname>access</declname>
+        </param>
+        <param>
+          <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="57" column="6" bodyfile="kernel/core/tables.c" bodystart="57" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="de/de5/tables_8c_1a86bb50044169930202cc403376ef40c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_gdt</definition>
+        <argsstring>()</argsstring>
+        <name>init_gdt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/tables.c" line="75" column="6" bodyfile="kernel/core/tables.c" bodystart="75" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/>-----<sp/>tables.c<sp/>-----</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/>Description..:<sp/>Routines<sp/>for<sp/>setting<sp/>up<sp/>the<sp/>global<sp/>descriptor</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>table<sp/>and<sp/>interrupt<sp/>descriptor<sp/>table.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="da/d66/string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="df/d2c/tables_8h" kindref="compound">core/tables.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Global<sp/>Descriptor<sp/>Table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" refkind="member"><highlight class="normal">gdt_descriptor<sp/><ref refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" kindref="member">gdt_ptr</ref>;</highlight></codeline>
+<codeline lineno="13" refid="de/de5/tables_8c_1ac64ff6d00454e0b88d43b55536418288" refkind="member"><highlight class="normal">gdt_entry<sp/><ref refid="de/de5/tables_8c_1ac64ff6d00454e0b88d43b55536418288" kindref="member">gdt_entries</ref>[5];</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Interrupt<sp/>Descriptor<sp/>Table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" refkind="member"><highlight class="normal">idt_descriptor<sp/><ref refid="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" kindref="member">idt_ptr</ref>;</highlight></codeline>
+<codeline lineno="17" refid="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" refkind="member"><highlight class="normal">idt_entry<sp/><ref refid="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" kindref="member">idt_entries</ref>[256];</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Assembly<sp/>routines<sp/>to<sp/>install<sp/>tables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="de/de5/tables_8c_1ab603373c64fb0a6d51482121d0800be4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1ab603373c64fb0a6d51482121d0800be4" kindref="member">write_gdt_ptr</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21" refid="de/de5/tables_8c_1a77fec66a455d3275b67be5c3d7868555" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1a77fec66a455d3275b67be5c3d7868555" kindref="member">write_idt_ptr</ref>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>idt_set_gate</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/>Description..:<sp/>Installs<sp/>a<sp/>new<sp/>gate<sp/>entry<sp/>into<sp/>the<sp/>IDT.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="de/de5/tables_8c_1a9eca3fe1465f8d7d383551d804853139" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1a9eca3fe1465f8d7d383551d804853139" kindref="member">idt_set_gate</ref>(<ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref><sp/>idx,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>,<sp/><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref><sp/>sel,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref><sp/><ref refid="df/d2c/tables_8h_1a138dda98fcd4738346af61bcca8cf4b4" kindref="member">flags</ref>)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>idt_entry<sp/>*new_entry<sp/>=<sp/>&amp;<ref refid="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" kindref="member">idt_entries</ref>[idx];</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>new_entry-&gt;base_low<sp/><sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>&amp;<sp/><sp/>0xFFFF);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>new_entry-&gt;base_high<sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xFFFF;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>new_entry-&gt;sselect<sp/><sp/><sp/>=<sp/>sel;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>new_entry-&gt;zero<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>new_entry-&gt;flags<sp/>=<sp/><ref refid="df/d2c/tables_8h_1a138dda98fcd4738346af61bcca8cf4b4" kindref="member">flags</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_idt</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/>Description..:<sp/>Creates<sp/>the<sp/>interrupt<sp/>descriptor<sp/>table<sp/>and<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>writes<sp/>the<sp/>pointer<sp/>using<sp/>the<sp/>defined<sp/>assembly<sp/>function.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="de/de5/tables_8c_1a35fe413107af682030ab7a4b6dff19b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1a35fe413107af682030ab7a4b6dff19b8" kindref="member">init_idt</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" kindref="member">idt_ptr</ref>.limit<sp/>=<sp/>256*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(idt_descriptor)<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" kindref="member">idt_ptr</ref>.base<sp/><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" kindref="member">idt_entries</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(<ref refid="de/de5/tables_8c_1a3c386c59636822ce451be20cc1433a55" kindref="member">idt_entries</ref>,<sp/>0,<sp/>256*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(idt_descriptor));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a77fec66a455d3275b67be5c3d7868555" kindref="member">write_idt_ptr</ref>((<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)&amp;<ref refid="de/de5/tables_8c_1a76f617adbc46449bbc39e7b46504b7c4" kindref="member">idt_ptr</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>gdt_init_entry</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/>Description..:<sp/>Installs<sp/>a<sp/>new<sp/>table<sp/>entry<sp/>into<sp/>the<sp/>global</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>descriptor<sp/>table.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>,<sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref>,<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref><sp/><ref refid="df/d2c/tables_8h_1a360a726ac0b61d9e4e1be3ad34f80244" kindref="member">access</ref>,<sp/><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref><sp/><ref refid="df/d2c/tables_8h_1a138dda98fcd4738346af61bcca8cf4b4" kindref="member">flags</ref>)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>gdt_entry<sp/>*new_entry<sp/>=<sp/>&amp;<ref refid="de/de5/tables_8c_1ac64ff6d00454e0b88d43b55536418288" kindref="member">gdt_entries</ref>[idx];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>new_entry-&gt;base_low<sp/><sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>&amp;<sp/>0xFFFF);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>new_entry-&gt;base_mid<sp/><sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>new_entry-&gt;base_high<sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>&gt;&gt;<sp/>24)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>new_entry-&gt;limit_low<sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref><sp/>&amp;<sp/>0xFFFF);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>new_entry-&gt;flags<sp/><sp/>=<sp/>(<ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref><sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>new_entry-&gt;flags<sp/>|=<sp/><ref refid="df/d2c/tables_8h_1a138dda98fcd4738346af61bcca8cf4b4" kindref="member">flags</ref><sp/>&amp;<sp/>0xF0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>new_entry-&gt;access<sp/>=<sp/><ref refid="df/d2c/tables_8h_1a360a726ac0b61d9e4e1be3ad34f80244" kindref="member">access</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_gdt</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/>Description..:<sp/>Creates<sp/>the<sp/>global<sp/>descriptor<sp/>table<sp/>and<sp/>installs</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>using<sp/>the<sp/>defined<sp/>assembly<sp/>routine.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="de/de5/tables_8c_1a86bb50044169930202cc403376ef40c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="de/de5/tables_8c_1a86bb50044169930202cc403376ef40c3" kindref="member">init_gdt</ref>()</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" kindref="member">gdt_ptr</ref>.limit<sp/>=<sp/>5<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(gdt_entry)<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" kindref="member">gdt_ptr</ref>.base<sp/><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<sp/><ref refid="de/de5/tables_8c_1ac64ff6d00454e0b88d43b55536418288" kindref="member">gdt_entries</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref><sp/>=<sp/>0xFFFFFFFF;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(0,<sp/>0,<sp/>0,<sp/>0,<sp/>0);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//required<sp/>null<sp/>segment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(1,<sp/>0,<sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref>,<sp/>0x9A,<sp/>0xCF);<sp/></highlight><highlight class="comment">//code<sp/>segment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(2,<sp/>0,<sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref>,<sp/>0x92,<sp/>0xCF);<sp/></highlight><highlight class="comment">//data<sp/>segment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(3,<sp/>0,<sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref>,<sp/>0xFA,<sp/>0xCF);<sp/></highlight><highlight class="comment">//user<sp/>mode<sp/>code<sp/>segment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1a0b5aee548c88c40ecb07741be1be2e27" kindref="member">gdt_init_entry</ref>(4,<sp/>0,<sp/><ref refid="df/d2c/tables_8h_1a68fd3b4f6c14a331ca9b226cbf122e13" kindref="member">limit</ref>,<sp/>0xF2,<sp/>0xCF);<sp/></highlight><highlight class="comment">//user<sp/>mode<sp/>data<sp/>segment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="de/de5/tables_8c_1ab603373c64fb0a6d51482121d0800be4" kindref="member">write_gdt_ptr</ref>((<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<sp/>&amp;<ref refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" kindref="member">gdt_ptr</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="de/de5/tables_8c_1aedb4641b02b4a269294e53be7c9b280e" kindref="member">gdt_ptr</ref>));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="kernel/core/tables.c"/>
+  </compounddef>
+</doxygen>

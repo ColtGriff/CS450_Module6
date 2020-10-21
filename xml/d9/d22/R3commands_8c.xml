@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d9/d22/R3commands_8c" kind="file" language="C++">
+    <compoundname>R3commands.c</compoundname>
+    <includes refid="da/d66/string_8h" local="no">string.h</includes>
+    <includes refid="d3/dd9/mpx__supt_8h" local="yes">../mpx_supt.h</includes>
+    <includes refid="db/d11/serial_8h" local="no">core/serial.h</includes>
+    <includes refid="da/ddd/R1commands_8h" local="yes">../R1/R1commands.h</includes>
+    <includes refid="d4/d3c/R2__Internal__Functions__And__Structures_8h" local="yes">../R2/R2_Internal_Functions_And_Structures.h</includes>
+    <includes refid="d9/d99/R2commands_8h" local="yes">../R2/R2commands.h</includes>
+    <includes refid="d6/d7b/R3commands_8h" local="yes">R3commands.h</includes>
+    <includes refid="d4/d92/procsr3_8h" local="yes">procsr3.h</includes>
+    <incdepgraph>
+      <node id="10">
+        <label>procsr3.h</label>
+        <link refid="d4/d92/procsr3_8h"/>
+      </node>
+      <node id="3">
+        <label>system.h</label>
+        <link refid="dc/db2/system_8h"/>
+      </node>
+      <node id="8">
+        <label>../R2/R2commands.h</label>
+        <link refid="d9/d99/R2commands_8h"/>
+      </node>
+      <node id="1">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="d9/d22/R3commands_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>R3commands.h</label>
+        <link refid="d6/d7b/R3commands_8h"/>
+      </node>
+      <node id="6">
+        <label>../R1/R1commands.h</label>
+        <link refid="da/ddd/R1commands_8h"/>
+      </node>
+      <node id="5">
+        <label>core/serial.h</label>
+        <link refid="db/d11/serial_8h"/>
+      </node>
+      <node id="4">
+        <label>../mpx_supt.h</label>
+        <link refid="d3/dd9/mpx__supt_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../R2/R2_Internal_Functions_And_Structures.h</label>
+        <link refid="d4/d3c/R2__Internal__Functions__And__Structures_8h"/>
+      </node>
+      <node id="2">
+        <label>string.h</label>
+        <link refid="da/d66/string_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d22/R3commands_8c_1a58c8b2ad0ea491a6642e5e1cbd358c89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void yield</definition>
+        <argsstring>()</argsstring>
+        <name>yield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R3/R3commands.c" line="13" column="6" bodyfile="modules/R3/R3commands.c" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d22/R3commands_8c_1aa1fe39b6bb2f7080e06d47124b1abe9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loadr3</definition>
+        <argsstring>()</argsstring>
+        <name>loadr3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R3/R3commands.c" line="18" column="6" bodyfile="modules/R3/R3commands.c" bodystart="18" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//R3<sp/>commands,<sp/>functions,<sp/>and<sp/>structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="da/d66/string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../mpx_supt.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="da/d66/string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="db/d11/serial_8h" kindref="compound">core/serial.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../R1/R1commands.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../R2/R2_Internal_Functions_And_Structures.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../R2/R2commands.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d7b/R3commands_8h" kindref="compound">R3commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d92/procsr3_8h" kindref="compound">procsr3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="d6/d7b/R3commands_8h_1a58c8b2ad0ea491a6642e5e1cbd358c89" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d22/R3commands_8c_1a58c8b2ad0ea491a6642e5e1cbd358c89" kindref="member">yield</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>temporary<sp/>command<sp/>-<sp/>only<sp/>in<sp/>R3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;int<sp/>$60&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="d6/d7b/R3commands_8h_1aa1fe39b6bb2f7080e06d47124b1abe9f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d22/R3commands_8c_1aa1fe39b6bb2f7080e06d47124b1abe9f" kindref="member">loadr3</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//loadr3<sp/>will<sp/>load<sp/>all<sp/>r3<sp/>&quot;processes&quot;<sp/>(proc3.c<sp/>file<sp/>eCampus)<sp/>into<sp/>memory<sp/>in<sp/>a<sp/>suspended<sp/>ready<sp/>state<sp/>at<sp/>any<sp/>priority<sp/>of<sp/>your<sp/>choosing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>may<sp/>want<sp/>to<sp/>change<sp/>these<sp/>to<sp/>use<sp/>setupPCB<sp/>instead<sp/>of<sp/>createPCB<sp/>and<sp/>suspendPCB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d9c/R1commands_8c_1a6b64e960aa5ad14e823de069f78c9b83" kindref="member">printMessage</ref>(</highlight><highlight class="stringliteral">&quot;Loading<sp/>R3<sp/>Processes.\n\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process1&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a69f2ae0d18292b4ca844c7d656d6b25f" kindref="member">suspendPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*new_pcb1<sp/>=<sp/><ref refid="d5/d3c/R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*cp1<sp/>=<sp/>(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*)(new_pcb1-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp1,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb1-&gt;<ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb1-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="d6/d2d/procsr3_8c_1ade99845b64379d4ca17724eb6e39c2b4" kindref="member">proc1</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>cp1-&gt;<ref refid="d7/dfe/structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process2&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a69f2ae0d18292b4ca844c7d656d6b25f" kindref="member">suspendPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*new_pcb2<sp/>=<sp/><ref refid="d5/d3c/R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*cp2<sp/>=<sp/>(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*)(new_pcb2-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp2,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb2-&gt;<ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb2-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="d6/d2d/procsr3_8c_1af37cd4c55ba62a3241f54f8f4e8747e8" kindref="member">proc2</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>cp2-&gt;<ref refid="d7/dfe/structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process3&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a69f2ae0d18292b4ca844c7d656d6b25f" kindref="member">suspendPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process3&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*new_pcb3<sp/>=<sp/><ref refid="d5/d3c/R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process3&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*cp3<sp/>=<sp/>(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*)(new_pcb3-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp3,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb3-&gt;<ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb3-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="d6/d2d/procsr3_8c_1aea8e61640dff07a97542c429e0eb2559" kindref="member">proc3</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>cp3-&gt;<ref refid="d7/dfe/structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process4&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a69f2ae0d18292b4ca844c7d656d6b25f" kindref="member">suspendPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process4&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*new_pcb4<sp/>=<sp/><ref refid="d5/d3c/R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process4&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*cp4<sp/>=<sp/>(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*)(new_pcb4-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp4,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb4-&gt;<ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb4-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="d6/d2d/procsr3_8c_1a86a94995afad1e25eaab374c95c89c94" kindref="member">proc4</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>cp4-&gt;<ref refid="d7/dfe/structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process5&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d62/R2commands_8c_1a69f2ae0d18292b4ca844c7d656d6b25f" kindref="member">suspendPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process5&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref><sp/>*new_pcb5<sp/>=<sp/><ref refid="d5/d3c/R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Process5&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*cp5<sp/>=<sp/>(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref><sp/>*)(new_pcb5-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d66/string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp5,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="d7/dfe/structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb5-&gt;<ref refid="d7/d51/structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb5-&gt;<ref refid="d7/d51/structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="dc/db2/system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="d6/d2d/procsr3_8c_1a6c2f639619099a32f0b4004bd111d679" kindref="member">proc5</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>cp5-&gt;<ref refid="d7/dfe/structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="modules/R3/R3commands.c"/>
+  </compounddef>
+</doxygen>

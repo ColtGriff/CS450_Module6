@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d6/ded/interrupts_8h" kind="file" language="C++">
+    <compoundname>interrupts.h</compoundname>
+    <includedby refid="d8/d22/interrupts_8c" local="no">kernel/core/interrupts.c</includedby>
+    <includedby refid="d5/d27/kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>kernel/core/kmain.c</label>
+        <link refid="d5/d27/kmain_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/interrupts.c</label>
+        <link refid="d8/d22/interrupts_8c"/>
+      </node>
+      <node id="1">
+        <label>include/core/interrupts.h</label>
+        <link refid="d6/ded/interrupts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d6/ded/interrupts_8h_1ad17d9a8aa78440af8fc40d3fd55dbad8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_irq</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_irq</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/interrupts.h" line="9" column="6" bodyfile="kernel/core/interrupts.c" bodystart="67" bodyend="102" declfile="include/core/interrupts.h" declline="9" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/ded/interrupts_8h_1afbc0dbef6f15e2df21b38724ea38c483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_pic</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_pic</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/interrupts.h" line="17" column="6" bodyfile="kernel/core/interrupts.c" bodystart="110" bodyend="131" declfile="include/core/interrupts.h" declline="17" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_INTERRUPTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_INTERRUPTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_irq</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/>Description..:<sp/>Installs<sp/>the<sp/>initial<sp/>interrupt<sp/>handlers<sp/>for</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>first<sp/>32<sp/>irq<sp/>lines.<sp/>Most<sp/>do<sp/>a<sp/>panic<sp/>for<sp/>now.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/ded/interrupts_8h_1ad17d9a8aa78440af8fc40d3fd55dbad8" kindref="member">init_irq</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_pic</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/>Description..:<sp/>Initializes<sp/>the<sp/>programmable<sp/>interrupt<sp/>controllers</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>performs<sp/>the<sp/>necessary<sp/>remapping<sp/>of<sp/>IRQs.<sp/>Leaves<sp/>interrupts</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>turned<sp/>off.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/ded/interrupts_8h_1afbc0dbef6f15e2df21b38724ea38c483" kindref="member">init_pic</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/core/interrupts.h"/>
+  </compounddef>
+</doxygen>

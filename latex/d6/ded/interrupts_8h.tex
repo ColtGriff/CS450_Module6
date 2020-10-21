@@ -1,0 +1,96 @@
+\hypertarget{interrupts_8h}{}\doxysection{include/core/interrupts.h File Reference}
+\label{interrupts_8h}\index{include/core/interrupts.h@{include/core/interrupts.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interrupts_8h_ad17d9a8aa78440af8fc40d3fd55dbad8}{init\+\_\+irq}} (void)
+\item 
+void \mbox{\hyperlink{interrupts_8h_afbc0dbef6f15e2df21b38724ea38c483}{init\+\_\+pic}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{interrupts_8h_ad17d9a8aa78440af8fc40d3fd55dbad8}\label{interrupts_8h_ad17d9a8aa78440af8fc40d3fd55dbad8}} 
+\index{interrupts.h@{interrupts.h}!init\_irq@{init\_irq}}
+\index{init\_irq@{init\_irq}!interrupts.h@{interrupts.h}}
+\doxysubsubsection{\texorpdfstring{init\_irq()}{init\_irq()}}
+{\footnotesize\ttfamily void init\+\_\+irq (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file interrupts.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69   \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71   \textcolor{comment}{// Necessary interrupt handlers for protected mode}}
+\DoxyCodeLine{72   \mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} isrs[17] = \{}
+\DoxyCodeLine{73       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a779cbe32e1a5f1dc8fa9b7191f116b28}{divide\_error}},}
+\DoxyCodeLine{74       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a0d0105433f9c65c14928027b3f0966b7}{debug}},}
+\DoxyCodeLine{75       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_aa42d18df06cf68f8c05fded5344c4c7e}{nmi}},}
+\DoxyCodeLine{76       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a874043e2396dd8ce20ec7af3ea1e2a86}{breakpoint}},}
+\DoxyCodeLine{77       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a810f078a27a6781a7406c74985ecb761}{overflow}},}
+\DoxyCodeLine{78       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a96724d36ad85f9a02231d8e6fe0434df}{bounds}},}
+\DoxyCodeLine{79       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a422d8af60b69cc11dbcbb9d89c69756b}{invalid\_op}},}
+\DoxyCodeLine{80       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_abe88cd1dcc26cb58ee785c714e016f72}{device\_not\_available}},}
+\DoxyCodeLine{81       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_ae2b9f5b44e05e0c53f8eaaa98396d627}{double\_fault}},}
+\DoxyCodeLine{82       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a1d688a0a370977c03fa98884a6e771e9}{coprocessor\_segment}},}
+\DoxyCodeLine{83       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a972be67f6a5432cc8eab8d27755fb00f}{invalid\_tss}},}
+\DoxyCodeLine{84       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_af1748d9ea65ba652bc92074ab6570d8e}{segment\_not\_present}},}
+\DoxyCodeLine{85       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a1ccc3198890318741629a03bb88bee6f}{stack\_segment}},}
+\DoxyCodeLine{86       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a10777dd6c3a040471676741bbb8dda46}{general\_protection}},}
+\DoxyCodeLine{87       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_ab3800dd0177baaef4da00494edfb32d9}{page\_fault}},}
+\DoxyCodeLine{88       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_ad686e3fee8ec8346a6d8e98d970a02dd}{reserved}},}
+\DoxyCodeLine{89       (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a5c538c7b7a55e3c981780b599fcb1de7}{coprocessor}}\};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91   \textcolor{comment}{// Install handlers; 0x08=sel, 0x8e=flags}}
+\DoxyCodeLine{92   \textcolor{keywordflow}{for} (i = 0; i < 32; i++)}
+\DoxyCodeLine{93   \{}
+\DoxyCodeLine{94     \textcolor{keywordflow}{if} (i < 17)}
+\DoxyCodeLine{95       \mbox{\hyperlink{tables_8h_a9eca3fe1465f8d7d383551d804853139}{idt\_set\_gate}}(i, isrs[i], 0x08, 0x8e);}
+\DoxyCodeLine{96     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{97       \mbox{\hyperlink{tables_8h_a9eca3fe1465f8d7d383551d804853139}{idt\_set\_gate}}(i, (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_ad686e3fee8ec8346a6d8e98d970a02dd}{reserved}}, 0x08, 0x8e);}
+\DoxyCodeLine{98   \}}
+\DoxyCodeLine{99   \textcolor{comment}{// Ignore interrupts from the real time clock}}
+\DoxyCodeLine{100   \mbox{\hyperlink{tables_8h_a9eca3fe1465f8d7d383551d804853139}{idt\_set\_gate}}(0x08, (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a52f2615cebbdeab188085a03c913fcf9}{rtc\_isr}}, 0x08, 0x8e);}
+\DoxyCodeLine{101   \mbox{\hyperlink{tables_8h_a9eca3fe1465f8d7d383551d804853139}{idt\_set\_gate}}(60, (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})\mbox{\hyperlink{interrupts_8c_a99cc9cf3204b4d11bebf1f85b763f608}{sys\_call\_isr}}, 0x08, 0x8e);}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{interrupts_8h_afbc0dbef6f15e2df21b38724ea38c483}\label{interrupts_8h_afbc0dbef6f15e2df21b38724ea38c483}} 
+\index{interrupts.h@{interrupts.h}!init\_pic@{init\_pic}}
+\index{init\_pic@{init\_pic}!interrupts.h@{interrupts.h}}
+\doxysubsubsection{\texorpdfstring{init\_pic()}{init\_pic()}}
+{\footnotesize\ttfamily void init\+\_\+pic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 110 of file interrupts.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_a6b115109e4a0d3c5fb6252d091e86bfe}{PIC1}}, \mbox{\hyperlink{interrupts_8c_ac56445256ce58f14f3c61af0cbf0cdad}{ICW1}}); \textcolor{comment}{//send initialization code words 1 to PIC1}}
+\DoxyCodeLine{113   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{114   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_ac90003f52c8d736193efc954ece08e58}{PIC2}}, \mbox{\hyperlink{interrupts_8c_ac56445256ce58f14f3c61af0cbf0cdad}{ICW1}}); \textcolor{comment}{//send icw1 to PIC2}}
+\DoxyCodeLine{115   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{116   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_a6b115109e4a0d3c5fb6252d091e86bfe}{PIC1}} + 1, 0x20); \textcolor{comment}{//icw2: remap irq0 to 32}}
+\DoxyCodeLine{117   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{118   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_ac90003f52c8d736193efc954ece08e58}{PIC2}} + 1, 0x28); \textcolor{comment}{//icw2: remap irq8 to 40}}
+\DoxyCodeLine{119   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{120   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_a6b115109e4a0d3c5fb6252d091e86bfe}{PIC1}} + 1, 4); \textcolor{comment}{//icw3}}
+\DoxyCodeLine{121   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{122   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_ac90003f52c8d736193efc954ece08e58}{PIC2}} + 1, 2); \textcolor{comment}{//icw3}}
+\DoxyCodeLine{123   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{124   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_a6b115109e4a0d3c5fb6252d091e86bfe}{PIC1}} + 1, \mbox{\hyperlink{interrupts_8c_a7945f331ddf94a0e0e938f825bc4d43c}{ICW4}}); \textcolor{comment}{//icw4: 80x86, automatic handling}}
+\DoxyCodeLine{125   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{126   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_ac90003f52c8d736193efc954ece08e58}{PIC2}} + 1, \mbox{\hyperlink{interrupts_8c_a7945f331ddf94a0e0e938f825bc4d43c}{ICW4}}); \textcolor{comment}{//icw4: 80x86, automatic handling}}
+\DoxyCodeLine{127   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{128   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_a6b115109e4a0d3c5fb6252d091e86bfe}{PIC1}} + 1, 0xFF); \textcolor{comment}{//disable irqs for PIC1}}
+\DoxyCodeLine{129   \mbox{\hyperlink{interrupts_8c_aeae4190ed25d0648577e1c742fd8a78d}{io\_wait}}();}
+\DoxyCodeLine{130   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{interrupts_8c_ac90003f52c8d736193efc954ece08e58}{PIC2}} + 1, 0xFF); \textcolor{comment}{//disable irqs for PIC2}}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dd/d1a/structidt__entry__struct" kind="struct" language="C++" prot="public">
+    <compoundname>idt_entry_struct</compoundname>
+    <includes refid="df/d2c/tables_8h" local="no">tables.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dd/d1a/structidt__entry__struct_1aefa75d6bfe07f1f544393b4dbccb3e76" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int idt_entry_struct::base_low</definition>
+        <argsstring></argsstring>
+        <name>base_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="8" column="10" bodyfile="include/core/tables.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d1a/structidt__entry__struct_1a85254c7df6a612f4a4b3bb470ff3370c" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int idt_entry_struct::sselect</definition>
+        <argsstring></argsstring>
+        <name>sselect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="9" column="10" bodyfile="include/core/tables.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d1a/structidt__entry__struct_1a0d33c8509ae77d42e680d8d11b4c8035" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int idt_entry_struct::zero</definition>
+        <argsstring></argsstring>
+        <name>zero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="10" column="10" bodyfile="include/core/tables.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d1a/structidt__entry__struct_1a46c92bd8f07d5ff4e379a07b293c46af" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a1026e682ffdadc1701c42cd44ce9efcf" kindref="member">u8int</ref></type>
+        <definition>u8int idt_entry_struct::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="11" column="10" bodyfile="include/core/tables.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d1a/structidt__entry__struct_1a1c6a29cae5ea9a832cf4261aaa5b43d0" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/db2/system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int idt_entry_struct::base_high</definition>
+        <argsstring></argsstring>
+        <name>base_high</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="12" column="10" bodyfile="include/core/tables.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/tables.h" line="6" column="1" bodyfile="include/core/tables.h" bodystart="7" bodyend="13"/>
+    <listofallmembers>
+      <member refid="dd/d1a/structidt__entry__struct_1a1c6a29cae5ea9a832cf4261aaa5b43d0" prot="public" virt="non-virtual"><scope>idt_entry_struct</scope><name>base_high</name></member>
+      <member refid="dd/d1a/structidt__entry__struct_1aefa75d6bfe07f1f544393b4dbccb3e76" prot="public" virt="non-virtual"><scope>idt_entry_struct</scope><name>base_low</name></member>
+      <member refid="dd/d1a/structidt__entry__struct_1a46c92bd8f07d5ff4e379a07b293c46af" prot="public" virt="non-virtual"><scope>idt_entry_struct</scope><name>flags</name></member>
+      <member refid="dd/d1a/structidt__entry__struct_1a85254c7df6a612f4a4b3bb470ff3370c" prot="public" virt="non-virtual"><scope>idt_entry_struct</scope><name>sselect</name></member>
+      <member refid="dd/d1a/structidt__entry__struct_1a0d33c8509ae77d42e680d8d11b4c8035" prot="public" virt="non-virtual"><scope>idt_entry_struct</scope><name>zero</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dc/d2c/structfooter" kind="struct" language="C++" prot="public">
+    <compoundname>footer</compoundname>
+    <includes refid="da/ddb/heap_8h" local="no">heap.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dc/d2c/structfooter_1acae33dac61c9505ff5b850f88d32dd0b" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/d65/structheader" kindref="compound">header</ref></type>
+        <definition>header footer::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="17" column="10" bodyfile="include/mem/heap.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>footer</label>
+        <link refid="dc/d2c/structfooter"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>head</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>header</label>
+        <link refid="d5/d65/structheader"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/mem/heap.h" line="16" column="1" bodyfile="include/mem/heap.h" bodystart="16" bodyend="18"/>
+    <listofallmembers>
+      <member refid="dc/d2c/structfooter_1acae33dac61c9505ff5b850f88d32dd0b" prot="public" virt="non-virtual"><scope>footer</scope><name>head</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,259 @@
+\hypertarget{string_8c}{}\doxysection{lib/string.c File Reference}
+\label{string_8c}\index{lib/string.c@{lib/string.c}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{string_8c_a2dee044e4e667b5b789b493abd21cfa4}{strlen}} (const char $\ast$s)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy}} (char $\ast$s1, const char $\ast$s2)
+\item 
+int \mbox{\hyperlink{string_8c_a30670a60464f77af17dfb353353d6df8}{atoi}} (const char $\ast$s)
+\item 
+int \mbox{\hyperlink{string_8c_a11bd144d7d44914099a3aeddf1c8567d}{strcmp}} (const char $\ast$s1, const char $\ast$s2)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_a8908188ae9fc2f05d993257ef001d553}{strcat}} (char $\ast$s1, const char $\ast$s2)
+\item 
+int \mbox{\hyperlink{string_8c_a0f3d37d605e9e6d4fc1853ff9d4b91bf}{isspace}} (const char $\ast$c)
+\item 
+void $\ast$ \mbox{\hyperlink{string_8c_ace6ee45c30e71865e6eb635200379db9}{memset}} (void $\ast$s, int c, \mbox{\hyperlink{system_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} n)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_af1a867dcea42fc1215d0eddf19283ef3}{strtok}} (char $\ast$s1, const char $\ast$s2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{string_8c_a30670a60464f77af17dfb353353d6df8}\label{string_8c_a30670a60464f77af17dfb353353d6df8}} 
+\index{string.c@{string.c}!atoi@{atoi}}
+\index{atoi@{atoi}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{atoi()}{atoi()}}
+{\footnotesize\ttfamily int atoi (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50   \textcolor{keywordtype}{int} res=0; }
+\DoxyCodeLine{51    \textcolor{keywordtype}{int} charVal=0;}
+\DoxyCodeLine{52    \textcolor{keywordtype}{char} sign = \textcolor{charliteral}{' '}; }
+\DoxyCodeLine{53    \textcolor{keywordtype}{char} c = *s;}
+\DoxyCodeLine{54    }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56    \textcolor{keywordflow}{while}(\mbox{\hyperlink{string_8c_a0f3d37d605e9e6d4fc1853ff9d4b91bf}{isspace}}(\&c))\{ ++s; c = *s;\} \textcolor{comment}{// advance past whitespace}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58    }
+\DoxyCodeLine{59    \textcolor{keywordflow}{if} (*s == \textcolor{charliteral}{'-\/'} || *s == \textcolor{charliteral}{'+'}) sign = *(s++); \textcolor{comment}{// save the sign}}
+\DoxyCodeLine{60    }
+\DoxyCodeLine{61    }
+\DoxyCodeLine{62    \textcolor{keywordflow}{while}(*s != \textcolor{charliteral}{'\(\backslash\)0'})\{ }
+\DoxyCodeLine{63         charVal = *s -\/ 48;}
+\DoxyCodeLine{64     res = res * 10 + charVal; }
+\DoxyCodeLine{65     s++;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67    \} }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69    }
+\DoxyCodeLine{70    \textcolor{keywordflow}{if} ( sign == \textcolor{charliteral}{'-\/'}) res=res * -\/1;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72   \textcolor{keywordflow}{return} res; \textcolor{comment}{// return integer}}
+\DoxyCodeLine{73 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_a0f3d37d605e9e6d4fc1853ff9d4b91bf}\label{string_8c_a0f3d37d605e9e6d4fc1853ff9d4b91bf}} 
+\index{string.c@{string.c}!isspace@{isspace}}
+\index{isspace@{isspace}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{isspace()}{isspace()}}
+{\footnotesize\ttfamily int isspace (\begin{DoxyParamCaption}\item[{const char $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Definition at line 119 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{120 \{}
+\DoxyCodeLine{121   \textcolor{keywordflow}{if} (*c == \textcolor{charliteral}{' '}  ||}
+\DoxyCodeLine{122       *c == \textcolor{charliteral}{'\(\backslash\)n'} ||}
+\DoxyCodeLine{123       *c == \textcolor{charliteral}{'\(\backslash\)r'} ||}
+\DoxyCodeLine{124       *c == \textcolor{charliteral}{'\(\backslash\)f'} ||}
+\DoxyCodeLine{125       *c == \textcolor{charliteral}{'\(\backslash\)t'} ||}
+\DoxyCodeLine{126       *c == \textcolor{charliteral}{'\(\backslash\)v'})\{}
+\DoxyCodeLine{127     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{128   \}}
+\DoxyCodeLine{129   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{130 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_ace6ee45c30e71865e6eb635200379db9}\label{string_8c_ace6ee45c30e71865e6eb635200379db9}} 
+\index{string.c@{string.c}!memset@{memset}}
+\index{memset@{memset}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{memset()}{memset()}}
+{\footnotesize\ttfamily void$\ast$ memset (\begin{DoxyParamCaption}\item[{void $\ast$}]{s,  }\item[{int}]{c,  }\item[{\mbox{\hyperlink{system_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line 137 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{138 \{}
+\DoxyCodeLine{139   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *p = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *) s;}
+\DoxyCodeLine{140   \textcolor{keywordflow}{while}(n-\/-\/)\{}
+\DoxyCodeLine{141     *p++ = (\textcolor{keywordtype}{unsigned} char) c;}
+\DoxyCodeLine{142   \}}
+\DoxyCodeLine{143   \textcolor{keywordflow}{return} s;}
+\DoxyCodeLine{144 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_a8908188ae9fc2f05d993257ef001d553}\label{string_8c_a8908188ae9fc2f05d993257ef001d553}} 
+\index{string.c@{string.c}!strcat@{strcat}}
+\index{strcat@{strcat}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{strcat()}{strcat()}}
+{\footnotesize\ttfamily char$\ast$ strcat (\begin{DoxyParamCaption}\item[{char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108   \textcolor{keywordtype}{char} *rc = s1;}
+\DoxyCodeLine{109   \textcolor{keywordflow}{if} (*s1) \textcolor{keywordflow}{while}(*++s1);}
+\DoxyCodeLine{110   \textcolor{keywordflow}{while}( (*s1++ = *s2++) );}
+\DoxyCodeLine{111   \textcolor{keywordflow}{return} rc;}
+\DoxyCodeLine{112 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_a11bd144d7d44914099a3aeddf1c8567d}\label{string_8c_a11bd144d7d44914099a3aeddf1c8567d}} 
+\index{string.c@{string.c}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{strcmp()}{strcmp()}}
+{\footnotesize\ttfamily int strcmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 79 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82   \textcolor{comment}{// Remarks:}}
+\DoxyCodeLine{83   \textcolor{comment}{// 1) If we made it to the end of both strings (i. e. our pointer points to a}}
+\DoxyCodeLine{84   \textcolor{comment}{//    '\(\backslash\)0' character), the function will return 0}}
+\DoxyCodeLine{85   \textcolor{comment}{// 2) If we didn't make it to the end of both strings, the function will}}
+\DoxyCodeLine{86   \textcolor{comment}{//    return the difference of the characters at the first index of}}
+\DoxyCodeLine{87   \textcolor{comment}{//    indifference.}}
+\DoxyCodeLine{88   \textcolor{keywordflow}{while} ( (*s1) \&\& (*s1==*s2) )\{}
+\DoxyCodeLine{89     ++s1;}
+\DoxyCodeLine{90     ++s2;}
+\DoxyCodeLine{91   \}}
+\DoxyCodeLine{92   \textcolor{keywordflow}{return} ( *(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *)s1 -\/ *(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *)s2 );}
+\DoxyCodeLine{93 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}\label{string_8c_a1eb9cae61e6a6282c28dbc298ef7297e}} 
+\index{string.c@{string.c}!strcpy@{strcpy}}
+\index{strcpy@{strcpy}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{strcpy()}{strcpy()}}
+{\footnotesize\ttfamily char$\ast$ strcpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38   \textcolor{keywordtype}{char} *rc = s1;}
+\DoxyCodeLine{39   \textcolor{keywordflow}{while}( (*s1++ = *s2++) );}
+\DoxyCodeLine{40   \textcolor{keywordflow}{return} rc; \textcolor{comment}{// return pointer to destination string}}
+\DoxyCodeLine{41 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_a2dee044e4e667b5b789b493abd21cfa4}\label{string_8c_a2dee044e4e667b5b789b493abd21cfa4}} 
+\index{string.c@{string.c}!strlen@{strlen}}
+\index{strlen@{strlen}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{strlen()}{strlen()}}
+{\footnotesize\ttfamily int strlen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26   \textcolor{keywordtype}{int} r1 = 0;}
+\DoxyCodeLine{27   \textcolor{keywordflow}{if} (*s) \textcolor{keywordflow}{while}(*s++) r1++;}
+\DoxyCodeLine{28   \textcolor{keywordflow}{return} r1;\textcolor{comment}{//return length of string}}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{string_8c_af1a867dcea42fc1215d0eddf19283ef3}\label{string_8c_af1a867dcea42fc1215d0eddf19283ef3}} 
+\index{string.c@{string.c}!strtok@{strtok}}
+\index{strtok@{strtok}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{strtok()}{strtok()}}
+{\footnotesize\ttfamily char$\ast$ strtok (\begin{DoxyParamCaption}\item[{char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 151 of file string.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{152 \{}
+\DoxyCodeLine{153   \textcolor{keyword}{static} \textcolor{keywordtype}{char} *tok\_tmp = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{154   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *p = s2;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156   \textcolor{comment}{//new string}}
+\DoxyCodeLine{157   \textcolor{keywordflow}{if} (s1!=\mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})\{}
+\DoxyCodeLine{158     tok\_tmp = s1;}
+\DoxyCodeLine{159   \}}
+\DoxyCodeLine{160   \textcolor{comment}{//old string cont'd}}
+\DoxyCodeLine{161   \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{162     \textcolor{keywordflow}{if} (tok\_tmp==\mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})\{}
+\DoxyCodeLine{163       \textcolor{keywordflow}{return} \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{164     \}}
+\DoxyCodeLine{165     s1 = tok\_tmp;}
+\DoxyCodeLine{166   \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168   \textcolor{comment}{//skip leading s2 characters}}
+\DoxyCodeLine{169   \textcolor{keywordflow}{while} ( *p \&\& *s1 )\{}
+\DoxyCodeLine{170     \textcolor{keywordflow}{if} (*s1==*p)\{}
+\DoxyCodeLine{171       ++s1;}
+\DoxyCodeLine{172       p = s2;}
+\DoxyCodeLine{173       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175     ++p;}
+\DoxyCodeLine{176   \}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178   \textcolor{comment}{//no more to parse}}
+\DoxyCodeLine{179   \textcolor{keywordflow}{if} (!*s1)\{}
+\DoxyCodeLine{180     \textcolor{keywordflow}{return} (tok\_tmp = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}});}
+\DoxyCodeLine{181   \}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183   \textcolor{comment}{//skip non-\/s2 characters}}
+\DoxyCodeLine{184   tok\_tmp = s1;}
+\DoxyCodeLine{185   \textcolor{keywordflow}{while} (*tok\_tmp)\{}
+\DoxyCodeLine{186     p = s2;}
+\DoxyCodeLine{187     \textcolor{keywordflow}{while} (*p)\{}
+\DoxyCodeLine{188       \textcolor{keywordflow}{if} (*tok\_tmp==*p++)\{}
+\DoxyCodeLine{189     *tok\_tmp++ = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{190     \textcolor{keywordflow}{return} s1;}
+\DoxyCodeLine{191       \}}
+\DoxyCodeLine{192     \}}
+\DoxyCodeLine{193     ++tok\_tmp;}
+\DoxyCodeLine{194   \}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196   \textcolor{comment}{//end of string}}
+\DoxyCodeLine{197   tok\_tmp = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{198   \textcolor{keywordflow}{return} s1;}
+\DoxyCodeLine{199 \}}
+
+\end{DoxyCode}

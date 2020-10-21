@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="d2/d36/structqueue" kind="struct" language="C++" prot="public">
+    <compoundname>queue</compoundname>
+    <includes refid="d4/d3c/R2__Internal__Functions__And__Structures_8h" local="no">R2_Internal_Functions_And_Structures.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/d36/structqueue_1ac71ad15edf9cf721b2fdb85524c51bf0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int queue::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="17" column="9" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d36/structqueue_1a842af6c249ba80f2ab495e71c4233ddd" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* queue::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="18" column="9" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d36/structqueue_1aab402320242628ab44a30998f5c40d81" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/d51/structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* queue::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="19" column="9" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>queue</label>
+        <link refid="d2/d36/structqueue"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>head</edgelabel>
+          <edgelabel>tail</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PCB</label>
+        <link refid="d7/d51/structPCB"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>nextPCB</edgelabel>
+          <edgelabel>prevPCB</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="modules/R2/R2_Internal_Functions_And_Structures.h" line="15" column="1" bodyfile="modules/R2/R2_Internal_Functions_And_Structures.h" bodystart="16" bodyend="21"/>
+    <listofallmembers>
+      <member refid="d2/d36/structqueue_1ac71ad15edf9cf721b2fdb85524c51bf0" prot="public" virt="non-virtual"><scope>queue</scope><name>count</name></member>
+      <member refid="d2/d36/structqueue_1a842af6c249ba80f2ab495e71c4233ddd" prot="public" virt="non-virtual"><scope>queue</scope><name>head</name></member>
+      <member refid="d2/d36/structqueue_1aab402320242628ab44a30998f5c40d81" prot="public" virt="non-virtual"><scope>queue</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

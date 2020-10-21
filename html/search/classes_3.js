@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['header_301',['header',['../structheader.html',1,'']]],
-  ['heap_302',['heap',['../structheap.html',1,'']]]
+  ['footer_369',['footer',['../dc/d2c/structfooter.html',1,'']]]
 ];

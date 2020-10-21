@@ -1,0 +1,361 @@
+\hypertarget{serial_8c}{}\doxysection{kernel/core/serial.c File Reference}
+\label{serial_8c}\index{kernel/core/serial.c@{kernel/core/serial.c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$core/io.\+h$>$}\newline
+{\ttfamily \#include $<$core/serial.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{N\+O\+\_\+\+E\+R\+R\+OR}}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{serial_8c_a7078c07ff8b2c48780558549a8f7cf90}{init\+\_\+serial}} (int device)
+\item 
+int \mbox{\hyperlink{serial_8c_a3514f7abff236a4e00a6c46021ce5e22}{serial\+\_\+println}} (const char $\ast$msg)
+\item 
+int \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\+\_\+print}} (const char $\ast$msg)
+\item 
+int \mbox{\hyperlink{serial_8c_ae97b87ee1f57c687e7fca6f9958e03ef}{set\+\_\+serial\+\_\+out}} (int device)
+\item 
+int \mbox{\hyperlink{serial_8c_a3f4008da5feabfb7e086f6673a81104b}{set\+\_\+serial\+\_\+in}} (int device)
+\item 
+int $\ast$ \mbox{\hyperlink{serial_8c_ab1d1d36bd91339352f5b66f809b34d8c}{polling}} (char $\ast$buffer, int $\ast$count)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\+\_\+port\+\_\+out}} = 0
+\item 
+int \mbox{\hyperlink{serial_8c_a1a756238531fc5bf1096f89dc18e835e}{serial\+\_\+port\+\_\+in}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{serial_8c_a258bb72419ef143530a2f8f55e7d57af}\label{serial_8c_a258bb72419ef143530a2f8f55e7d57af}} 
+\index{serial.c@{serial.c}!NO\_ERROR@{NO\_ERROR}}
+\index{NO\_ERROR@{NO\_ERROR}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{NO\_ERROR}{NO\_ERROR}}
+{\footnotesize\ttfamily \#define N\+O\+\_\+\+E\+R\+R\+OR~0}
+
+
+
+Definition at line 12 of file serial.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{serial_8c_a7078c07ff8b2c48780558549a8f7cf90}\label{serial_8c_a7078c07ff8b2c48780558549a8f7cf90}} 
+\index{serial.c@{serial.c}!init\_serial@{init\_serial}}
+\index{init\_serial@{init\_serial}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{init\_serial()}{init\_serial()}}
+{\footnotesize\ttfamily int init\+\_\+serial (\begin{DoxyParamCaption}\item[{int}]{device }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 1, 0x00);          \textcolor{comment}{//disable interrupts}}
+\DoxyCodeLine{25   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 3, 0x80);          \textcolor{comment}{//set line control register}}
+\DoxyCodeLine{26   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 0, 115200 / 9600); \textcolor{comment}{//set bsd least sig bit}}
+\DoxyCodeLine{27   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 1, 0x00);          \textcolor{comment}{//brd most significant bit}}
+\DoxyCodeLine{28   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 3, 0x03);          \textcolor{comment}{//lock divisor; 8bits, no parity, one stop}}
+\DoxyCodeLine{29   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 2, 0xC7);          \textcolor{comment}{//enable fifo, clear, 14byte threshold}}
+\DoxyCodeLine{30   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(device + 4, 0x0B);          \textcolor{comment}{//enable interrupts, rts/dsr set}}
+\DoxyCodeLine{31   (void)\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(device);               \textcolor{comment}{//read bit to reset port}}
+\DoxyCodeLine{32   \textcolor{keywordflow}{return} \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{NO\_ERROR}};}
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{serial_8c_ab1d1d36bd91339352f5b66f809b34d8c}\label{serial_8c_ab1d1d36bd91339352f5b66f809b34d8c}} 
+\index{serial.c@{serial.c}!polling@{polling}}
+\index{polling@{polling}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{polling()}{polling()}}
+{\footnotesize\ttfamily int$\ast$ polling (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{int $\ast$}]{count }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94   \textcolor{comment}{// insert your code to gather keyboard input via the technique of polling.}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96   \textcolor{keywordtype}{char} keyboard\_character;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98   \textcolor{keywordtype}{int} cursor = 0;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100   \textcolor{keywordtype}{char} log[] = \{\textcolor{charliteral}{'\(\backslash\)0'}, \textcolor{charliteral}{'\(\backslash\)0'}, \textcolor{charliteral}{'\(\backslash\)0'}, \textcolor{charliteral}{'\(\backslash\)0'}\};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102   \textcolor{keywordtype}{int} characters\_in\_buffer = 0;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{105   \{}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(\mbox{\hyperlink{serial_8h_a00dbb3ab1c59e14699be9393693e2248}{COM1}} + 5) \& 1)}
+\DoxyCodeLine{108     \{                                 \textcolor{comment}{// is there input char?}}
+\DoxyCodeLine{109       keyboard\_character = \mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(\mbox{\hyperlink{serial_8h_a00dbb3ab1c59e14699be9393693e2248}{COM1}}); \textcolor{comment}{//read the char from COM1}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111       \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'\(\backslash\)n'} || keyboard\_character == \textcolor{charliteral}{'\(\backslash\)r'})}
+\DoxyCodeLine{112       \{ \textcolor{comment}{// HANDLEING THE CARRIAGE RETURN AND NEW LINE CHARACTERS}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114         buffer[characters\_in\_buffer] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{115         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{116       \}}
+\DoxyCodeLine{117       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((keyboard\_character == 127 || keyboard\_character == 8) \&\& cursor > 0)}
+\DoxyCodeLine{118       \{ \textcolor{comment}{// HANDELING THE BACKSPACE CHARACTER}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120         \textcolor{comment}{//serial\_println("{}Handleing backspace character."{});}}
+\DoxyCodeLine{121         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)033[K"{}});}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123         buffer[cursor -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{124         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)b \(\backslash\)b"{}});}
+\DoxyCodeLine{125         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer + cursor);}
+\DoxyCodeLine{126         cursor-\/-\/;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128         \textcolor{keywordtype}{int} temp\_cursor = cursor;}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130         \textcolor{keywordflow}{while} (buffer[temp\_cursor + 1] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{131         \{}
+\DoxyCodeLine{132           buffer[temp\_cursor] = buffer[temp\_cursor + 1];}
+\DoxyCodeLine{133           buffer[temp\_cursor + 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{134           temp\_cursor++;}
+\DoxyCodeLine{135         \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137         characters\_in\_buffer-\/-\/;}
+\DoxyCodeLine{138         cursor = characters\_in\_buffer;}
+\DoxyCodeLine{139       \}}
+\DoxyCodeLine{140       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'\string~'} \&\& cursor < 99)}
+\DoxyCodeLine{141       \{ \textcolor{comment}{//HANDLING THE DELETE KEY}}
+\DoxyCodeLine{142         \textcolor{comment}{// \(\backslash\)033[3\string~}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)033[K"{}});}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146         buffer[cursor + 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{147         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)b \(\backslash\)b"{}});}
+\DoxyCodeLine{148         \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer + cursor);}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150         \textcolor{keywordtype}{int} temp\_cursor = cursor + 1;}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152         \textcolor{keywordflow}{while} (buffer[temp\_cursor + 1] != \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{153         \{}
+\DoxyCodeLine{154           buffer[temp\_cursor] = buffer[temp\_cursor + 1];}
+\DoxyCodeLine{155           buffer[temp\_cursor + 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{156           temp\_cursor++;}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159         characters\_in\_buffer-\/-\/;}
+\DoxyCodeLine{160         cursor = characters\_in\_buffer;}
+\DoxyCodeLine{161       \}}
+\DoxyCodeLine{162       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'\(\backslash\)033'})}
+\DoxyCodeLine{163       \{ \textcolor{comment}{// HANDLEING FIRST CHARACTER FOR ARROW KEYS}}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165         log[0] = keyboard\_character;}
+\DoxyCodeLine{166       \}}
+\DoxyCodeLine{167       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'['} \&\& log[0] == \textcolor{charliteral}{'\(\backslash\)033'})}
+\DoxyCodeLine{168       \{ \textcolor{comment}{// HANDLEING SECOND CHARACTER FOR ARROW KEYS}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170         log[1] = keyboard\_character;}
+\DoxyCodeLine{171       \}}
+\DoxyCodeLine{172       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (log[0] == \textcolor{charliteral}{'\(\backslash\)033'} \&\& log[1] == \textcolor{charliteral}{'['})}
+\DoxyCodeLine{173       \{ \textcolor{comment}{// HANDLEING LAST CHARACTER FOR ARROW KEYS}}
+\DoxyCodeLine{174         log[2] = keyboard\_character;}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176         \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{177         \{ \textcolor{comment}{//Up arrow}}
+\DoxyCodeLine{178           \textcolor{comment}{//Call a history function from the commhand or do nothing}}
+\DoxyCodeLine{179         \}}
+\DoxyCodeLine{180         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'B'})}
+\DoxyCodeLine{181         \{ \textcolor{comment}{//Down arrow}}
+\DoxyCodeLine{182           \textcolor{comment}{//Call a history command from the commhand or do nothing}}
+\DoxyCodeLine{183         \}}
+\DoxyCodeLine{184         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'C'} \&\& cursor != 99)}
+\DoxyCodeLine{185         \{ \textcolor{comment}{//Right arrow}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)033[C"{}});}
+\DoxyCodeLine{188           cursor++;}
+\DoxyCodeLine{189         \}}
+\DoxyCodeLine{190         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyboard\_character == \textcolor{charliteral}{'D'} \&\& cursor != 0)}
+\DoxyCodeLine{191         \{ \textcolor{comment}{//Left arrow}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)033[D"{}});}
+\DoxyCodeLine{194           cursor-\/-\/;}
+\DoxyCodeLine{195         \}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197         \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(log, \textcolor{charliteral}{'\(\backslash\)0'}, 4);}
+\DoxyCodeLine{198       \}}
+\DoxyCodeLine{199       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{200       \{}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202         \textcolor{keywordflow}{if} (cursor == 0 \&\& buffer[cursor] == \textcolor{charliteral}{'\(\backslash\)0'}) \textcolor{comment}{//Adding character at beginning of buffer}}
+\DoxyCodeLine{203         \{}
+\DoxyCodeLine{204           buffer[cursor] = keyboard\_character;}
+\DoxyCodeLine{205           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer + cursor);}
+\DoxyCodeLine{206           cursor++;}
+\DoxyCodeLine{207         \}}
+\DoxyCodeLine{208         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (buffer[cursor] == \textcolor{charliteral}{'\(\backslash\)0'}) \textcolor{comment}{//Adding character at the end of the buffer}}
+\DoxyCodeLine{209         \{}
+\DoxyCodeLine{210           buffer[cursor] = keyboard\_character;}
+\DoxyCodeLine{211           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer + cursor);}
+\DoxyCodeLine{212           cursor++;}
+\DoxyCodeLine{213         \}}
+\DoxyCodeLine{214         \textcolor{keywordflow}{else} \textcolor{comment}{//Inserting character to the middle of the buffer}}
+\DoxyCodeLine{215         \{}
+\DoxyCodeLine{216           \textcolor{keywordtype}{char} temp\_buffer[\mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(buffer)];}
+\DoxyCodeLine{217           \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(temp\_buffer, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(buffer));}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219           \textcolor{keywordtype}{int} temp\_cursor = 0;}
+\DoxyCodeLine{220           \textcolor{keywordflow}{while} (temp\_cursor <= characters\_in\_buffer) \textcolor{comment}{//Filling the temp\_buffer with all of the characters from buffer, and inserting the new character.}}
+\DoxyCodeLine{221           \{}
+\DoxyCodeLine{222             \textcolor{keywordflow}{if} (temp\_cursor < cursor)}
+\DoxyCodeLine{223             \{}
+\DoxyCodeLine{224               temp\_buffer[temp\_cursor] = buffer[temp\_cursor];}
+\DoxyCodeLine{225             \}}
+\DoxyCodeLine{226             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (temp\_cursor > cursor)}
+\DoxyCodeLine{227             \{}
+\DoxyCodeLine{228               temp\_buffer[temp\_cursor] = buffer[temp\_cursor -\/ 1];}
+\DoxyCodeLine{229             \}}
+\DoxyCodeLine{230             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{231             \{ \textcolor{comment}{//temp\_cursor == cursor}}
+\DoxyCodeLine{232               temp\_buffer[temp\_cursor] = keyboard\_character;}
+\DoxyCodeLine{233             \}}
+\DoxyCodeLine{234             temp\_cursor++;}
+\DoxyCodeLine{235           \}}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237           temp\_cursor = 0;}
+\DoxyCodeLine{238           \textcolor{keywordtype}{int} temp\_buffer\_size = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(temp\_buffer);}
+\DoxyCodeLine{239           \textcolor{keywordflow}{while} (temp\_cursor <= temp\_buffer\_size) \textcolor{comment}{//Setting the contents of the buffer equal to the temp\_buffer.}}
+\DoxyCodeLine{240           \{}
+\DoxyCodeLine{241             buffer[temp\_cursor] = temp\_buffer[temp\_cursor];}
+\DoxyCodeLine{242             temp\_cursor++;}
+\DoxyCodeLine{243           \}}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\textcolor{stringliteral}{"{}\(\backslash\)033[K"{}});}
+\DoxyCodeLine{246           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(\&keyboard\_character);}
+\DoxyCodeLine{247           \mbox{\hyperlink{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}{serial\_print}}(buffer + cursor + 1);}
+\DoxyCodeLine{248           cursor++;}
+\DoxyCodeLine{249         \}}
+\DoxyCodeLine{250         characters\_in\_buffer++;}
+\DoxyCodeLine{251       \}}
+\DoxyCodeLine{252     \}}
+\DoxyCodeLine{253   \}}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255   *count = characters\_in\_buffer; \textcolor{comment}{// buffer count}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257   \textcolor{keywordflow}{return} count;}
+\DoxyCodeLine{258 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}\label{serial_8c_a995827efcd4dcfb780c9fbb9645410a4}} 
+\index{serial.c@{serial.c}!serial\_print@{serial\_print}}
+\index{serial\_print@{serial\_print}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{serial\_print()}{serial\_print()}}
+{\footnotesize\ttfamily int serial\+\_\+print (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58   \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{59   \textcolor{keywordflow}{for} (i = 0; *(i + msg) != \textcolor{charliteral}{'\(\backslash\)0'}; i++)}
+\DoxyCodeLine{60   \{}
+\DoxyCodeLine{61     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}}, *(i + msg));}
+\DoxyCodeLine{62   \}}
+\DoxyCodeLine{63   \textcolor{keywordflow}{if} (*msg == \textcolor{charliteral}{'\(\backslash\)r'})}
+\DoxyCodeLine{64     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}}, \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{65   \textcolor{keywordflow}{return} \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{NO\_ERROR}};}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{serial_8c_a3514f7abff236a4e00a6c46021ce5e22}\label{serial_8c_a3514f7abff236a4e00a6c46021ce5e22}} 
+\index{serial.c@{serial.c}!serial\_println@{serial\_println}}
+\index{serial\_println@{serial\_println}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{serial\_println()}{serial\_println()}}
+{\footnotesize\ttfamily int serial\+\_\+println (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42   \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{43   \textcolor{keywordflow}{for} (i = 0; *(i + msg) != \textcolor{charliteral}{'\(\backslash\)0'}; i++)}
+\DoxyCodeLine{44   \{}
+\DoxyCodeLine{45     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}}, *(i + msg));}
+\DoxyCodeLine{46   \}}
+\DoxyCodeLine{47   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}}, \textcolor{charliteral}{'\(\backslash\)r'});}
+\DoxyCodeLine{48   \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(\mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}}, \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{49   \textcolor{keywordflow}{return} \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{NO\_ERROR}};}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{serial_8c_a3f4008da5feabfb7e086f6673a81104b}\label{serial_8c_a3f4008da5feabfb7e086f6673a81104b}} 
+\index{serial.c@{serial.c}!set\_serial\_in@{set\_serial\_in}}
+\index{set\_serial\_in@{set\_serial\_in}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{set\_serial\_in()}{set\_serial\_in()}}
+{\footnotesize\ttfamily int set\+\_\+serial\+\_\+in (\begin{DoxyParamCaption}\item[{int}]{device }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{88   \mbox{\hyperlink{serial_8c_a1a756238531fc5bf1096f89dc18e835e}{serial\_port\_in}} = device;}
+\DoxyCodeLine{89   \textcolor{keywordflow}{return} \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{NO\_ERROR}};}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{serial_8c_ae97b87ee1f57c687e7fca6f9958e03ef}\label{serial_8c_ae97b87ee1f57c687e7fca6f9958e03ef}} 
+\index{serial.c@{serial.c}!set\_serial\_out@{set\_serial\_out}}
+\index{set\_serial\_out@{set\_serial\_out}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{set\_serial\_out()}{set\_serial\_out()}}
+{\footnotesize\ttfamily int set\+\_\+serial\+\_\+out (\begin{DoxyParamCaption}\item[{int}]{device }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file serial.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75 \{}
+\DoxyCodeLine{76   \mbox{\hyperlink{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}{serial\_port\_out}} = device;}
+\DoxyCodeLine{77   \textcolor{keywordflow}{return} \mbox{\hyperlink{serial_8c_a258bb72419ef143530a2f8f55e7d57af}{NO\_ERROR}};}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{serial_8c_a1a756238531fc5bf1096f89dc18e835e}\label{serial_8c_a1a756238531fc5bf1096f89dc18e835e}} 
+\index{serial.c@{serial.c}!serial\_port\_in@{serial\_port\_in}}
+\index{serial\_port\_in@{serial\_port\_in}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_in}{serial\_port\_in}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+in = 0}
+
+
+
+Definition at line 16 of file serial.\+c.
+
+\mbox{\Hypertarget{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}\label{serial_8c_adbb2c18b0aaab5c1927a6f674768a710}} 
+\index{serial.c@{serial.c}!serial\_port\_out@{serial\_port\_out}}
+\index{serial\_port\_out@{serial\_port\_out}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_out}{serial\_port\_out}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+out = 0}
+
+
+
+Definition at line 15 of file serial.\+c.
+

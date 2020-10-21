@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dir_3f291d0a4bf9b6fcd2f0124e71b8ed71" kind="dir">
+    <compoundname>include/mem</compoundname>
+    <innerfile refid="da/ddb/heap_8h">heap.h</innerfile>
+    <innerfile refid="d4/df4/paging_8h">paging.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mem/"/>
+  </compounddef>
+</doxygen>

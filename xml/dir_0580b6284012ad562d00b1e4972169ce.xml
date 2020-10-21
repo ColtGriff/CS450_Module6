@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dir_0580b6284012ad562d00b1e4972169ce" kind="dir">
+    <compoundname>modules/R1</compoundname>
+    <innerfile refid="db/d71/commhand_8c">commhand.c</innerfile>
+    <innerfile refid="dc/d70/commhand_8h">commhand.h</innerfile>
+    <innerfile refid="d2/d9c/R1commands_8c">R1commands.c</innerfile>
+    <innerfile refid="da/ddd/R1commands_8h">R1commands.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/R1/"/>
+  </compounddef>
+</doxygen>

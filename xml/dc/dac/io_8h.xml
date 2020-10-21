@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="dc/dac/io_8h" kind="file" language="C++">
+    <compoundname>io.h</compoundname>
+    <includedby refid="d8/d22/interrupts_8c" local="no">kernel/core/interrupts.c</includedby>
+    <includedby refid="d5/d27/kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <includedby refid="d8/d90/serial_8c" local="no">kernel/core/serial.c</includedby>
+    <includedby refid="d2/d9c/R1commands_8c" local="no">modules/R1/R1commands.c</includedby>
+    <includedby refid="df/d78/R4commands_8c" local="no">modules/R4/R4commands.c</includedby>
+    <invincdepgraph>
+      <node id="6">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="df/d78/R4commands_8c"/>
+      </node>
+      <node id="3">
+        <label>kernel/core/kmain.c</label>
+        <link refid="d5/d27/kmain_8c"/>
+      </node>
+      <node id="4">
+        <label>kernel/core/serial.c</label>
+        <link refid="d8/d90/serial_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/interrupts.c</label>
+        <link refid="d8/d22/interrupts_8c"/>
+      </node>
+      <node id="1">
+        <label>include/core/io.h</label>
+        <link refid="dc/dac/io_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>modules/R1/R1commands.c</label>
+        <link refid="d2/d9c/R1commands_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dc/dac/io_8h_1a0e661d36f40638a36550a534076f155b" prot="public" static="no">
+        <name>outb</name>
+        <param><defname>port</defname></param>
+        <param><defname>data</defname></param>
+        <initializer>  <ref refid="dc/db2/system_8h_1a71921cebf4610b0dbb2b7a0daaf3fedf" kindref="member">asm</ref> <ref refid="dc/db2/system_8h_1af55a5e48555be7d32ad73e76cf5d4db0" kindref="member">volatile</ref> (&quot;outb %%al,%%dx&quot; : : &quot;a&quot; (data), &quot;d&quot; (port))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/io.h" line="8" column="9" bodyfile="include/core/io.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/dac/io_8h_1ad6488a48837d179b1833e2f48dac9665" prot="public" static="no">
+        <name>inb</name>
+        <param><defname>port</defname></param>
+        <initializer>      ({						\
+      unsigned char r;						\
+      <ref refid="dc/db2/system_8h_1a71921cebf4610b0dbb2b7a0daaf3fedf" kindref="member">asm</ref> <ref refid="dc/db2/system_8h_1af55a5e48555be7d32ad73e76cf5d4db0" kindref="member">volatile</ref> (&quot;inb %%dx,%%al&quot;: &quot;=a&quot; (r): &quot;d&quot; (port));	\
+      r;							\
+    })</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/io.h" line="15" column="9" bodyfile="include/core/io.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_IO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_IO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>outb</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/>Description..:<sp/>Write<sp/>a<sp/>byte<sp/>of<sp/>data<sp/>to<sp/>a<sp/>port.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="dc/dac/io_8h_1a0e661d36f40638a36550a534076f155b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>outb(port,<sp/>data)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"><sp/><sp/>asm<sp/>volatile<sp/>(&quot;outb<sp/>%%al,%%dx&quot;</highlight><highlight class="normal"><sp/>:<sp/>:<sp/>&quot;a&quot;<sp/>(data),<sp/>&quot;d&quot;<sp/>(port))</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>inb</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/>Description..:<sp/>Read<sp/>a<sp/>byte<sp/>of<sp/>data<sp/>from<sp/>a<sp/>port.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="dc/dac/io_8h_1ad6488a48837d179b1833e2f48dac9665" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inb(port)<sp/>({<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char<sp/>r;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>asm<sp/>volatile<sp/>(&quot;inb<sp/>%%dx,%%al&quot;</highlight><highlight class="normal">:<sp/>&quot;=a&quot;<sp/>(r):<sp/>&quot;d&quot;<sp/>(port));<sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>})</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/core/io.h"/>
+  </compounddef>
+</doxygen>

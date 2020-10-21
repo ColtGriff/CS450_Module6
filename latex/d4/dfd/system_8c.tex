@@ -1,0 +1,57 @@
+\hypertarget{system_8c}{}\doxysection{kernel/core/system.c File Reference}
+\label{system_8c}\index{kernel/core/system.c@{kernel/core/system.c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$system.\+h$>$}\newline
+{\ttfamily \#include $<$core/serial.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{system_8c_abdb09834267dd4a2a0d07d43ca4d230d}{klogv}} (const char $\ast$msg)
+\item 
+void \mbox{\hyperlink{system_8c_aff8473f901d828d76d3548130731c41d}{kpanic}} (const char $\ast$msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{system_8c_abdb09834267dd4a2a0d07d43ca4d230d}\label{system_8c_abdb09834267dd4a2a0d07d43ca4d230d}} 
+\index{system.c@{system.c}!klogv@{klogv}}
+\index{klogv@{klogv}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{klogv()}{klogv()}}
+{\footnotesize\ttfamily void klogv (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file system.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13   \textcolor{keywordtype}{char} logmsg[64] = \{\textcolor{charliteral}{'\(\backslash\)0'}\}, prefix[] = \textcolor{stringliteral}{"{}klogv: "{}};}
+\DoxyCodeLine{14   \mbox{\hyperlink{string_8h_a8908188ae9fc2f05d993257ef001d553}{strcat}}(logmsg, prefix);}
+\DoxyCodeLine{15   \mbox{\hyperlink{string_8h_a8908188ae9fc2f05d993257ef001d553}{strcat}}(logmsg, msg);}
+\DoxyCodeLine{16   \mbox{\hyperlink{serial_8h_a3514f7abff236a4e00a6c46021ce5e22}{serial\_println}}(logmsg);}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{system_8c_aff8473f901d828d76d3548130731c41d}\label{system_8c_aff8473f901d828d76d3548130731c41d}} 
+\index{system.c@{system.c}!kpanic@{kpanic}}
+\index{kpanic@{kpanic}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{kpanic()}{kpanic()}}
+{\footnotesize\ttfamily void kpanic (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file system.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26   \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}(); \textcolor{comment}{//disable interrupts}}
+\DoxyCodeLine{27   \textcolor{keywordtype}{char} logmsg[64] = \{\textcolor{charliteral}{'\(\backslash\)0'}\}, prefix[] = \textcolor{stringliteral}{"{}Panic: "{}};}
+\DoxyCodeLine{28   \mbox{\hyperlink{string_8h_a8908188ae9fc2f05d993257ef001d553}{strcat}}(logmsg, prefix);}
+\DoxyCodeLine{29   \mbox{\hyperlink{string_8h_a8908188ae9fc2f05d993257ef001d553}{strcat}}(logmsg, msg);}
+\DoxyCodeLine{30   \mbox{\hyperlink{system_8c_abdb09834267dd4a2a0d07d43ca4d230d}{klogv}}(logmsg);}
+\DoxyCodeLine{31   \mbox{\hyperlink{system_8h_a954b0134ce21d80f0efb22c77e821da3}{hlt}}(); \textcolor{comment}{//halt}}
+\DoxyCodeLine{32 \}}
+
+\end{DoxyCode}

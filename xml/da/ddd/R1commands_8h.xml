@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="da/ddd/R1commands_8h" kind="file" language="C++">
+    <compoundname>R1commands.h</compoundname>
+    <includedby refid="db/d71/commhand_8c" local="yes">modules/R1/commhand.c</includedby>
+    <includedby refid="d5/d3c/R2__Internal__Functions__And__Structures_8c" local="yes">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="d3/d62/R2commands_8c" local="yes">modules/R2/R2commands.c</includedby>
+    <includedby refid="d9/d22/R3commands_8c" local="yes">modules/R3/R3commands.c</includedby>
+    <includedby refid="df/d78/R4commands_8c" local="yes">modules/R4/R4commands.c</includedby>
+    <invincdepgraph>
+      <node id="6">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="df/d78/R4commands_8c"/>
+      </node>
+      <node id="4">
+        <label>modules/R2/R2commands.c</label>
+        <link refid="d3/d62/R2commands_8c"/>
+      </node>
+      <node id="2">
+        <label>modules/R1/commhand.c</label>
+        <link refid="db/d71/commhand_8c"/>
+      </node>
+      <node id="5">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="d9/d22/R3commands_8c"/>
+      </node>
+      <node id="1">
+        <label>modules/R1/R1commands.h</label>
+        <link refid="da/ddd/R1commands_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="d5/d3c/R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1a6b64e960aa5ad14e823de069f78c9b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void printMessage</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>printMessage</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="1" column="6" bodyfile="modules/R1/R1commands.c" bodystart="13" bodyend="26" declfile="modules/R1/R1commands.h" declline="1" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1a97ee70a8770dc30d06c744b24eb2fcfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void help</definition>
+        <argsstring>()</argsstring>
+        <name>help</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="3" column="6" bodyfile="modules/R1/R1commands.c" bodystart="28" bodyend="52" declfile="modules/R1/R1commands.h" declline="3" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1aadd58a2bd505eba3564c7483be1a6140" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void version</definition>
+        <argsstring>()</argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="5" column="6" bodyfile="modules/R1/R1commands.c" bodystart="54" bodyend="59" declfile="modules/R1/R1commands.h" declline="5" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1a1c7c164fd3c7dea7004ece3c6251fc94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void getTime</definition>
+        <argsstring>()</argsstring>
+        <name>getTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="7" column="6" bodyfile="modules/R1/R1commands.c" bodystart="61" bodyend="90" declfile="modules/R1/R1commands.h" declline="7" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1afc443fe98a5312e4b6f8d5fe13baf7cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>()</argsstring>
+        <name>setTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="9" column="6" bodyfile="modules/R1/R1commands.c" bodystart="92" bodyend="177" declfile="modules/R1/R1commands.h" declline="9" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1affb6f9c7b2c1d585677a5bba1da35c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void getDate</definition>
+        <argsstring>()</argsstring>
+        <name>getDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="11" column="6" bodyfile="modules/R1/R1commands.c" bodystart="179" bodyend="213" declfile="modules/R1/R1commands.h" declline="11" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1aa155fdc926b45ca3c91ebec313e5acf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setDate</definition>
+        <argsstring>()</argsstring>
+        <name>setDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="13" column="6" bodyfile="modules/R1/R1commands.c" bodystart="215" bodyend="368" declfile="modules/R1/R1commands.h" declline="13" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1a50895fa4f0317d479a30731917048acb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int change_int_to_binary</definition>
+        <argsstring>(int test)</argsstring>
+        <name>change_int_to_binary</name>
+        <param>
+          <type>int</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="15" column="14" declfile="modules/R1/R1commands.h" declline="15" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1ae8b9184465641fb2c95b1b9069a2c8fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BCDtoChar</definition>
+        <argsstring>(unsigned char test, char *buffer)</argsstring>
+        <name>BCDtoChar</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>test</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="17" column="5" bodyfile="modules/R1/R1commands.c" bodystart="376" bodyend="386" declfile="modules/R1/R1commands.h" declline="17" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="da/ddd/R1commands_8h_1a041c4fd02fe320e833aa34a820274935" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int quit</definition>
+        <argsstring>()</argsstring>
+        <name>quit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/R1commands.h" line="19" column="5" bodyfile="modules/R1/R1commands.c" bodystart="422" bodyend="451" declfile="modules/R1/R1commands.h" declline="19" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1a6b64e960aa5ad14e823de069f78c9b83" kindref="member">printMessage</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str);</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1a97ee70a8770dc30d06c744b24eb2fcfc" kindref="member">help</ref>();</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1aadd58a2bd505eba3564c7483be1a6140" kindref="member">version</ref>();</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1a1c7c164fd3c7dea7004ece3c6251fc94" kindref="member">getTime</ref>();</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1afc443fe98a5312e4b6f8d5fe13baf7cb" kindref="member">setTime</ref>();</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1affb6f9c7b2c1d585677a5bba1da35c06" kindref="member">getDate</ref>();</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1aa155fdc926b45ca3c91ebec313e5acf9" kindref="member">setDate</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="da/ddd/R1commands_8h_1a50895fa4f0317d479a30731917048acb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1a50895fa4f0317d479a30731917048acb" kindref="member">change_int_to_binary</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>test);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1ae8b9184465641fb2c95b1b9069a2c8fc" kindref="member">BCDtoChar</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>test,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="da/ddd/R1commands_8h_1a041c4fd02fe320e833aa34a820274935" kindref="member">quit</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="modules/R1/R1commands.h"/>
+  </compounddef>
+</doxygen>

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -22,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">3.75</span>
    </div>
   </td>
  </tr>
@@ -47,6 +51,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('globals_a.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -66,32 +86,60 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>access
-: <a class="el" href="tables_8h.html#a360a726ac0b61d9e4e1be3ad34f80244">tables.h</a>
+: <a class="el" href="df/d2c/tables_8h.html#a360a726ac0b61d9e4e1be3ad34f80244">tables.h</a>
+</li>
+<li>addAlarm()
+: <a class="el" href="df/d78/R4commands_8c.html#a92f5695e9d440ad2a819e9a86c376fbf">R4commands.c</a>
+, <a class="el" href="dc/d62/R4commands_8h.html#a92f5695e9d440ad2a819e9a86c376fbf">R4commands.h</a>
+</li>
+<li>alarm
+: <a class="el" href="dc/d62/R4commands_8h.html#a2f688c5360c081a8b03ac694584761f6">R4commands.h</a>
+</li>
+<li>alarmList
+: <a class="el" href="dc/d62/R4commands_8h.html#a9d8544c7f2af1a5a31ac0edde99e1d62">R4commands.h</a>
+</li>
+<li>alarmPCB()
+: <a class="el" href="df/d78/R4commands_8c.html#a2d57afc11c04ffa8dd85c39616d06ca1">R4commands.c</a>
+, <a class="el" href="dc/d62/R4commands_8h.html#a2d57afc11c04ffa8dd85c39616d06ca1">R4commands.h</a>
+</li>
+<li>alarms
+: <a class="el" href="df/d78/R4commands_8c.html#ada286b83368be279409d3ca741188504">R4commands.c</a>
 </li>
 <li>alloc()
-: <a class="el" href="heap_8h.html#a2b1d5a9ba11695605f74fc10cd719af5">heap.h</a>
-, <a class="el" href="heap_8c.html#a06dae34c7e7c73d518de00212a7c92da">heap.c</a>
+: <a class="el" href="da/ddb/heap_8h.html#a2b1d5a9ba11695605f74fc10cd719af5">heap.h</a>
+, <a class="el" href="d2/d29/heap_8c.html#a06dae34c7e7c73d518de00212a7c92da">heap.c</a>
+</li>
+<li>allocateAlarmQueue()
+: <a class="el" href="df/d78/R4commands_8c.html#a435753efa9eb2f8747246a592df3b8d7">R4commands.c</a>
+, <a class="el" href="dc/d62/R4commands_8h.html#a435753efa9eb2f8747246a592df3b8d7">R4commands.h</a>
+</li>
+<li>allocateAlarms()
+: <a class="el" href="df/d78/R4commands_8c.html#a6ec6f4cd7b31299f5c1b62d6236d9d82">R4commands.c</a>
+, <a class="el" href="dc/d62/R4commands_8h.html#a6ec6f4cd7b31299f5c1b62d6236d9d82">R4commands.h</a>
 </li>
 <li>allocatePCB()
-: <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.c</a>
-, <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.h</a>
+: <a class="el" href="d5/d3c/R2__Internal__Functions__And__Structures_8c.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a08e14856b0c743266c38c7aabc687c97">R2_Internal_Functions_And_Structures.h</a>
 </li>
 <li>allocateQueues()
-: <a class="el" href="R2__Internal__Functions__And__Structures_8h.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.h</a>
-, <a class="el" href="R2__Internal__Functions__And__Structures_8c.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.c</a>
+: <a class="el" href="d5/d3c/R2__Internal__Functions__And__Structures_8c.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.c</a>
+, <a class="el" href="d4/d3c/R2__Internal__Functions__And__Structures_8h.html#aa93ee76bdb5b9aac80f93031a9ea918e">R2_Internal_Functions_And_Structures.h</a>
 </li>
 <li>asm
-: <a class="el" href="system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">system.h</a>
+: <a class="el" href="dc/db2/system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">system.h</a>
 </li>
 <li>atoi()
-: <a class="el" href="string_8c.html#a30670a60464f77af17dfb353353d6df8">string.c</a>
-, <a class="el" href="string_8h.html#a30670a60464f77af17dfb353353d6df8">string.h</a>
+: <a class="el" href="d1/db0/string_8c.html#a30670a60464f77af17dfb353353d6df8">string.c</a>
+, <a class="el" href="da/d66/string_8h.html#a30670a60464f77af17dfb353353d6df8">string.h</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0 </li>
+  </ul>
+</div>
 </body>
 </html>
