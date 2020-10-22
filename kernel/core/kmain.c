@@ -111,7 +111,7 @@ void kmain(void)
 
    //asm volatile ("int $60");
 
-   createPCB("Idle", 's', 1);
+   createPCB("Idle", 's', 0);
    PCB *idlePCB = findPCB("Idle");
    context *cpIDLE = (context *)(idlePCB->stackTop);
    memset(cpIDLE, 0, sizeof(context));

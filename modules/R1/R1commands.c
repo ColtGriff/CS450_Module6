@@ -33,10 +33,10 @@ void help()
 	printMessage("setTime: Allows the user to change the set time.\n");
 	printMessage("getDate: Returns the current set date.\n");
 	printMessage("setDate: Allows the user to change the set date.\n");
-	printMessage("createPCB: Will create a PCB and put it into the ready queue by default.\n");
+	// printMessage("createPCB: Will create a PCB and put it into the ready queue by default.\n");
 	printMessage("deletePCB: Will delete a specific PCB from what ever queue it is in.\n");
-	printMessage("blockPCB: Will change a specific PCB's state to blocked.\n");
-	printMessage("unblockPCB: Will change a specific PCB's state to ready.\n");
+	// printMessage("blockPCB: Will change a specific PCB's state to blocked.\n");
+	// printMessage("unblockPCB: Will change a specific PCB's state to ready.\n");
 	printMessage("suspendPCB: Will suspend a specific PCB.\n");
 	printMessage("resumePCB: Will unsuspend a specific PCB.\n");
 	printMessage("setPCBPriority: Will change the priority of a specific PCB.\n");
@@ -46,7 +46,7 @@ void help()
 	printMessage("showSuspendedBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the suspended blocked queue.\n");
 	printMessage("showBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the blocked queue.\n");
 	printMessage("showReady: Will display the name, class, state, suspended status, and priority of every PCB in all 4 queues.\n");
-	printMessage("yield: Will cause commhand to voluntarily allow other processes to use the CPU.\n");
+	printMessage("yield: Will cause commhand to voluntarily allow other processes to use the CPU.\n (removed for R4)");
 	printMessage("loadr3: Will load all processes for R3. \n");
 	printMessage("quit: Allows the user to shut the system down.\n");
 }
@@ -485,11 +485,7 @@ void deleteQueue(queue *queue)
 	for (loop = 0; loop < queue->count; loop++)
 	{
 		tempPtr = queue->head;
-		if (strcmp(tempPtr->processName, "infinite") == 0 && tempPtr->suspendedStatus == 1)
-		{
-			suspendPCB(tempPtr->processName);
-		}
-		deletePCB(tempPtr->processName);
+		removePCB(tempPtr);
 	}
 }
 
