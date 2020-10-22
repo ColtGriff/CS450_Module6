@@ -1,0 +1,632 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}M\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}P\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}X-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Fall2020-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group9}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}alarm Struct Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Member Data Documentation}{7}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}alarmName}{7}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}alarmTime}{7}{subsubsection.4.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}nextAlarm}{8}{subsubsection.4.1.2.3}%
+\contentsline {subsubsection}{\numberline {4.1.2.4}prevAlarm}{8}{subsubsection.4.1.2.4}%
+\contentsline {section}{\numberline {4.2}alarm\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List Struct Reference}{8}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{8}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Member Data Documentation}{8}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}count}{8}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}head}{9}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}tail}{9}{subsubsection.4.2.2.3}%
+\contentsline {section}{\numberline {4.3}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}M\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CB Struct Reference}{9}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{9}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Member Data Documentation}{9}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}beginningAddr}{9}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}nextCMCB}{10}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}prevCMCB}{10}{subsubsection.4.3.2.3}%
+\contentsline {subsubsection}{\numberline {4.3.2.4}size}{10}{subsubsection.4.3.2.4}%
+\contentsline {subsubsection}{\numberline {4.3.2.5}type}{10}{subsubsection.4.3.2.5}%
+\contentsline {section}{\numberline {4.4}context Struct Reference}{10}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Detailed Description}{11}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Member Data Documentation}{11}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}cs}{11}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}ds}{11}{subsubsection.4.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.3}eax}{11}{subsubsection.4.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.4.2.4}ebp}{11}{subsubsection.4.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.4.2.5}ebx}{11}{subsubsection.4.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.4.2.6}ecx}{12}{subsubsection.4.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.4.2.7}edi}{12}{subsubsection.4.4.2.7}%
+\contentsline {subsubsection}{\numberline {4.4.2.8}edx}{12}{subsubsection.4.4.2.8}%
+\contentsline {subsubsection}{\numberline {4.4.2.9}eflags}{12}{subsubsection.4.4.2.9}%
+\contentsline {subsubsection}{\numberline {4.4.2.10}eip}{12}{subsubsection.4.4.2.10}%
+\contentsline {subsubsection}{\numberline {4.4.2.11}es}{12}{subsubsection.4.4.2.11}%
+\contentsline {subsubsection}{\numberline {4.4.2.12}esi}{13}{subsubsection.4.4.2.12}%
+\contentsline {subsubsection}{\numberline {4.4.2.13}esp}{13}{subsubsection.4.4.2.13}%
+\contentsline {subsubsection}{\numberline {4.4.2.14}fs}{13}{subsubsection.4.4.2.14}%
+\contentsline {subsubsection}{\numberline {4.4.2.15}gs}{13}{subsubsection.4.4.2.15}%
+\contentsline {section}{\numberline {4.5}date\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}time Struct Reference}{13}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Detailed Description}{14}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Member Data Documentation}{14}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}day\_m}{14}{subsubsection.4.5.2.1}%
+\contentsline {subsubsection}{\numberline {4.5.2.2}day\_w}{14}{subsubsection.4.5.2.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.3}day\_y}{14}{subsubsection.4.5.2.3}%
+\contentsline {subsubsection}{\numberline {4.5.2.4}hour}{14}{subsubsection.4.5.2.4}%
+\contentsline {subsubsection}{\numberline {4.5.2.5}min}{14}{subsubsection.4.5.2.5}%
+\contentsline {subsubsection}{\numberline {4.5.2.6}mon}{15}{subsubsection.4.5.2.6}%
+\contentsline {subsubsection}{\numberline {4.5.2.7}sec}{15}{subsubsection.4.5.2.7}%
+\contentsline {subsubsection}{\numberline {4.5.2.8}year}{15}{subsubsection.4.5.2.8}%
+\contentsline {section}{\numberline {4.6}footer Struct Reference}{15}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Detailed Description}{15}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Member Data Documentation}{15}{subsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.2.1}head}{16}{subsubsection.4.6.2.1}%
+\contentsline {section}{\numberline {4.7}gdt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}descriptor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}struct Struct Reference}{16}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Detailed Description}{16}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Member Data Documentation}{16}{subsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.2.1}base}{16}{subsubsection.4.7.2.1}%
+\contentsline {subsubsection}{\numberline {4.7.2.2}limit}{16}{subsubsection.4.7.2.2}%
+\contentsline {section}{\numberline {4.8}gdt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}entry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}struct Struct Reference}{17}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Detailed Description}{17}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Member Data Documentation}{17}{subsection.4.8.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.1}access}{17}{subsubsection.4.8.2.1}%
+\contentsline {subsubsection}{\numberline {4.8.2.2}base\_high}{17}{subsubsection.4.8.2.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.3}base\_low}{17}{subsubsection.4.8.2.3}%
+\contentsline {subsubsection}{\numberline {4.8.2.4}base\_mid}{18}{subsubsection.4.8.2.4}%
+\contentsline {subsubsection}{\numberline {4.8.2.5}flags}{18}{subsubsection.4.8.2.5}%
+\contentsline {subsubsection}{\numberline {4.8.2.6}limit\_low}{18}{subsubsection.4.8.2.6}%
+\contentsline {section}{\numberline {4.9}header Struct Reference}{18}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Detailed Description}{18}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Member Data Documentation}{18}{subsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.1}index\_id}{19}{subsubsection.4.9.2.1}%
+\contentsline {subsubsection}{\numberline {4.9.2.2}size}{19}{subsubsection.4.9.2.2}%
+\contentsline {section}{\numberline {4.10}heap Struct Reference}{19}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Detailed Description}{19}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Member Data Documentation}{19}{subsection.4.10.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.1}base}{19}{subsubsection.4.10.2.1}%
+\contentsline {subsubsection}{\numberline {4.10.2.2}index}{20}{subsubsection.4.10.2.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.3}max\_size}{20}{subsubsection.4.10.2.3}%
+\contentsline {subsubsection}{\numberline {4.10.2.4}min\_size}{20}{subsubsection.4.10.2.4}%
+\contentsline {section}{\numberline {4.11}idt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}entry\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}struct Struct Reference}{20}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Detailed Description}{20}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Member Data Documentation}{20}{subsection.4.11.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.1}base\_high}{21}{subsubsection.4.11.2.1}%
+\contentsline {subsubsection}{\numberline {4.11.2.2}base\_low}{21}{subsubsection.4.11.2.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.3}flags}{21}{subsubsection.4.11.2.3}%
+\contentsline {subsubsection}{\numberline {4.11.2.4}sselect}{21}{subsubsection.4.11.2.4}%
+\contentsline {subsubsection}{\numberline {4.11.2.5}zero}{21}{subsubsection.4.11.2.5}%
+\contentsline {section}{\numberline {4.12}idt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}struct Struct Reference}{21}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Detailed Description}{22}{subsection.4.12.1}%
+\contentsline {subsection}{\numberline {4.12.2}Member Data Documentation}{22}{subsection.4.12.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.1}base}{22}{subsubsection.4.12.2.1}%
+\contentsline {subsubsection}{\numberline {4.12.2.2}limit}{22}{subsubsection.4.12.2.2}%
+\contentsline {section}{\numberline {4.13}index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}entry Struct Reference}{22}{section.4.13}%
+\contentsline {subsection}{\numberline {4.13.1}Detailed Description}{22}{subsection.4.13.1}%
+\contentsline {subsection}{\numberline {4.13.2}Member Data Documentation}{23}{subsection.4.13.2}%
+\contentsline {subsubsection}{\numberline {4.13.2.1}block}{23}{subsubsection.4.13.2.1}%
+\contentsline {subsubsection}{\numberline {4.13.2.2}empty}{23}{subsubsection.4.13.2.2}%
+\contentsline {subsubsection}{\numberline {4.13.2.3}size}{23}{subsubsection.4.13.2.3}%
+\contentsline {section}{\numberline {4.14}index\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}table Struct Reference}{23}{section.4.14}%
+\contentsline {subsection}{\numberline {4.14.1}Detailed Description}{23}{subsection.4.14.1}%
+\contentsline {subsection}{\numberline {4.14.2}Member Data Documentation}{24}{subsection.4.14.2}%
+\contentsline {subsubsection}{\numberline {4.14.2.1}id}{24}{subsubsection.4.14.2.1}%
+\contentsline {subsubsection}{\numberline {4.14.2.2}table}{24}{subsubsection.4.14.2.2}%
+\contentsline {section}{\numberline {4.15}mem\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List Struct Reference}{24}{section.4.15}%
+\contentsline {subsection}{\numberline {4.15.1}Detailed Description}{24}{subsection.4.15.1}%
+\contentsline {subsection}{\numberline {4.15.2}Member Data Documentation}{24}{subsection.4.15.2}%
+\contentsline {subsubsection}{\numberline {4.15.2.1}count}{24}{subsubsection.4.15.2.1}%
+\contentsline {subsubsection}{\numberline {4.15.2.2}head}{25}{subsubsection.4.15.2.2}%
+\contentsline {subsubsection}{\numberline {4.15.2.3}tail}{25}{subsubsection.4.15.2.3}%
+\contentsline {section}{\numberline {4.16}page\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}dir Struct Reference}{25}{section.4.16}%
+\contentsline {subsection}{\numberline {4.16.1}Detailed Description}{25}{subsection.4.16.1}%
+\contentsline {subsection}{\numberline {4.16.2}Member Data Documentation}{25}{subsection.4.16.2}%
+\contentsline {subsubsection}{\numberline {4.16.2.1}tables}{25}{subsubsection.4.16.2.1}%
+\contentsline {subsubsection}{\numberline {4.16.2.2}tables\_phys}{26}{subsubsection.4.16.2.2}%
+\contentsline {section}{\numberline {4.17}page\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}entry Struct Reference}{26}{section.4.17}%
+\contentsline {subsection}{\numberline {4.17.1}Detailed Description}{26}{subsection.4.17.1}%
+\contentsline {subsection}{\numberline {4.17.2}Member Data Documentation}{26}{subsection.4.17.2}%
+\contentsline {subsubsection}{\numberline {4.17.2.1}accessed}{26}{subsubsection.4.17.2.1}%
+\contentsline {subsubsection}{\numberline {4.17.2.2}dirty}{26}{subsubsection.4.17.2.2}%
+\contentsline {subsubsection}{\numberline {4.17.2.3}frameaddr}{27}{subsubsection.4.17.2.3}%
+\contentsline {subsubsection}{\numberline {4.17.2.4}present}{27}{subsubsection.4.17.2.4}%
+\contentsline {subsubsection}{\numberline {4.17.2.5}reserved}{27}{subsubsection.4.17.2.5}%
+\contentsline {subsubsection}{\numberline {4.17.2.6}usermode}{27}{subsubsection.4.17.2.6}%
+\contentsline {subsubsection}{\numberline {4.17.2.7}writeable}{27}{subsubsection.4.17.2.7}%
+\contentsline {section}{\numberline {4.18}page\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}table Struct Reference}{27}{section.4.18}%
+\contentsline {subsection}{\numberline {4.18.1}Detailed Description}{28}{subsection.4.18.1}%
+\contentsline {subsection}{\numberline {4.18.2}Member Data Documentation}{28}{subsection.4.18.2}%
+\contentsline {subsubsection}{\numberline {4.18.2.1}pages}{28}{subsubsection.4.18.2.1}%
+\contentsline {section}{\numberline {4.19}param Struct Reference}{28}{section.4.19}%
+\contentsline {subsection}{\numberline {4.19.1}Detailed Description}{28}{subsection.4.19.1}%
+\contentsline {subsection}{\numberline {4.19.2}Member Data Documentation}{28}{subsection.4.19.2}%
+\contentsline {subsubsection}{\numberline {4.19.2.1}buffer\_ptr}{29}{subsubsection.4.19.2.1}%
+\contentsline {subsubsection}{\numberline {4.19.2.2}count\_ptr}{29}{subsubsection.4.19.2.2}%
+\contentsline {subsubsection}{\numberline {4.19.2.3}device\_id}{29}{subsubsection.4.19.2.3}%
+\contentsline {subsubsection}{\numberline {4.19.2.4}op\_code}{29}{subsubsection.4.19.2.4}%
+\contentsline {section}{\numberline {4.20}P\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CB Struct Reference}{29}{section.4.20}%
+\contentsline {subsection}{\numberline {4.20.1}Detailed Description}{30}{subsection.4.20.1}%
+\contentsline {subsection}{\numberline {4.20.2}Member Data Documentation}{30}{subsection.4.20.2}%
+\contentsline {subsubsection}{\numberline {4.20.2.1}nextPCB}{30}{subsubsection.4.20.2.1}%
+\contentsline {subsubsection}{\numberline {4.20.2.2}prevPCB}{30}{subsubsection.4.20.2.2}%
+\contentsline {subsubsection}{\numberline {4.20.2.3}priority}{30}{subsubsection.4.20.2.3}%
+\contentsline {subsubsection}{\numberline {4.20.2.4}processClass}{30}{subsubsection.4.20.2.4}%
+\contentsline {subsubsection}{\numberline {4.20.2.5}processName}{30}{subsubsection.4.20.2.5}%
+\contentsline {subsubsection}{\numberline {4.20.2.6}runningStatus}{31}{subsubsection.4.20.2.6}%
+\contentsline {subsubsection}{\numberline {4.20.2.7}stack}{31}{subsubsection.4.20.2.7}%
+\contentsline {subsubsection}{\numberline {4.20.2.8}stackBase}{31}{subsubsection.4.20.2.8}%
+\contentsline {subsubsection}{\numberline {4.20.2.9}stackTop}{31}{subsubsection.4.20.2.9}%
+\contentsline {subsubsection}{\numberline {4.20.2.10}suspendedStatus}{31}{subsubsection.4.20.2.10}%
+\contentsline {section}{\numberline {4.21}queue Struct Reference}{31}{section.4.21}%
+\contentsline {subsection}{\numberline {4.21.1}Detailed Description}{32}{subsection.4.21.1}%
+\contentsline {subsection}{\numberline {4.21.2}Member Data Documentation}{32}{subsection.4.21.2}%
+\contentsline {subsubsection}{\numberline {4.21.2.1}count}{32}{subsubsection.4.21.2.1}%
+\contentsline {subsubsection}{\numberline {4.21.2.2}head}{32}{subsubsection.4.21.2.2}%
+\contentsline {subsubsection}{\numberline {4.21.2.3}tail}{32}{subsubsection.4.21.2.3}%
+\contentsline {chapter}{\numberline {5}File Documentation}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}include/core/asm.h File Reference}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}include/core/interrupts.h File Reference}{33}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Function Documentation}{33}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}init\_irq()}{33}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}init\_pic()}{34}{subsubsection.5.2.1.2}%
+\contentsline {section}{\numberline {5.3}include/core/io.h File Reference}{34}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Macro Definition Documentation}{34}{subsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}inb}{35}{subsubsection.5.3.1.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}outb}{35}{subsubsection.5.3.1.2}%
+\contentsline {section}{\numberline {5.4}include/core/serial.h File Reference}{35}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Macro Definition Documentation}{35}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}COM1}{36}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}COM2}{36}{subsubsection.5.4.1.2}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}COM3}{36}{subsubsection.5.4.1.3}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}COM4}{36}{subsubsection.5.4.1.4}%
+\contentsline {subsection}{\numberline {5.4.2}Function Documentation}{36}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}init\_serial()}{36}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}polling()}{37}{subsubsection.5.4.2.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}serial\_print()}{39}{subsubsection.5.4.2.3}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}serial\_println()}{39}{subsubsection.5.4.2.4}%
+\contentsline {subsubsection}{\numberline {5.4.2.5}set\_serial\_in()}{39}{subsubsection.5.4.2.5}%
+\contentsline {subsubsection}{\numberline {5.4.2.6}set\_serial\_out()}{40}{subsubsection.5.4.2.6}%
+\contentsline {section}{\numberline {5.5}include/core/tables.h File Reference}{40}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Function Documentation}{40}{subsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.1.1}\_\_attribute\_\_()}{41}{subsubsection.5.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.5.1.2}gdt\_init\_entry()}{41}{subsubsection.5.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.5.1.3}idt\_set\_gate()}{41}{subsubsection.5.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.5.1.4}init\_gdt()}{41}{subsubsection.5.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.5.1.5}init\_idt()}{42}{subsubsection.5.5.1.5}%
+\contentsline {subsection}{\numberline {5.5.2}Variable Documentation}{42}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}access}{42}{subsubsection.5.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.5.2.2}base}{42}{subsubsection.5.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.3}base\_high}{42}{subsubsection.5.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.5.2.4}base\_low}{42}{subsubsection.5.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.5.2.5}base\_mid}{43}{subsubsection.5.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.5.2.6}flags}{43}{subsubsection.5.5.2.6}%
+\contentsline {subsubsection}{\numberline {5.5.2.7}limit}{43}{subsubsection.5.5.2.7}%
+\contentsline {subsubsection}{\numberline {5.5.2.8}limit\_low}{43}{subsubsection.5.5.2.8}%
+\contentsline {subsubsection}{\numberline {5.5.2.9}sselect}{43}{subsubsection.5.5.2.9}%
+\contentsline {subsubsection}{\numberline {5.5.2.10}zero}{43}{subsubsection.5.5.2.10}%
+\contentsline {section}{\numberline {5.6}include/mem/heap.h File Reference}{44}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Macro Definition Documentation}{44}{subsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.1}KHEAP\_BASE}{44}{subsubsection.5.6.1.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.2}KHEAP\_MIN}{44}{subsubsection.5.6.1.2}%
+\contentsline {subsubsection}{\numberline {5.6.1.3}KHEAP\_SIZE}{45}{subsubsection.5.6.1.3}%
+\contentsline {subsubsection}{\numberline {5.6.1.4}TABLE\_SIZE}{45}{subsubsection.5.6.1.4}%
+\contentsline {subsection}{\numberline {5.6.2}Function Documentation}{45}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}\_kmalloc()}{45}{subsubsection.5.6.2.1}%
+\contentsline {subsubsection}{\numberline {5.6.2.2}alloc()}{46}{subsubsection.5.6.2.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.3}init\_kheap()}{46}{subsubsection.5.6.2.3}%
+\contentsline {subsubsection}{\numberline {5.6.2.4}kfree()}{46}{subsubsection.5.6.2.4}%
+\contentsline {subsubsection}{\numberline {5.6.2.5}kmalloc()}{46}{subsubsection.5.6.2.5}%
+\contentsline {subsubsection}{\numberline {5.6.2.6}make\_heap()}{46}{subsubsection.5.6.2.6}%
+\contentsline {section}{\numberline {5.7}include/mem/paging.h File Reference}{47}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Macro Definition Documentation}{47}{subsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.1.1}PAGE\_SIZE}{47}{subsubsection.5.7.1.1}%
+\contentsline {subsection}{\numberline {5.7.2}Function Documentation}{47}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}clear\_bit()}{48}{subsubsection.5.7.2.1}%
+\contentsline {subsubsection}{\numberline {5.7.2.2}first\_free()}{48}{subsubsection.5.7.2.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.3}get\_bit()}{48}{subsubsection.5.7.2.3}%
+\contentsline {subsubsection}{\numberline {5.7.2.4}get\_page()}{48}{subsubsection.5.7.2.4}%
+\contentsline {subsubsection}{\numberline {5.7.2.5}init\_paging()}{49}{subsubsection.5.7.2.5}%
+\contentsline {subsubsection}{\numberline {5.7.2.6}load\_page\_dir()}{49}{subsubsection.5.7.2.6}%
+\contentsline {subsubsection}{\numberline {5.7.2.7}new\_frame()}{49}{subsubsection.5.7.2.7}%
+\contentsline {subsubsection}{\numberline {5.7.2.8}set\_bit()}{50}{subsubsection.5.7.2.8}%
+\contentsline {section}{\numberline {5.8}include/string.h File Reference}{50}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Function Documentation}{50}{subsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.1.1}atoi()}{51}{subsubsection.5.8.1.1}%
+\contentsline {subsubsection}{\numberline {5.8.1.2}isspace()}{51}{subsubsection.5.8.1.2}%
+\contentsline {subsubsection}{\numberline {5.8.1.3}memset()}{51}{subsubsection.5.8.1.3}%
+\contentsline {subsubsection}{\numberline {5.8.1.4}strcat()}{52}{subsubsection.5.8.1.4}%
+\contentsline {subsubsection}{\numberline {5.8.1.5}strcmp()}{52}{subsubsection.5.8.1.5}%
+\contentsline {subsubsection}{\numberline {5.8.1.6}strcpy()}{52}{subsubsection.5.8.1.6}%
+\contentsline {subsubsection}{\numberline {5.8.1.7}strlen()}{52}{subsubsection.5.8.1.7}%
+\contentsline {subsubsection}{\numberline {5.8.1.8}strtok()}{53}{subsubsection.5.8.1.8}%
+\contentsline {section}{\numberline {5.9}include/system.h File Reference}{53}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Macro Definition Documentation}{54}{subsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.1.1}asm}{54}{subsubsection.5.9.1.1}%
+\contentsline {subsubsection}{\numberline {5.9.1.2}cli}{54}{subsubsection.5.9.1.2}%
+\contentsline {subsubsection}{\numberline {5.9.1.3}GDT\_CS\_ID}{54}{subsubsection.5.9.1.3}%
+\contentsline {subsubsection}{\numberline {5.9.1.4}GDT\_DS\_ID}{55}{subsubsection.5.9.1.4}%
+\contentsline {subsubsection}{\numberline {5.9.1.5}hlt}{55}{subsubsection.5.9.1.5}%
+\contentsline {subsubsection}{\numberline {5.9.1.6}iret}{55}{subsubsection.5.9.1.6}%
+\contentsline {subsubsection}{\numberline {5.9.1.7}no\_warn}{55}{subsubsection.5.9.1.7}%
+\contentsline {subsubsection}{\numberline {5.9.1.8}nop}{55}{subsubsection.5.9.1.8}%
+\contentsline {subsubsection}{\numberline {5.9.1.9}NULL}{55}{subsubsection.5.9.1.9}%
+\contentsline {subsubsection}{\numberline {5.9.1.10}sti}{56}{subsubsection.5.9.1.10}%
+\contentsline {subsubsection}{\numberline {5.9.1.11}volatile}{56}{subsubsection.5.9.1.11}%
+\contentsline {subsection}{\numberline {5.9.2}Typedef Documentation}{56}{subsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.1}size\_t}{56}{subsubsection.5.9.2.1}%
+\contentsline {subsubsection}{\numberline {5.9.2.2}u16int}{56}{subsubsection.5.9.2.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.3}u32int}{56}{subsubsection.5.9.2.3}%
+\contentsline {subsubsection}{\numberline {5.9.2.4}u8int}{56}{subsubsection.5.9.2.4}%
+\contentsline {subsection}{\numberline {5.9.3}Function Documentation}{57}{subsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.3.1}klogv()}{57}{subsubsection.5.9.3.1}%
+\contentsline {subsubsection}{\numberline {5.9.3.2}kpanic()}{57}{subsubsection.5.9.3.2}%
+\contentsline {section}{\numberline {5.10}kernel/core/interrupts.c File Reference}{57}{section.5.10}%
+\contentsline {subsection}{\numberline {5.10.1}Macro Definition Documentation}{58}{subsection.5.10.1}%
+\contentsline {subsubsection}{\numberline {5.10.1.1}ICW1}{59}{subsubsection.5.10.1.1}%
+\contentsline {subsubsection}{\numberline {5.10.1.2}ICW4}{59}{subsubsection.5.10.1.2}%
+\contentsline {subsubsection}{\numberline {5.10.1.3}io\_wait}{59}{subsubsection.5.10.1.3}%
+\contentsline {subsubsection}{\numberline {5.10.1.4}PIC1}{59}{subsubsection.5.10.1.4}%
+\contentsline {subsubsection}{\numberline {5.10.1.5}PIC2}{59}{subsubsection.5.10.1.5}%
+\contentsline {subsection}{\numberline {5.10.2}Function Documentation}{59}{subsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.1}bounds()}{59}{subsubsection.5.10.2.1}%
+\contentsline {subsubsection}{\numberline {5.10.2.2}breakpoint()}{60}{subsubsection.5.10.2.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.3}coprocessor()}{60}{subsubsection.5.10.2.3}%
+\contentsline {subsubsection}{\numberline {5.10.2.4}coprocessor\_segment()}{60}{subsubsection.5.10.2.4}%
+\contentsline {subsubsection}{\numberline {5.10.2.5}debug()}{60}{subsubsection.5.10.2.5}%
+\contentsline {subsubsection}{\numberline {5.10.2.6}device\_not\_available()}{60}{subsubsection.5.10.2.6}%
+\contentsline {subsubsection}{\numberline {5.10.2.7}divide\_error()}{60}{subsubsection.5.10.2.7}%
+\contentsline {subsubsection}{\numberline {5.10.2.8}do\_bounds()}{60}{subsubsection.5.10.2.8}%
+\contentsline {subsubsection}{\numberline {5.10.2.9}do\_breakpoint()}{61}{subsubsection.5.10.2.9}%
+\contentsline {subsubsection}{\numberline {5.10.2.10}do\_coprocessor()}{61}{subsubsection.5.10.2.10}%
+\contentsline {subsubsection}{\numberline {5.10.2.11}do\_coprocessor\_segment()}{61}{subsubsection.5.10.2.11}%
+\contentsline {subsubsection}{\numberline {5.10.2.12}do\_debug()}{61}{subsubsection.5.10.2.12}%
+\contentsline {subsubsection}{\numberline {5.10.2.13}do\_device\_not\_available()}{61}{subsubsection.5.10.2.13}%
+\contentsline {subsubsection}{\numberline {5.10.2.14}do\_divide\_error()}{62}{subsubsection.5.10.2.14}%
+\contentsline {subsubsection}{\numberline {5.10.2.15}do\_double\_fault()}{62}{subsubsection.5.10.2.15}%
+\contentsline {subsubsection}{\numberline {5.10.2.16}do\_general\_protection()}{62}{subsubsection.5.10.2.16}%
+\contentsline {subsubsection}{\numberline {5.10.2.17}do\_invalid\_op()}{62}{subsubsection.5.10.2.17}%
+\contentsline {subsubsection}{\numberline {5.10.2.18}do\_invalid\_tss()}{62}{subsubsection.5.10.2.18}%
+\contentsline {subsubsection}{\numberline {5.10.2.19}do\_isr()}{63}{subsubsection.5.10.2.19}%
+\contentsline {subsubsection}{\numberline {5.10.2.20}do\_nmi()}{63}{subsubsection.5.10.2.20}%
+\contentsline {subsubsection}{\numberline {5.10.2.21}do\_overflow()}{63}{subsubsection.5.10.2.21}%
+\contentsline {subsubsection}{\numberline {5.10.2.22}do\_page\_fault()}{63}{subsubsection.5.10.2.22}%
+\contentsline {subsubsection}{\numberline {5.10.2.23}do\_reserved()}{63}{subsubsection.5.10.2.23}%
+\contentsline {subsubsection}{\numberline {5.10.2.24}do\_segment\_not\_present()}{64}{subsubsection.5.10.2.24}%
+\contentsline {subsubsection}{\numberline {5.10.2.25}do\_stack\_segment()}{64}{subsubsection.5.10.2.25}%
+\contentsline {subsubsection}{\numberline {5.10.2.26}double\_fault()}{64}{subsubsection.5.10.2.26}%
+\contentsline {subsubsection}{\numberline {5.10.2.27}general\_protection()}{64}{subsubsection.5.10.2.27}%
+\contentsline {subsubsection}{\numberline {5.10.2.28}init\_irq()}{64}{subsubsection.5.10.2.28}%
+\contentsline {subsubsection}{\numberline {5.10.2.29}init\_pic()}{65}{subsubsection.5.10.2.29}%
+\contentsline {subsubsection}{\numberline {5.10.2.30}invalid\_op()}{65}{subsubsection.5.10.2.30}%
+\contentsline {subsubsection}{\numberline {5.10.2.31}invalid\_tss()}{65}{subsubsection.5.10.2.31}%
+\contentsline {subsubsection}{\numberline {5.10.2.32}isr0()}{65}{subsubsection.5.10.2.32}%
+\contentsline {subsubsection}{\numberline {5.10.2.33}nmi()}{66}{subsubsection.5.10.2.33}%
+\contentsline {subsubsection}{\numberline {5.10.2.34}overflow()}{66}{subsubsection.5.10.2.34}%
+\contentsline {subsubsection}{\numberline {5.10.2.35}page\_fault()}{66}{subsubsection.5.10.2.35}%
+\contentsline {subsubsection}{\numberline {5.10.2.36}reserved()}{66}{subsubsection.5.10.2.36}%
+\contentsline {subsubsection}{\numberline {5.10.2.37}rtc\_isr()}{66}{subsubsection.5.10.2.37}%
+\contentsline {subsubsection}{\numberline {5.10.2.38}segment\_not\_present()}{66}{subsubsection.5.10.2.38}%
+\contentsline {subsubsection}{\numberline {5.10.2.39}stack\_segment()}{66}{subsubsection.5.10.2.39}%
+\contentsline {subsubsection}{\numberline {5.10.2.40}sys\_call\_isr()}{66}{subsubsection.5.10.2.40}%
+\contentsline {subsection}{\numberline {5.10.3}Variable Documentation}{67}{subsection.5.10.3}%
+\contentsline {subsubsection}{\numberline {5.10.3.1}idt\_entries}{67}{subsubsection.5.10.3.1}%
+\contentsline {section}{\numberline {5.11}kernel/core/kmain.c File Reference}{67}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Function Documentation}{67}{subsection.5.11.1}%
+\contentsline {subsubsection}{\numberline {5.11.1.1}kmain()}{68}{subsubsection.5.11.1.1}%
+\contentsline {section}{\numberline {5.12}kernel/core/serial.c File Reference}{69}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Macro Definition Documentation}{70}{subsection.5.12.1}%
+\contentsline {subsubsection}{\numberline {5.12.1.1}NO\_ERROR}{70}{subsubsection.5.12.1.1}%
+\contentsline {subsection}{\numberline {5.12.2}Function Documentation}{70}{subsection.5.12.2}%
+\contentsline {subsubsection}{\numberline {5.12.2.1}init\_serial()}{70}{subsubsection.5.12.2.1}%
+\contentsline {subsubsection}{\numberline {5.12.2.2}polling()}{70}{subsubsection.5.12.2.2}%
+\contentsline {subsubsection}{\numberline {5.12.2.3}serial\_print()}{72}{subsubsection.5.12.2.3}%
+\contentsline {subsubsection}{\numberline {5.12.2.4}serial\_println()}{73}{subsubsection.5.12.2.4}%
+\contentsline {subsubsection}{\numberline {5.12.2.5}set\_serial\_in()}{73}{subsubsection.5.12.2.5}%
+\contentsline {subsubsection}{\numberline {5.12.2.6}set\_serial\_out()}{73}{subsubsection.5.12.2.6}%
+\contentsline {subsection}{\numberline {5.12.3}Variable Documentation}{73}{subsection.5.12.3}%
+\contentsline {subsubsection}{\numberline {5.12.3.1}serial\_port\_in}{74}{subsubsection.5.12.3.1}%
+\contentsline {subsubsection}{\numberline {5.12.3.2}serial\_port\_out}{74}{subsubsection.5.12.3.2}%
+\contentsline {section}{\numberline {5.13}kernel/core/system.c File Reference}{74}{section.5.13}%
+\contentsline {subsection}{\numberline {5.13.1}Function Documentation}{74}{subsection.5.13.1}%
+\contentsline {subsubsection}{\numberline {5.13.1.1}klogv()}{74}{subsubsection.5.13.1.1}%
+\contentsline {subsubsection}{\numberline {5.13.1.2}kpanic()}{75}{subsubsection.5.13.1.2}%
+\contentsline {section}{\numberline {5.14}kernel/core/tables.c File Reference}{75}{section.5.14}%
+\contentsline {subsection}{\numberline {5.14.1}Function Documentation}{75}{subsection.5.14.1}%
+\contentsline {subsubsection}{\numberline {5.14.1.1}gdt\_init\_entry()}{75}{subsubsection.5.14.1.1}%
+\contentsline {subsubsection}{\numberline {5.14.1.2}idt\_set\_gate()}{76}{subsubsection.5.14.1.2}%
+\contentsline {subsubsection}{\numberline {5.14.1.3}init\_gdt()}{76}{subsubsection.5.14.1.3}%
+\contentsline {subsubsection}{\numberline {5.14.1.4}init\_idt()}{76}{subsubsection.5.14.1.4}%
+\contentsline {subsubsection}{\numberline {5.14.1.5}write\_gdt\_ptr()}{76}{subsubsection.5.14.1.5}%
+\contentsline {subsubsection}{\numberline {5.14.1.6}write\_idt\_ptr()}{77}{subsubsection.5.14.1.6}%
+\contentsline {subsection}{\numberline {5.14.2}Variable Documentation}{77}{subsection.5.14.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.1}gdt\_entries}{77}{subsubsection.5.14.2.1}%
+\contentsline {subsubsection}{\numberline {5.14.2.2}gdt\_ptr}{77}{subsubsection.5.14.2.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.3}idt\_entries}{77}{subsubsection.5.14.2.3}%
+\contentsline {subsubsection}{\numberline {5.14.2.4}idt\_ptr}{77}{subsubsection.5.14.2.4}%
+\contentsline {section}{\numberline {5.15}kernel/mem/heap.c File Reference}{77}{section.5.15}%
+\contentsline {subsection}{\numberline {5.15.1}Function Documentation}{78}{subsection.5.15.1}%
+\contentsline {subsubsection}{\numberline {5.15.1.1}\_kmalloc()}{78}{subsubsection.5.15.1.1}%
+\contentsline {subsubsection}{\numberline {5.15.1.2}alloc()}{79}{subsubsection.5.15.1.2}%
+\contentsline {subsubsection}{\numberline {5.15.1.3}kmalloc()}{79}{subsubsection.5.15.1.3}%
+\contentsline {subsubsection}{\numberline {5.15.1.4}make\_heap()}{79}{subsubsection.5.15.1.4}%
+\contentsline {subsection}{\numberline {5.15.2}Variable Documentation}{79}{subsection.5.15.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.1}\_\_end}{79}{subsubsection.5.15.2.1}%
+\contentsline {subsubsection}{\numberline {5.15.2.2}\_end}{80}{subsubsection.5.15.2.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.3}curr\_heap}{80}{subsubsection.5.15.2.3}%
+\contentsline {subsubsection}{\numberline {5.15.2.4}end}{80}{subsubsection.5.15.2.4}%
+\contentsline {subsubsection}{\numberline {5.15.2.5}kdir}{80}{subsubsection.5.15.2.5}%
+\contentsline {subsubsection}{\numberline {5.15.2.6}kheap}{80}{subsubsection.5.15.2.6}%
+\contentsline {subsubsection}{\numberline {5.15.2.7}phys\_alloc\_addr}{80}{subsubsection.5.15.2.7}%
+\contentsline {section}{\numberline {5.16}kernel/mem/paging.c File Reference}{81}{section.5.16}%
+\contentsline {subsection}{\numberline {5.16.1}Function Documentation}{81}{subsection.5.16.1}%
+\contentsline {subsubsection}{\numberline {5.16.1.1}clear\_bit()}{81}{subsubsection.5.16.1.1}%
+\contentsline {subsubsection}{\numberline {5.16.1.2}find\_free()}{82}{subsubsection.5.16.1.2}%
+\contentsline {subsubsection}{\numberline {5.16.1.3}get\_bit()}{82}{subsubsection.5.16.1.3}%
+\contentsline {subsubsection}{\numberline {5.16.1.4}get\_page()}{82}{subsubsection.5.16.1.4}%
+\contentsline {subsubsection}{\numberline {5.16.1.5}init\_paging()}{83}{subsubsection.5.16.1.5}%
+\contentsline {subsubsection}{\numberline {5.16.1.6}load\_page\_dir()}{83}{subsubsection.5.16.1.6}%
+\contentsline {subsubsection}{\numberline {5.16.1.7}new\_frame()}{83}{subsubsection.5.16.1.7}%
+\contentsline {subsubsection}{\numberline {5.16.1.8}set\_bit()}{84}{subsubsection.5.16.1.8}%
+\contentsline {subsection}{\numberline {5.16.2}Variable Documentation}{84}{subsection.5.16.2}%
+\contentsline {subsubsection}{\numberline {5.16.2.1}cdir}{84}{subsubsection.5.16.2.1}%
+\contentsline {subsubsection}{\numberline {5.16.2.2}frames}{84}{subsubsection.5.16.2.2}%
+\contentsline {subsubsection}{\numberline {5.16.2.3}kdir}{84}{subsubsection.5.16.2.3}%
+\contentsline {subsubsection}{\numberline {5.16.2.4}kheap}{85}{subsubsection.5.16.2.4}%
+\contentsline {subsubsection}{\numberline {5.16.2.5}mem\_size}{85}{subsubsection.5.16.2.5}%
+\contentsline {subsubsection}{\numberline {5.16.2.6}nframes}{85}{subsubsection.5.16.2.6}%
+\contentsline {subsubsection}{\numberline {5.16.2.7}page\_size}{85}{subsubsection.5.16.2.7}%
+\contentsline {subsubsection}{\numberline {5.16.2.8}phys\_alloc\_addr}{85}{subsubsection.5.16.2.8}%
+\contentsline {section}{\numberline {5.17}lib/string.c File Reference}{85}{section.5.17}%
+\contentsline {subsection}{\numberline {5.17.1}Function Documentation}{86}{subsection.5.17.1}%
+\contentsline {subsubsection}{\numberline {5.17.1.1}atoi()}{86}{subsubsection.5.17.1.1}%
+\contentsline {subsubsection}{\numberline {5.17.1.2}isspace()}{86}{subsubsection.5.17.1.2}%
+\contentsline {subsubsection}{\numberline {5.17.1.3}memset()}{87}{subsubsection.5.17.1.3}%
+\contentsline {subsubsection}{\numberline {5.17.1.4}strcat()}{87}{subsubsection.5.17.1.4}%
+\contentsline {subsubsection}{\numberline {5.17.1.5}strcmp()}{87}{subsubsection.5.17.1.5}%
+\contentsline {subsubsection}{\numberline {5.17.1.6}strcpy()}{88}{subsubsection.5.17.1.6}%
+\contentsline {subsubsection}{\numberline {5.17.1.7}strlen()}{88}{subsubsection.5.17.1.7}%
+\contentsline {subsubsection}{\numberline {5.17.1.8}strtok()}{88}{subsubsection.5.17.1.8}%
+\contentsline {section}{\numberline {5.18}modules/mpx\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}supt.c File Reference}{89}{section.5.18}%
+\contentsline {subsection}{\numberline {5.18.1}Function Documentation}{89}{subsection.5.18.1}%
+\contentsline {subsubsection}{\numberline {5.18.1.1}idle()}{90}{subsubsection.5.18.1.1}%
+\contentsline {subsubsection}{\numberline {5.18.1.2}mpx\_init()}{90}{subsubsection.5.18.1.2}%
+\contentsline {subsubsection}{\numberline {5.18.1.3}sys\_alloc\_mem()}{90}{subsubsection.5.18.1.3}%
+\contentsline {subsubsection}{\numberline {5.18.1.4}sys\_call()}{91}{subsubsection.5.18.1.4}%
+\contentsline {subsubsection}{\numberline {5.18.1.5}sys\_free\_mem()}{91}{subsubsection.5.18.1.5}%
+\contentsline {subsubsection}{\numberline {5.18.1.6}sys\_req()}{91}{subsubsection.5.18.1.6}%
+\contentsline {subsubsection}{\numberline {5.18.1.7}sys\_set\_free()}{92}{subsubsection.5.18.1.7}%
+\contentsline {subsubsection}{\numberline {5.18.1.8}sys\_set\_malloc()}{92}{subsubsection.5.18.1.8}%
+\contentsline {subsection}{\numberline {5.18.2}Variable Documentation}{93}{subsection.5.18.2}%
+\contentsline {subsubsection}{\numberline {5.18.2.1}callerContext}{93}{subsubsection.5.18.2.1}%
+\contentsline {subsubsection}{\numberline {5.18.2.2}COP}{93}{subsubsection.5.18.2.2}%
+\contentsline {subsubsection}{\numberline {5.18.2.3}current\_module}{93}{subsubsection.5.18.2.3}%
+\contentsline {subsubsection}{\numberline {5.18.2.4}params}{93}{subsubsection.5.18.2.4}%
+\contentsline {subsubsection}{\numberline {5.18.2.5}student\_free}{93}{subsubsection.5.18.2.5}%
+\contentsline {subsubsection}{\numberline {5.18.2.6}student\_malloc}{93}{subsubsection.5.18.2.6}%
+\contentsline {section}{\numberline {5.19}modules/mpx\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}supt.h File Reference}{94}{section.5.19}%
+\contentsline {subsection}{\numberline {5.19.1}Macro Definition Documentation}{94}{subsection.5.19.1}%
+\contentsline {subsubsection}{\numberline {5.19.1.1}COM\_PORT}{95}{subsubsection.5.19.1.1}%
+\contentsline {subsubsection}{\numberline {5.19.1.2}DEFAULT\_DEVICE}{95}{subsubsection.5.19.1.2}%
+\contentsline {subsubsection}{\numberline {5.19.1.3}EXIT}{95}{subsubsection.5.19.1.3}%
+\contentsline {subsubsection}{\numberline {5.19.1.4}FALSE}{95}{subsubsection.5.19.1.4}%
+\contentsline {subsubsection}{\numberline {5.19.1.5}IDLE}{95}{subsubsection.5.19.1.5}%
+\contentsline {subsubsection}{\numberline {5.19.1.6}INVALID\_BUFFER}{95}{subsubsection.5.19.1.6}%
+\contentsline {subsubsection}{\numberline {5.19.1.7}INVALID\_COUNT}{96}{subsubsection.5.19.1.7}%
+\contentsline {subsubsection}{\numberline {5.19.1.8}INVALID\_OPERATION}{96}{subsubsection.5.19.1.8}%
+\contentsline {subsubsection}{\numberline {5.19.1.9}IO\_MODULE}{96}{subsubsection.5.19.1.9}%
+\contentsline {subsubsection}{\numberline {5.19.1.10}MEM\_MODULE}{96}{subsubsection.5.19.1.10}%
+\contentsline {subsubsection}{\numberline {5.19.1.11}MODULE\_F}{96}{subsubsection.5.19.1.11}%
+\contentsline {subsubsection}{\numberline {5.19.1.12}MODULE\_R1}{96}{subsubsection.5.19.1.12}%
+\contentsline {subsubsection}{\numberline {5.19.1.13}MODULE\_R2}{97}{subsubsection.5.19.1.13}%
+\contentsline {subsubsection}{\numberline {5.19.1.14}MODULE\_R3}{97}{subsubsection.5.19.1.14}%
+\contentsline {subsubsection}{\numberline {5.19.1.15}MODULE\_R4}{97}{subsubsection.5.19.1.15}%
+\contentsline {subsubsection}{\numberline {5.19.1.16}MODULE\_R5}{97}{subsubsection.5.19.1.16}%
+\contentsline {subsubsection}{\numberline {5.19.1.17}READ}{97}{subsubsection.5.19.1.17}%
+\contentsline {subsubsection}{\numberline {5.19.1.18}TRUE}{97}{subsubsection.5.19.1.18}%
+\contentsline {subsubsection}{\numberline {5.19.1.19}WRITE}{98}{subsubsection.5.19.1.19}%
+\contentsline {subsection}{\numberline {5.19.2}Function Documentation}{98}{subsection.5.19.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.1}idle()}{98}{subsubsection.5.19.2.1}%
+\contentsline {subsubsection}{\numberline {5.19.2.2}mpx\_init()}{98}{subsubsection.5.19.2.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.3}sys\_alloc\_mem()}{98}{subsubsection.5.19.2.3}%
+\contentsline {subsubsection}{\numberline {5.19.2.4}sys\_free\_mem()}{99}{subsubsection.5.19.2.4}%
+\contentsline {subsubsection}{\numberline {5.19.2.5}sys\_req()}{99}{subsubsection.5.19.2.5}%
+\contentsline {subsubsection}{\numberline {5.19.2.6}sys\_set\_free()}{100}{subsubsection.5.19.2.6}%
+\contentsline {subsubsection}{\numberline {5.19.2.7}sys\_set\_malloc()}{100}{subsubsection.5.19.2.7}%
+\contentsline {section}{\numberline {5.20}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1/commhand.c File Reference}{100}{section.5.20}%
+\contentsline {subsection}{\numberline {5.20.1}Function Documentation}{100}{subsection.5.20.1}%
+\contentsline {subsubsection}{\numberline {5.20.1.1}commhand()}{101}{subsubsection.5.20.1.1}%
+\contentsline {section}{\numberline {5.21}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1/commhand.h File Reference}{105}{section.5.21}%
+\contentsline {subsection}{\numberline {5.21.1}Function Documentation}{105}{subsection.5.21.1}%
+\contentsline {subsubsection}{\numberline {5.21.1.1}commhand()}{105}{subsubsection.5.21.1.1}%
+\contentsline {section}{\numberline {5.22}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1commands.c File Reference}{109}{section.5.22}%
+\contentsline {subsection}{\numberline {5.22.1}Function Documentation}{110}{subsection.5.22.1}%
+\contentsline {subsubsection}{\numberline {5.22.1.1}BCDtoChar()}{110}{subsubsection.5.22.1.1}%
+\contentsline {subsubsection}{\numberline {5.22.1.2}deleteQueue()}{110}{subsubsection.5.22.1.2}%
+\contentsline {subsubsection}{\numberline {5.22.1.3}getDate()}{110}{subsubsection.5.22.1.3}%
+\contentsline {subsubsection}{\numberline {5.22.1.4}getTime()}{111}{subsubsection.5.22.1.4}%
+\contentsline {subsubsection}{\numberline {5.22.1.5}help()}{111}{subsubsection.5.22.1.5}%
+\contentsline {subsubsection}{\numberline {5.22.1.6}intToBCD()}{112}{subsubsection.5.22.1.6}%
+\contentsline {subsubsection}{\numberline {5.22.1.7}quit()}{112}{subsubsection.5.22.1.7}%
+\contentsline {subsubsection}{\numberline {5.22.1.8}removeAll()}{113}{subsubsection.5.22.1.8}%
+\contentsline {subsubsection}{\numberline {5.22.1.9}setDate()}{113}{subsubsection.5.22.1.9}%
+\contentsline {subsubsection}{\numberline {5.22.1.10}setTime()}{115}{subsubsection.5.22.1.10}%
+\contentsline {subsubsection}{\numberline {5.22.1.11}version()}{116}{subsubsection.5.22.1.11}%
+\contentsline {section}{\numberline {5.23}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R1commands.h File Reference}{116}{section.5.23}%
+\contentsline {subsection}{\numberline {5.23.1}Function Documentation}{116}{subsection.5.23.1}%
+\contentsline {subsubsection}{\numberline {5.23.1.1}BCDtoChar()}{117}{subsubsection.5.23.1.1}%
+\contentsline {subsubsection}{\numberline {5.23.1.2}change\_int\_to\_binary()}{117}{subsubsection.5.23.1.2}%
+\contentsline {subsubsection}{\numberline {5.23.1.3}getDate()}{117}{subsubsection.5.23.1.3}%
+\contentsline {subsubsection}{\numberline {5.23.1.4}getTime()}{118}{subsubsection.5.23.1.4}%
+\contentsline {subsubsection}{\numberline {5.23.1.5}help()}{118}{subsubsection.5.23.1.5}%
+\contentsline {subsubsection}{\numberline {5.23.1.6}quit()}{119}{subsubsection.5.23.1.6}%
+\contentsline {subsubsection}{\numberline {5.23.1.7}setDate()}{119}{subsubsection.5.23.1.7}%
+\contentsline {subsubsection}{\numberline {5.23.1.8}setTime()}{121}{subsubsection.5.23.1.8}%
+\contentsline {subsubsection}{\numberline {5.23.1.9}version()}{122}{subsubsection.5.23.1.9}%
+\contentsline {section}{\numberline {5.24}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Internal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Functions\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}And\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Structures.c File Reference}{122}{section.5.24}%
+\contentsline {subsection}{\numberline {5.24.1}Function Documentation}{123}{subsection.5.24.1}%
+\contentsline {subsubsection}{\numberline {5.24.1.1}allocatePCB()}{123}{subsubsection.5.24.1.1}%
+\contentsline {subsubsection}{\numberline {5.24.1.2}allocateQueues()}{124}{subsubsection.5.24.1.2}%
+\contentsline {subsubsection}{\numberline {5.24.1.3}findPCB()}{124}{subsubsection.5.24.1.3}%
+\contentsline {subsubsection}{\numberline {5.24.1.4}freePCB()}{125}{subsubsection.5.24.1.4}%
+\contentsline {subsubsection}{\numberline {5.24.1.5}getBlocked()}{125}{subsubsection.5.24.1.5}%
+\contentsline {subsubsection}{\numberline {5.24.1.6}getReady()}{126}{subsubsection.5.24.1.6}%
+\contentsline {subsubsection}{\numberline {5.24.1.7}getSuspendedBlocked()}{126}{subsubsection.5.24.1.7}%
+\contentsline {subsubsection}{\numberline {5.24.1.8}getSuspendedReady()}{126}{subsubsection.5.24.1.8}%
+\contentsline {subsubsection}{\numberline {5.24.1.9}insertPCB()}{126}{subsubsection.5.24.1.9}%
+\contentsline {subsubsection}{\numberline {5.24.1.10}removePCB()}{128}{subsubsection.5.24.1.10}%
+\contentsline {subsubsection}{\numberline {5.24.1.11}setupPCB()}{130}{subsubsection.5.24.1.11}%
+\contentsline {subsection}{\numberline {5.24.2}Variable Documentation}{130}{subsection.5.24.2}%
+\contentsline {subsubsection}{\numberline {5.24.2.1}blocked}{130}{subsubsection.5.24.2.1}%
+\contentsline {subsubsection}{\numberline {5.24.2.2}ready}{130}{subsubsection.5.24.2.2}%
+\contentsline {subsubsection}{\numberline {5.24.2.3}suspendedBlocked}{131}{subsubsection.5.24.2.3}%
+\contentsline {subsubsection}{\numberline {5.24.2.4}suspendedReady}{131}{subsubsection.5.24.2.4}%
+\contentsline {section}{\numberline {5.25}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Internal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Functions\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}And\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Structures.h File Reference}{131}{section.5.25}%
+\contentsline {subsection}{\numberline {5.25.1}Typedef Documentation}{131}{subsection.5.25.1}%
+\contentsline {subsubsection}{\numberline {5.25.1.1}PCB}{132}{subsubsection.5.25.1.1}%
+\contentsline {subsubsection}{\numberline {5.25.1.2}queue}{132}{subsubsection.5.25.1.2}%
+\contentsline {subsection}{\numberline {5.25.2}Function Documentation}{132}{subsection.5.25.2}%
+\contentsline {subsubsection}{\numberline {5.25.2.1}allocatePCB()}{132}{subsubsection.5.25.2.1}%
+\contentsline {subsubsection}{\numberline {5.25.2.2}allocateQueues()}{132}{subsubsection.5.25.2.2}%
+\contentsline {subsubsection}{\numberline {5.25.2.3}findPCB()}{133}{subsubsection.5.25.2.3}%
+\contentsline {subsubsection}{\numberline {5.25.2.4}freePCB()}{134}{subsubsection.5.25.2.4}%
+\contentsline {subsubsection}{\numberline {5.25.2.5}getBlocked()}{134}{subsubsection.5.25.2.5}%
+\contentsline {subsubsection}{\numberline {5.25.2.6}getReady()}{134}{subsubsection.5.25.2.6}%
+\contentsline {subsubsection}{\numberline {5.25.2.7}getSuspendedBlocked()}{134}{subsubsection.5.25.2.7}%
+\contentsline {subsubsection}{\numberline {5.25.2.8}getSuspendedReady()}{134}{subsubsection.5.25.2.8}%
+\contentsline {subsubsection}{\numberline {5.25.2.9}insertPCB()}{135}{subsubsection.5.25.2.9}%
+\contentsline {subsubsection}{\numberline {5.25.2.10}removePCB()}{136}{subsubsection.5.25.2.10}%
+\contentsline {subsubsection}{\numberline {5.25.2.11}setupPCB()}{138}{subsubsection.5.25.2.11}%
+\contentsline {section}{\numberline {5.26}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2commands.c File Reference}{138}{section.5.26}%
+\contentsline {subsection}{\numberline {5.26.1}Function Documentation}{139}{subsection.5.26.1}%
+\contentsline {subsubsection}{\numberline {5.26.1.1}blockPCB()}{139}{subsubsection.5.26.1.1}%
+\contentsline {subsubsection}{\numberline {5.26.1.2}createPCB()}{140}{subsubsection.5.26.1.2}%
+\contentsline {subsubsection}{\numberline {5.26.1.3}deletePCB()}{140}{subsubsection.5.26.1.3}%
+\contentsline {subsubsection}{\numberline {5.26.1.4}resumePCB()}{141}{subsubsection.5.26.1.4}%
+\contentsline {subsubsection}{\numberline {5.26.1.5}setPCBPriority()}{141}{subsubsection.5.26.1.5}%
+\contentsline {subsubsection}{\numberline {5.26.1.6}showAll()}{142}{subsubsection.5.26.1.6}%
+\contentsline {subsubsection}{\numberline {5.26.1.7}showBlocked()}{142}{subsubsection.5.26.1.7}%
+\contentsline {subsubsection}{\numberline {5.26.1.8}showPCB()}{143}{subsubsection.5.26.1.8}%
+\contentsline {subsubsection}{\numberline {5.26.1.9}showQueue()}{144}{subsubsection.5.26.1.9}%
+\contentsline {subsubsection}{\numberline {5.26.1.10}showReady()}{145}{subsubsection.5.26.1.10}%
+\contentsline {subsubsection}{\numberline {5.26.1.11}showSuspendedBlocked()}{145}{subsubsection.5.26.1.11}%
+\contentsline {subsubsection}{\numberline {5.26.1.12}showSuspendedReady()}{145}{subsubsection.5.26.1.12}%
+\contentsline {subsubsection}{\numberline {5.26.1.13}suspendPCB()}{146}{subsubsection.5.26.1.13}%
+\contentsline {subsubsection}{\numberline {5.26.1.14}unblockPCB()}{146}{subsubsection.5.26.1.14}%
+\contentsline {section}{\numberline {5.27}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R2commands.h File Reference}{146}{section.5.27}%
+\contentsline {subsection}{\numberline {5.27.1}Function Documentation}{147}{subsection.5.27.1}%
+\contentsline {subsubsection}{\numberline {5.27.1.1}blockPCB()}{147}{subsubsection.5.27.1.1}%
+\contentsline {subsubsection}{\numberline {5.27.1.2}createPCB()}{147}{subsubsection.5.27.1.2}%
+\contentsline {subsubsection}{\numberline {5.27.1.3}deletePCB()}{148}{subsubsection.5.27.1.3}%
+\contentsline {subsubsection}{\numberline {5.27.1.4}resumePCB()}{149}{subsubsection.5.27.1.4}%
+\contentsline {subsubsection}{\numberline {5.27.1.5}setPCBPriority()}{149}{subsubsection.5.27.1.5}%
+\contentsline {subsubsection}{\numberline {5.27.1.6}showAll()}{149}{subsubsection.5.27.1.6}%
+\contentsline {subsubsection}{\numberline {5.27.1.7}showBlocked()}{150}{subsubsection.5.27.1.7}%
+\contentsline {subsubsection}{\numberline {5.27.1.8}showPCB()}{150}{subsubsection.5.27.1.8}%
+\contentsline {subsubsection}{\numberline {5.27.1.9}showReady()}{152}{subsubsection.5.27.1.9}%
+\contentsline {subsubsection}{\numberline {5.27.1.10}showSuspendedBlocked()}{152}{subsubsection.5.27.1.10}%
+\contentsline {subsubsection}{\numberline {5.27.1.11}showSuspendedReady()}{153}{subsubsection.5.27.1.11}%
+\contentsline {subsubsection}{\numberline {5.27.1.12}suspendPCB()}{153}{subsubsection.5.27.1.12}%
+\contentsline {subsubsection}{\numberline {5.27.1.13}unblockPCB()}{153}{subsubsection.5.27.1.13}%
+\contentsline {section}{\numberline {5.28}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3/procsr3.c File Reference}{154}{section.5.28}%
+\contentsline {subsection}{\numberline {5.28.1}Macro Definition Documentation}{155}{subsection.5.28.1}%
+\contentsline {subsubsection}{\numberline {5.28.1.1}RC\_1}{155}{subsubsection.5.28.1.1}%
+\contentsline {subsubsection}{\numberline {5.28.1.2}RC\_2}{155}{subsubsection.5.28.1.2}%
+\contentsline {subsubsection}{\numberline {5.28.1.3}RC\_3}{155}{subsubsection.5.28.1.3}%
+\contentsline {subsubsection}{\numberline {5.28.1.4}RC\_4}{155}{subsubsection.5.28.1.4}%
+\contentsline {subsubsection}{\numberline {5.28.1.5}RC\_5}{155}{subsubsection.5.28.1.5}%
+\contentsline {subsection}{\numberline {5.28.2}Function Documentation}{155}{subsection.5.28.2}%
+\contentsline {subsubsection}{\numberline {5.28.2.1}proc1()}{156}{subsubsection.5.28.2.1}%
+\contentsline {subsubsection}{\numberline {5.28.2.2}proc2()}{156}{subsubsection.5.28.2.2}%
+\contentsline {subsubsection}{\numberline {5.28.2.3}proc3()}{156}{subsubsection.5.28.2.3}%
+\contentsline {subsubsection}{\numberline {5.28.2.4}proc4()}{157}{subsubsection.5.28.2.4}%
+\contentsline {subsubsection}{\numberline {5.28.2.5}proc5()}{157}{subsubsection.5.28.2.5}%
+\contentsline {subsection}{\numberline {5.28.3}Variable Documentation}{157}{subsection.5.28.3}%
+\contentsline {subsubsection}{\numberline {5.28.3.1}er1}{157}{subsubsection.5.28.3.1}%
+\contentsline {subsubsection}{\numberline {5.28.3.2}er2}{157}{subsubsection.5.28.3.2}%
+\contentsline {subsubsection}{\numberline {5.28.3.3}er3}{158}{subsubsection.5.28.3.3}%
+\contentsline {subsubsection}{\numberline {5.28.3.4}er4}{158}{subsubsection.5.28.3.4}%
+\contentsline {subsubsection}{\numberline {5.28.3.5}er5}{158}{subsubsection.5.28.3.5}%
+\contentsline {subsubsection}{\numberline {5.28.3.6}erSize}{158}{subsubsection.5.28.3.6}%
+\contentsline {subsubsection}{\numberline {5.28.3.7}msg1}{158}{subsubsection.5.28.3.7}%
+\contentsline {subsubsection}{\numberline {5.28.3.8}msg2}{158}{subsubsection.5.28.3.8}%
+\contentsline {subsubsection}{\numberline {5.28.3.9}msg3}{159}{subsubsection.5.28.3.9}%
+\contentsline {subsubsection}{\numberline {5.28.3.10}msg4}{159}{subsubsection.5.28.3.10}%
+\contentsline {subsubsection}{\numberline {5.28.3.11}msg5}{159}{subsubsection.5.28.3.11}%
+\contentsline {subsubsection}{\numberline {5.28.3.12}msgSize}{159}{subsubsection.5.28.3.12}%
+\contentsline {section}{\numberline {5.29}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3/procsr3.h File Reference}{159}{section.5.29}%
+\contentsline {subsection}{\numberline {5.29.1}Function Documentation}{159}{subsection.5.29.1}%
+\contentsline {subsubsection}{\numberline {5.29.1.1}proc1()}{160}{subsubsection.5.29.1.1}%
+\contentsline {subsubsection}{\numberline {5.29.1.2}proc2()}{160}{subsubsection.5.29.1.2}%
+\contentsline {subsubsection}{\numberline {5.29.1.3}proc3()}{160}{subsubsection.5.29.1.3}%
+\contentsline {subsubsection}{\numberline {5.29.1.4}proc4()}{161}{subsubsection.5.29.1.4}%
+\contentsline {subsubsection}{\numberline {5.29.1.5}proc5()}{161}{subsubsection.5.29.1.5}%
+\contentsline {section}{\numberline {5.30}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3commands.c File Reference}{161}{section.5.30}%
+\contentsline {subsection}{\numberline {5.30.1}Function Documentation}{162}{subsection.5.30.1}%
+\contentsline {subsubsection}{\numberline {5.30.1.1}loadr3()}{162}{subsubsection.5.30.1.1}%
+\contentsline {subsubsection}{\numberline {5.30.1.2}yield()}{163}{subsubsection.5.30.1.2}%
+\contentsline {section}{\numberline {5.31}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R3commands.h File Reference}{163}{section.5.31}%
+\contentsline {subsection}{\numberline {5.31.1}Typedef Documentation}{163}{subsection.5.31.1}%
+\contentsline {subsubsection}{\numberline {5.31.1.1}context}{163}{subsubsection.5.31.1.1}%
+\contentsline {subsection}{\numberline {5.31.2}Function Documentation}{163}{subsection.5.31.2}%
+\contentsline {subsubsection}{\numberline {5.31.2.1}loadr3()}{164}{subsubsection.5.31.2.1}%
+\contentsline {subsubsection}{\numberline {5.31.2.2}yield()}{165}{subsubsection.5.31.2.2}%
+\contentsline {section}{\numberline {5.32}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R4/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R4commands.c File Reference}{165}{section.5.32}%
+\contentsline {subsection}{\numberline {5.32.1}Function Documentation}{165}{subsection.5.32.1}%
+\contentsline {subsubsection}{\numberline {5.32.1.1}addAlarm()}{166}{subsubsection.5.32.1.1}%
+\contentsline {subsubsection}{\numberline {5.32.1.2}alarmPCB()}{167}{subsubsection.5.32.1.2}%
+\contentsline {subsubsection}{\numberline {5.32.1.3}allocateAlarmQueue()}{167}{subsubsection.5.32.1.3}%
+\contentsline {subsubsection}{\numberline {5.32.1.4}allocateAlarms()}{167}{subsubsection.5.32.1.4}%
+\contentsline {subsubsection}{\numberline {5.32.1.5}convertTime()}{168}{subsubsection.5.32.1.5}%
+\contentsline {subsubsection}{\numberline {5.32.1.6}getAlarms()}{168}{subsubsection.5.32.1.6}%
+\contentsline {subsubsection}{\numberline {5.32.1.7}infiniteFunc()}{168}{subsubsection.5.32.1.7}%
+\contentsline {subsubsection}{\numberline {5.32.1.8}infinitePCB()}{168}{subsubsection.5.32.1.8}%
+\contentsline {subsubsection}{\numberline {5.32.1.9}iterateAlarms()}{169}{subsubsection.5.32.1.9}%
+\contentsline {subsection}{\numberline {5.32.2}Variable Documentation}{169}{subsection.5.32.2}%
+\contentsline {subsubsection}{\numberline {5.32.2.1}alarms}{169}{subsubsection.5.32.2.1}%
+\contentsline {section}{\numberline {5.33}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R4/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R4commands.h File Reference}{169}{section.5.33}%
+\contentsline {subsection}{\numberline {5.33.1}Typedef Documentation}{170}{subsection.5.33.1}%
+\contentsline {subsubsection}{\numberline {5.33.1.1}alarm}{170}{subsubsection.5.33.1.1}%
+\contentsline {subsubsection}{\numberline {5.33.1.2}alarmList}{170}{subsubsection.5.33.1.2}%
+\contentsline {subsection}{\numberline {5.33.2}Function Documentation}{170}{subsection.5.33.2}%
+\contentsline {subsubsection}{\numberline {5.33.2.1}addAlarm()}{171}{subsubsection.5.33.2.1}%
+\contentsline {subsubsection}{\numberline {5.33.2.2}alarmPCB()}{172}{subsubsection.5.33.2.2}%
+\contentsline {subsubsection}{\numberline {5.33.2.3}allocateAlarmQueue()}{172}{subsubsection.5.33.2.3}%
+\contentsline {subsubsection}{\numberline {5.33.2.4}allocateAlarms()}{172}{subsubsection.5.33.2.4}%
+\contentsline {subsubsection}{\numberline {5.33.2.5}convertTime()}{173}{subsubsection.5.33.2.5}%
+\contentsline {subsubsection}{\numberline {5.33.2.6}getAlarms()}{173}{subsubsection.5.33.2.6}%
+\contentsline {subsubsection}{\numberline {5.33.2.7}infiniteFunc()}{173}{subsubsection.5.33.2.7}%
+\contentsline {subsubsection}{\numberline {5.33.2.8}infinitePCB()}{173}{subsubsection.5.33.2.8}%
+\contentsline {subsubsection}{\numberline {5.33.2.9}iterateAlarms()}{174}{subsubsection.5.33.2.9}%
+\contentsline {section}{\numberline {5.34}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R5/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R5commands.c File Reference}{174}{section.5.34}%
+\contentsline {subsection}{\numberline {5.34.1}Function Documentation}{175}{subsection.5.34.1}%
+\contentsline {subsubsection}{\numberline {5.34.1.1}allocateMemory()}{175}{subsubsection.5.34.1.1}%
+\contentsline {subsubsection}{\numberline {5.34.1.2}freeMemory()}{176}{subsubsection.5.34.1.2}%
+\contentsline {subsubsection}{\numberline {5.34.1.3}initializeHeap()}{177}{subsubsection.5.34.1.3}%
+\contentsline {subsubsection}{\numberline {5.34.1.4}insertToList()}{178}{subsubsection.5.34.1.4}%
+\contentsline {subsubsection}{\numberline {5.34.1.5}isEmpty()}{179}{subsubsection.5.34.1.5}%
+\contentsline {subsubsection}{\numberline {5.34.1.6}removeFromAlloc()}{179}{subsubsection.5.34.1.6}%
+\contentsline {subsubsection}{\numberline {5.34.1.7}showAllocatedMemory()}{179}{subsubsection.5.34.1.7}%
+\contentsline {subsubsection}{\numberline {5.34.1.8}showFreeMemory()}{180}{subsubsection.5.34.1.8}%
+\contentsline {subsubsection}{\numberline {5.34.1.9}showMCB()}{180}{subsubsection.5.34.1.9}%
+\contentsline {subsection}{\numberline {5.34.2}Variable Documentation}{180}{subsection.5.34.2}%
+\contentsline {subsubsection}{\numberline {5.34.2.1}allocatedList}{180}{subsubsection.5.34.2.1}%
+\contentsline {subsubsection}{\numberline {5.34.2.2}freeList}{181}{subsubsection.5.34.2.2}%
+\contentsline {section}{\numberline {5.35}modules/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R5/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}R5commands.h File Reference}{181}{section.5.35}%
+\contentsline {subsection}{\numberline {5.35.1}Typedef Documentation}{181}{subsection.5.35.1}%
+\contentsline {subsubsection}{\numberline {5.35.1.1}CMCB}{181}{subsubsection.5.35.1.1}%
+\contentsline {subsubsection}{\numberline {5.35.1.2}memList}{181}{subsubsection.5.35.1.2}%
+\contentsline {subsection}{\numberline {5.35.2}Function Documentation}{181}{subsection.5.35.2}%
+\contentsline {subsubsection}{\numberline {5.35.2.1}allocateMemory()}{182}{subsubsection.5.35.2.1}%
+\contentsline {subsubsection}{\numberline {5.35.2.2}freeMemory()}{183}{subsubsection.5.35.2.2}%
+\contentsline {subsubsection}{\numberline {5.35.2.3}initializeHeap()}{184}{subsubsection.5.35.2.3}%
+\contentsline {subsubsection}{\numberline {5.35.2.4}isEmpty()}{185}{subsubsection.5.35.2.4}%
+\contentsline {subsubsection}{\numberline {5.35.2.5}showAllocatedMemory()}{185}{subsubsection.5.35.2.5}%
+\contentsline {subsubsection}{\numberline {5.35.2.6}showFreeMemory()}{185}{subsubsection.5.35.2.6}%
+\contentsline {section}{\numberline {5.36}modules/utilities.c File Reference}{185}{section.5.36}%
+\contentsline {subsection}{\numberline {5.36.1}Function Documentation}{186}{subsection.5.36.1}%
+\contentsline {subsubsection}{\numberline {5.36.1.1}itoa()}{186}{subsubsection.5.36.1.1}%
+\contentsline {subsubsection}{\numberline {5.36.1.2}printMessage()}{186}{subsubsection.5.36.1.2}%
+\contentsline {subsubsection}{\numberline {5.36.1.3}reverseStr()}{187}{subsubsection.5.36.1.3}%
+\contentsline {section}{\numberline {5.37}modules/utilities.h File Reference}{187}{section.5.37}%
+\contentsline {subsection}{\numberline {5.37.1}Function Documentation}{187}{subsection.5.37.1}%
+\contentsline {subsubsection}{\numberline {5.37.1.1}itoa()}{187}{subsubsection.5.37.1.1}%
+\contentsline {subsubsection}{\numberline {5.37.1.2}printMessage()}{188}{subsubsection.5.37.1.2}%
+\contentsline {subsubsection}{\numberline {5.37.1.3}reverseStr()}{188}{subsubsection.5.37.1.3}%
+\contentsline {section}{\numberline {5.38}R\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}E\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}A\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}M\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}E.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{188}{section.5.38}%

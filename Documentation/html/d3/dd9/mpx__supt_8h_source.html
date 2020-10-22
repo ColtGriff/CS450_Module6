@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">3.75</span>
    </div>
   </td>
  </tr>
@@ -123,75 +123,76 @@ $(document).ready(function(){initNavTree('d3/dd9/mpx__supt_8h_source.html','../.
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../de/dd5/structparam.html#ab61d8fe96dbeed1ef0387802ac453c53">   35</a></span>&#160;  <span class="keywordtype">int</span> *<a class="code" href="../../de/dd5/structparam.html#ab61d8fe96dbeed1ef0387802ac453c53">count_ptr</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <a class="code" href="../../de/dd5/structparam.html">param</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">  Procedure..: sys_req</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">  Description..: Generate interrupt 60H</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">  Params..: int op_code one of (IDLE, EXIT, READ, WRITE)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">sys_req</a>( <span class="keywordtype">int</span> op_code, <span class="keywordtype">int</span> device_id, <span class="keywordtype">char</span> *buffer_ptr, </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordtype">int</span> *count_ptr );</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">  Procedure..: mpx_init</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  Description..: Initialize MPX support software</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  Params..: int cur_mod (symbolic constants MODULE_R1, MODULE_R2, etc</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a53332c6a3107a4feed6e2e79690a6ffa">mpx_init</a>(<span class="keywordtype">int</span> cur_mod);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  Procedure..: sys_set_malloc</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  Description..: Sets the memory allocation function for sys_alloc_mem</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  Params..: Function pointer</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">sys_set_malloc</a>(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> (*func)(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">  Procedure..: sys_set_free</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  Description..: Sets the memory free function for sys_free_mem</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  Params..: s1-destination, s2-source</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">sys_set_free</a>(<span class="keywordtype">int</span> (*func)(<span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">  Procedure..: sys_req</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">  Description..: Generate interrupt 60H</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">  Params..: int op_code one of (IDLE, EXIT, READ, WRITE)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">sys_req</a>( <span class="keywordtype">int</span> op_code, <span class="keywordtype">int</span> device_id, <span class="keywordtype">char</span> *buffer_ptr, </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">int</span> *count_ptr );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  Procedure..: mpx_init</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  Description..: Initialize MPX support software</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  Params..: int cur_mod (symbolic constants MODULE_R1, MODULE_R2, etc</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a53332c6a3107a4feed6e2e79690a6ffa">mpx_init</a>(<span class="keywordtype">int</span> cur_mod);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  Procedure..: sys_set_malloc</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  Description..: Sets the memory allocation function for sys_alloc_mem</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">  Params..: Function pointer</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">sys_set_malloc</a>(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> (*func)(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  Procedure..: sys_set_free</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  Description..: Sets the memory free function for sys_free_mem</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">  Params..: s1-destination, s2-source</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">sys_set_free</a>(<span class="keywordtype">int</span> (*func)(<span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  Procedure..: sys_alloc_mem</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  Description..: Allocates a block of memory (similar to malloc)</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  Params..: Number of bytes to allocate</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="../../d3/dd9/mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">sys_alloc_mem</a>(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> size);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  Procedure..: sys_free_mem</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  Description..: Frees memory</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  Params..: Pointer to block of memory to free</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">sys_free_mem</a>(<span class="keywordtype">void</span> *ptr);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  Procedure..: idle</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  Description..: The idle process</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  Params..: None</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a83abbeda22fc5e6c2b35523b64199c1c">idle</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  Procedure..: sys_alloc_mem</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  Description..: Allocates a block of memory (similar to malloc)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  Params..: Number of bytes to allocate</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="../../d3/dd9/mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">sys_alloc_mem</a>(<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> size);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  Procedure..: sys_free_mem</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  Description..: Frees memory</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  Params..: Pointer to block of memory to free</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">sys_free_mem</a>(<span class="keywordtype">void</span> *ptr);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  Procedure..: idle</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  Description..: The idle process</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  Params..: None</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/dd9/mpx__supt_8h.html#a83abbeda22fc5e6c2b35523b64199c1c">idle</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="asystem_8h_html_a757de76cafbcddaac0d1632902fe4cb8"><div class="ttname"><a href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a></div><div class="ttdeci">unsigned long u32int</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/db2/system_8h_source.html#l00027">system.h:27</a></div></div>
 <div class="ttc" id="astructparam_html_a44a7285b02749114186a9f9971941bcb"><div class="ttname"><a href="../../de/dd5/structparam.html#a44a7285b02749114186a9f9971941bcb">param::device_id</a></div><div class="ttdeci">int device_id</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd9/mpx__supt_8h_source.html#l00033">mpx_supt.h:33</a></div></div>
 <div class="ttc" id="astructparam_html_ab61d8fe96dbeed1ef0387802ac453c53"><div class="ttname"><a href="../../de/dd5/structparam.html#ab61d8fe96dbeed1ef0387802ac453c53">param::count_ptr</a></div><div class="ttdeci">int * count_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd9/mpx__supt_8h_source.html#l00035">mpx_supt.h:35</a></div></div>
 <div class="ttc" id="astructparam_html_af15d63bace93014ec7425635c892ce99"><div class="ttname"><a href="../../de/dd5/structparam.html#af15d63bace93014ec7425635c892ce99">param::buffer_ptr</a></div><div class="ttdeci">char * buffer_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd9/mpx__supt_8h_source.html#l00034">mpx_supt.h:34</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a4a28bb188c9fed51228c46980b20e605"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">sys_set_malloc</a></div><div class="ttdeci">void sys_set_malloc(u32int(*func)(u32int))</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00124">mpx_supt.c:124</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a53332c6a3107a4feed6e2e79690a6ffa"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a53332c6a3107a4feed6e2e79690a6ffa">mpx_init</a></div><div class="ttdeci">void mpx_init(int cur_mod)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00106">mpx_supt.c:106</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a83abbeda22fc5e6c2b35523b64199c1c"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a83abbeda22fc5e6c2b35523b64199c1c">idle</a></div><div class="ttdeci">void idle()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00173">mpx_supt.c:173</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a4a28bb188c9fed51228c46980b20e605"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a4a28bb188c9fed51228c46980b20e605">sys_set_malloc</a></div><div class="ttdeci">void sys_set_malloc(u32int(*func)(u32int))</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00130">mpx_supt.c:130</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a53332c6a3107a4feed6e2e79690a6ffa"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a53332c6a3107a4feed6e2e79690a6ffa">mpx_init</a></div><div class="ttdeci">void mpx_init(int cur_mod)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00114">mpx_supt.c:114</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a83abbeda22fc5e6c2b35523b64199c1c"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a83abbeda22fc5e6c2b35523b64199c1c">idle</a></div><div class="ttdeci">void idle()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00178">mpx_supt.c:178</a></div></div>
 <div class="ttc" id="asystem_8h_html"><div class="ttname"><a href="../../dc/db2/system_8h.html">system.h</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a950663d39dbb073c9dff9cf3b5d3392c"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">sys_free_mem</a></div><div class="ttdeci">int sys_free_mem(void *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00158">mpx_supt.c:158</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a950663d39dbb073c9dff9cf3b5d3392c"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a950663d39dbb073c9dff9cf3b5d3392c">sys_free_mem</a></div><div class="ttdeci">int sys_free_mem(void *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00163">mpx_supt.c:163</a></div></div>
 <div class="ttc" id="astructparam_html"><div class="ttname"><a href="../../de/dd5/structparam.html">param</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd9/mpx__supt_8h_source.html#l00031">mpx_supt.h:31</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a2463d934fa39601c275a3ade8afd18bc"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">sys_set_free</a></div><div class="ttdeci">void sys_set_free(int(*func)(void *))</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00134">mpx_supt.c:134</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a2463d934fa39601c275a3ade8afd18bc"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a2463d934fa39601c275a3ade8afd18bc">sys_set_free</a></div><div class="ttdeci">void sys_set_free(int(*func)(void *))</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00140">mpx_supt.c:140</a></div></div>
 <div class="ttc" id="astructparam_html_a81c8b24055c2908ebe480598aba6044c"><div class="ttname"><a href="../../de/dd5/structparam.html#a81c8b24055c2908ebe480598aba6044c">param::op_code</a></div><div class="ttdeci">int op_code</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd9/mpx__supt_8h_source.html#l00032">mpx_supt.h:32</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_a61adad2abba0a3a225c2290b3de1fe93"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">sys_alloc_mem</a></div><div class="ttdeci">void * sys_alloc_mem(u32int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00144">mpx_supt.c:144</a></div></div>
-<div class="ttc" id="ampx__supt_8h_html_aaa3eb70f93cb8acf38ec0d028b9874f0"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">sys_req</a></div><div class="ttdeci">int sys_req(int op_code, int device_id, char *buffer_ptr, int *count_ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00049">mpx_supt.c:49</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_a61adad2abba0a3a225c2290b3de1fe93"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#a61adad2abba0a3a225c2290b3de1fe93">sys_alloc_mem</a></div><div class="ttdeci">void * sys_alloc_mem(u32int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00150">mpx_supt.c:150</a></div></div>
+<div class="ttc" id="ampx__supt_8h_html_aaa3eb70f93cb8acf38ec0d028b9874f0"><div class="ttname"><a href="../../d3/dd9/mpx__supt_8h.html#aaa3eb70f93cb8acf38ec0d028b9874f0">sys_req</a></div><div class="ttdeci">int sys_req(int op_code, int device_id, char *buffer_ptr, int *count_ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/mpx__supt_8c_source.html#l00050">mpx_supt.c:50</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structdate__time" kind="struct" language="C++" prot="public">
+    <compoundname>date_time</compoundname>
+    <includes refid="system_8h" local="no">system.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdate__time_1ac43a109ccc7f3c46840afa8a30dc51f1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::sec</definition>
+        <argsstring></argsstring>
+        <name>sec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="31" column="7" bodyfile="include/system.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1af93fdd2e01117a0171a2583718166d2a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::min</definition>
+        <argsstring></argsstring>
+        <name>min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="32" column="7" bodyfile="include/system.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1a4331b46df7b89763a85ea97a246c4ee2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::hour</definition>
+        <argsstring></argsstring>
+        <name>hour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="33" column="7" bodyfile="include/system.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1aa021771ff83fe860afaaf158932fcb15" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::day_w</definition>
+        <argsstring></argsstring>
+        <name>day_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="34" column="7" bodyfile="include/system.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1a72ee4f3a6a9970e58861c868bc676ba2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::day_m</definition>
+        <argsstring></argsstring>
+        <name>day_m</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="35" column="7" bodyfile="include/system.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1ad89b6054376708a35bc1c0a186c808ca" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::day_y</definition>
+        <argsstring></argsstring>
+        <name>day_y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="36" column="7" bodyfile="include/system.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1a6e8a5baa74a619330ba9925cf0baf250" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::mon</definition>
+        <argsstring></argsstring>
+        <name>mon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="37" column="7" bodyfile="include/system.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdate__time_1ae96e2e4cc09780eaac04038e12bbe06b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int date_time::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system.h" line="38" column="7" bodyfile="include/system.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/system.h" line="30" column="1" bodyfile="include/system.h" bodystart="30" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structdate__time_1a72ee4f3a6a9970e58861c868bc676ba2" prot="public" virt="non-virtual"><scope>date_time</scope><name>day_m</name></member>
+      <member refid="structdate__time_1aa021771ff83fe860afaaf158932fcb15" prot="public" virt="non-virtual"><scope>date_time</scope><name>day_w</name></member>
+      <member refid="structdate__time_1ad89b6054376708a35bc1c0a186c808ca" prot="public" virt="non-virtual"><scope>date_time</scope><name>day_y</name></member>
+      <member refid="structdate__time_1a4331b46df7b89763a85ea97a246c4ee2" prot="public" virt="non-virtual"><scope>date_time</scope><name>hour</name></member>
+      <member refid="structdate__time_1af93fdd2e01117a0171a2583718166d2a" prot="public" virt="non-virtual"><scope>date_time</scope><name>min</name></member>
+      <member refid="structdate__time_1a6e8a5baa74a619330ba9925cf0baf250" prot="public" virt="non-virtual"><scope>date_time</scope><name>mon</name></member>
+      <member refid="structdate__time_1ac43a109ccc7f3c46840afa8a30dc51f1" prot="public" virt="non-virtual"><scope>date_time</scope><name>sec</name></member>
+      <member refid="structdate__time_1ae96e2e4cc09780eaac04038e12bbe06b" prot="public" virt="non-virtual"><scope>date_time</scope><name>year</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="string_8h" kind="file" language="C++">
+    <compoundname>string.h</compoundname>
+    <includes refid="system_8h" local="no">system.h</includes>
+    <includedby refid="kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <includedby refid="serial_8c" local="no">kernel/core/serial.c</includedby>
+    <includedby refid="system_8c" local="no">kernel/core/system.c</includedby>
+    <includedby refid="tables_8c" local="no">kernel/core/tables.c</includedby>
+    <includedby refid="heap_8c" local="no">kernel/mem/heap.c</includedby>
+    <includedby refid="paging_8c" local="no">kernel/mem/paging.c</includedby>
+    <includedby refid="string_8c" local="no">lib/string.c</includedby>
+    <includedby refid="mpx__supt_8c" local="no">modules/mpx_supt.c</includedby>
+    <includedby refid="commhand_8c" local="no">modules/R1/commhand.c</includedby>
+    <includedby refid="R1commands_8c" local="no">modules/R1/R1commands.c</includedby>
+    <includedby refid="R2__Internal__Functions__And__Structures_8c" local="no">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="R2commands_8c" local="no">modules/R2/R2commands.c</includedby>
+    <includedby refid="R3commands_8c" local="no">modules/R3/R3commands.c</includedby>
+    <includedby refid="R4commands_8c" local="no">modules/R4/R4commands.c</includedby>
+    <includedby refid="R5commands_8c" local="no">modules/R5/R5commands.c</includedby>
+    <includedby refid="utilities_8c" local="no">modules/utilities.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>system.h</label>
+        <link refid="system_8h"/>
+      </node>
+      <node id="1">
+        <label>include/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="17">
+        <label>modules/utilities.c</label>
+        <link refid="utilities_8c"/>
+      </node>
+      <node id="15">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="R4commands_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="6">
+        <label>kernel/mem/heap.c</label>
+        <link refid="heap_8c"/>
+      </node>
+      <node id="13">
+        <label>modules/R2/R2commands.c</label>
+        <link refid="R2commands_8c"/>
+      </node>
+      <node id="3">
+        <label>kernel/core/serial.c</label>
+        <link refid="serial_8c"/>
+      </node>
+      <node id="4">
+        <label>kernel/core/system.c</label>
+        <link refid="system_8c"/>
+      </node>
+      <node id="10">
+        <label>modules/R1/commhand.c</label>
+        <link refid="commhand_8c"/>
+      </node>
+      <node id="7">
+        <label>kernel/mem/paging.c</label>
+        <link refid="paging_8c"/>
+      </node>
+      <node id="5">
+        <label>kernel/core/tables.c</label>
+        <link refid="tables_8c"/>
+      </node>
+      <node id="14">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="R3commands_8c"/>
+      </node>
+      <node id="11">
+        <label>modules/R1/R1commands.c</label>
+        <link refid="R1commands_8c"/>
+      </node>
+      <node id="9">
+        <label>modules/mpx_supt.c</label>
+        <link refid="mpx__supt_8c"/>
+      </node>
+      <node id="8">
+        <label>lib/string.c</label>
+        <link refid="string_8c"/>
+      </node>
+      <node id="12">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+      <node id="1">
+        <label>include/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>modules/R5/R5commands.c</label>
+        <link refid="R5commands_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="string_8h_1a0f3d37d605e9e6d4fc1853ff9d4b91bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int isspace</definition>
+        <argsstring>(const char *c)</argsstring>
+        <name>isspace</name>
+        <param>
+          <type>const char *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="11" column="5" bodyfile="lib/string.c" bodystart="119" bodyend="130" declfile="include/string.h" declline="11" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1ace6ee45c30e71865e6eb635200379db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* memset</definition>
+        <argsstring>(void *s, int c, size_t n)</argsstring>
+        <name>memset</name>
+        <param>
+          <type>void *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="system_8h_1a7c94ea6f8948649f8d181ae55911eeaf" kindref="member">size_t</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="18" column="6" bodyfile="lib/string.c" bodystart="137" bodyend="144" declfile="include/string.h" declline="18" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1a1eb9cae61e6a6282c28dbc298ef7297e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* strcpy</definition>
+        <argsstring>(char *s1, const char *s2)</argsstring>
+        <name>strcpy</name>
+        <param>
+          <type>char *</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="25" column="6" bodyfile="lib/string.c" bodystart="36" bodyend="41" declfile="include/string.h" declline="25" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1a8908188ae9fc2f05d993257ef001d553" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* strcat</definition>
+        <argsstring>(char *s1, const char *s2)</argsstring>
+        <name>strcat</name>
+        <param>
+          <type>char *</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="32" column="6" bodyfile="lib/string.c" bodystart="106" bodyend="112" declfile="include/string.h" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1a2dee044e4e667b5b789b493abd21cfa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int strlen</definition>
+        <argsstring>(const char *s)</argsstring>
+        <name>strlen</name>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="39" column="7" bodyfile="lib/string.c" bodystart="24" bodyend="29" declfile="include/string.h" declline="39" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1a11bd144d7d44914099a3aeddf1c8567d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int strcmp</definition>
+        <argsstring>(const char *s1, const char *s2)</argsstring>
+        <name>strcmp</name>
+        <param>
+          <type>const char *</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="46" column="7" bodyfile="lib/string.c" bodystart="79" bodyend="93" declfile="include/string.h" declline="46" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1af1a867dcea42fc1215d0eddf19283ef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* strtok</definition>
+        <argsstring>(char *s1, const char *s2)</argsstring>
+        <name>strtok</name>
+        <param>
+          <type>char *</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="53" column="6" bodyfile="lib/string.c" bodystart="151" bodyend="199" declfile="include/string.h" declline="53" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="string_8h_1a30670a60464f77af17dfb353353d6df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int atoi</definition>
+        <argsstring>(const char *s)</argsstring>
+        <name>atoi</name>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/string.h" line="60" column="5" bodyfile="lib/string.c" bodystart="48" bodyend="73" declfile="include/string.h" declline="60" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_STRING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_STRING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="system_8h" kindref="compound">system.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>isspace</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/>Description..:<sp/>Determine<sp/>if<sp/>a<sp/>character<sp/>is<sp/>whitespace.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/>Params..:<sp/>c-character<sp/>to<sp/>check</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="string_8h_1a0f3d37d605e9e6d4fc1853ff9d4b91bf" kindref="member">isspace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*c);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>memset</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/><sp/>Description..:<sp/>Set<sp/>a<sp/>region<sp/>of<sp/>memory.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/>Params..:<sp/>s-destination,<sp/>c-byte<sp/>to<sp/>write,<sp/>n-count</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*s,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>c,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>strcpy</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/><sp/>Description..:<sp/>Copy<sp/>one<sp/>string<sp/>to<sp/>another.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/>Params..:<sp/>s1-destination,<sp/>s2-source</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="string_8h_1a1eb9cae61e6a6282c28dbc298ef7297e" kindref="member">strcpy</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s2);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>strcat</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/>Description..:<sp/>Concatenate<sp/>the<sp/>contents<sp/>of<sp/>one<sp/>string<sp/>onto<sp/>another.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/>Params..:<sp/>s1-destination,<sp/>s2-source</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="string_8h_1a8908188ae9fc2f05d993257ef001d553" kindref="member">strcat</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s2);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>strlen</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/>Description..:<sp/>Returns<sp/>the<sp/>length<sp/>of<sp/>a<sp/>string.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/>Params..:<sp/>s-input<sp/>string</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><ref refid="string_8h_1a2dee044e4e667b5b789b493abd21cfa4" kindref="member">strlen</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>strcmp</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/>Description..:<sp/>String<sp/>comparison</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/>Params..:<sp/>s1-string<sp/>1,<sp/>s2-string<sp/>2</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><ref refid="string_8h_1a11bd144d7d44914099a3aeddf1c8567d" kindref="member">strcmp</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s2);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>strtok</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/>Description..:<sp/>Split<sp/>string<sp/>into<sp/>tokens</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/>Params..:<sp/>s1-string,<sp/>s2-delimiter</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="string_8h_1af1a867dcea42fc1215d0eddf19283ef3" kindref="member">strtok</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s2);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>atoi</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/>Description..:<sp/>Convert<sp/>an<sp/>ASCII<sp/>string<sp/>to<sp/>an<sp/>integer</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/>Params..:<sp/>const<sp/>char<sp/>*s<sp/>--<sp/>String</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="string_8h_1a30670a60464f77af17dfb353353d6df8" kindref="member">atoi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/string.h"/>
+  </compounddef>
+</doxygen>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">3.75</span>
    </div>
   </td>
  </tr>
@@ -108,7 +108,7 @@ Macros</h2></td></tr>
 <tr class="separator:ac56445256ce58f14f3c61af0cbf0cdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7945f331ddf94a0e0e938f825bc4d43c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#a7945f331ddf94a0e0e938f825bc4d43c">ICW4</a>&#160;&#160;&#160;0x01</td></tr>
 <tr class="separator:a7945f331ddf94a0e0e938f825bc4d43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeae4190ed25d0648577e1c742fd8a78d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>()&#160;&#160;&#160;<a class="el" href="../../dc/db2/system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">asm</a> <a class="el" href="../../dc/db2/system_8h.html#af55a5e48555be7d32ad73e76cf5d4db0">volatile</a> (&quot;outb $0x80&quot;)</td></tr>
+<tr class="memitem:aeae4190ed25d0648577e1c742fd8a78d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>()&#160;&#160;&#160;<a class="el" href="../../dc/db2/system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">asm</a> <a class="el" href="../../dc/db2/system_8h.html#af55a5e48555be7d32ad73e76cf5d4db0">volatile</a>(&quot;outb $0x80&quot;)</td></tr>
 <tr class="separator:aeae4190ed25d0648577e1c742fd8a78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -149,6 +149,8 @@ Functions</h2></td></tr>
 <tr class="separator:a5c538c7b7a55e3c981780b599fcb1de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52f2615cebbdeab188085a03c913fcf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#a52f2615cebbdeab188085a03c913fcf9">rtc_isr</a> ()</td></tr>
 <tr class="separator:a52f2615cebbdeab188085a03c913fcf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99cc9cf3204b4d11bebf1f85b763f608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#a99cc9cf3204b4d11bebf1f85b763f608">sys_call_isr</a> ()</td></tr>
+<tr class="separator:a99cc9cf3204b4d11bebf1f85b763f608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af88eb8e98d943aa0461c01de3cb53493"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#af88eb8e98d943aa0461c01de3cb53493">isr0</a> ()</td></tr>
 <tr class="separator:af88eb8e98d943aa0461c01de3cb53493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f9ba1353a3e7fcf94720c1c56ab3a96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d22/interrupts_8c.html#a1f9ba1353a3e7fcf94720c1c56ab3a96">do_isr</a> ()</td></tr>
@@ -240,7 +242,7 @@ Variables</h2></td></tr>
           <td class="memname">#define io_wait</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="../../dc/db2/system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">asm</a> <a class="el" href="../../dc/db2/system_8h.html#af55a5e48555be7d32ad73e76cf5d4db0">volatile</a> (&quot;outb $0x80&quot;)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="../../dc/db2/system_8h.html#a71921cebf4610b0dbb2b7a0daaf3fedf">asm</a> <a class="el" href="../../dc/db2/system_8h.html#af55a5e48555be7d32ad73e76cf5d4db0">volatile</a>(&quot;outb $0x80&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -416,10 +418,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00149">149</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Bounds error&quot;</span>);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00153">153</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Bounds error&quot;</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -438,10 +440,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00141">141</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Breakpoint&quot;</span>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00145">145</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;{</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Breakpoint&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -460,10 +462,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00193">193</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Coprocessor error&quot;</span>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00197">197</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Coprocessor error&quot;</span>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -482,10 +484,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00165">165</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Coprocessor segment error&quot;</span>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00169">169</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Coprocessor segment error&quot;</span>);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -504,10 +506,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00133">133</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Debug&quot;</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00137">137</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Debug&quot;</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -526,10 +528,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00157">157</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Device not available&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00161">161</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Device not available&quot;</span>);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -548,10 +550,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00129">129</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Division-by-zero&quot;</span>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00133">133</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Division-by-zero&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -570,10 +572,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00161">161</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Double fault&quot;</span>);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00165">165</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Double fault&quot;</span>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -592,10 +594,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00181">181</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;General protection fault&quot;</span>);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00185">185</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;General protection fault&quot;</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -614,10 +616,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00153">153</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Invalid operation&quot;</span>);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00157">157</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Invalid operation&quot;</span>);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -636,10 +638,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00169">169</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Invalid TSS&quot;</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00173">173</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Invalid TSS&quot;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -658,13 +660,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00053">53</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">char</span> in = <a class="code" href="../../dc/dac/io_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a>(<a class="code" href="../../db/d11/serial_8h.html#a435e02f194c24c9b0e00d7cd27a1704e">COM2</a>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a995827efcd4dcfb780c9fbb9645410a4">serial_print</a>(&amp;in);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a3514f7abff236a4e00a6c46021ce5e22">serial_println</a>(<span class="stringliteral">&quot;here&quot;</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(0x20,0x20); <span class="comment">//EOI</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00054">54</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">char</span> in = <a class="code" href="../../dc/dac/io_8h.html#ad6488a48837d179b1833e2f48dac9665">inb</a>(<a class="code" href="../../db/d11/serial_8h.html#a435e02f194c24c9b0e00d7cd27a1704e">COM2</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a995827efcd4dcfb780c9fbb9645410a4">serial_print</a>(&amp;in);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a3514f7abff236a4e00a6c46021ce5e22">serial_println</a>(<span class="stringliteral">&quot;here&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(0x20, 0x20); <span class="comment">//EOI</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -683,10 +685,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00137">137</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;NMI&quot;</span>);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00141">141</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;NMI&quot;</span>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -705,10 +707,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00145">145</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;{</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Overflow error&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00149">149</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Overflow error&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -727,10 +729,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00185">185</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Page Fault&quot;</span>);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00189">189</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Page Fault&quot;</span>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -749,10 +751,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00189">189</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a3514f7abff236a4e00a6c46021ce5e22">serial_println</a>(<span class="stringliteral">&quot;die: reserved&quot;</span>);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00193">193</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <a class="code" href="../../db/d11/serial_8h.html#a3514f7abff236a4e00a6c46021ce5e22">serial_println</a>(<span class="stringliteral">&quot;die: reserved&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -771,10 +773,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00173">173</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Segment not present&quot;</span>);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00177">177</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;{</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Segment not present&quot;</span>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -793,10 +795,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00177">177</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;{</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Stack segment error&quot;</span>);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00181">181</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a>(<span class="stringliteral">&quot;Stack segment error&quot;</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -850,39 +852,42 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00066">66</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{  </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// Necessary interrupt handlers for protected mode</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> isrs[17] = {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a779cbe32e1a5f1dc8fa9b7191f116b28">divide_error</a>,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a0d0105433f9c65c14928027b3f0966b7">debug</a>,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#aa42d18df06cf68f8c05fded5344c4c7e">nmi</a>,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a874043e2396dd8ce20ec7af3ea1e2a86">breakpoint</a>,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a810f078a27a6781a7406c74985ecb761">overflow</a>,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a96724d36ad85f9a02231d8e6fe0434df">bounds</a>,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a422d8af60b69cc11dbcbb9d89c69756b">invalid_op</a>,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#abe88cd1dcc26cb58ee785c714e016f72">device_not_available</a>,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ae2b9f5b44e05e0c53f8eaaa98396d627">double_fault</a>,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a1d688a0a370977c03fa98884a6e771e9">coprocessor_segment</a>,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a972be67f6a5432cc8eab8d27755fb00f">invalid_tss</a>,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e">segment_not_present</a>,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a1ccc3198890318741629a03bb88bee6f">stack_segment</a>,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a10777dd6c3a040471676741bbb8dda46">general_protection</a>,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ab3800dd0177baaef4da00494edfb32d9">page_fault</a>,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ad686e3fee8ec8346a6d8e98d970a02dd">reserved</a>,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a5c538c7b7a55e3c981780b599fcb1de7">coprocessor</a></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  };</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00067">67</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">// Necessary interrupt handlers for protected mode</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a> isrs[17] = {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a779cbe32e1a5f1dc8fa9b7191f116b28">divide_error</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a0d0105433f9c65c14928027b3f0966b7">debug</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#aa42d18df06cf68f8c05fded5344c4c7e">nmi</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a874043e2396dd8ce20ec7af3ea1e2a86">breakpoint</a>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a810f078a27a6781a7406c74985ecb761">overflow</a>,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a96724d36ad85f9a02231d8e6fe0434df">bounds</a>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a422d8af60b69cc11dbcbb9d89c69756b">invalid_op</a>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#abe88cd1dcc26cb58ee785c714e016f72">device_not_available</a>,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ae2b9f5b44e05e0c53f8eaaa98396d627">double_fault</a>,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a1d688a0a370977c03fa98884a6e771e9">coprocessor_segment</a>,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a972be67f6a5432cc8eab8d27755fb00f">invalid_tss</a>,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e">segment_not_present</a>,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a1ccc3198890318741629a03bb88bee6f">stack_segment</a>,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a10777dd6c3a040471676741bbb8dda46">general_protection</a>,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ab3800dd0177baaef4da00494edfb32d9">page_fault</a>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ad686e3fee8ec8346a6d8e98d970a02dd">reserved</a>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a5c538c7b7a55e3c981780b599fcb1de7">coprocessor</a>};</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// Install handlers; 0x08=sel, 0x8e=flags</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">for</span>(i=0; i&lt;32; i++){</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (i&lt;17) <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(i, isrs[i], 0x08, 0x8e);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">else</span> <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(i, (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ad686e3fee8ec8346a6d8e98d970a02dd">reserved</a>, 0x08, 0x8e);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">// Ignore interrupts from the real time clock</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(0x08, (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a52f2615cebbdeab188085a03c913fcf9">rtc_isr</a>, 0x08, 0x8e);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (i &lt; 17)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(i, isrs[i], 0x08, 0x8e);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(i, (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#ad686e3fee8ec8346a6d8e98d970a02dd">reserved</a>, 0x08, 0x8e);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">// Ignore interrupts from the real time clock</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(0x08, (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a52f2615cebbdeab188085a03c913fcf9">rtc_isr</a>, 0x08, 0x8e);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="../../df/d2c/tables_8h.html#a9eca3fe1465f8d7d383551d804853139">idt_set_gate</a>(60, (<a class="code" href="../../dc/db2/system_8h.html#a757de76cafbcddaac0d1632902fe4cb8">u32int</a>)<a class="code" href="../../d8/d22/interrupts_8c.html#a99cc9cf3204b4d11bebf1f85b763f608">sys_call_isr</a>, 0x08, 0x8e);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -902,28 +907,28 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00106">106</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>,<a class="code" href="../../d8/d22/interrupts_8c.html#ac56445256ce58f14f3c61af0cbf0cdad">ICW1</a>);   <span class="comment">//send initialization code words 1 to PIC1</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>,<a class="code" href="../../d8/d22/interrupts_8c.html#ac56445256ce58f14f3c61af0cbf0cdad">ICW1</a>);   <span class="comment">//send icw1 to PIC2</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>+1,0x20); <span class="comment">//icw2: remap irq0 to 32</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/interrupts_8c_source.html#l00110">110</a> of file <a class="el" href="../../d8/d22/interrupts_8c_source.html">interrupts.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>, <a class="code" href="../../d8/d22/interrupts_8c.html#ac56445256ce58f14f3c61af0cbf0cdad">ICW1</a>); <span class="comment">//send initialization code words 1 to PIC1</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>+1,0x28); <span class="comment">//icw2: remap irq8 to 40</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>, <a class="code" href="../../d8/d22/interrupts_8c.html#ac56445256ce58f14f3c61af0cbf0cdad">ICW1</a>); <span class="comment">//send icw1 to PIC2</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>+1,4);    <span class="comment">//icw3</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a> + 1, 0x20); <span class="comment">//icw2: remap irq0 to 32</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>+1,2);    <span class="comment">//icw3</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a> + 1, 0x28); <span class="comment">//icw2: remap irq8 to 40</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>+1,<a class="code" href="../../d8/d22/interrupts_8c.html#a7945f331ddf94a0e0e938f825bc4d43c">ICW4</a>); <span class="comment">//icw4: 80x86, automatic handling</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a> + 1, 4); <span class="comment">//icw3</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>+1,<a class="code" href="../../d8/d22/interrupts_8c.html#a7945f331ddf94a0e0e938f825bc4d43c">ICW4</a>); <span class="comment">//icw4: 80x86, automatic handling</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a> + 1, 2); <span class="comment">//icw3</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a>+1,0xFF); <span class="comment">//disable irqs for PIC1</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a> + 1, <a class="code" href="../../d8/d22/interrupts_8c.html#a7945f331ddf94a0e0e938f825bc4d43c">ICW4</a>); <span class="comment">//icw4: 80x86, automatic handling</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a>+1,0xFF); <span class="comment">//disable irqs for PIC2</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a> + 1, <a class="code" href="../../d8/d22/interrupts_8c.html#a7945f331ddf94a0e0e938f825bc4d43c">ICW4</a>); <span class="comment">//icw4: 80x86, automatic handling</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#a6b115109e4a0d3c5fb6252d091e86bfe">PIC1</a> + 1, 0xFF); <span class="comment">//disable irqs for PIC1</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <a class="code" href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a>(<a class="code" href="../../d8/d22/interrupts_8c.html#ac90003f52c8d736193efc954ece08e58">PIC2</a> + 1, 0xFF); <span class="comment">//disable irqs for PIC2</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1097,6 +1102,23 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a99cc9cf3204b4d11bebf1f85b763f608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99cc9cf3204b4d11bebf1f85b763f608">&#9670;&nbsp;</a></span>sys_call_isr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_call_isr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a3c386c59636822ce451be20cc1433a55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c386c59636822ce451be20cc1433a55">&#9670;&nbsp;</a></span>idt_entries</h2>
@@ -1145,6 +1167,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="aio_8h_html_a0e661d36f40638a36550a534076f155b"><div class="ttname"><a href="../../dc/dac/io_8h.html#a0e661d36f40638a36550a534076f155b">outb</a></div><div class="ttdeci">#define outb(port, data)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dac/io_8h_source.html#l00008">io.h:8</a></div></div>
 <div class="ttc" id="ainterrupts_8c_html_a96724d36ad85f9a02231d8e6fe0434df"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#a96724d36ad85f9a02231d8e6fe0434df">bounds</a></div><div class="ttdeci">void bounds()</div></div>
 <div class="ttc" id="ainterrupts_8c_html_a972be67f6a5432cc8eab8d27755fb00f"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#a972be67f6a5432cc8eab8d27755fb00f">invalid_tss</a></div><div class="ttdeci">void invalid_tss()</div></div>
+<div class="ttc" id="ainterrupts_8c_html_a99cc9cf3204b4d11bebf1f85b763f608"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#a99cc9cf3204b4d11bebf1f85b763f608">sys_call_isr</a></div><div class="ttdeci">void sys_call_isr()</div></div>
 <div class="ttc" id="ainterrupts_8c_html_af1748d9ea65ba652bc92074ab6570d8e"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e">segment_not_present</a></div><div class="ttdeci">void segment_not_present()</div></div>
 <div class="ttc" id="ainterrupts_8c_html_a1ccc3198890318741629a03bb88bee6f"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#a1ccc3198890318741629a03bb88bee6f">stack_segment</a></div><div class="ttdeci">void stack_segment()</div></div>
 <div class="ttc" id="ainterrupts_8c_html_aeae4190ed25d0648577e1c742fd8a78d"><div class="ttname"><a href="../../d8/d22/interrupts_8c.html#aeae4190ed25d0648577e1c742fd8a78d">io_wait</a></div><div class="ttdeci">#define io_wait()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/interrupts_8c_source.html#l00028">interrupts.c:28</a></div></div>

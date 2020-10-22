@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structheap" kind="struct" language="C++" prot="public">
+    <compoundname>heap</compoundname>
+    <includes refid="heap_8h" local="no">heap.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structheap_1a8fe6ce2a8b45088990071e9b1d35add2" prot="public" static="no" mutable="no">
+        <type><ref refid="structindex__table" kindref="compound">index_table</ref></type>
+        <definition>index_table heap::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="34" column="15" bodyfile="include/mem/heap.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structheap_1a744634662f1ffdb4d85632e68c063e51" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int heap::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="35" column="10" bodyfile="include/mem/heap.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structheap_1ad2e0262828735d6e437facbfce37d6b0" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int heap::max_size</definition>
+        <argsstring></argsstring>
+        <name>max_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="36" column="10" bodyfile="include/mem/heap.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structheap_1a7b4422774c5ca7ac8ed5ddfe95f5c8ec" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int heap::min_size</definition>
+        <argsstring></argsstring>
+        <name>min_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="37" column="10" bodyfile="include/mem/heap.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>index_entry</label>
+        <link refid="structindex__entry"/>
+      </node>
+      <node id="1">
+        <label>heap</label>
+        <link refid="structheap"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>index</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>index_table</label>
+        <link refid="structindex__table"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>table</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mem/heap.h" line="33" column="1" bodyfile="include/mem/heap.h" bodystart="33" bodyend="38"/>
+    <listofallmembers>
+      <member refid="structheap_1a744634662f1ffdb4d85632e68c063e51" prot="public" virt="non-virtual"><scope>heap</scope><name>base</name></member>
+      <member refid="structheap_1a8fe6ce2a8b45088990071e9b1d35add2" prot="public" virt="non-virtual"><scope>heap</scope><name>index</name></member>
+      <member refid="structheap_1ad2e0262828735d6e437facbfce37d6b0" prot="public" virt="non-virtual"><scope>heap</scope><name>max_size</name></member>
+      <member refid="structheap_1a7b4422774c5ca7ac8ed5ddfe95f5c8ec" prot="public" virt="non-virtual"><scope>heap</scope><name>min_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

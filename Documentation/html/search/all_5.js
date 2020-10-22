@@ -1,6 +1,23 @@
 var searchData=
 [
-  ['empty_72',['empty',['../d8/d40/structindex__entry.html#afdbdffb4bd17e4ab003b94be3d5bade7',1,'index_entry']]],
-  ['end_73',['end',['../d2/d29/heap_8c.html#a57dfa4d169c6b9c0b4e7352bc0c34366',1,'heap.c']]],
-  ['exit_74',['EXIT',['../d3/dd9/mpx__supt_8h.html#ad111e603bbebe5d87f6bc39264ce4733',1,'mpx_supt.h']]]
+  ['eax_92',['eax',['../structcontext.html#ab91accfc2d53d57c615cf40235a01889',1,'context']]],
+  ['ebp_93',['ebp',['../structcontext.html#a7ed33e51ef51493c861cd20aa919f2f9',1,'context']]],
+  ['ebx_94',['ebx',['../structcontext.html#aa1a5259f18285c424a8d38edd035f38b',1,'context']]],
+  ['ecx_95',['ecx',['../structcontext.html#ad0067b404e6853bcf37d3f74a6f0294b',1,'context']]],
+  ['edi_96',['edi',['../structcontext.html#a2fd21838138987e11b4ff201b2e84b3b',1,'context']]],
+  ['edx_97',['edx',['../structcontext.html#a104da48ac40e0e3e94dfdfa7e7f0e8e9',1,'context']]],
+  ['eflags_98',['eflags',['../structcontext.html#a70a4605bd1b897c096f5cc7f730214db',1,'context']]],
+  ['eip_99',['eip',['../structcontext.html#a48807bac5338e9bcd6183f2f2061400b',1,'context']]],
+  ['empty_100',['empty',['../structindex__entry.html#afdbdffb4bd17e4ab003b94be3d5bade7',1,'index_entry']]],
+  ['end_101',['end',['../heap_8c.html#a57dfa4d169c6b9c0b4e7352bc0c34366',1,'heap.c']]],
+  ['er1_102',['er1',['../procsr3_8c.html#af397e3ef556cf98183ba5a7b5cf8dae7',1,'procsr3.c']]],
+  ['er2_103',['er2',['../procsr3_8c.html#a384042ebb4ec97b1ca549bc0be4aa700',1,'procsr3.c']]],
+  ['er3_104',['er3',['../procsr3_8c.html#a08de0387c4931cac8b2984dbd6f1fc8a',1,'procsr3.c']]],
+  ['er4_105',['er4',['../procsr3_8c.html#a556e9f750c6390c67436865a08b77b79',1,'procsr3.c']]],
+  ['er5_106',['er5',['../procsr3_8c.html#afa71db2a84abf9e2211bdb3143e22ac4',1,'procsr3.c']]],
+  ['ersize_107',['erSize',['../procsr3_8c.html#a6fcbbc28a07d6e4c8ca82ed7ca978404',1,'procsr3.c']]],
+  ['es_108',['es',['../structcontext.html#aca480d54d4be09cb005dc21e4ff05da1',1,'context']]],
+  ['esi_109',['esi',['../structcontext.html#a736ce63e2112c400c59376b25af11068',1,'context']]],
+  ['esp_110',['esp',['../structcontext.html#a5d56c844a4aa0dd6b7a7bf5b421cbf88',1,'context']]],
+  ['exit_111',['EXIT',['../mpx__supt_8h.html#ad111e603bbebe5d87f6bc39264ce4733',1,'mpx_supt.h']]]
 ];

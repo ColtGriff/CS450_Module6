@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
   <compounddef id="dir_539c600d05e734858cfd9a589845008d" kind="dir">
     <compoundname>kernel/mem</compoundname>
-    <innerfile refid="d2/d29/heap_8c">heap.c</innerfile>
-    <innerfile refid="de/d38/paging_8c">paging.c</innerfile>
+    <innerfile refid="heap_8c">heap.c</innerfile>
+    <innerfile refid="paging_8c">paging.c</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

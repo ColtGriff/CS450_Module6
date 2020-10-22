@@ -1,0 +1,511 @@
+\hypertarget{R1commands_8h}{}\doxysection{modules/\+R1/\+R1commands.h File Reference}
+\label{R1commands_8h}\index{modules/R1/R1commands.h@{modules/R1/R1commands.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{R1commands_8h_a97ee70a8770dc30d06c744b24eb2fcfc}{help}} ()
+\item 
+void \mbox{\hyperlink{R1commands_8h_aadd58a2bd505eba3564c7483be1a6140}{version}} ()
+\item 
+void \mbox{\hyperlink{R1commands_8h_a1c7c164fd3c7dea7004ece3c6251fc94}{get\+Time}} ()
+\item 
+void \mbox{\hyperlink{R1commands_8h_afc443fe98a5312e4b6f8d5fe13baf7cb}{set\+Time}} ()
+\item 
+void \mbox{\hyperlink{R1commands_8h_affb6f9c7b2c1d585677a5bba1da35c06}{get\+Date}} ()
+\item 
+void \mbox{\hyperlink{R1commands_8h_aa155fdc926b45ca3c91ebec313e5acf9}{set\+Date}} ()
+\item 
+unsigned int \mbox{\hyperlink{R1commands_8h_a50895fa4f0317d479a30731917048acb}{change\+\_\+int\+\_\+to\+\_\+binary}} (int test)
+\item 
+int \mbox{\hyperlink{R1commands_8h_ae8b9184465641fb2c95b1b9069a2c8fc}{B\+C\+Dto\+Char}} (unsigned char test, char $\ast$buffer)
+\item 
+int \mbox{\hyperlink{R1commands_8h_a041c4fd02fe320e833aa34a820274935}{quit}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{R1commands_8h_ae8b9184465641fb2c95b1b9069a2c8fc}\label{R1commands_8h_ae8b9184465641fb2c95b1b9069a2c8fc}} 
+\index{R1commands.h@{R1commands.h}!BCDtoChar@{BCDtoChar}}
+\index{BCDtoChar@{BCDtoChar}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{BCDtoChar()}{BCDtoChar()}}
+{\footnotesize\ttfamily int B\+C\+Dto\+Char (\begin{DoxyParamCaption}\item[{unsigned char}]{test,  }\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 366 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{367 \{}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369     \textcolor{keywordtype}{int} val1 = (test / 16);}
+\DoxyCodeLine{370     \textcolor{keywordtype}{int} val2 = (test \% 16);}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372     buffer[0] = val1 + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{373     buffer[1] = val2 + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{376 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_a50895fa4f0317d479a30731917048acb}\label{R1commands_8h_a50895fa4f0317d479a30731917048acb}} 
+\index{R1commands.h@{R1commands.h}!change\_int\_to\_binary@{change\_int\_to\_binary}}
+\index{change\_int\_to\_binary@{change\_int\_to\_binary}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{change\_int\_to\_binary()}{change\_int\_to\_binary()}}
+{\footnotesize\ttfamily unsigned int change\+\_\+int\+\_\+to\+\_\+binary (\begin{DoxyParamCaption}\item[{int}]{test }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{R1commands_8h_affb6f9c7b2c1d585677a5bba1da35c06}\label{R1commands_8h_affb6f9c7b2c1d585677a5bba1da35c06}} 
+\index{R1commands.h@{R1commands.h}!getDate@{getDate}}
+\index{getDate@{getDate}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{getDate()}{getDate()}}
+{\footnotesize\ttfamily void get\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 169 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{170 \{}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keywordtype}{char} buffer[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{173     \textcolor{keywordtype}{int} count = 4;}
+\DoxyCodeLine{174     \textcolor{keywordtype}{char} divider = \textcolor{charliteral}{'/'};}
+\DoxyCodeLine{175     \textcolor{keywordtype}{char} newLine[1] = \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{176     \textcolor{keywordtype}{int} newLineCount = 1;}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x07); \textcolor{comment}{// getting Day of month value}}
+\DoxyCodeLine{179     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{180     buffer[2] = divider;}
+\DoxyCodeLine{181     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{182     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x08); \textcolor{comment}{// getting Month value}}
+\DoxyCodeLine{185     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{186     buffer[2] = divider;}
+\DoxyCodeLine{187     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{188     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x32); \textcolor{comment}{// getting Year value second byte}}
+\DoxyCodeLine{191     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{192     buffer[2] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{193     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{194     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x09); \textcolor{comment}{// getting Year value first byte}}
+\DoxyCodeLine{197     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{198     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{199     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, newLine, \&newLineCount);}
+\DoxyCodeLine{202     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(newLine, \textcolor{charliteral}{'\(\backslash\)0'}, newLineCount);}
+\DoxyCodeLine{203 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_a1c7c164fd3c7dea7004ece3c6251fc94}\label{R1commands_8h_a1c7c164fd3c7dea7004ece3c6251fc94}} 
+\index{R1commands.h@{R1commands.h}!getTime@{getTime}}
+\index{getTime@{getTime}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily void get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{char} buffer[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} count = 4;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{char} divider = \textcolor{charliteral}{':'};}
+\DoxyCodeLine{57     \textcolor{keywordtype}{char} newLine[1] = \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} newLineCount = 1;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x04); \textcolor{comment}{// getting Hour value}}
+\DoxyCodeLine{61     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{62     buffer[2] = divider;}
+\DoxyCodeLine{63     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{64     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x02); \textcolor{comment}{// getting Minute value}}
+\DoxyCodeLine{67     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{68     buffer[2] = divider;}
+\DoxyCodeLine{69     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{70     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x00); \textcolor{comment}{// getting Second value}}
+\DoxyCodeLine{73     \mbox{\hyperlink{R1commands_8c_ae8b9184465641fb2c95b1b9069a2c8fc}{BCDtoChar}}(\mbox{\hyperlink{io_8h_ad6488a48837d179b1833e2f48dac9665}{inb}}(0x71), buffer);}
+\DoxyCodeLine{74     buffer[2] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{75     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, buffer, \&count);}
+\DoxyCodeLine{76     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, count);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, newLine, \&newLineCount);}
+\DoxyCodeLine{79     \mbox{\hyperlink{string_8h_ace6ee45c30e71865e6eb635200379db9}{memset}}(newLine, \textcolor{charliteral}{'\(\backslash\)0'}, newLineCount);}
+\DoxyCodeLine{80 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_a97ee70a8770dc30d06c744b24eb2fcfc}\label{R1commands_8h_a97ee70a8770dc30d06c744b24eb2fcfc}} 
+\index{R1commands.h@{R1commands.h}!help@{help}}
+\index{help@{help}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{help()}{help()}}
+{\footnotesize\ttfamily void help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}help: Returns basic command information.\(\backslash\)n"{}});}
+\DoxyCodeLine{17     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}version: Returns the current version of the software.\(\backslash\)n"{}});}
+\DoxyCodeLine{18     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}getTime: Returns the current set time.\(\backslash\)n"{}});}
+\DoxyCodeLine{19     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}setTime: Allows the user to change the set time.\(\backslash\)n"{}});}
+\DoxyCodeLine{20     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}getDate: Returns the current set date.\(\backslash\)n"{}});}
+\DoxyCodeLine{21     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}setDate: Allows the user to change the set date.\(\backslash\)n"{}});}
+\DoxyCodeLine{22     \textcolor{comment}{// printMessage("{}createPCB: Will create a PCB and put it into the ready queue by default.\(\backslash\)n"{});}}
+\DoxyCodeLine{23     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}deletePCB: Will delete a specific PCB from what ever queue it is in.\(\backslash\)n"{}});}
+\DoxyCodeLine{24     \textcolor{comment}{// printMessage("{}blockPCB: Will change a specific PCB's state to blocked.\(\backslash\)n"{});}}
+\DoxyCodeLine{25     \textcolor{comment}{// printMessage("{}unblockPCB: Will change a specific PCB's state to ready.\(\backslash\)n"{});}}
+\DoxyCodeLine{26     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}suspendPCB: Will suspend a specific PCB.\(\backslash\)n"{}});}
+\DoxyCodeLine{27     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}resumePCB: Will unsuspend a specific PCB.\(\backslash\)n"{}});}
+\DoxyCodeLine{28     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}setPCBPriority: Will change the priority of a specific PCB.\(\backslash\)n"{}});}
+\DoxyCodeLine{29     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showPCB: Will display the name, class, state, suspended status, and priority of a specific PCB.\(\backslash\)n"{}});}
+\DoxyCodeLine{30     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showReady: Will display the name, class, state, suspended status, and priority of every PCB in the ready queue.\(\backslash\)n"{}});}
+\DoxyCodeLine{31     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showSuspendedReady: Will display the name, class, state, suspended status, and priority of every PCB in the suspended ready queue.\(\backslash\)n"{}});}
+\DoxyCodeLine{32     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showSuspendedBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the suspended blocked queue.\(\backslash\)n"{}});}
+\DoxyCodeLine{33     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the blocked queue.\(\backslash\)n"{}});}
+\DoxyCodeLine{34     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showReady: Will display the name, class, state, suspended status, and priority of every PCB in all 4 queues.\(\backslash\)n"{}});}
+\DoxyCodeLine{35     \textcolor{comment}{// printMessage("{}yield: Will cause commhand to voluntarily allow other processes to use the CPU.(removed for R4)\(\backslash\)n"{});}}
+\DoxyCodeLine{36     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}loadr3: Will load all processes for R3. \(\backslash\)n"{}});}
+\DoxyCodeLine{37     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}infinitePCB: Will load a process that executes infinitely until suspended.\(\backslash\)n"{}});}
+\DoxyCodeLine{38     \textcolor{comment}{//printMessage("{}addAlarm: Allows the user to make an alarm. The system is also able to keep track of multiple alarms.\(\backslash\)n"{});}}
+\DoxyCodeLine{39     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showFreeMemory: Shows all of the free memory in the system.\(\backslash\)n"{}});}
+\DoxyCodeLine{40     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}showAllocatedMemory: Shows all of the allocated memory in the system.\(\backslash\)n"{}});}
+\DoxyCodeLine{41     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}quit: Allows the user to shut the system down.\(\backslash\)n"{}});}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_a041c4fd02fe320e833aa34a820274935}\label{R1commands_8h_a041c4fd02fe320e833aa34a820274935}} 
+\index{R1commands.h@{R1commands.h}!quit@{quit}}
+\index{quit@{quit}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily int quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 412 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{413 \{}
+\DoxyCodeLine{414     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Are you sure you want to shutdown? y/n\(\backslash\)n"{}});}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{418     \textcolor{keywordtype}{char} quitAns[] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{419     \textcolor{keywordtype}{int} quitAnsLength = 1;}
+\DoxyCodeLine{420     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, quitAns, \&quitAnsLength);}
+\DoxyCodeLine{421     \textcolor{keywordtype}{char} answer = quitAns[0];}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423     \textcolor{keywordflow}{if} (answer == \textcolor{charliteral}{'y'} || answer == \textcolor{charliteral}{'Y'})}
+\DoxyCodeLine{424     \{}
+\DoxyCodeLine{425         flag = 1;}
+\DoxyCodeLine{426         \textcolor{comment}{//removeAll processes.}}
+\DoxyCodeLine{427         \mbox{\hyperlink{R1commands_8c_a9b0a5a3ad9972ab0e8eb0b54873aac6b}{removeAll}}();}
+\DoxyCodeLine{428         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{429     \}}
+\DoxyCodeLine{430     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (answer == \textcolor{charliteral}{'n'} || answer == \textcolor{charliteral}{'N'})}
+\DoxyCodeLine{431     \{}
+\DoxyCodeLine{432         flag = 0;}
+\DoxyCodeLine{433         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{434     \}}
+\DoxyCodeLine{435     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{436     \{}
+\DoxyCodeLine{437         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid input!\(\backslash\)n"{}});}
+\DoxyCodeLine{438     \}}
+\DoxyCodeLine{439 }
+\DoxyCodeLine{440     \textcolor{keywordflow}{return} flag;}
+\DoxyCodeLine{441 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_aa155fdc926b45ca3c91ebec313e5acf9}\label{R1commands_8h_aa155fdc926b45ca3c91ebec313e5acf9}} 
+\index{R1commands.h@{R1commands.h}!setDate@{setDate}}
+\index{setDate@{setDate}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{setDate()}{setDate()}}
+{\footnotesize\ttfamily void set\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 205 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{206 \{}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \textcolor{keywordtype}{int} count = 4; \textcolor{comment}{// used to print year}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{211     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired year. I.E.: yyyy.\(\backslash\)n"{}});}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213     \textcolor{keywordtype}{char} year[5] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}}; \textcolor{comment}{// year buffer}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215     \textcolor{keywordtype}{int} flag = 0; \textcolor{comment}{// thrown if input is invalid}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{218     \{}
+\DoxyCodeLine{219         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, year, \&count);}
+\DoxyCodeLine{220         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) > 0)}
+\DoxyCodeLine{221         \{}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{224             flag = 0;}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226             \textcolor{keywordtype}{char} yearUpper[3] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{227             \textcolor{keywordtype}{char} yearLower[3] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)0"{}};}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229             yearUpper[0] = year[0];}
+\DoxyCodeLine{230             yearUpper[1] = year[1];}
+\DoxyCodeLine{231             yearLower[0] = year[2];}
+\DoxyCodeLine{232             yearLower[1] = year[3];}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234             \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}();}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x32); \textcolor{comment}{// Setting first byte year value}}
+\DoxyCodeLine{237             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(yearUpper)));}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x09); \textcolor{comment}{// Setting second byte year value}}
+\DoxyCodeLine{240             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(yearLower)));}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242             \mbox{\hyperlink{system_8h_ac5d15f274bc9b1e96230f3d3c60fd1f8}{sti}}();}
+\DoxyCodeLine{243         \}}
+\DoxyCodeLine{244         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{245         \{}
+\DoxyCodeLine{246             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid year.\(\backslash\)n"{}});}
+\DoxyCodeLine{247             flag = 1;}
+\DoxyCodeLine{248         \}}
+\DoxyCodeLine{249     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{252     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired month. I.E.: mm.\(\backslash\)n"{}});}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keywordtype}{char} month[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{255     count = 4; \textcolor{comment}{// used to print month}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{258     \{}
+\DoxyCodeLine{259         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, month, \&count);}
+\DoxyCodeLine{260         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) < 13 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) > 0)}
+\DoxyCodeLine{261         \{}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{264             flag = 0;}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266             \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}();}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x08); \textcolor{comment}{// Setting month value}}
+\DoxyCodeLine{269             \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month)));}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271             \mbox{\hyperlink{system_8h_ac5d15f274bc9b1e96230f3d3c60fd1f8}{sti}}();}
+\DoxyCodeLine{272         \}}
+\DoxyCodeLine{273         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{274         \{}
+\DoxyCodeLine{275             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid month.\(\backslash\)n"{}});}
+\DoxyCodeLine{276             flag = 1;}
+\DoxyCodeLine{277         \}}
+\DoxyCodeLine{278     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{281     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired day of month. I.E.: dd.\(\backslash\)n"{}});}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283     \textcolor{keywordtype}{char} day[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{284     count = 4; \textcolor{comment}{// used to print day}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{287     \{}
+\DoxyCodeLine{288         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, day, \&count);}
+\DoxyCodeLine{289         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{290         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) \% 4 == 0 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) \% 100 != 0) || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) \% 400 == 0)}
+\DoxyCodeLine{291         \{ \textcolor{comment}{// checking for leap year}}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{293             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}This is a leap year. February has 29 days.\(\backslash\)n"{}});}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295             \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 1 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 3 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 5 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 7 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 8 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 10 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 12) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 31)}
+\DoxyCodeLine{296             \{}
+\DoxyCodeLine{297                 flag = 1;}
+\DoxyCodeLine{298                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{299             \}}
+\DoxyCodeLine{300             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 4 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 6 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 9 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 11) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 30)}
+\DoxyCodeLine{301             \{}
+\DoxyCodeLine{302                 flag = 1;}
+\DoxyCodeLine{303                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{304             \}}
+\DoxyCodeLine{305             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 2) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 29)}
+\DoxyCodeLine{306             \{}
+\DoxyCodeLine{307                 flag = 1;}
+\DoxyCodeLine{308                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{309             \}}
+\DoxyCodeLine{310             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{311             \{}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313                 flag = 0;}
+\DoxyCodeLine{314                 \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}();}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316                 \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x07); \textcolor{comment}{// Setting day of month value}}
+\DoxyCodeLine{317                 \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day)));}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319                 \mbox{\hyperlink{system_8h_ac5d15f274bc9b1e96230f3d3c60fd1f8}{sti}}();}
+\DoxyCodeLine{320             \}}
+\DoxyCodeLine{321         \}}
+\DoxyCodeLine{322         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) \% 4 != 0 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(year) \% 400 != 0)}
+\DoxyCodeLine{323         \{ \textcolor{comment}{// checking for leap year}}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}This is not a leap year.\(\backslash\)n"{}});}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327             \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 1 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 3 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 5 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 7 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 8 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 10 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 12) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 31)}
+\DoxyCodeLine{328             \{}
+\DoxyCodeLine{329                 flag = 1;}
+\DoxyCodeLine{330                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{331             \}}
+\DoxyCodeLine{332             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 4 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 6 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 9 || \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 11) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 30)}
+\DoxyCodeLine{333             \{}
+\DoxyCodeLine{334                 flag = 1;}
+\DoxyCodeLine{335                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{336             \}}
+\DoxyCodeLine{337             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(month) == 2) \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day) > 28)}
+\DoxyCodeLine{338             \{}
+\DoxyCodeLine{339                 flag = 1;}
+\DoxyCodeLine{340                 \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid day.\(\backslash\)n"{}});}
+\DoxyCodeLine{341             \}}
+\DoxyCodeLine{342             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{343             \{}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345                 \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}();}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347                 \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x07); \textcolor{comment}{// Setting day of month value}}
+\DoxyCodeLine{348                 \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(day)));}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350                 \mbox{\hyperlink{system_8h_ac5d15f274bc9b1e96230f3d3c60fd1f8}{sti}}();}
+\DoxyCodeLine{351             \}}
+\DoxyCodeLine{352         \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}The date has been set.\(\backslash\)n"{}});}
+\DoxyCodeLine{357     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{358 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_afc443fe98a5312e4b6f8d5fe13baf7cb}\label{R1commands_8h_afc443fe98a5312e4b6f8d5fe13baf7cb}} 
+\index{R1commands.h@{R1commands.h}!setTime@{setTime}}
+\index{setTime@{setTime}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily void set\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 82 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83 \{}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{int} count = 4; \textcolor{comment}{// counter for printing}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{88     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired hours. I.E.: hh.\(\backslash\)n"{}});}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordtype}{char} hour[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, hour, \&count);}
+\DoxyCodeLine{97         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hour) < 24 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hour) >= 0)}
+\DoxyCodeLine{98         \{}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{101             flag = 0;}
+\DoxyCodeLine{102         \}}
+\DoxyCodeLine{103         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{104         \{}
+\DoxyCodeLine{105             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid hours.\(\backslash\)n"{}});}
+\DoxyCodeLine{106             flag = 1;}
+\DoxyCodeLine{107         \}}
+\DoxyCodeLine{108     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{111     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired minutes. I.E.: mm.\(\backslash\)n"{}});}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{char} minute[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{116     \{}
+\DoxyCodeLine{117         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, minute, \&count);}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minute) < 60 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minute) >= 0)}
+\DoxyCodeLine{119         \{}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{122             flag = 0;}
+\DoxyCodeLine{123         \}}
+\DoxyCodeLine{124         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{125         \{}
+\DoxyCodeLine{126             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid minutes.\(\backslash\)n"{}});}
+\DoxyCodeLine{127             flag = 1;}
+\DoxyCodeLine{128         \}}
+\DoxyCodeLine{129     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{132     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Please type the desired seconds. I.E.: ss.\(\backslash\)n"{}});}
+\DoxyCodeLine{133     \textcolor{keywordtype}{char} second[4] = \textcolor{stringliteral}{"{}\(\backslash\)0\(\backslash\)0\(\backslash\)n\(\backslash\)0"{}};}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{136     \{}
+\DoxyCodeLine{137         \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_ada74e7db007a68e763f20c17f2985356}{READ}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, second, \&count);}
+\DoxyCodeLine{138         \textcolor{keywordflow}{if} (\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(second) < 60 \&\& \mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(second) >= 0)}
+\DoxyCodeLine{139         \{}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{142             flag = 0;}
+\DoxyCodeLine{143         \}}
+\DoxyCodeLine{144         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{145         \{}
+\DoxyCodeLine{146             \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Invalid seconds.\(\backslash\)n"{}});}
+\DoxyCodeLine{147             flag = 1;}
+\DoxyCodeLine{148         \}}
+\DoxyCodeLine{149     \} \textcolor{keywordflow}{while} (flag == 1);}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \mbox{\hyperlink{system_8h_a68c330e94fe121eba993e5a5973c3162}{cli}}();}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x04); \textcolor{comment}{// Hour}}
+\DoxyCodeLine{154     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(hour)));}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x02); \textcolor{comment}{// Minute}}
+\DoxyCodeLine{157     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(minute)));}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x70, 0x00); \textcolor{comment}{// Second}}
+\DoxyCodeLine{160     \mbox{\hyperlink{io_8h_a0e661d36f40638a36550a534076f155b}{outb}}(0x71, \mbox{\hyperlink{R1commands_8c_a79c7196b29284054f33f17b2b9b1d5ec}{intToBCD}}(\mbox{\hyperlink{string_8h_a30670a60464f77af17dfb353353d6df8}{atoi}}(second)));}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162     \mbox{\hyperlink{system_8h_ac5d15f274bc9b1e96230f3d3c60fd1f8}{sti}}();}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}The time has been set.\(\backslash\)n"{}});}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{167 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R1commands_8h_aadd58a2bd505eba3564c7483be1a6140}\label{R1commands_8h_aadd58a2bd505eba3564c7483be1a6140}} 
+\index{R1commands.h@{R1commands.h}!version@{version}}
+\index{version@{version}!R1commands.h@{R1commands.h}}
+\doxysubsubsection{\texorpdfstring{version()}{version()}}
+{\footnotesize\ttfamily void version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 44 of file R1commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Version 5\(\backslash\)n"{}});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}

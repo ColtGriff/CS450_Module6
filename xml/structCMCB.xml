@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structCMCB" kind="struct" language="C++" prot="public">
+    <compoundname>CMCB</compoundname>
+    <includes refid="R5commands_8h" local="no">R5commands.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structCMCB_1a851499290a994f91125af9896dd48ba4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char CMCB::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="3" column="10" bodyfile="modules/R5/R5commands.h" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCMCB_1a572a6034769bc1e7e36fa18d625c00ce" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int CMCB::beginningAddr</definition>
+        <argsstring></argsstring>
+        <name>beginningAddr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="4" column="12" bodyfile="modules/R5/R5commands.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCMCB_1ab57441d157c83e917b3a6e49dc3988d2" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int CMCB::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="5" column="12" bodyfile="modules/R5/R5commands.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCMCB_1a8373a72b145f15cb1d80b7baaf19ead3" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structCMCB" kindref="compound">CMCB</ref> *</type>
+        <definition>struct CMCB* CMCB::nextCMCB</definition>
+        <argsstring></argsstring>
+        <name>nextCMCB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="7" column="15" bodyfile="modules/R5/R5commands.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCMCB_1a1280be0dd5b355366ecef12d58e1d65f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structCMCB" kindref="compound">CMCB</ref> *</type>
+        <definition>struct CMCB* CMCB::prevCMCB</definition>
+        <argsstring></argsstring>
+        <name>prevCMCB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="8" column="15" bodyfile="modules/R5/R5commands.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>CMCB</label>
+        <link refid="structCMCB"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nextCMCB</edgelabel>
+          <edgelabel>prevCMCB</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="modules/R5/R5commands.h" line="1" column="1" bodyfile="modules/R5/R5commands.h" bodystart="2" bodyend="9"/>
+    <listofallmembers>
+      <member refid="structCMCB_1a572a6034769bc1e7e36fa18d625c00ce" prot="public" virt="non-virtual"><scope>CMCB</scope><name>beginningAddr</name></member>
+      <member refid="structCMCB_1a8373a72b145f15cb1d80b7baaf19ead3" prot="public" virt="non-virtual"><scope>CMCB</scope><name>nextCMCB</name></member>
+      <member refid="structCMCB_1a1280be0dd5b355366ecef12d58e1d65f" prot="public" virt="non-virtual"><scope>CMCB</scope><name>prevCMCB</name></member>
+      <member refid="structCMCB_1ab57441d157c83e917b3a6e49dc3988d2" prot="public" virt="non-virtual"><scope>CMCB</scope><name>size</name></member>
+      <member refid="structCMCB_1a851499290a994f91125af9896dd48ba4" prot="public" virt="non-virtual"><scope>CMCB</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

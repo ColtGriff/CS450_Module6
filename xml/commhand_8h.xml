@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="commhand_8h" kind="file" language="C++">
+    <compoundname>commhand.h</compoundname>
+    <includedby refid="kmain_8c" local="yes">kernel/core/kmain.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="1">
+        <label>modules/R1/commhand.h</label>
+        <link refid="commhand_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="commhand_8h_1a14d85617242501c323a203ee196d3efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int commhand</definition>
+        <argsstring>()</argsstring>
+        <name>commhand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R1/commhand.h" line="1" column="5" bodyfile="modules/R1/commhand.c" bodystart="14" bodyend="317" declfile="modules/R1/commhand.h" declline="1" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="commhand_8h_1a14d85617242501c323a203ee196d3efa" kindref="member">commhand</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="modules/R1/commhand.h"/>
+  </compounddef>
+</doxygen>

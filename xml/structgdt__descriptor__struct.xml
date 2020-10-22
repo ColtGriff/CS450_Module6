@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structgdt__descriptor__struct" kind="struct" language="C++" prot="public">
+    <compoundname>gdt_descriptor_struct</compoundname>
+    <includes refid="tables_8h" local="no">tables.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgdt__descriptor__struct_1a3c8ae013805dd982b25f0d62e3cdee0e" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int gdt_descriptor_struct::limit</definition>
+        <argsstring></argsstring>
+        <name>limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="25" column="10" bodyfile="include/core/tables.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgdt__descriptor__struct_1aa47407e7b435c214d0cdd22cb66f0e71" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int gdt_descriptor_struct::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="26" column="10" bodyfile="include/core/tables.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/tables.h" line="23" column="1" bodyfile="include/core/tables.h" bodystart="24" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structgdt__descriptor__struct_1aa47407e7b435c214d0cdd22cb66f0e71" prot="public" virt="non-virtual"><scope>gdt_descriptor_struct</scope><name>base</name></member>
+      <member refid="structgdt__descriptor__struct_1a3c8ae013805dd982b25f0d62e3cdee0e" prot="public" virt="non-virtual"><scope>gdt_descriptor_struct</scope><name>limit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

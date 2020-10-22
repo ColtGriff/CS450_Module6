@@ -4,8 +4,8 @@
     <compoundname>include</compoundname>
     <innerdir refid="dir_3d69f64eaf81436fe2b22361382717e5">include/core</innerdir>
     <innerdir refid="dir_3f291d0a4bf9b6fcd2f0124e71b8ed71">include/mem</innerdir>
-    <innerfile refid="da/d66/string_8h">string.h</innerfile>
-    <innerfile refid="dc/db2/system_8h">system.h</innerfile>
+    <innerfile refid="string_8h">string.h</innerfile>
+    <innerfile refid="system_8h">system.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

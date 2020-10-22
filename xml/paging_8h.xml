@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="paging_8h" kind="file" language="C++">
+    <compoundname>paging.h</compoundname>
+    <includes refid="system_8h" local="no">system.h</includes>
+    <includedby refid="kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <includedby refid="heap_8c" local="no">kernel/mem/heap.c</includedby>
+    <includedby refid="paging_8c" local="yes">kernel/mem/paging.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/mem/paging.h</label>
+        <link refid="paging_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>system.h</label>
+        <link refid="system_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/mem/paging.h</label>
+        <link refid="paging_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="3">
+        <label>kernel/mem/heap.c</label>
+        <link refid="heap_8c"/>
+      </node>
+      <node id="4">
+        <label>kernel/mem/paging.c</label>
+        <link refid="paging_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structpage__entry" prot="public">page_entry</innerclass>
+    <innerclass refid="structpage__table" prot="public">page_table</innerclass>
+    <innerclass refid="structpage__dir" prot="public">page_dir</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="paging_8h_1a7d467c1d283fdfa1f2081ba1e0d01b6e" prot="public" static="no">
+        <name>PAGE_SIZE</name>
+        <initializer>0x1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="6" column="9" bodyfile="include/mem/paging.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="paging_8h_1a70101fc152ff58caafbe36ab391a9a68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_bit</definition>
+        <argsstring>(u32int addr)</argsstring>
+        <name>set_bit</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="43" column="6" bodyfile="kernel/mem/paging.c" bodystart="32" bodyend="38" declfile="include/mem/paging.h" declline="43" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1adcef508c82c20a032508f871e79e1b92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clear_bit</definition>
+        <argsstring>(u32int addr)</argsstring>
+        <name>clear_bit</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="49" column="6" bodyfile="kernel/mem/paging.c" bodystart="44" bodyend="50" declfile="include/mem/paging.h" declline="49" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1a317b4797bc81f65bd01cfa190800ecdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int get_bit</definition>
+        <argsstring>(u32int addr)</argsstring>
+        <name>get_bit</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="55" column="8" bodyfile="kernel/mem/paging.c" bodystart="56" bodyend="62" declfile="include/mem/paging.h" declline="55" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1acb3c25257061521382c7ba900c1c1ab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int first_free</definition>
+        <argsstring>()</argsstring>
+        <name>first_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="61" column="8" declfile="include/mem/paging.h" declline="61" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1a919b727f386797a8b9d8eceb5c4e7313" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_paging</definition>
+        <argsstring>()</argsstring>
+        <name>init_paging</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="70" column="6" bodyfile="kernel/mem/paging.c" bodystart="111" bodyend="148" declfile="include/mem/paging.h" declline="70" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1a3affceba4cd194e1c516404c14abbe7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void load_page_dir</definition>
+        <argsstring>(page_dir *new_page_dir)</argsstring>
+        <name>load_page_dir</name>
+        <param>
+          <type><ref refid="structpage__dir" kindref="compound">page_dir</ref> *</type>
+          <declname>new_page_dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="80" column="6" bodyfile="kernel/mem/paging.c" bodystart="158" bodyend="166" declfile="include/mem/paging.h" declline="80" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1a69b165b3d1adf3aeaae126ca7a5aac3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structpage__entry" kindref="compound">page_entry</ref> *</type>
+        <definition>page_entry* get_page</definition>
+        <argsstring>(u32int addr, page_dir *dir, int make_table)</argsstring>
+        <name>get_page</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="structpage__dir" kindref="compound">page_dir</ref> *</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>make_table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="87" column="12" bodyfile="kernel/mem/paging.c" bodystart="85" bodyend="102" declfile="include/mem/paging.h" declline="87" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="paging_8h_1a04bce9da2c1d7c59f6efd8e4d9b54db7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void new_frame</definition>
+        <argsstring>(page_entry *page)</argsstring>
+        <name>new_frame</name>
+        <param>
+          <type><ref refid="structpage__entry" kindref="compound">page_entry</ref> *</type>
+          <declname>page</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="94" column="6" bodyfile="kernel/mem/paging.c" bodystart="173" bodyend="185" declfile="include/mem/paging.h" declline="94" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_PAGING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_PAGING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="system_8h" kindref="compound">system.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="paging_8h_1a7d467c1d283fdfa1f2081ba1e0d01b6e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PAGE_SIZE<sp/>0x1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/>Page<sp/>entry<sp/>structure</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/>Describes<sp/>a<sp/>single<sp/>page<sp/>in<sp/>memory</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structpage__entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13" refid="structpage__entry_1a34148a94af9bfabbb8c4f00f9865dfee" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1a34148a94af9bfabbb8c4f00f9865dfee" kindref="member">present</ref><sp/><sp/><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="14" refid="structpage__entry_1a2ea8d7684fe45772b6acba70d46e41d9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1a2ea8d7684fe45772b6acba70d46e41d9" kindref="member">writeable</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="15" refid="structpage__entry_1a2beafd3900a1f36f09af9c35a9a14f18" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1a2beafd3900a1f36f09af9c35a9a14f18" kindref="member">usermode</ref><sp/><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="16" refid="structpage__entry_1a8b4097e0cee08d028182b11bd1f73f92" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1a8b4097e0cee08d028182b11bd1f73f92" kindref="member">accessed</ref><sp/><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="17" refid="structpage__entry_1ab3b5e22c6146f227a26bdec64e63f4b0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1ab3b5e22c6146f227a26bdec64e63f4b0" kindref="member">dirty</ref><sp/><sp/><sp/><sp/><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="18" refid="structpage__entry_1af6d963f09b01571b107e6f505050c0e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1af6d963f09b01571b107e6f505050c0e5" kindref="member">reserved</ref><sp/><sp/>:<sp/>7;</highlight></codeline>
+<codeline lineno="19" refid="structpage__entry_1a68a6dc54a7ab6f7fb1a068476190bf67" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structpage__entry_1a68a6dc54a7ab6f7fb1a068476190bf67" kindref="member">frameaddr</ref><sp/>:<sp/>20;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/><ref refid="structpage__entry" kindref="compound">page_entry</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/>Page<sp/>table<sp/>structure</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/>Contains<sp/>1024<sp/>pages/frames</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structpage__table" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27" refid="structpage__table_1aa066e0fa847ce2fafb6a2feddfa340ff" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structpage__entry" kindref="compound">page_entry</ref><sp/>pages[1024];</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}<sp/><ref refid="structpage__table" kindref="compound">page_table</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/>Page<sp/>directory<sp/>structure</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/>Limited<sp/>to<sp/>1024<sp/>tables<sp/>for<sp/>now</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structpage__dir" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35" refid="structpage__dir_1ac89434e3fccabfe9481ea77fdda82faf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structpage__table" kindref="compound">page_table</ref><sp/>*tables[1024];</highlight></codeline>
+<codeline lineno="36" refid="structpage__dir_1a7336b695acaf516613dda626129129d0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>tables_phys[1024];</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<sp/><ref refid="structpage__dir" kindref="compound">page_dir</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>set_bit</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/>Description..:<sp/>Marks<sp/>a<sp/>page<sp/>frame<sp/>bit<sp/>as<sp/>in<sp/>use<sp/>(1).</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="paging_8h_1a70101fc152ff58caafbe36ab391a9a68" kindref="member">set_bit</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>addr);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>clear_bit</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/>Description..:<sp/>Marks<sp/>a<sp/>page<sp/>frame<sp/>bit<sp/>as<sp/>free<sp/>(0).</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="paging_8h_1adcef508c82c20a032508f871e79e1b92" kindref="member">clear_bit</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>addr);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>get_bit</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/>Description..:<sp/>Checks<sp/>if<sp/>page<sp/>frame<sp/>is<sp/>in<sp/>use.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="paging_8h_1a317b4797bc81f65bd01cfa190800ecdd" kindref="member">get_bit</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>addr);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>first_free</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/>Description..:<sp/>Finds<sp/>the<sp/>first<sp/>free<sp/>page<sp/>frame.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="paging_8h_1acb3c25257061521382c7ba900c1c1ab4" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="paging_8h_1acb3c25257061521382c7ba900c1c1ab4" kindref="member">first_free</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_paging</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/>Description..:<sp/>Initializes<sp/>the<sp/>kernel<sp/>page<sp/>directory<sp/>and<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>initial<sp/>kernel<sp/>heap<sp/>area.<sp/>Performs<sp/>identity<sp/>mapping<sp/>of</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>the<sp/>kernel<sp/>frames<sp/>such<sp/>that<sp/>the<sp/>virtual<sp/>addresses<sp/>are</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/>equivalent<sp/>to<sp/>the<sp/>physical<sp/>addresses.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="paging_8h_1a919b727f386797a8b9d8eceb5c4e7313" kindref="member">init_paging</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>load_page_dir</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/>Description..:<sp/>Sets<sp/>a<sp/>page<sp/>directory<sp/>as<sp/>the<sp/>current</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>directory<sp/>and<sp/>enables<sp/>paging<sp/>via<sp/>the<sp/>cr0<sp/>register.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>The<sp/>cr3<sp/>register<sp/>enables<sp/>address<sp/>translation<sp/>from</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/>linear<sp/>to<sp/>physical<sp/>addresses.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/>http://en.wikipedia.org/wiki/Control_register#Control_registers_in_x86_series</highlight></codeline>
+<codeline lineno="79"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="paging_8h_1a3affceba4cd194e1c516404c14abbe7c" kindref="member">load_page_dir</ref>(<ref refid="structpage__dir" kindref="compound">page_dir</ref><sp/>*new_page_dir);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>get_page</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/>Description..:<sp/>Finds<sp/>and<sp/>returns<sp/>a<sp/>page,<sp/>allocating<sp/>a<sp/>new<sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>page<sp/>table<sp/>if<sp/>necessary.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><ref refid="structpage__entry" kindref="compound">page_entry</ref>*<sp/><ref refid="paging_8h_1a69b165b3d1adf3aeaae126ca7a5aac3e" kindref="member">get_page</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>addr,<sp/><ref refid="structpage__dir" kindref="compound">page_dir</ref><sp/>*dir,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>make_table);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>new_frame</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/>Description..:<sp/>Marks<sp/>a<sp/>frame<sp/>as<sp/>in<sp/>use<sp/>in<sp/>the<sp/>frame<sp/>bitmap,</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/>sets<sp/>up<sp/>the<sp/>page,<sp/>and<sp/>saves<sp/>the<sp/>frame<sp/>index<sp/>in<sp/>the<sp/>page.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="paging_8h_1a04bce9da2c1d7c59f6efd8e4d9b54db7" kindref="member">new_frame</ref>(<ref refid="structpage__entry" kindref="compound">page_entry</ref>*<sp/>page);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/mem/paging.h"/>
+  </compounddef>
+</doxygen>

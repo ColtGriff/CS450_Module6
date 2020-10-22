@@ -44,5 +44,6 @@ var interrupts_8c =
     [ "rtc_isr", "d8/d22/interrupts_8c.html#a52f2615cebbdeab188085a03c913fcf9", null ],
     [ "segment_not_present", "d8/d22/interrupts_8c.html#af1748d9ea65ba652bc92074ab6570d8e", null ],
     [ "stack_segment", "d8/d22/interrupts_8c.html#a1ccc3198890318741629a03bb88bee6f", null ],
+    [ "sys_call_isr", "d8/d22/interrupts_8c.html#a99cc9cf3204b4d11bebf1f85b763f608", null ],
     [ "idt_entries", "d8/d22/interrupts_8c.html#a3c386c59636822ce451be20cc1433a55", null ]
 ];

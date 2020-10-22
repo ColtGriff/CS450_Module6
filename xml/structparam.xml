@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structparam" kind="struct" language="C++" prot="public">
+    <compoundname>param</compoundname>
+    <includes refid="mpx__supt_8h" local="no">mpx_supt.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structparam_1a81c8b24055c2908ebe480598aba6044c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int param::op_code</definition>
+        <argsstring></argsstring>
+        <name>op_code</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.h" line="32" column="7" bodyfile="modules/mpx_supt.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structparam_1a44a7285b02749114186a9f9971941bcb" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int param::device_id</definition>
+        <argsstring></argsstring>
+        <name>device_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.h" line="33" column="7" bodyfile="modules/mpx_supt.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structparam_1af15d63bace93014ec7425635c892ce99" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* param::buffer_ptr</definition>
+        <argsstring></argsstring>
+        <name>buffer_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.h" line="34" column="8" bodyfile="modules/mpx_supt.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structparam_1ab61d8fe96dbeed1ef0387802ac453c53" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* param::count_ptr</definition>
+        <argsstring></argsstring>
+        <name>count_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.h" line="35" column="7" bodyfile="modules/mpx_supt.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/mpx_supt.h" line="31" column="1" bodyfile="modules/mpx_supt.h" bodystart="31" bodyend="36"/>
+    <listofallmembers>
+      <member refid="structparam_1af15d63bace93014ec7425635c892ce99" prot="public" virt="non-virtual"><scope>param</scope><name>buffer_ptr</name></member>
+      <member refid="structparam_1ab61d8fe96dbeed1ef0387802ac453c53" prot="public" virt="non-virtual"><scope>param</scope><name>count_ptr</name></member>
+      <member refid="structparam_1a44a7285b02749114186a9f9971941bcb" prot="public" virt="non-virtual"><scope>param</scope><name>device_id</name></member>
+      <member refid="structparam_1a81c8b24055c2908ebe480598aba6044c" prot="public" virt="non-virtual"><scope>param</scope><name>op_code</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

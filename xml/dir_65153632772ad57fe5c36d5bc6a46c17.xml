@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
   <compounddef id="dir_65153632772ad57fe5c36d5bc6a46c17" kind="dir">
     <compoundname>modules/R4</compoundname>
-    <innerfile refid="df/d78/R4commands_8c">R4commands.c</innerfile>
-    <innerfile refid="dc/d62/R4commands_8h">R4commands.h</innerfile>
+    <innerfile refid="R4commands_8c">R4commands.c</innerfile>
+    <innerfile refid="R4commands_8h">R4commands.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

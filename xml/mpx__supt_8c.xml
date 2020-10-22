@@ -1,0 +1,566 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="mpx__supt_8c" kind="file" language="C++">
+    <compoundname>mpx_supt.c</compoundname>
+    <includes refid="mpx__supt_8h" local="yes">mpx_supt.h</includes>
+    <includes refid="heap_8h" local="no">mem/heap.h</includes>
+    <includes refid="string_8h" local="no">string.h</includes>
+    <includes refid="serial_8h" local="no">core/serial.h</includes>
+    <includes refid="R2commands_8h" local="yes">R2/R2commands.h</includes>
+    <includes refid="R2__Internal__Functions__And__Structures_8h" local="yes">R2/R2_Internal_Functions_And_Structures.h</includes>
+    <includes refid="R3commands_8h" local="yes">R3/R3commands.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>system.h</label>
+        <link refid="system_8h"/>
+      </node>
+      <node id="7">
+        <label>R2/R2commands.h</label>
+        <link refid="R2commands_8h"/>
+      </node>
+      <node id="4">
+        <label>mem/heap.h</label>
+        <link refid="heap_8h"/>
+      </node>
+      <node id="9">
+        <label>R3/R3commands.h</label>
+        <link refid="R3commands_8h"/>
+      </node>
+      <node id="6">
+        <label>core/serial.h</label>
+        <link refid="serial_8h"/>
+      </node>
+      <node id="1">
+        <label>modules/mpx_supt.c</label>
+        <link refid="mpx__supt_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mpx_supt.h</label>
+        <link refid="mpx__supt_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>R2/R2_Internal_Functions_And_Structures.h</label>
+        <link refid="R2__Internal__Functions__And__Structures_8h"/>
+      </node>
+      <node id="5">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" prot="public" static="no" mutable="no">
+        <type><ref refid="structparam" kindref="compound">param</ref></type>
+        <definition>param params</definition>
+        <argsstring></argsstring>
+        <name>params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="18" column="7" bodyfile="modules/mpx_supt.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1a3d19c725b7f9f45e9da97a79ca6a4737" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int current_module</definition>
+        <argsstring></argsstring>
+        <name>current_module</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="21" column="5" bodyfile="modules/mpx_supt.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1ab3f7344e6ca0fa6ceebc71be8d0a10cc" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int io_module_active</definition>
+        <argsstring></argsstring>
+        <name>io_module_active</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="22" column="12" bodyfile="modules/mpx_supt.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1a066985e44bcc6372674fc2f336a00d64" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int mem_module_active</definition>
+        <argsstring></argsstring>
+        <name>mem_module_active</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="23" column="12" bodyfile="modules/mpx_supt.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1a421e2b48efb5facc71d16979252710e2" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>(*</type>
+        <definition>u32int(* student_malloc) (u32int)</definition>
+        <argsstring>)(u32int)</argsstring>
+        <name>student_malloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="27" column="1" bodyfile="modules/mpx_supt.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1a19c47c02b0338bc13716d98305bb8a34" prot="public" static="no" mutable="no">
+        <type>int(*</type>
+        <definition>int(* student_free) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>student_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="31" column="1" bodyfile="modules/mpx_supt.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" prot="public" static="no" mutable="no">
+        <type><ref refid="structPCB" kindref="compound">PCB</ref> *</type>
+        <definition>PCB* COP</definition>
+        <argsstring></argsstring>
+        <name>COP</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="194" column="5" bodyfile="modules/mpx_supt.c" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="mpx__supt_8c_1ae51866d22794030318fe70460429d4f6" prot="public" static="no" mutable="no">
+        <type><ref refid="structcontext" kindref="compound">context</ref> *</type>
+        <definition>context* callerContext</definition>
+        <argsstring></argsstring>
+        <name>callerContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="195" column="9" bodyfile="modules/mpx_supt.c" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mpx__supt_8c_1aaa3eb70f93cb8acf38ec0d028b9874f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sys_req</definition>
+        <argsstring>(int op_code, int device_id, char *buffer_ptr, int *count_ptr)</argsstring>
+        <name>sys_req</name>
+        <param>
+          <type>int</type>
+          <declname>op_code</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>device_id</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer_ptr</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>count_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="50" column="5" bodyfile="modules/mpx_supt.c" bodystart="50" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a53332c6a3107a4feed6e2e79690a6ffa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mpx_init</definition>
+        <argsstring>(int cur_mod)</argsstring>
+        <name>mpx_init</name>
+        <param>
+          <type>int</type>
+          <declname>cur_mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="114" column="6" bodyfile="modules/mpx_supt.c" bodystart="114" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a4a28bb188c9fed51228c46980b20e605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sys_set_malloc</definition>
+        <argsstring>(u32int(*func)(u32int))</argsstring>
+        <name>sys_set_malloc</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>(*)(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="130" column="6" bodyfile="modules/mpx_supt.c" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a2463d934fa39601c275a3ade8afd18bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sys_set_free</definition>
+        <argsstring>(int(*func)(void *))</argsstring>
+        <name>sys_set_free</name>
+        <param>
+          <type>int(*)(void *)</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="140" column="6" bodyfile="modules/mpx_supt.c" bodystart="140" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a61adad2abba0a3a225c2290b3de1fe93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* sys_alloc_mem</definition>
+        <argsstring>(u32int size)</argsstring>
+        <name>sys_alloc_mem</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="150" column="6" bodyfile="modules/mpx_supt.c" bodystart="150" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a950663d39dbb073c9dff9cf3b5d3392c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sys_free_mem</definition>
+        <argsstring>(void *ptr)</argsstring>
+        <name>sys_free_mem</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="163" column="5" bodyfile="modules/mpx_supt.c" bodystart="163" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1a83abbeda22fc5e6c2b35523b64199c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void idle</definition>
+        <argsstring>()</argsstring>
+        <name>idle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="178" column="6" bodyfile="modules/mpx_supt.c" bodystart="178" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="mpx__supt_8c_1aad8093682fcfe15c2669288f19d1c52c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref> *</type>
+        <definition>u32int* sys_call</definition>
+        <argsstring>(context *registers)</argsstring>
+        <name>sys_call</name>
+        <param>
+          <type><ref refid="structcontext" kindref="compound">context</ref> *</type>
+          <declname>registers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/mpx_supt.c" line="196" column="8" bodyfile="modules/mpx_supt.c" bodystart="196" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">*<sp/><sp/><sp/>This<sp/>C<sp/>file<sp/>contains<sp/>the<sp/>MPX<sp/>support<sp/>functions<sp/></highlight></codeline>
+<codeline lineno="3"><highlight class="comment">*<sp/><sp/><sp/>which<sp/>will<sp/>be<sp/>used<sp/>through<sp/>out<sp/>the<sp/>semester,<sp/>many<sp/>set</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*<sp/><sp/><sp/>flags<sp/>or<sp/>methods<sp/>that<sp/>will<sp/>allow<sp/>us<sp/>to<sp/>modify</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*<sp/><sp/><sp/>The<sp/>behavior<sp/>of<sp/>MPX<sp/>as<sp/>it<sp/>progresses<sp/>throughout<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*<sp/><sp/><sp/>the<sp/>semester.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">**************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mpx__supt_8h" kindref="compound">mpx_supt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="heap_8h" kindref="compound">mem/heap.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="serial_8h" kindref="compound">core/serial.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R2commands_8h" kindref="compound">R2/R2commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R2__Internal__Functions__And__Structures_8h" kindref="compound">R2/R2_Internal_Functions_And_Structures.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R3commands_8h" kindref="compound">R3/R3commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>global<sp/>variable<sp/>containing<sp/>parameter<sp/>used<sp/>when<sp/>making</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>calls<sp/>via<sp/>sys_req</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" refkind="member"><highlight class="normal"><ref refid="structparam" kindref="compound">param</ref><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>global<sp/>for<sp/>the<sp/>current<sp/>module</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="mpx__supt_8c_1a3d19c725b7f9f45e9da97a79ca6a4737" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a3d19c725b7f9f45e9da97a79ca6a4737" kindref="member">current_module</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>io_module_active<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mem_module_active<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>a<sp/>student<sp/>created<sp/>heap<sp/>manager<sp/>is<sp/>implemented<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>student&apos;s<sp/>&quot;malloc&quot;<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="mpx__supt_8c_1a421e2b48efb5facc71d16979252710e2" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>(*<ref refid="mpx__supt_8c_1a421e2b48efb5facc71d16979252710e2" kindref="member">student_malloc</ref>)(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>if<sp/>a<sp/>student<sp/>created<sp/>heap<sp/>manager<sp/>is<sp/>implemented<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>student&apos;s<sp/>&quot;free&quot;<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="mpx__supt_8c_1a19c47c02b0338bc13716d98305bb8a34" refkind="member"><highlight class="normal">int<sp/>(*<ref refid="mpx__supt_8c_1a19c47c02b0338bc13716d98305bb8a34" kindref="member">student_free</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>*********************************************</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">*<sp/><sp/><sp/>This<sp/>function<sp/>is<sp/>use<sp/>to<sp/>issue<sp/>system<sp/>requests</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">*<sp/><sp/><sp/>for<sp/>service.<sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">*<sp/><sp/><sp/>Parameters:<sp/><sp/>op_code:<sp/><sp/>Requested<sp/>Operation,<sp/>one<sp/>of</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>READ,<sp/>WRITE,<sp/>IDLE,<sp/>EXIT</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>device_id:<sp/><sp/>For<sp/>READ<sp/>&amp;<sp/>WRITE<sp/>this<sp/>is<sp/>the</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>device<sp/>to<sp/>which<sp/>the<sp/>request<sp/>is<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sent.<sp/><sp/>One<sp/>of<sp/>DEFAULT_DEVICE<sp/>or</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>COM_PORT</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_ptr:<sp/><sp/>pointer<sp/>to<sp/>a<sp/>character<sp/>buffer</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>be<sp/>used<sp/>with<sp/>READ<sp/>&amp;<sp/>WRITE<sp/>request</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count_ptr:<sp/><sp/>pointer<sp/>to<sp/>an<sp/>integer<sp/>variable</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>containing<sp/>the<sp/>number<sp/>of<sp/>characters</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>be<sp/>read<sp/>or<sp/>written</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">*************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="mpx__supt_8h_1aaa3eb70f93cb8acf38ec0d028b9874f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1aaa3eb70f93cb8acf38ec0d028b9874f0" kindref="member">sys_req</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>op_code,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_id,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer_ptr,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*count_ptr)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>return_code<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op_code<sp/>==<sp/><ref refid="mpx__supt_8h_1a9c21a7caee326d7803b94ae1952b27ca" kindref="member">IDLE</ref><sp/>||<sp/>op_code<sp/>==<sp/><ref refid="mpx__supt_8h_1ad111e603bbebe5d87f6bc39264ce4733" kindref="member">EXIT</ref>)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>store<sp/>the<sp/>process&apos;s<sp/>operation<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>triger<sp/>interrupt<sp/>60h<sp/>to<sp/>invoke</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1a81c8b24055c2908ebe480598aba6044c" kindref="member">op_code</ref><sp/>=<sp/>op_code;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;int<sp/>$60&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>idle<sp/>or<sp/>exit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op_code<sp/>==<sp/><ref refid="mpx__supt_8h_1ada74e7db007a68e763f20c17f2985356" kindref="member">READ</ref><sp/>||<sp/>op_code<sp/>==<sp/><ref refid="mpx__supt_8h_1aa10f470e996d0f51210d24f442d25e1e" kindref="member">WRITE</ref>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>validate<sp/>buffer<sp/>pointer<sp/>and<sp/>count<sp/>pointer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_ptr<sp/>==<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="mpx__supt_8h_1a9f45976a0d1fa6f0a85a74b6efd93835" kindref="member">INVALID_BUFFER</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count_ptr<sp/>==<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref><sp/>||<sp/>*count_ptr<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="mpx__supt_8h_1a2b85babe3dc4162f5551aae5d269ba60" kindref="member">INVALID_COUNT</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>parameters<sp/>are<sp/>valid<sp/>store<sp/>in<sp/>the<sp/>params<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1a81c8b24055c2908ebe480598aba6044c" kindref="member">op_code</ref><sp/>=<sp/>op_code;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1a44a7285b02749114186a9f9971941bcb" kindref="member">device_id</ref><sp/>=<sp/>device_id;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1af15d63bace93014ec7425635c892ce99" kindref="member">buffer_ptr</ref><sp/>=<sp/>buffer_ptr;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1ab61d8fe96dbeed1ef0387802ac453c53" kindref="member">count_ptr</ref><sp/>=<sp/>count_ptr;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!io_module_active)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>default<sp/>device</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(op_code<sp/>==<sp/><ref refid="mpx__supt_8h_1ada74e7db007a68e763f20c17f2985356" kindref="member">READ</ref>)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/>*(<ref refid="serial_8h_1ab1d1d36bd91339352f5b66f809b34d8c" kindref="member">polling</ref>(buffer_ptr,<sp/>count_ptr));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//must<sp/>be<sp/>WRITE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="serial_8h_1a995827efcd4dcfb780c9fbb9645410a4" kindref="member">serial_print</ref>(buffer_ptr);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>I/O<sp/>module<sp/>is<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;int<sp/>$60&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>NOT<sp/>IO_MODULE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="mpx__supt_8h_1a95d66938b0cfadb27cc1368b5e04fdb3" kindref="member">INVALID_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>return_code;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>sys_req</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>mpx_init</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/>Description..:<sp/>Initialize<sp/>MPX<sp/>support<sp/>software,<sp/>based</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on<sp/>the<sp/>current<sp/>module.<sp/><sp/>The<sp/>operation<sp/>of<sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MPX<sp/>will<sp/>changed<sp/>based<sp/>on<sp/>the<sp/>module<sp/>selected.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>THIS<sp/>must<sp/>be<sp/>called<sp/>as<sp/>the<sp/>first<sp/>executable<sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statement<sp/>inside<sp/>your<sp/>command<sp/>handler.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/>Params..:<sp/>int<sp/>cur_mod<sp/>(symbolic<sp/>constants<sp/>MODULE_R1,<sp/>MODULE_R2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>etc.<sp/><sp/>These<sp/>constants<sp/>can<sp/>be<sp/>found<sp/>inside</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpx_supt.h</highlight></codeline>
+<codeline lineno="113"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="mpx__supt_8h_1a53332c6a3107a4feed6e2e79690a6ffa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a53332c6a3107a4feed6e2e79690a6ffa" kindref="member">mpx_init</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cur_mod)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="mpx__supt_8c_1a3d19c725b7f9f45e9da97a79ca6a4737" kindref="member">current_module</ref><sp/>=<sp/>cur_mod;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cur_mod<sp/>==<sp/><ref refid="mpx__supt_8h_1a02d9b620a75ca60cd5d24b51309af887" kindref="member">MEM_MODULE</ref>)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>mem_module_active<sp/>=<sp/><ref refid="mpx__supt_8h_1aa8cecfc5c5c054d2875c03e77b7be15d" kindref="member">TRUE</ref>;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cur_mod<sp/>==<sp/><ref refid="mpx__supt_8h_1a69d0c9d3e706f2549635aeb72dc2c9b1" kindref="member">IO_MODULE</ref>)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>io_module_active<sp/>=<sp/><ref refid="mpx__supt_8h_1aa8cecfc5c5c054d2875c03e77b7be15d" kindref="member">TRUE</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>sys_set_malloc</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/>Description..:<sp/>Sets<sp/>the<sp/>memory<sp/>allocation<sp/>function<sp/>for<sp/>sys_alloc_mem</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/>Params..:<sp/>Function<sp/>pointer</highlight></codeline>
+<codeline lineno="129"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="mpx__supt_8h_1a4a28bb188c9fed51228c46980b20e605" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a4a28bb188c9fed51228c46980b20e605" kindref="member">sys_set_malloc</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>(*func)(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>))</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="mpx__supt_8c_1a421e2b48efb5facc71d16979252710e2" kindref="member">student_malloc</ref><sp/>=<sp/>func;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>sys_set_free</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/>Description..:<sp/>Sets<sp/>the<sp/>memory<sp/>free<sp/>function<sp/>for<sp/>sys_free_mem</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/>Params..:<sp/>s1-destination,<sp/>s2-source</highlight></codeline>
+<codeline lineno="139"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="mpx__supt_8h_1a2463d934fa39601c275a3ade8afd18bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a2463d934fa39601c275a3ade8afd18bc" kindref="member">sys_set_free</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>(*func)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*))</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="mpx__supt_8c_1a19c47c02b0338bc13716d98305bb8a34" kindref="member">student_free</ref><sp/>=<sp/>func;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>sys_alloc_mem</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/>Description..:<sp/>Allocates<sp/>a<sp/>block<sp/>of<sp/>memory<sp/>(similar<sp/>to<sp/>malloc)</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/>Params..:<sp/>Number<sp/>of<sp/>bytes<sp/>to<sp/>allocate</highlight></codeline>
+<codeline lineno="149"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="mpx__supt_8h_1a61adad2abba0a3a225c2290b3de1fe93" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="mpx__supt_8c_1a61adad2abba0a3a225c2290b3de1fe93" kindref="member">sys_alloc_mem</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!mem_module_active)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<ref refid="heap_8h_1a15d6a52c5c080c8c7ffc73e336d8e574" kindref="member">kmalloc</ref>(size);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(*student_malloc)(size);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>sys_free_mem</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/>Description..:<sp/>Frees<sp/>memory</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/>Params..:<sp/>Pointer<sp/>to<sp/>block<sp/>of<sp/>memory<sp/>to<sp/>free</highlight></codeline>
+<codeline lineno="162"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="mpx__supt_8h_1a950663d39dbb073c9dff9cf3b5d3392c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a950663d39dbb073c9dff9cf3b5d3392c" kindref="member">sys_free_mem</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mem_module_active)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*<ref refid="mpx__supt_8c_1a19c47c02b0338bc13716d98305bb8a34" kindref="member">student_free</ref>)(ptr);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>otherwise<sp/>we<sp/>don&apos;t<sp/>free<sp/>anything</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>idle</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/>Description..:<sp/>The<sp/>idle<sp/>process,<sp/>used<sp/>in<sp/>dispatching</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>will<sp/>only<sp/>be<sp/>dispatched<sp/>if<sp/>NO<sp/>other</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>processes<sp/>are<sp/>available<sp/>to<sp/>execute.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/>Params..:<sp/>None</highlight></codeline>
+<codeline lineno="177"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="mpx__supt_8h_1a83abbeda22fc5e6c2b35523b64199c1c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="mpx__supt_8c_1a83abbeda22fc5e6c2b35523b64199c1c" kindref="member">idle</ref>()</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>msg[30];</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(msg,<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(msg));</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="string_8h_1a1eb9cae61e6a6282c28dbc298ef7297e" kindref="member">strcpy</ref>(msg,<sp/></highlight><highlight class="stringliteral">&quot;IDLE<sp/>PROCESS<sp/>EXECUTING.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>count<sp/>=<sp/><ref refid="string_8h_1a2dee044e4e667b5b789b493abd21cfa4" kindref="member">strlen</ref>(msg);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1aaa3eb70f93cb8acf38ec0d028b9874f0" kindref="member">sys_req</ref>(<ref refid="mpx__supt_8h_1aa10f470e996d0f51210d24f442d25e1e" kindref="member">WRITE</ref>,<sp/><ref refid="mpx__supt_8h_1a84cb8bbda8042a324f49102bc200cc54" kindref="member">DEFAULT_DEVICE</ref>,<sp/>msg,<sp/>&amp;count);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1aaa3eb70f93cb8acf38ec0d028b9874f0" kindref="member">sys_req</ref>(<ref refid="mpx__supt_8h_1a9c21a7caee326d7803b94ae1952b27ca" kindref="member">IDLE</ref>,<sp/><ref refid="mpx__supt_8h_1a84cb8bbda8042a324f49102bc200cc54" kindref="member">DEFAULT_DEVICE</ref>,<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>,<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" refkind="member"><highlight class="normal"><ref refid="structPCB" kindref="compound">PCB</ref><sp/>*<ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>;</highlight></codeline>
+<codeline lineno="195" refid="mpx__supt_8c_1ae51866d22794030318fe70460429d4f6" refkind="member"><highlight class="normal"><ref refid="structcontext" kindref="compound">context</ref><sp/>*<ref refid="mpx__supt_8c_1ae51866d22794030318fe70460429d4f6" kindref="member">callerContext</ref>;</highlight></codeline>
+<codeline lineno="196" refid="mpx__supt_8c_1aad8093682fcfe15c2669288f19d1c52c" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*<ref refid="mpx__supt_8c_1aad8093682fcfe15c2669288f19d1c52c" kindref="member">sys_call</ref>(<ref refid="structcontext" kindref="compound">context</ref><sp/>*registers)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>Benjamin<sp/>and<sp/>Anastase<sp/>programmed<sp/>this<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="structPCB" kindref="compound">PCB</ref><sp/>*tempOOP<sp/>=<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref><sp/>==<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>sys_call<sp/>has<sp/>not<sp/>been<sp/>called<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1ae51866d22794030318fe70460429d4f6" kindref="member">callerContext</ref><sp/>=<sp/>registers;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1a81c8b24055c2908ebe480598aba6044c" kindref="member">op_code</ref><sp/>==<sp/><ref refid="mpx__supt_8h_1a9c21a7caee326d7803b94ae1952b27ca" kindref="member">IDLE</ref>)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Save<sp/>the<sp/>context<sp/>(reassign<sp/>COP&apos;s<sp/>stack<sp/>top).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>-&gt;<ref refid="structPCB_1a1ad17e453fc473c4b4f467fb58e2b9ca" kindref="member">runningStatus</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)registers;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tempOOP<sp/>=<sp/><ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="mpx__supt_8c_1a3b4b77494d0fad58939896ddc5290c99" kindref="member">params</ref>.<ref refid="structparam_1a81c8b24055c2908ebe480598aba6044c" kindref="member">op_code</ref><sp/>==<sp/><ref refid="mpx__supt_8h_1ad111e603bbebe5d87f6bc39264ce4733" kindref="member">EXIT</ref>)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>free<sp/>COP.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a950663d39dbb073c9dff9cf3b5d3392c" kindref="member">sys_free_mem</ref>(<ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><ref refid="structqueue" kindref="compound">queue</ref><sp/>*<ref refid="R2__Internal__Functions__And__Structures_8c_1ab4bd464c1b566560d16891b2b1babe42" kindref="member">ready</ref><sp/>=<sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1acc4c78320b3fb77214d451133e90df5d" kindref="member">getReady</ref>();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="R2__Internal__Functions__And__Structures_8c_1ab4bd464c1b566560d16891b2b1babe42" kindref="member">ready</ref>-&gt;<ref refid="structqueue_1a842af6c249ba80f2ab495e71c4233ddd" kindref="member">head</ref><sp/>!=<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref><sp/>=<sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1ab4bd464c1b566560d16891b2b1babe42" kindref="member">ready</ref>-&gt;<ref refid="structqueue_1a842af6c249ba80f2ab495e71c4233ddd" kindref="member">head</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1a7c5d1dea8311ecc31306a370d2877616" kindref="member">removePCB</ref>(<ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>-&gt;<ref refid="structPCB_1a1ad17e453fc473c4b4f467fb58e2b9ca" kindref="member">runningStatus</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tempOOP<sp/>!=<sp/><ref refid="system_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" kindref="member">NULL</ref>)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1a64667c0bd1ab46d8e14c4b26d6e3f975" kindref="member">insertPCB</ref>(tempOOP);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*)<ref refid="mpx__supt_8c_1a05bd2167cb317c865fdee060f1749c07" kindref="member">COP</ref>-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*)<ref refid="mpx__supt_8c_1ae51866d22794030318fe70460429d4f6" kindref="member">callerContext</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="modules/mpx_supt.c"/>
+  </compounddef>
+</doxygen>

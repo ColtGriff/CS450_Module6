@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structindex__table" kind="struct" language="C++" prot="public">
+    <compoundname>index_table</compoundname>
+    <includes refid="heap_8h" local="no">heap.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structindex__table_1ae2ad2b37d737f17e04b2d8ceadfeca62" prot="public" static="no" mutable="no">
+        <type><ref refid="structindex__entry" kindref="compound">index_entry</ref></type>
+        <definition>index_entry index_table::table[0x1000]</definition>
+        <argsstring>[0x1000]</argsstring>
+        <name>table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="28" column="15" bodyfile="include/mem/heap.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structindex__table_1a6e0e8e27a6a47e8ae2078b6fa447087f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int index_table::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="29" column="7" bodyfile="include/mem/heap.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>index_entry</label>
+        <link refid="structindex__entry"/>
+      </node>
+      <node id="1">
+        <label>index_table</label>
+        <link refid="structindex__table"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>table</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mem/heap.h" line="27" column="1" bodyfile="include/mem/heap.h" bodystart="27" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structindex__table_1a6e0e8e27a6a47e8ae2078b6fa447087f" prot="public" virt="non-virtual"><scope>index_table</scope><name>id</name></member>
+      <member refid="structindex__table_1ae2ad2b37d737f17e04b2d8ceadfeca62" prot="public" virt="non-virtual"><scope>index_table</scope><name>table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

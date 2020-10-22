@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structheader" kind="struct" language="C++" prot="public">
+    <compoundname>header</compoundname>
+    <includes refid="heap_8h" local="no">heap.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structheader_1af8cc659f702446226bc2ebabba437d5d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int header::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="12" column="7" bodyfile="include/mem/heap.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structheader_1aec42bcd6139d12f84d54b5e6a149b276" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int header::index_id</definition>
+        <argsstring></argsstring>
+        <name>index_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="13" column="7" bodyfile="include/mem/heap.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mem/heap.h" line="11" column="1" bodyfile="include/mem/heap.h" bodystart="11" bodyend="14"/>
+    <listofallmembers>
+      <member refid="structheader_1aec42bcd6139d12f84d54b5e6a149b276" prot="public" virt="non-virtual"><scope>header</scope><name>index_id</name></member>
+      <member refid="structheader_1af8cc659f702446226bc2ebabba437d5d" prot="public" virt="non-virtual"><scope>header</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

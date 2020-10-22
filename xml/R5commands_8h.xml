@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="R5commands_8h" kind="file" language="C++">
+    <compoundname>R5commands.h</compoundname>
+    <includedby refid="kmain_8c" local="yes">kernel/core/kmain.c</includedby>
+    <includedby refid="commhand_8c" local="yes">modules/R1/commhand.c</includedby>
+    <includedby refid="R5commands_8c" local="yes">modules/R5/R5commands.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="3">
+        <label>modules/R1/commhand.c</label>
+        <link refid="commhand_8c"/>
+      </node>
+      <node id="4">
+        <label>modules/R5/R5commands.c</label>
+        <link refid="R5commands_8c"/>
+      </node>
+      <node id="1">
+        <label>modules/R5/R5commands.h</label>
+        <link refid="R5commands_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structCMCB" prot="public">CMCB</innerclass>
+    <innerclass refid="structmemList" prot="public">memList</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="R5commands_8h_1a37e892ee192f8d6724e74e747f447e74" prot="public" static="no">
+        <type>struct <ref refid="structCMCB" kindref="compound">CMCB</ref></type>
+        <definition>typedef struct CMCB CMCB</definition>
+        <argsstring></argsstring>
+        <name>CMCB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="9" column="6"/>
+      </memberdef>
+      <memberdef kind="typedef" id="R5commands_8h_1a4b24b5e6f2649d3c1b873406182860c7" prot="public" static="no">
+        <type>struct <ref refid="structmemList" kindref="compound">memList</ref></type>
+        <definition>typedef struct memList memList</definition>
+        <argsstring></argsstring>
+        <name>memList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="22" column="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="R5commands_8h_1a3974816887b02af340a7c42ba05ac167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int initializeHeap</definition>
+        <argsstring>(u32int heapSize)</argsstring>
+        <name>initializeHeap</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>heapSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="24" column="8" bodyfile="modules/R5/R5commands.c" bodystart="20" bodyend="44" declfile="modules/R5/R5commands.h" declline="24" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="R5commands_8h_1ac29b5f08753e9d141c41ff15cfa98531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int allocateMemory</definition>
+        <argsstring>(u32int size)</argsstring>
+        <name>allocateMemory</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="26" column="8" bodyfile="modules/R5/R5commands.c" bodystart="90" bodyend="187" declfile="modules/R5/R5commands.h" declline="26" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="R5commands_8h_1a5c0d38019c891a8fb9908d0a913c747f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int freeMemory</definition>
+        <argsstring>(void *memToFree)</argsstring>
+        <name>freeMemory</name>
+        <param>
+          <type>void *</type>
+          <declname>memToFree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="28" column="5" bodyfile="modules/R5/R5commands.c" bodystart="215" bodyend="299" declfile="modules/R5/R5commands.h" declline="28" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="R5commands_8h_1a653c98c68c558505b75b04c44b7c838e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int isEmpty</definition>
+        <argsstring>()</argsstring>
+        <name>isEmpty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="30" column="5" bodyfile="modules/R5/R5commands.c" bodystart="301" bodyend="313" declfile="modules/R5/R5commands.h" declline="30" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="R5commands_8h_1a78f265af6466c31b931ada3661c34b4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void showFreeMemory</definition>
+        <argsstring>()</argsstring>
+        <name>showFreeMemory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="32" column="6" bodyfile="modules/R5/R5commands.c" bodystart="348" bodyend="361" declfile="modules/R5/R5commands.h" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="R5commands_8h_1ab05bf24239e14068ca690422a41c7da1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void showAllocatedMemory</definition>
+        <argsstring>()</argsstring>
+        <name>showAllocatedMemory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="34" column="6" bodyfile="modules/R5/R5commands.c" bodystart="363" bodyend="376" declfile="modules/R5/R5commands.h" declline="34" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="structCMCB" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structCMCB" kindref="compound">CMCB</ref></highlight></codeline>
+<codeline lineno="2"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3" refid="structCMCB_1a851499290a994f91125af9896dd48ba4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structCMCB_1a851499290a994f91125af9896dd48ba4" kindref="member">type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>indicates<sp/>if<sp/>the<sp/>CMBC<sp/>is<sp/>free<sp/>or<sp/>allocated<sp/>(&apos;a&apos;<sp/>for<sp/>allocated,<sp/>&apos;f&apos;<sp/>for<sp/>free).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="structCMCB_1a572a6034769bc1e7e36fa18d625c00ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structCMCB_1a572a6034769bc1e7e36fa18d625c00ce" kindref="member">beginningAddr</ref>;<sp/></highlight><highlight class="comment">//<sp/>the<sp/>beginning<sp/>address<sp/>of<sp/>the<sp/>CMCB.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="structCMCB_1ab57441d157c83e917b3a6e49dc3988d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structCMCB_1ab57441d157c83e917b3a6e49dc3988d2" kindref="member">size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>size<sp/>of<sp/>the<sp/>memory<sp/>in<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//char<sp/>name[20];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>name<sp/>of<sp/>the<sp/>process<sp/>(PCB)<sp/>that<sp/>is<sp/>housed<sp/>in<sp/>the<sp/>CMCB.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="structCMCB_1a8373a72b145f15cb1d80b7baaf19ead3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structCMCB" kindref="compound">CMCB</ref><sp/>*<ref refid="structCMCB_1a8373a72b145f15cb1d80b7baaf19ead3" kindref="member">nextCMCB</ref>;<sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>the<sp/>next<sp/>CMCB<sp/>of<sp/>the<sp/>same<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="structCMCB_1a1280be0dd5b355366ecef12d58e1d65f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structCMCB" kindref="compound">CMCB</ref><sp/>*<ref refid="structCMCB_1a1280be0dd5b355366ecef12d58e1d65f" kindref="member">prevCMCB</ref>;<sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>the<sp/>previous<sp/>CMCB<sp/>of<sp/>the<sp/>same<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="R5commands_8h_1a37e892ee192f8d6724e74e747f447e74" refkind="member"><highlight class="normal">}<sp/><ref refid="R5commands_8h_1a37e892ee192f8d6724e74e747f447e74" kindref="member">CMCB</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>typedef<sp/>struct<sp/>LMCB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>char<sp/>type;<sp/>//<sp/>indicates<sp/>if<sp/>the<sp/>LMBC<sp/>is<sp/>free<sp/>or<sp/>allocated<sp/>(&apos;a&apos;<sp/>for<sp/>allocated,<sp/>&apos;f&apos;<sp/>for<sp/>free).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>int<sp/>size;<sp/><sp/>//<sp/>the<sp/>size<sp/>of<sp/>the<sp/>LMCB<sp/>in<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>}<sp/>LMCB;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structmemList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmemList" kindref="compound">memList</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19" refid="structmemList_1aff9670eeb5c6fe9a9ca5e2d9d4cd5add" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structmemList_1aff9670eeb5c6fe9a9ca5e2d9d4cd5add" kindref="member">count</ref>;</highlight></codeline>
+<codeline lineno="20" refid="structmemList_1af6fdf46706ed450959c04551a82eee20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structCMCB" kindref="compound">CMCB</ref><sp/>*<ref refid="structmemList_1af6fdf46706ed450959c04551a82eee20" kindref="member">head</ref>;</highlight></codeline>
+<codeline lineno="21" refid="structmemList_1ac42044ac93f3e8c22927959d14076707" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structCMCB" kindref="compound">CMCB</ref><sp/>*<ref refid="structmemList_1ac42044ac93f3e8c22927959d14076707" kindref="member">tail</ref>;</highlight></codeline>
+<codeline lineno="22" refid="R5commands_8h_1a4b24b5e6f2649d3c1b873406182860c7" refkind="member"><highlight class="normal">}<sp/><ref refid="R5commands_8h_1a4b24b5e6f2649d3c1b873406182860c7" kindref="member">memList</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="R5commands_8h_1a3974816887b02af340a7c42ba05ac167" kindref="member">initializeHeap</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>heapSize);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="R5commands_8h_1ac29b5f08753e9d141c41ff15cfa98531" kindref="member">allocateMemory</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="R5commands_8h_1a5c0d38019c891a8fb9908d0a913c747f" kindref="member">freeMemory</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*memToFree);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="R5commands_8h_1a653c98c68c558505b75b04c44b7c838e" kindref="member">isEmpty</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="R5commands_8h_1a78f265af6466c31b931ada3661c34b4f" kindref="member">showFreeMemory</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="R5commands_8h_1ab05bf24239e14068ca690422a41c7da1" kindref="member">showAllocatedMemory</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="modules/R5/R5commands.h"/>
+  </compounddef>
+</doxygen>

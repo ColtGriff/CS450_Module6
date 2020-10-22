@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="R3commands_8h" kind="file" language="C++">
+    <compoundname>R3commands.h</compoundname>
+    <includedby refid="kmain_8c" local="yes">kernel/core/kmain.c</includedby>
+    <includedby refid="mpx__supt_8c" local="yes">modules/mpx_supt.c</includedby>
+    <includedby refid="commhand_8c" local="yes">modules/R1/commhand.c</includedby>
+    <includedby refid="R2__Internal__Functions__And__Structures_8c" local="yes">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="R3commands_8c" local="yes">modules/R3/R3commands.c</includedby>
+    <includedby refid="R4commands_8c" local="yes">modules/R4/R4commands.c</includedby>
+    <invincdepgraph>
+      <node id="7">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="R4commands_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="4">
+        <label>modules/R1/commhand.c</label>
+        <link refid="commhand_8c"/>
+      </node>
+      <node id="6">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="R3commands_8c"/>
+      </node>
+      <node id="1">
+        <label>modules/R3/R3commands.h</label>
+        <link refid="R3commands_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>modules/mpx_supt.c</label>
+        <link refid="mpx__supt_8c"/>
+      </node>
+      <node id="5">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structcontext" prot="public">context</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="R3commands_8h_1a68834c6dfcd51b068b7b60ca36279588" prot="public" static="no">
+        <type>struct <ref refid="structcontext" kindref="compound">context</ref></type>
+        <definition>typedef struct context context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R3/R3commands.h" line="8" column="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="R3commands_8h_1a58c8b2ad0ea491a6642e5e1cbd358c89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void yield</definition>
+        <argsstring>()</argsstring>
+        <name>yield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R3/R3commands.h" line="10" column="6" bodyfile="modules/R3/R3commands.c" bodystart="13" bodyend="16" declfile="modules/R3/R3commands.h" declline="10" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="R3commands_8h_1aa1fe39b6bb2f7080e06d47124b1abe9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loadr3</definition>
+        <argsstring>()</argsstring>
+        <name>loadr3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R3/R3commands.h" line="12" column="6" bodyfile="modules/R3/R3commands.c" bodystart="18" bodyend="98" declfile="modules/R3/R3commands.h" declline="12" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//R3commands.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="structcontext" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structcontext" kindref="compound">context</ref></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5" refid="structcontext_1a54fa688ce896c5cca606323d33e1f68c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref>,<sp/><ref refid="structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref>,<sp/><ref refid="structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref>,<sp/><ref refid="structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref>;</highlight></codeline>
+<codeline lineno="6" refid="structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structcontext_1a2fd21838138987e11b4ff201b2e84b3b" kindref="member">edi</ref>,<sp/><ref refid="structcontext_1a736ce63e2112c400c59376b25af11068" kindref="member">esi</ref>,<sp/><ref refid="structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref>,<sp/><ref refid="structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref>,<sp/><ref refid="structcontext_1aa1a5259f18285c424a8d38edd035f38b" kindref="member">ebx</ref>,<sp/><ref refid="structcontext_1a104da48ac40e0e3e94dfdfa7e7f0e8e9" kindref="member">edx</ref>,<sp/><ref refid="structcontext_1ad0067b404e6853bcf37d3f74a6f0294b" kindref="member">ecx</ref>,<sp/><ref refid="structcontext_1ab91accfc2d53d57c615cf40235a01889" kindref="member">eax</ref>;</highlight></codeline>
+<codeline lineno="7" refid="structcontext_1a48807bac5338e9bcd6183f2f2061400b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref>,<sp/><ref refid="structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref>,<sp/><ref refid="structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref>;</highlight></codeline>
+<codeline lineno="8" refid="R3commands_8h_1a68834c6dfcd51b068b7b60ca36279588" refkind="member"><highlight class="normal">}<sp/><ref refid="R3commands_8h_1a68834c6dfcd51b068b7b60ca36279588" kindref="member">context</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="R3commands_8h_1a58c8b2ad0ea491a6642e5e1cbd358c89" kindref="member">yield</ref>();</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="R3commands_8h_1aa1fe39b6bb2f7080e06d47124b1abe9f" kindref="member">loadr3</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="modules/R3/R3commands.h"/>
+  </compounddef>
+</doxygen>

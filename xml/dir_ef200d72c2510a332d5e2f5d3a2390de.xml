@@ -2,10 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
   <compounddef id="dir_ef200d72c2510a332d5e2f5d3a2390de" kind="dir">
     <compoundname>modules/R2</compoundname>
-    <innerfile refid="d5/d3c/R2__Internal__Functions__And__Structures_8c">R2_Internal_Functions_And_Structures.c</innerfile>
-    <innerfile refid="d4/d3c/R2__Internal__Functions__And__Structures_8h">R2_Internal_Functions_And_Structures.h</innerfile>
-    <innerfile refid="d3/d62/R2commands_8c">R2commands.c</innerfile>
-    <innerfile refid="d9/d99/R2commands_8h">R2commands.h</innerfile>
+    <innerfile refid="R2__Internal__Functions__And__Structures_8c">R2_Internal_Functions_And_Structures.c</innerfile>
+    <innerfile refid="R2__Internal__Functions__And__Structures_8h">R2_Internal_Functions_And_Structures.h</innerfile>
+    <innerfile refid="R2commands_8c">R2commands.c</innerfile>
+    <innerfile refid="R2commands_8h">R2commands.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

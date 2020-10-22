@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="serial_8h" kind="file" language="C++">
+    <compoundname>serial.h</compoundname>
+    <includedby refid="interrupts_8c" local="no">kernel/core/interrupts.c</includedby>
+    <includedby refid="kmain_8c" local="no">kernel/core/kmain.c</includedby>
+    <includedby refid="serial_8c" local="no">kernel/core/serial.c</includedby>
+    <includedby refid="system_8c" local="no">kernel/core/system.c</includedby>
+    <includedby refid="heap_8c" local="no">kernel/mem/heap.c</includedby>
+    <includedby refid="mpx__supt_8c" local="no">modules/mpx_supt.c</includedby>
+    <includedby refid="commhand_8c" local="no">modules/R1/commhand.c</includedby>
+    <includedby refid="R1commands_8c" local="no">modules/R1/R1commands.c</includedby>
+    <includedby refid="R2__Internal__Functions__And__Structures_8c" local="no">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="R2commands_8c" local="no">modules/R2/R2commands.c</includedby>
+    <includedby refid="R3commands_8c" local="no">modules/R3/R3commands.c</includedby>
+    <includedby refid="R4commands_8c" local="no">modules/R4/R4commands.c</includedby>
+    <includedby refid="R5commands_8c" local="no">modules/R5/R5commands.c</includedby>
+    <includedby refid="utilities_8c" local="no">modules/utilities.c</includedby>
+    <invincdepgraph>
+      <node id="15">
+        <label>modules/utilities.c</label>
+        <link refid="utilities_8c"/>
+      </node>
+      <node id="13">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="R4commands_8c"/>
+      </node>
+      <node id="3">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+      </node>
+      <node id="6">
+        <label>kernel/mem/heap.c</label>
+        <link refid="heap_8c"/>
+      </node>
+      <node id="11">
+        <label>modules/R2/R2commands.c</label>
+        <link refid="R2commands_8c"/>
+      </node>
+      <node id="4">
+        <label>kernel/core/serial.c</label>
+        <link refid="serial_8c"/>
+      </node>
+      <node id="5">
+        <label>kernel/core/system.c</label>
+        <link refid="system_8c"/>
+      </node>
+      <node id="8">
+        <label>modules/R1/commhand.c</label>
+        <link refid="commhand_8c"/>
+      </node>
+      <node id="2">
+        <label>kernel/core/interrupts.c</label>
+        <link refid="interrupts_8c"/>
+      </node>
+      <node id="12">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="R3commands_8c"/>
+      </node>
+      <node id="9">
+        <label>modules/R1/R1commands.c</label>
+        <link refid="R1commands_8c"/>
+      </node>
+      <node id="1">
+        <label>include/core/serial.h</label>
+        <link refid="serial_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>modules/mpx_supt.c</label>
+        <link refid="mpx__supt_8c"/>
+      </node>
+      <node id="10">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+      <node id="14">
+        <label>modules/R5/R5commands.c</label>
+        <link refid="R5commands_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="serial_8h_1a00dbb3ab1c59e14699be9393693e2248" prot="public" static="no">
+        <name>COM1</name>
+        <initializer>0x3f8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="4" column="9" bodyfile="include/core/serial.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="serial_8h_1a435e02f194c24c9b0e00d7cd27a1704e" prot="public" static="no">
+        <name>COM2</name>
+        <initializer>0x2f8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="5" column="9" bodyfile="include/core/serial.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="serial_8h_1abbed02672431595364c5dd35809303a6" prot="public" static="no">
+        <name>COM3</name>
+        <initializer>0x3e8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="6" column="9" bodyfile="include/core/serial.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="serial_8h_1a595cabb01568ba641574d24546d99c6b" prot="public" static="no">
+        <name>COM4</name>
+        <initializer>0x2e8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="7" column="9" bodyfile="include/core/serial.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="serial_8h_1a7078c07ff8b2c48780558549a8f7cf90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int init_serial</definition>
+        <argsstring>(int device)</argsstring>
+        <name>init_serial</name>
+        <param>
+          <type>int</type>
+          <declname>device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="13" column="5" bodyfile="kernel/core/serial.c" bodystart="22" bodyend="33" declfile="include/core/serial.h" declline="13" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="serial_8h_1a3514f7abff236a4e00a6c46021ce5e22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int serial_println</definition>
+        <argsstring>(const char *msg)</argsstring>
+        <name>serial_println</name>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="20" column="5" bodyfile="kernel/core/serial.c" bodystart="40" bodyend="50" declfile="include/core/serial.h" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="serial_8h_1a995827efcd4dcfb780c9fbb9645410a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int serial_print</definition>
+        <argsstring>(const char *msg)</argsstring>
+        <name>serial_print</name>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="26" column="5" bodyfile="kernel/core/serial.c" bodystart="56" bodyend="66" declfile="include/core/serial.h" declline="26" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="serial_8h_1ae97b87ee1f57c687e7fca6f9958e03ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int set_serial_out</definition>
+        <argsstring>(int device)</argsstring>
+        <name>set_serial_out</name>
+        <param>
+          <type>int</type>
+          <declname>device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="34" column="5" bodyfile="kernel/core/serial.c" bodystart="74" bodyend="78" declfile="include/core/serial.h" declline="34" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="serial_8h_1a3f4008da5feabfb7e086f6673a81104b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int set_serial_in</definition>
+        <argsstring>(int device)</argsstring>
+        <name>set_serial_in</name>
+        <param>
+          <type>int</type>
+          <declname>device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="42" column="5" bodyfile="kernel/core/serial.c" bodystart="86" bodyend="90" declfile="include/core/serial.h" declline="42" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="serial_8h_1ab1d1d36bd91339352f5b66f809b34d8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int *</type>
+        <definition>int* polling</definition>
+        <argsstring>(char *buffer, int *count)</argsstring>
+        <name>polling</name>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/serial.h" line="50" column="5" bodyfile="kernel/core/serial.c" bodystart="92" bodyend="258" declfile="include/core/serial.h" declline="50" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_SERIAL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SERIAL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="serial_8h_1a00dbb3ab1c59e14699be9393693e2248" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COM1<sp/>0x3f8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="serial_8h_1a435e02f194c24c9b0e00d7cd27a1704e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COM2<sp/>0x2f8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="serial_8h_1abbed02672431595364c5dd35809303a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COM3<sp/>0x3e8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="serial_8h_1a595cabb01568ba641574d24546d99c6b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COM4<sp/>0x2e8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>init_serial</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/><sp/>Description..:<sp/>Initializes<sp/>devices<sp/>for<sp/>user<sp/>interaction,<sp/>logging,<sp/>...</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="serial_8h_1a7078c07ff8b2c48780558549a8f7cf90" kindref="member">init_serial</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>serial_println</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/>Description..:<sp/>Writes<sp/>a<sp/>message<sp/>to<sp/>the<sp/>active<sp/>serial<sp/>output<sp/>device.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/><sp/><sp/><sp/>Appends<sp/>a<sp/>newline<sp/>character.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="serial_8h_1a3514f7abff236a4e00a6c46021ce5e22" kindref="member">serial_println</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>serial_print</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/>Description..:<sp/>Writes<sp/>a<sp/>message<sp/>to<sp/>the<sp/>active<sp/>serial<sp/>output<sp/>device.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="serial_8h_1a995827efcd4dcfb780c9fbb9645410a4" kindref="member">serial_print</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>set_serial_out</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/>Description..:<sp/>Sets<sp/>serial_port_out<sp/>to<sp/>the<sp/>given<sp/>device<sp/>address.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/>All<sp/>serial<sp/>output,<sp/>such<sp/>as<sp/>that<sp/>from<sp/>serial_println,<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/>directed<sp/>to<sp/>this<sp/>device.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="serial_8h_1ae97b87ee1f57c687e7fca6f9958e03ef" kindref="member">set_serial_out</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/>Procedure..:<sp/>set_serial_in</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/>Description..:<sp/>Sets<sp/>serial_port_in<sp/>to<sp/>the<sp/>given<sp/>device<sp/>address.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/>All<sp/>serial<sp/>input,<sp/>such<sp/>as<sp/>console<sp/>input<sp/>via<sp/>a<sp/>virtual<sp/>machine,</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/>QEMU/Bochs/etc,<sp/>will<sp/>be<sp/>directed<sp/>to<sp/>this<sp/>device.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="serial_8h_1a3f4008da5feabfb7e086f6673a81104b" kindref="member">set_serial_in</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/>Procedure:<sp/><sp/>Polling</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/>Description:<sp/><sp/><sp/>Gathers<sp/>keyboard<sp/>input<sp/>via<sp/>the<sp/>serial<sp/>port<sp/>using</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>technique<sp/>of<sp/>polling</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*/</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="serial_8h_1ab1d1d36bd91339352f5b66f809b34d8c" kindref="member">polling</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*count);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/core/serial.h"/>
+  </compounddef>
+</doxygen>

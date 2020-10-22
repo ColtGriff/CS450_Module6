@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structidt__struct" kind="struct" language="C++" prot="public">
+    <compoundname>idt_struct</compoundname>
+    <includes refid="tables_8h" local="no">tables.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structidt__struct_1aa75e2805e21db1a33816af778263d712" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a863d9497073aad2b991aeab2211d87af" kindref="member">u16int</ref></type>
+        <definition>u16int idt_struct::limit</definition>
+        <argsstring></argsstring>
+        <name>limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="18" column="10" bodyfile="include/core/tables.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structidt__struct_1a1a91fe2ab44ad8dfbad0f6d07ec789ea" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int idt_struct::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/tables.h" line="19" column="10" bodyfile="include/core/tables.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/tables.h" line="16" column="1" bodyfile="include/core/tables.h" bodystart="17" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structidt__struct_1a1a91fe2ab44ad8dfbad0f6d07ec789ea" prot="public" virt="non-virtual"><scope>idt_struct</scope><name>base</name></member>
+      <member refid="structidt__struct_1aa75e2805e21db1a33816af778263d712" prot="public" virt="non-virtual"><scope>idt_struct</scope><name>limit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="heap_8c" kind="file" language="C++">
+    <compoundname>heap.c</compoundname>
+    <includes refid="system_8h" local="no">system.h</includes>
+    <includes refid="string_8h" local="no">string.h</includes>
+    <includes refid="serial_8h" local="no">core/serial.h</includes>
+    <includes refid="heap_8h" local="no">mem/heap.h</includes>
+    <includes refid="paging_8h" local="no">mem/paging.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>mem/paging.h</label>
+        <link refid="paging_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>system.h</label>
+        <link refid="system_8h"/>
+      </node>
+      <node id="1">
+        <label>kernel/mem/heap.c</label>
+        <link refid="heap_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mem/heap.h</label>
+        <link refid="heap_8h"/>
+      </node>
+      <node id="4">
+        <label>core/serial.h</label>
+        <link refid="serial_8h"/>
+      </node>
+      <node id="3">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="heap_8c_1a61825456a33b09780a5493c95adcae8a" prot="public" static="no" mutable="no">
+        <type><ref refid="structheap" kindref="compound">heap</ref> *</type>
+        <definition>heap* kheap</definition>
+        <argsstring></argsstring>
+        <name>kheap</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="14" column="6" bodyfile="kernel/mem/heap.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1afaac4d3fb801ecbd3c6fe3c995d5cf82" prot="public" static="no" mutable="no">
+        <type><ref refid="structheap" kindref="compound">heap</ref> *</type>
+        <definition>heap* curr_heap</definition>
+        <argsstring></argsstring>
+        <name>curr_heap</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="15" column="6" bodyfile="kernel/mem/heap.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1a61ce943ba80d9dfab89a826cae9ddc4a" prot="public" static="no" mutable="no">
+        <type><ref refid="structpage__dir" kindref="compound">page_dir</ref> *</type>
+        <definition>page_dir* kdir</definition>
+        <argsstring></argsstring>
+        <name>kdir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="17" column="17" bodyfile="kernel/mem/paging.c" bodystart="21" bodyend="-1" declfile="kernel/mem/heap.c" declline="17" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1a57dfa4d169c6b9c0b4e7352bc0c34366" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="18" column="13" declfile="kernel/mem/heap.c" declline="18" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1a850b19392dca6170001ce200467ab610" prot="public" static="no" mutable="no">
+        <type>void</type>
+        <definition>void _end</definition>
+        <argsstring></argsstring>
+        <name>_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="18" column="17" bodyfile="kernel/mem/heap.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1a51f2442fadb8ffd3019f4aeb1b04c4d6" prot="public" static="no" mutable="no">
+        <type>void</type>
+        <definition>void __end</definition>
+        <argsstring></argsstring>
+        <name>__end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="18" column="22" bodyfile="kernel/mem/heap.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int phys_alloc_addr</definition>
+        <argsstring></argsstring>
+        <name>phys_alloc_addr</name>
+        <initializer>= (<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)&amp;<ref refid="heap_8c_1a57dfa4d169c6b9c0b4e7352bc0c34366" kindref="member">end</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="22" column="8" bodyfile="kernel/mem/heap.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="heap_8c_1a014b54e36b61f133f53dd509c461f35e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int _kmalloc</definition>
+        <argsstring>(u32int size, int page_align, u32int *phys_addr)</argsstring>
+        <name>_kmalloc</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>page_align</declname>
+        </param>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref> *</type>
+          <declname>phys_addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="24" column="8" bodyfile="kernel/mem/heap.c" bodystart="24" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="heap_8c_1a15d6a52c5c080c8c7ffc73e336d8e574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int kmalloc</definition>
+        <argsstring>(u32int size)</argsstring>
+        <name>kmalloc</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="52" column="8" bodyfile="kernel/mem/heap.c" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="heap_8c_1a06dae34c7e7c73d518de00212a7c92da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int alloc</definition>
+        <argsstring>(u32int size, heap *h, int align)</argsstring>
+        <name>alloc</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="structheap" kindref="compound">heap</ref> *</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>align</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="57" column="8" bodyfile="kernel/mem/heap.c" bodystart="57" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="heap_8c_1a686135c02695aef4208f93d4549a15d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structheap" kindref="compound">heap</ref> *</type>
+        <definition>heap* make_heap</definition>
+        <argsstring>(u32int base, u32int max, u32int min)</argsstring>
+        <name>make_heap</name>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/mem/heap.c" line="71" column="6" bodyfile="kernel/mem/heap.c" bodystart="71" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/>-----<sp/>heap.c<sp/>-----</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/>Description..:<sp/>Heap<sp/>management<sp/>procedures.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="system_8h" kindref="compound">system.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="serial_8h" kindref="compound">core/serial.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="heap_8h" kindref="compound">mem/heap.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="paging_8h" kindref="compound">mem/paging.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="paging_8c_1a61825456a33b09780a5493c95adcae8a" refkind="member"><highlight class="normal"><ref refid="structheap" kindref="compound">heap</ref>*<sp/><ref refid="heap_8c_1a61825456a33b09780a5493c95adcae8a" kindref="member">kheap</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//kernel<sp/>heap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="heap_8c_1afaac4d3fb801ecbd3c6fe3c995d5cf82" refkind="member"><highlight class="normal"><ref refid="structheap" kindref="compound">heap</ref>*<sp/><ref refid="heap_8c_1afaac4d3fb801ecbd3c6fe3c995d5cf82" kindref="member">curr_heap</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//current<sp/>heap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structpage__dir" kindref="compound">page_dir</ref><sp/>*<ref refid="heap_8c_1a61ce943ba80d9dfab89a826cae9ddc4a" kindref="member">kdir</ref>;<sp/></highlight><highlight class="comment">//kernel<sp/>page<sp/>directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="heap_8c_1a850b19392dca6170001ce200467ab610" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="heap_8c_1a57dfa4d169c6b9c0b4e7352bc0c34366" kindref="member">end</ref>,<sp/><ref refid="heap_8c_1a850b19392dca6170001ce200467ab610" kindref="member">_end</ref>,<sp/><ref refid="heap_8c_1a51f2442fadb8ffd3019f4aeb1b04c4d6" kindref="member">__end</ref>;<sp/></highlight><highlight class="comment">//kernel<sp/>end;<sp/>defined<sp/>in<sp/>link.ld</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//physical<sp/>placement<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//current<sp/>physical<sp/>memory<sp/>allocation<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="paging_8c_1a6dfa4ef84e115e891b3679e4932b5c49" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)&amp;<ref refid="heap_8c_1a57dfa4d169c6b9c0b4e7352bc0c34366" kindref="member">end</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="heap_8c_1a014b54e36b61f133f53dd509c461f35e" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="heap_8c_1a014b54e36b61f133f53dd509c461f35e" kindref="member">_kmalloc</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>page_align,<sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*phys_addr)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>*addr;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>on<sp/>the<sp/>kernel<sp/>heap<sp/>if<sp/>one<sp/>has<sp/>been<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="heap_8c_1a61825456a33b09780a5493c95adcae8a" kindref="member">kheap</ref><sp/>!=<sp/>0){</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>addr<sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>*)<ref refid="heap_8c_1a06dae34c7e7c73d518de00212a7c92da" kindref="member">alloc</ref>(size,<sp/><ref refid="heap_8c_1a61825456a33b09780a5493c95adcae8a" kindref="member">kheap</ref>,<sp/>page_align);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(phys_addr){</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structpage__entry" kindref="compound">page_entry</ref><sp/>*page<sp/>=<sp/><ref refid="paging_8h_1a69b165b3d1adf3aeaae126ca7a5aac3e" kindref="member">get_page</ref>((<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)addr,<sp/><ref refid="heap_8c_1a61ce943ba80d9dfab89a826cae9ddc4a" kindref="member">kdir</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*phys_addr<sp/>=<sp/>(page-&gt;<ref refid="structpage__entry_1a68a6dc54a7ab6f7fb1a068476190bf67" kindref="member">frameaddr</ref>*0x1000)<sp/>+<sp/>((<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)addr<sp/>&amp;<sp/>0xFFF);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)addr;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Else,<sp/>allocate<sp/>directly<sp/>from<sp/>physical<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(page_align<sp/>&amp;&amp;<sp/>(<ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref><sp/>&amp;<sp/>0xFFFFF000)){</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref><sp/>&amp;=<sp/>0xFFFFF000;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref><sp/>+=<sp/>0x1000;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>addr<sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>*)<ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(phys_addr){</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*phys_addr<sp/>=<sp/><ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="heap_8c_1a6dfa4ef84e115e891b3679e4932b5c49" kindref="member">phys_alloc_addr</ref><sp/>+=<sp/>size;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)addr;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="heap_8c_1a15d6a52c5c080c8c7ffc73e336d8e574" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="heap_8c_1a15d6a52c5c080c8c7ffc73e336d8e574" kindref="member">kmalloc</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="heap_8c_1a014b54e36b61f133f53dd509c461f35e" kindref="member">_kmalloc</ref>(size,0,0);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="heap_8c_1a06dae34c7e7c73d518de00212a7c92da" refkind="member"><highlight class="normal"><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="heap_8c_1a06dae34c7e7c73d518de00212a7c92da" kindref="member">alloc</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>size,<sp/><ref refid="structheap" kindref="compound">heap</ref><sp/>*h,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>align)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1ab3bb695e7817363c7bdb781f214e83a2" kindref="member">no_warn</ref>(size||align||h);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>heap_addr<sp/>=<sp/><ref refid="heap_8h_1a15073b9742f7e29d8174509197eb4ab9" kindref="member">KHEAP_BASE</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref><sp/>=<sp/>heap_addr;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>heap_addr<sp/>+=<sp/>size;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(heap_addr<sp/>&gt;<sp/><ref refid="heap_8h_1a15073b9742f7e29d8174509197eb4ab9" kindref="member">KHEAP_BASE</ref><sp/>+<sp/><ref refid="heap_8h_1aee52619f74498ad224eb8e4354b89e40" kindref="member">KHEAP_MIN</ref>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="serial_8h_1a3514f7abff236a4e00a6c46021ce5e22" kindref="member">serial_println</ref>(</highlight><highlight class="stringliteral">&quot;Heap<sp/>is<sp/>full!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="heap_8c_1a686135c02695aef4208f93d4549a15d0" refkind="member"><highlight class="normal"><ref refid="structheap" kindref="compound">heap</ref>*<sp/><ref refid="heap_8c_1a686135c02695aef4208f93d4549a15d0" kindref="member">make_heap</ref>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/><ref refid="tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>,<sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>max,<sp/><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref><sp/>min)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{<sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="system_8h_1ab3bb695e7817363c7bdb781f214e83a2" kindref="member">no_warn</ref>(<ref refid="tables_8h_1ab5763c2b18c825c8b8fba44b2e60ddc1" kindref="member">base</ref>||max||min);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structheap" kindref="compound">heap</ref>*)<ref refid="heap_8c_1a15d6a52c5c080c8c7ffc73e336d8e574" kindref="member">kmalloc</ref>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structheap" kindref="compound">heap</ref>));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="kernel/mem/heap.c"/>
+  </compounddef>
+</doxygen>

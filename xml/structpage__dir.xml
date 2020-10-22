@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structpage__dir" kind="struct" language="C++" prot="public">
+    <compoundname>page_dir</compoundname>
+    <includes refid="paging_8h" local="no">paging.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structpage__dir_1ac89434e3fccabfe9481ea77fdda82faf" prot="public" static="no" mutable="no">
+        <type><ref refid="structpage__table" kindref="compound">page_table</ref> *</type>
+        <definition>page_table* page_dir::tables[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>tables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="35" column="14" bodyfile="include/mem/paging.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__dir_1a7336b695acaf516613dda626129129d0" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_dir::tables_phys[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>tables_phys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="36" column="10" bodyfile="include/mem/paging.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>page_entry</label>
+        <link refid="structpage__entry"/>
+      </node>
+      <node id="1">
+        <label>page_dir</label>
+        <link refid="structpage__dir"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>tables</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>page_table</label>
+        <link refid="structpage__table"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pages</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mem/paging.h" line="34" column="1" bodyfile="include/mem/paging.h" bodystart="34" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structpage__dir_1ac89434e3fccabfe9481ea77fdda82faf" prot="public" virt="non-virtual"><scope>page_dir</scope><name>tables</name></member>
+      <member refid="structpage__dir_1a7336b695acaf516613dda626129129d0" prot="public" virt="non-virtual"><scope>page_dir</scope><name>tables_phys</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

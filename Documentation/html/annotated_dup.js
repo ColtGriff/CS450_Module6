@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "alarm", "d3/d36/structalarm.html", "d3/d36/structalarm" ],
+    [ "alarmList", "d2/d7c/structalarmList.html", "d2/d7c/structalarmList" ],
+    [ "context", "d7/dfe/structcontext.html", "d7/dfe/structcontext" ],
     [ "date_time", "df/d9f/structdate__time.html", "df/d9f/structdate__time" ],
     [ "footer", "dc/d2c/structfooter.html", "dc/d2c/structfooter" ],
     [ "gdt_descriptor_struct", "d7/d25/structgdt__descriptor__struct.html", "d7/d25/structgdt__descriptor__struct" ],

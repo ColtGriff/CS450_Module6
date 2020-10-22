@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structmemList" kind="struct" language="C++" prot="public">
+    <compoundname>memList</compoundname>
+    <includes refid="R5commands_8h" local="no">R5commands.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmemList_1aff9670eeb5c6fe9a9ca5e2d9d4cd5add" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int memList::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="19" column="9" bodyfile="modules/R5/R5commands.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemList_1af6fdf46706ed450959c04551a82eee20" prot="public" static="no" mutable="no">
+        <type><ref refid="structCMCB" kindref="compound">CMCB</ref> *</type>
+        <definition>CMCB* memList::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="20" column="10" bodyfile="modules/R5/R5commands.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemList_1ac42044ac93f3e8c22927959d14076707" prot="public" static="no" mutable="no">
+        <type><ref refid="structCMCB" kindref="compound">CMCB</ref> *</type>
+        <definition>CMCB* memList::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/R5/R5commands.h" line="21" column="10" bodyfile="modules/R5/R5commands.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>CMCB</label>
+        <link refid="structCMCB"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>nextCMCB</edgelabel>
+          <edgelabel>prevCMCB</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>memList</label>
+        <link refid="structmemList"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>head</edgelabel>
+          <edgelabel>tail</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="modules/R5/R5commands.h" line="17" column="1" bodyfile="modules/R5/R5commands.h" bodystart="18" bodyend="22"/>
+    <listofallmembers>
+      <member refid="structmemList_1aff9670eeb5c6fe9a9ca5e2d9d4cd5add" prot="public" virt="non-virtual"><scope>memList</scope><name>count</name></member>
+      <member refid="structmemList_1af6fdf46706ed450959c04551a82eee20" prot="public" virt="non-virtual"><scope>memList</scope><name>head</name></member>
+      <member refid="structmemList_1ac42044ac93f3e8c22927959d14076707" prot="public" virt="non-virtual"><scope>memList</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="kmain_8c" kind="file" language="C++">
+    <compoundname>kmain.c</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes refid="string_8h" local="no">string.h</includes>
+    <includes refid="system_8h" local="no">system.h</includes>
+    <includes refid="io_8h" local="no">core/io.h</includes>
+    <includes refid="serial_8h" local="no">core/serial.h</includes>
+    <includes refid="tables_8h" local="no">core/tables.h</includes>
+    <includes refid="interrupts_8h" local="no">core/interrupts.h</includes>
+    <includes refid="heap_8h" local="no">mem/heap.h</includes>
+    <includes refid="paging_8h" local="no">mem/paging.h</includes>
+    <includes refid="mpx__supt_8h" local="yes">modules/mpx_supt.h</includes>
+    <includes refid="commhand_8h" local="yes">modules/R1/commhand.h</includes>
+    <includes refid="R2commands_8h" local="yes">modules/R2/R2commands.h</includes>
+    <includes refid="R2__Internal__Functions__And__Structures_8h" local="yes">modules/R2/R2_Internal_Functions_And_Structures.h</includes>
+    <includes refid="R3commands_8h" local="yes">modules/R3/R3commands.h</includes>
+    <includes refid="R4commands_8h" local="yes">modules/R4/R4commands.h</includes>
+    <includes refid="R5commands_8h" local="yes">modules/R5/R5commands.h</includes>
+    <incdepgraph>
+      <node id="10">
+        <label>mem/paging.h</label>
+        <link refid="paging_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>system.h</label>
+        <link refid="system_8h"/>
+      </node>
+      <node id="16">
+        <label>modules/R4/R4commands.h</label>
+        <link refid="R4commands_8h"/>
+      </node>
+      <node id="1">
+        <label>kernel/core/kmain.c</label>
+        <link refid="kmain_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>modules/R2/R2commands.h</label>
+        <link refid="R2commands_8h"/>
+      </node>
+      <node id="7">
+        <label>core/tables.h</label>
+        <link refid="tables_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+      <node id="12">
+        <label>modules/R1/commhand.h</label>
+        <link refid="commhand_8h"/>
+      </node>
+      <node id="9">
+        <label>mem/heap.h</label>
+        <link refid="heap_8h"/>
+      </node>
+      <node id="5">
+        <label>core/io.h</label>
+        <link refid="io_8h"/>
+      </node>
+      <node id="15">
+        <label>modules/R3/R3commands.h</label>
+        <link refid="R3commands_8h"/>
+      </node>
+      <node id="6">
+        <label>core/serial.h</label>
+        <link refid="serial_8h"/>
+      </node>
+      <node id="11">
+        <label>modules/mpx_supt.h</label>
+        <link refid="mpx__supt_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>core/interrupts.h</label>
+        <link refid="interrupts_8h"/>
+      </node>
+      <node id="14">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.h</label>
+        <link refid="R2__Internal__Functions__And__Structures_8h"/>
+      </node>
+      <node id="3">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>modules/R5/R5commands.h</label>
+        <link refid="R5commands_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="kmain_8c_1a406c20548822065e144564476378f8a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void kmain</definition>
+        <argsstring>(void)</argsstring>
+        <name>kmain</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kernel/core/kmain.c" line="32" column="6" bodyfile="kernel/core/kmain.c" bodystart="32" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/>-----<sp/>kmain.c<sp/>-----</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/>Description..:<sp/>Kernel<sp/>main.<sp/>The<sp/>first<sp/>function<sp/>called<sp/>after</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>bootloader.<sp/>Initialization<sp/>of<sp/>hardware,<sp/>system</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>structures,<sp/>devices,<sp/>and<sp/>initial<sp/>processes<sp/>happens<sp/>here.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Initial<sp/>Kernel<sp/>--<sp/>by<sp/>Forrest<sp/>Desjardin,<sp/>2013,<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Modifications<sp/>by:<sp/><sp/><sp/><sp/>Andrew<sp/>Duncan<sp/>2014,<sp/><sp/>John<sp/>Jacko<sp/>2017</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ben<sp/>Smith<sp/>2018,<sp/>and<sp/>Alex<sp/>Wilson<sp/>2019</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="system_8h" kindref="compound">system.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="io_8h" kindref="compound">core/io.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="serial_8h" kindref="compound">core/serial.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="tables_8h" kindref="compound">core/tables.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="interrupts_8h" kindref="compound">core/interrupts.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="heap_8h" kindref="compound">mem/heap.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="paging_8h" kindref="compound">mem/paging.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mpx__supt_8h" kindref="compound">modules/mpx_supt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="commhand_8h" kindref="compound">modules/R1/commhand.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R2commands_8h" kindref="compound">modules/R2/R2commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R2__Internal__Functions__And__Structures_8h" kindref="compound">modules/R2/R2_Internal_Functions_And_Structures.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R3commands_8h" kindref="compound">modules/R3/R3commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R4commands_8h" kindref="compound">modules/R4/R4commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="R5commands_8h" kindref="compound">modules/R5/R5commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="kmain_8c_1a406c20548822065e144564476378f8a1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kmain_8c_1a406c20548822065e144564476378f8a1" kindref="member">kmain</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>extern<sp/>uint32_t<sp/>magic;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Uncomment<sp/>if<sp/>you<sp/>want<sp/>to<sp/>access<sp/>the<sp/>multiboot<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>extern<sp/>void<sp/>*mbd;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>char<sp/>*boot_loader_name<sp/>=<sp/>(char*)((long*)mbd)[16];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0)<sp/>Initialize<sp/>Serial<sp/>I/O</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>functions<sp/>to<sp/>initialize<sp/>serial<sp/>I/O<sp/>can<sp/>be<sp/>found<sp/>in<sp/>serial.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>there<sp/>are<sp/>3<sp/>functions<sp/>to<sp/>call</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><ref refid="serial_8h_1a7078c07ff8b2c48780558549a8f7cf90" kindref="member">init_serial</ref>(<ref refid="serial_8h_1a00dbb3ab1c59e14699be9393693e2248" kindref="member">COM1</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><ref refid="serial_8h_1a3f4008da5feabfb7e086f6673a81104b" kindref="member">set_serial_in</ref>(<ref refid="serial_8h_1a00dbb3ab1c59e14699be9393693e2248" kindref="member">COM1</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><ref refid="serial_8h_1ae97b87ee1f57c687e7fca6f9958e03ef" kindref="member">set_serial_out</ref>(<ref refid="serial_8h_1a00dbb3ab1c59e14699be9393693e2248" kindref="member">COM1</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Starting<sp/>MPX<sp/>boot<sp/>sequence...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Initialized<sp/>serial<sp/>I/O<sp/>on<sp/>COM1<sp/>device...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1)<sp/>Initialize<sp/>the<sp/>support<sp/>software<sp/>by<sp/>identifying<sp/>the<sp/>current</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>MPX<sp/>Module.<sp/><sp/>This<sp/>will<sp/>change<sp/>with<sp/>each<sp/>module.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>you<sp/>will<sp/>need<sp/>to<sp/>call<sp/>mpx_init<sp/>from<sp/>the<sp/>mpx_supt.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a53332c6a3107a4feed6e2e79690a6ffa" kindref="member">mpx_init</ref>(<ref refid="mpx__supt_8h_1a68745bb3b58fd02dcee2cad3b2331def" kindref="member">MODULE_R5</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2)<sp/>Check<sp/>that<sp/>the<sp/>boot<sp/>was<sp/>successful<sp/>and<sp/>correct<sp/>when<sp/>using<sp/>grub</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Comment<sp/>this<sp/>when<sp/>booting<sp/>the<sp/>kernel<sp/>directly<sp/>using<sp/>QEMU,<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>(<sp/>magic<sp/>!=<sp/>0x2BADB002<sp/>){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>kpanic(&quot;Boot<sp/>was<sp/>not<sp/>error<sp/>free.<sp/>Halting.&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3)<sp/>Descriptor<sp/>Tables<sp/>--<sp/>tables.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>you<sp/>will<sp/>need<sp/>to<sp/>initialize<sp/>the<sp/>global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>keeps<sp/>track<sp/>of<sp/>allocated<sp/>segments<sp/>and<sp/>pages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Initializing<sp/>descriptor<sp/>tables...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><ref refid="tables_8h_1a86bb50044169930202cc403376ef40c3" kindref="member">init_gdt</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><ref refid="tables_8h_1a35fe413107af682030ab7a4b6dff19b8" kindref="member">init_idt</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><ref refid="interrupts_8h_1afbc0dbef6f15e2df21b38724ea38c483" kindref="member">init_pic</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1ac5d15f274bc9b1e96230f3d3c60fd1f8" kindref="member">sti</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>4)<sp/><sp/>Interrupt<sp/>vector<sp/>table<sp/>--<sp/><sp/>tables.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>creates<sp/>and<sp/>initializes<sp/>a<sp/>default<sp/>interrupt<sp/>vector<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>function<sp/>is<sp/>in<sp/>tables.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><ref refid="interrupts_8h_1ad17d9a8aa78440af8fc40d3fd55dbad8" kindref="member">init_irq</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Interrupt<sp/>vector<sp/>table<sp/>initialized!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5)<sp/>Virtual<sp/>Memory<sp/>--<sp/>paging.c<sp/><sp/>--<sp/>init_paging</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>this<sp/>function<sp/>creates<sp/>the<sp/>kernel&apos;s<sp/>heap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>from<sp/>which<sp/>memory<sp/>will<sp/>be<sp/>allocated<sp/>when<sp/>the<sp/>program<sp/>calls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sys_alloc_mem<sp/>UNTIL<sp/>the<sp/>memory<sp/>management<sp/>module<sp/><sp/>is<sp/>completed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>allocates<sp/>memory<sp/>using<sp/>discrete<sp/>&quot;pages&quot;<sp/>of<sp/>physical<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOTE:<sp/><sp/>You<sp/>will<sp/>only<sp/>have<sp/>about<sp/>70000<sp/>bytes<sp/>of<sp/>dynamic<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Initializing<sp/>virtual<sp/>memory...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><ref refid="paging_8h_1a919b727f386797a8b9d8eceb5c4e7313" kindref="member">init_paging</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>6)<sp/>Call<sp/>YOUR<sp/>command<sp/>handler<sp/>-<sp/><sp/>interface<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Transferring<sp/>control<sp/>to<sp/>commhand...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//commhand();<sp/>//Removed<sp/>for<sp/>R4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocateMemLists();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//allocateAlarms();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><ref refid="R5commands_8c_1a3974816887b02af340a7c42ba05ac167" kindref="member">initializeHeap</ref>((<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)50000);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a53332c6a3107a4feed6e2e79690a6ffa" kindref="member">mpx_init</ref>(<ref refid="mpx__supt_8h_1a02d9b620a75ca60cd5d24b51309af887" kindref="member">MEM_MODULE</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a4a28bb188c9fed51228c46980b20e605" kindref="member">sys_set_malloc</ref>((<ref refid="R5commands_8c_1ac29b5f08753e9d141c41ff15cfa98531" kindref="member">allocateMemory</ref>));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><ref refid="mpx__supt_8c_1a2463d934fa39601c275a3ade8afd18bc" kindref="member">sys_set_free</ref>((<ref refid="R5commands_8c_1a5c0d38019c891a8fb9908d0a913c747f" kindref="member">freeMemory</ref>));</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1aa93ee76bdb5b9aac80f93031a9ea918e" kindref="member">allocateQueues</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><ref refid="R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Commhand&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;s&apos;</highlight><highlight class="normal">,<sp/>9);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><ref refid="structPCB" kindref="compound">PCB</ref><sp/>*new_pcb<sp/>=<sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Commhand&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><ref refid="structcontext" kindref="compound">context</ref><sp/>*cp<sp/>=<sp/>(<ref refid="structcontext" kindref="compound">context</ref><sp/>*)(new_pcb-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><ref refid="string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cp,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb-&gt;<ref refid="structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(new_pcb-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="commhand_8c_1acf65bd5a16579cc5bf4af7c8c994d28a" kindref="member">commhand</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/>cp-&gt;<ref refid="structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>createPCB(&quot;Alarm&quot;,<sp/>&apos;a&apos;,<sp/>1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PCB<sp/>*AlarmPCB<sp/>=<sp/>findPCB(&quot;Alarm&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>context<sp/>*cpAlarm<sp/>=<sp/>(context<sp/>*)(AlarmPCB-&gt;stackTop);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>memset(cpAlarm,<sp/>0,<sp/>sizeof(context));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;fs<sp/>=<sp/>0x10;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;gs<sp/>=<sp/>0x10;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;ds<sp/>=<sp/>0x10;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;es<sp/>=<sp/>0x10;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;cs<sp/>=<sp/>0x8;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;ebp<sp/>=<sp/>(u32int)(AlarmPCB-&gt;stack);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;esp<sp/>=<sp/>(u32int)(AlarmPCB-&gt;stackTop);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;eip<sp/>=<sp/>(u32int)alarmPCB;<sp/>//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cpAlarm-&gt;eflags<sp/>=<sp/>0x202;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><ref refid="R2commands_8c_1a3cd65702d00f1828d24a99898123fc7f" kindref="member">createPCB</ref>(</highlight><highlight class="stringliteral">&quot;Idle&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;s&apos;</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><ref refid="structPCB" kindref="compound">PCB</ref><sp/>*idlePCB<sp/>=<sp/><ref refid="R2__Internal__Functions__And__Structures_8c_1a2e9694bcc8559834a0e4749509faf4be" kindref="member">findPCB</ref>(</highlight><highlight class="stringliteral">&quot;Idle&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><ref refid="structcontext" kindref="compound">context</ref><sp/>*cpIDLE<sp/>=<sp/>(<ref refid="structcontext" kindref="compound">context</ref><sp/>*)(idlePCB-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><ref refid="string_8h_1ace6ee45c30e71865e6eb635200379db9" kindref="member">memset</ref>(cpIDLE,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structcontext" kindref="compound">context</ref>));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a5e778314cc8c537f0a27726bfa673c8e" kindref="member">fs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a54fa688ce896c5cca606323d33e1f68c" kindref="member">gs</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1ae636622afec7fe9c8b18504168023d1e" kindref="member">ds</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1aca480d54d4be09cb005dc21e4ff05da1" kindref="member">es</ref><sp/>=<sp/>0x10;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a29cb887d9a426ddb24c04237bce5df6d" kindref="member">cs</ref><sp/>=<sp/>0x8;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a7ed33e51ef51493c861cd20aa919f2f9" kindref="member">ebp</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(idlePCB-&gt;<ref refid="structPCB_1ad16b941b22b8d62d7b63c7d4ca15210d" kindref="member">stack</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a5d56c844a4aa0dd6b7a7bf5b421cbf88" kindref="member">esp</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)(idlePCB-&gt;<ref refid="structPCB_1a927da593bccc4abb835f48da1557df42" kindref="member">stackTop</ref>);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a48807bac5338e9bcd6183f2f2061400b" kindref="member">eip</ref><sp/>=<sp/>(<ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref>)<ref refid="mpx__supt_8c_1a83abbeda22fc5e6c2b35523b64199c1c" kindref="member">idle</ref>;<sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>correlating<sp/>to<sp/>the<sp/>process,<sp/>ie.<sp/>Proc1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/>cpIDLE-&gt;<ref refid="structcontext_1a70a4605bd1b897c096f5cc7f730214db" kindref="member">eflags</ref><sp/>=<sp/>0x202;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;int<sp/>$60&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>7)<sp/>System<sp/>Shutdown<sp/>on<sp/>return<sp/>from<sp/>your<sp/>command<sp/>handler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Starting<sp/>system<sp/>shutdown<sp/>procedure...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Shutdown<sp/>Procedure<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1abdb09834267dd4a2a0d07d43ca4d230d" kindref="member">klogv</ref>(</highlight><highlight class="stringliteral">&quot;Shutdown<sp/>complete.<sp/>You<sp/>may<sp/>now<sp/>turn<sp/>off<sp/>the<sp/>machine.<sp/>(QEMU:<sp/>C-a<sp/>x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><ref refid="system_8h_1a954b0134ce21d80f0efb22c77e821da3" kindref="member">hlt</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="kernel/core/kmain.c"/>
+  </compounddef>
+</doxygen>

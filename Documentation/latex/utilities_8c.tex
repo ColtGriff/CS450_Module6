@@ -1,0 +1,122 @@
+\hypertarget{utilities_8c}{}\doxysection{modules/utilities.c File Reference}
+\label{utilities_8c}\index{modules/utilities.c@{modules/utilities.c}}
+{\ttfamily \#include $<$core/serial.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mpx\+\_\+supt.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$core/io.\+h$>$}\newline
+{\ttfamily \#include $<$mem/heap.\+h$>$}\newline
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{utilities_8c_a94d7cc7ba50f677cad3e3e9d5a556b42}{reverse\+Str}} (char $\ast$str)
+\item 
+char $\ast$ \mbox{\hyperlink{utilities_8c_a2eb4e84d30d30f692f4ee87348aac05b}{itoa}} (int num, char $\ast$buffer)
+\item 
+void \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{print\+Message}} (char $\ast$str)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utilities_8c_a2eb4e84d30d30f692f4ee87348aac05b}\label{utilities_8c_a2eb4e84d30d30f692f4ee87348aac05b}} 
+\index{utilities.c@{utilities.c}!itoa@{itoa}}
+\index{itoa@{itoa}!utilities.c@{utilities.c}}
+\doxysubsubsection{\texorpdfstring{itoa()}{itoa()}}
+{\footnotesize\ttfamily char$\ast$ itoa (\begin{DoxyParamCaption}\item[{int}]{num,  }\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file utilities.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{29     \textcolor{keywordtype}{int} neg = \mbox{\hyperlink{mpx__supt_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordflow}{if} (num == 0)}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         buffer[i] = \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{34         buffer[++i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordflow}{if} (num < 0)}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         neg = \mbox{\hyperlink{mpx__supt_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}};}
+\DoxyCodeLine{40         num = -\/num;}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         buffer[i++] = (num \% 10) + \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{46     \} \textcolor{keywordflow}{while} ((num /= 10) > 0);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordflow}{if} (neg == \mbox{\hyperlink{mpx__supt_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}})}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         buffer[i++] = \textcolor{charliteral}{'-\/'};}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     buffer = \mbox{\hyperlink{utilities_8c_a94d7cc7ba50f677cad3e3e9d5a556b42}{reverseStr}}(buffer);}
+\DoxyCodeLine{54     buffer[i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} buffer;}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}\label{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}} 
+\index{utilities.c@{utilities.c}!printMessage@{printMessage}}
+\index{printMessage@{printMessage}!utilities.c@{utilities.c}}
+\doxysubsubsection{\texorpdfstring{printMessage()}{printMessage()}}
+{\footnotesize\ttfamily void print\+Message (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line 59 of file utilities.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61     \textcolor{keywordtype}{char} Desc[137];}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{size\_t} length = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(str);}
+\DoxyCodeLine{64     \textcolor{keywordflow}{if} (length > (\textcolor{keyword}{sizeof}(Desc) -\/ 2))}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66         length = \textcolor{keyword}{sizeof}(Desc) -\/ 2;}
+\DoxyCodeLine{67         Desc[\textcolor{keyword}{sizeof}(Desc) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69     \mbox{\hyperlink{string_8h_a1eb9cae61e6a6282c28dbc298ef7297e}{strcpy}}(Desc, str);}
+\DoxyCodeLine{70     \textcolor{keywordtype}{int} tempBuffer = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(Desc);}
+\DoxyCodeLine{71     \mbox{\hyperlink{mpx__supt_8c_aaa3eb70f93cb8acf38ec0d028b9874f0}{sys\_req}}(\mbox{\hyperlink{mpx__supt_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}}, \mbox{\hyperlink{mpx__supt_8h_a84cb8bbda8042a324f49102bc200cc54}{DEFAULT\_DEVICE}}, (\textcolor{keywordtype}{char} *)Desc, \&tempBuffer);}
+\DoxyCodeLine{72 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{utilities_8c_a94d7cc7ba50f677cad3e3e9d5a556b42}\label{utilities_8c_a94d7cc7ba50f677cad3e3e9d5a556b42}} 
+\index{utilities.c@{utilities.c}!reverseStr@{reverseStr}}
+\index{reverseStr@{reverseStr}!utilities.c@{utilities.c}}
+\doxysubsubsection{\texorpdfstring{reverseStr()}{reverseStr()}}
+{\footnotesize\ttfamily char$\ast$ reverse\+Str (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file utilities.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} size = \mbox{\hyperlink{string_8h_a2dee044e4e667b5b789b493abd21cfa4}{strlen}}(str);}
+\DoxyCodeLine{11     \textcolor{keywordtype}{char} temp[size];}
+\DoxyCodeLine{12     }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{while} (size >= 0)}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         temp[i] = str[size -\/ 1];}
+\DoxyCodeLine{18         size-\/-\/;}
+\DoxyCodeLine{19         i++;}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char}* test= temp;}
+\DoxyCodeLine{22     }
+\DoxyCodeLine{23     \textcolor{keywordflow}{return} test;}
+\DoxyCodeLine{24 \}}
+
+\end{DoxyCode}

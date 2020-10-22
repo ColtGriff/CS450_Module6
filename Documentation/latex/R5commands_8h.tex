@@ -1,0 +1,376 @@
+\hypertarget{R5commands_8h}{}\doxysection{modules/\+R5/\+R5commands.h File Reference}
+\label{R5commands_8h}\index{modules/R5/R5commands.h@{modules/R5/R5commands.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCMCB}{C\+M\+CB}}
+\item 
+struct \mbox{\hyperlink{structmemList}{mem\+List}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structCMCB}{C\+M\+CB}} \mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{C\+M\+CB}}
+\item 
+typedef struct \mbox{\hyperlink{structmemList}{mem\+List}} \mbox{\hyperlink{R5commands_8h_a4b24b5e6f2649d3c1b873406182860c7}{mem\+List}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} \mbox{\hyperlink{R5commands_8h_a3974816887b02af340a7c42ba05ac167}{initialize\+Heap}} (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} heap\+Size)
+\item 
+\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} \mbox{\hyperlink{R5commands_8h_ac29b5f08753e9d141c41ff15cfa98531}{allocate\+Memory}} (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} size)
+\item 
+int \mbox{\hyperlink{R5commands_8h_a5c0d38019c891a8fb9908d0a913c747f}{free\+Memory}} (void $\ast$mem\+To\+Free)
+\item 
+int \mbox{\hyperlink{R5commands_8h_a653c98c68c558505b75b04c44b7c838e}{is\+Empty}} ()
+\item 
+void \mbox{\hyperlink{R5commands_8h_a78f265af6466c31b931ada3661c34b4f}{show\+Free\+Memory}} ()
+\item 
+void \mbox{\hyperlink{R5commands_8h_ab05bf24239e14068ca690422a41c7da1}{show\+Allocated\+Memory}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}\label{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}} 
+\index{R5commands.h@{R5commands.h}!CMCB@{CMCB}}
+\index{CMCB@{CMCB}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{CMCB}{CMCB}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structCMCB}{C\+M\+CB}} \mbox{\hyperlink{structCMCB}{C\+M\+CB}}}
+
+\mbox{\Hypertarget{R5commands_8h_a4b24b5e6f2649d3c1b873406182860c7}\label{R5commands_8h_a4b24b5e6f2649d3c1b873406182860c7}} 
+\index{R5commands.h@{R5commands.h}!memList@{memList}}
+\index{memList@{memList}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{memList}{memList}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmemList}{mem\+List}} \mbox{\hyperlink{structmemList}{mem\+List}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{R5commands_8h_ac29b5f08753e9d141c41ff15cfa98531}\label{R5commands_8h_ac29b5f08753e9d141c41ff15cfa98531}} 
+\index{R5commands.h@{R5commands.h}!allocateMemory@{allocateMemory}}
+\index{allocateMemory@{allocateMemory}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{allocateMemory()}{allocateMemory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} allocate\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 90 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{91 \{}
+\DoxyCodeLine{92     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{93     \{}
+\DoxyCodeLine{94         \mbox{\hyperlink{structCMCB}{CMCB}} *current = \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96         \textcolor{comment}{// get to block of appropriate size}}
+\DoxyCodeLine{97         \textcolor{keywordflow}{while} (current != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{98         \{}
+\DoxyCodeLine{99             \textcolor{keywordflow}{if} (current-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} == size + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structCMCB}{CMCB}}) \&\& \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}} == 1)}
+\DoxyCodeLine{100             \{}
+\DoxyCodeLine{101                 \textcolor{comment}{// remove from free list.}}
+\DoxyCodeLine{102                 current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}};}
+\DoxyCodeLine{103                 current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}}-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{104                 current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{105                 current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{106                 \textcolor{comment}{// place current in alloc list.}}
+\DoxyCodeLine{107                 \mbox{\hyperlink{R5commands_8c_a05782ba4294925abab214e1f3221fc08}{insertToList}}(current, \&\mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}});}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109                 \textcolor{comment}{// change current marker to 'a'.}}
+\DoxyCodeLine{110                 current-\/>\mbox{\hyperlink{structCMCB_a851499290a994f91125af9896dd48ba4}{type}} = \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112                 \textcolor{comment}{// remove all freeList pointers to current.}}
+\DoxyCodeLine{113                 \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{114                 \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116                 \textcolor{comment}{// return allocated block.}}
+\DoxyCodeLine{117                 \textcolor{keywordflow}{return} current-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}};}
+\DoxyCodeLine{118             \}}
+\DoxyCodeLine{119             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} == size + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structCMCB}{CMCB}})) \textcolor{comment}{// current is excetly the size requested.}}
+\DoxyCodeLine{120             \{}
+\DoxyCodeLine{121                 \textcolor{comment}{// remove from free list.}}
+\DoxyCodeLine{122                 current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}};}
+\DoxyCodeLine{123                 current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}}-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{124                 current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{125                 current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{126                 \textcolor{comment}{// place current in alloc list.}}
+\DoxyCodeLine{127                 \mbox{\hyperlink{R5commands_8c_a05782ba4294925abab214e1f3221fc08}{insertToList}}(current, \&\mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}});}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129                 \textcolor{comment}{// change current marker to 'a'.}}
+\DoxyCodeLine{130                 current-\/>\mbox{\hyperlink{structCMCB_a851499290a994f91125af9896dd48ba4}{type}} = \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132                 \textcolor{comment}{// return allocated block.}}
+\DoxyCodeLine{133                 \textcolor{keywordflow}{return} current-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}};}
+\DoxyCodeLine{134             \}}
+\DoxyCodeLine{135             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} > size + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structCMCB}{CMCB}})) \textcolor{comment}{// current is greater than the size requested}}
+\DoxyCodeLine{136             \{}
+\DoxyCodeLine{137                 \textcolor{comment}{// remove from free list.}}
+\DoxyCodeLine{138                 \mbox{\hyperlink{structCMCB}{CMCB}} *\textcolor{keyword}{new} = (\mbox{\hyperlink{structCMCB}{CMCB}} *)(current-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} + size);                 \textcolor{comment}{// This CMCB pertains to the head of the free list at the new memory address}}
+\DoxyCodeLine{139                 \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} = (current-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} + size + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}})); \textcolor{comment}{// Could be tmp-\/>beginningAddr + size + sizeof(CMCB)}}
+\DoxyCodeLine{140                 \textcolor{keyword}{new}-\/>size = current-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} -\/ size -\/ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}});}
+\DoxyCodeLine{141                 \textcolor{keyword}{new}-\/>type = \textcolor{charliteral}{'f'};}
+\DoxyCodeLine{142                 \textcolor{keyword}{new}-\/>nextCMCB = current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{143                 \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}};}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145                 \textcolor{keywordflow}{if} (current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{146                 \{}
+\DoxyCodeLine{147                     \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}}-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{148                 \}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150                 \textcolor{keywordflow}{if} (current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{151                 \{}
+\DoxyCodeLine{152                     \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{153                 \}}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} == current \&\& \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} == current)}
+\DoxyCodeLine{156                 \{}
+\DoxyCodeLine{157                     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{158                     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{159                 \}}
+\DoxyCodeLine{160                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} == current)}
+\DoxyCodeLine{161                 \{}
+\DoxyCodeLine{162                     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{163                 \}}
+\DoxyCodeLine{164                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} == current)}
+\DoxyCodeLine{165                 \{}
+\DoxyCodeLine{166                     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{167                 \}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169                 current-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} = size;}
+\DoxyCodeLine{170                 current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{171                 current-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173                 \textcolor{comment}{// place current in alloc list.}}
+\DoxyCodeLine{174                 \mbox{\hyperlink{R5commands_8c_a05782ba4294925abab214e1f3221fc08}{insertToList}}(current, \&\mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}});}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176                 \textcolor{comment}{// change current marker to 'a'.}}
+\DoxyCodeLine{177                 current-\/>\mbox{\hyperlink{structCMCB_a851499290a994f91125af9896dd48ba4}{type}} = \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179                 \textcolor{comment}{// return allocated block.}}
+\DoxyCodeLine{180                 \textcolor{keywordflow}{return} current-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}};}
+\DoxyCodeLine{181             \}}
+\DoxyCodeLine{182             current = current-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{183         \}}
+\DoxyCodeLine{184     \}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \textcolor{keywordflow}{return} \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{187 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R5commands_8h_a5c0d38019c891a8fb9908d0a913c747f}\label{R5commands_8h_a5c0d38019c891a8fb9908d0a913c747f}} 
+\index{R5commands.h@{R5commands.h}!freeMemory@{freeMemory}}
+\index{freeMemory@{freeMemory}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{freeMemory()}{freeMemory()}}
+{\footnotesize\ttfamily int free\+Memory (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem\+To\+Free }\end{DoxyParamCaption})}
+
+
+
+Definition at line 215 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a653c98c68c558505b75b04c44b7c838e}{isEmpty}}())}
+\DoxyCodeLine{218     \{}
+\DoxyCodeLine{219         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}There is no memory to free!\(\backslash\)n"{}});}
+\DoxyCodeLine{220         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{221     \}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223     \mbox{\hyperlink{structCMCB}{CMCB}} *temp = \mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}};}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \textcolor{keywordflow}{while} (temp-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} != (\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}})memToFree)}
+\DoxyCodeLine{226     \{}
+\DoxyCodeLine{227         temp = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{228     \}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{keywordflow}{if} (temp == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{231     \{}
+\DoxyCodeLine{232         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}There is no allocated memory at that address!\(\backslash\)n"{}});}
+\DoxyCodeLine{233         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{234     \}}
+\DoxyCodeLine{235     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{236     \{}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238         \textcolor{comment}{// Remove memToFree from the allocatedList.}}
+\DoxyCodeLine{239         \mbox{\hyperlink{R5commands_8c_ab8e0b399d1b70a7a190ad0b667d7e9f7}{removeFromAlloc}}(temp);}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241         \textcolor{comment}{// Insert memToFree into the freeList in increasing order.}}
+\DoxyCodeLine{242         \mbox{\hyperlink{R5commands_8c_a05782ba4294925abab214e1f3221fc08}{insertToList}}(temp, \&\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}});}
+\DoxyCodeLine{243         temp-\/>\mbox{\hyperlink{structCMCB_a851499290a994f91125af9896dd48ba4}{type}} = \textcolor{charliteral}{'f'};}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245         \textcolor{comment}{// Merge memToFree to other free CMCBs if possible.}}
+\DoxyCodeLine{246         \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}} >= 1)}
+\DoxyCodeLine{247         \{}
+\DoxyCodeLine{248             \mbox{\hyperlink{structCMCB}{CMCB}} *temp = \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}};}
+\DoxyCodeLine{249             \textcolor{keywordflow}{while} (temp != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{250             \{}
+\DoxyCodeLine{251                 \textcolor{keywordflow}{if} ((temp-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} + temp-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}}) == (temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} -\/ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structCMCB}{CMCB}}))) \textcolor{comment}{// merge down}}
+\DoxyCodeLine{252                 \{}
+\DoxyCodeLine{253                     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Memory merge down\(\backslash\)n"{}});}
+\DoxyCodeLine{254                     \textcolor{keywordflow}{if} (temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{255                     \{}
+\DoxyCodeLine{256                         \mbox{\hyperlink{structCMCB}{CMCB}} *next = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{257                         temp-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} += (next-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}}));}
+\DoxyCodeLine{258                         temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = next-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{259                         next-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}}-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = temp;}
+\DoxyCodeLine{260                         next-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{261                         next-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{262                         \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}}-\/-\/;}
+\DoxyCodeLine{263                     \}}
+\DoxyCodeLine{264                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{265                     \{}
+\DoxyCodeLine{266                         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Merge down part 2\(\backslash\)n"{}});}
+\DoxyCodeLine{267                         \mbox{\hyperlink{structCMCB}{CMCB}} *next = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{268                         temp-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} += (next-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}}));}
+\DoxyCodeLine{269                         next-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{270                         next-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{271                         temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{272                         \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}}-\/-\/;}
+\DoxyCodeLine{273                     \}}
+\DoxyCodeLine{274                 \}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276                 \textcolor{keywordflow}{if} ((temp-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}}-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} + temp-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}}-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}}) == (temp-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} -\/ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}}))) \textcolor{comment}{//merge up}}
+\DoxyCodeLine{277                 \{}
+\DoxyCodeLine{278                     \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}Memory merge up\(\backslash\)n"{}});}
+\DoxyCodeLine{279                     \mbox{\hyperlink{structCMCB}{CMCB}} *prev = temp-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}};}
+\DoxyCodeLine{280                     prev-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} += (temp-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}}));}
+\DoxyCodeLine{281                     prev-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{282                     temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = prev;}
+\DoxyCodeLine{283                     temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{284                     temp-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{285                     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}}-\/-\/;}
+\DoxyCodeLine{286                 \}}
+\DoxyCodeLine{287                 temp = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{288             \}}
+\DoxyCodeLine{289         \}}
+\DoxyCodeLine{290         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{291         \{}
+\DoxyCodeLine{292             \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = temp;}
+\DoxyCodeLine{293             \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = temp;}
+\DoxyCodeLine{294             \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}} = 1;}
+\DoxyCodeLine{295         \}}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297     \} \textcolor{comment}{// end of else statement to free memory.}}
+\DoxyCodeLine{298     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{299 \} \textcolor{comment}{// end of Function.}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R5commands_8h_a3974816887b02af340a7c42ba05ac167}\label{R5commands_8h_a3974816887b02af340a7c42ba05ac167}} 
+\index{R5commands.h@{R5commands.h}!initializeHeap@{initializeHeap}}
+\index{initializeHeap@{initializeHeap}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{initializeHeap()}{initializeHeap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} initialize\+Heap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}}}]{heap\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \mbox{\hyperlink{system_8h_a757de76cafbcddaac0d1632902fe4cb8}{u32int}} memStart = \mbox{\hyperlink{heap_8h_a15d6a52c5c080c8c7ffc73e336d8e574}{kmalloc}}(heapSize + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structCMCB}{CMCB}}));}
+\DoxyCodeLine{23     \mbox{\hyperlink{structCMCB}{CMCB}} *temp = (\mbox{\hyperlink{structCMCB}{CMCB}} *)memStart;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// Create the first free block}}
+\DoxyCodeLine{26     temp-\/>\mbox{\hyperlink{structCMCB_a851499290a994f91125af9896dd48ba4}{type}} = \textcolor{charliteral}{'f'};}
+\DoxyCodeLine{27     temp-\/>\mbox{\hyperlink{structCMCB_a572a6034769bc1e7e36fa18d625c00ce}{beginningAddr}} = memStart + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{R5commands_8h_a37e892ee192f8d6724e74e747f447e74}{CMCB}});}
+\DoxyCodeLine{28     temp-\/>\mbox{\hyperlink{structCMCB_ab57441d157c83e917b3a6e49dc3988d2}{size}} = heapSize;}
+\DoxyCodeLine{29     \textcolor{comment}{//strcpy(temp-\/>name, "{}first"{});}}
+\DoxyCodeLine{30     temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{31     temp-\/>\mbox{\hyperlink{structCMCB_a1280be0dd5b355366ecef12d58e1d65f}{prevCMCB}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{// Initialize alllocated list}}
+\DoxyCodeLine{34     \mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}} = 0;}
+\DoxyCodeLine{35     \mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{36     \mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{// Place first free block into the free list}}
+\DoxyCodeLine{39     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}}++;}
+\DoxyCodeLine{40     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} = temp;}
+\DoxyCodeLine{41     \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_ac42044ac93f3e8c22927959d14076707}{tail}} = temp;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordflow}{return} memStart;}
+\DoxyCodeLine{44 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R5commands_8h_a653c98c68c558505b75b04c44b7c838e}\label{R5commands_8h_a653c98c68c558505b75b04c44b7c838e}} 
+\index{R5commands.h@{R5commands.h}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily int is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 301 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{302 \{}
+\DoxyCodeLine{303     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}} \&\& \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_aff9670eeb5c6fe9a9ca5e2d9d4cd5add}{count}} == 1)}
+\DoxyCodeLine{304     \{}
+\DoxyCodeLine{305         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}The allocated list is empty.\(\backslash\)n"{}});}
+\DoxyCodeLine{306         \textcolor{keywordflow}{return} \mbox{\hyperlink{mpx__supt_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}};}
+\DoxyCodeLine{307     \}}
+\DoxyCodeLine{308     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{309     \{}
+\DoxyCodeLine{310         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}The allocated list is not empty.\(\backslash\)n"{}});}
+\DoxyCodeLine{311         \textcolor{keywordflow}{return} \mbox{\hyperlink{mpx__supt_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}};}
+\DoxyCodeLine{312     \}}
+\DoxyCodeLine{313 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R5commands_8h_ab05bf24239e14068ca690422a41c7da1}\label{R5commands_8h_ab05bf24239e14068ca690422a41c7da1}} 
+\index{R5commands.h@{R5commands.h}!showAllocatedMemory@{showAllocatedMemory}}
+\index{showAllocatedMemory@{showAllocatedMemory}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{showAllocatedMemory()}{showAllocatedMemory()}}
+{\footnotesize\ttfamily void show\+Allocated\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 363 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{366     \{}
+\DoxyCodeLine{367         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}There is no allocated memory!\(\backslash\)n"{}});}
+\DoxyCodeLine{368     \}}
+\DoxyCodeLine{369 }
+\DoxyCodeLine{370     \mbox{\hyperlink{structCMCB}{CMCB}} *temp = \mbox{\hyperlink{R5commands_8c_a822ca42df9c8b5a50b371bf8ed974096}{allocatedList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}};}
+\DoxyCodeLine{371     \textcolor{keywordflow}{while} (temp != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{372     \{}
+\DoxyCodeLine{373         \mbox{\hyperlink{R5commands_8c_af3d616b5c012c21679ea62614227584b}{showMCB}}(temp);}
+\DoxyCodeLine{374         temp = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{375     \}}
+\DoxyCodeLine{376 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{R5commands_8h_a78f265af6466c31b931ada3661c34b4f}\label{R5commands_8h_a78f265af6466c31b931ada3661c34b4f}} 
+\index{R5commands.h@{R5commands.h}!showFreeMemory@{showFreeMemory}}
+\index{showFreeMemory@{showFreeMemory}!R5commands.h@{R5commands.h}}
+\doxysubsubsection{\texorpdfstring{showFreeMemory()}{showFreeMemory()}}
+{\footnotesize\ttfamily void show\+Free\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 348 of file R5commands.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{349 \{}
+\DoxyCodeLine{350     \textcolor{keywordflow}{if} (\mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}} == \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{351     \{}
+\DoxyCodeLine{352         \mbox{\hyperlink{utilities_8c_a6b64e960aa5ad14e823de069f78c9b83}{printMessage}}(\textcolor{stringliteral}{"{}There is no free memory!\(\backslash\)n"{}});}
+\DoxyCodeLine{353     \}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355     \mbox{\hyperlink{structCMCB}{CMCB}} *temp = \mbox{\hyperlink{R5commands_8c_a607caa385f1c0466956b56e389268dd9}{freeList}}.\mbox{\hyperlink{structmemList_af6fdf46706ed450959c04551a82eee20}{head}};}
+\DoxyCodeLine{356     \textcolor{keywordflow}{while} (temp != \mbox{\hyperlink{system_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}})}
+\DoxyCodeLine{357     \{}
+\DoxyCodeLine{358         \mbox{\hyperlink{R5commands_8c_af3d616b5c012c21679ea62614227584b}{showMCB}}(temp);}
+\DoxyCodeLine{359         temp = temp-\/>\mbox{\hyperlink{structCMCB_a8373a72b145f15cb1d80b7baaf19ead3}{nextCMCB}};}
+\DoxyCodeLine{360     \}}
+\DoxyCodeLine{361 \}}
+
+\end{DoxyCode}

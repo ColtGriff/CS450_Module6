@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structindex__entry" kind="struct" language="C++" prot="public">
+    <compoundname>index_entry</compoundname>
+    <includes refid="heap_8h" local="no">heap.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structindex__entry_1a2b0247aae5c7f9884f8eef1ee121adb0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int index_entry::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="21" column="7" bodyfile="include/mem/heap.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structindex__entry_1afdbdffb4bd17e4ab003b94be3d5bade7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int index_entry::empty</definition>
+        <argsstring></argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="22" column="7" bodyfile="include/mem/heap.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structindex__entry_1a0a8d4dc0595b5f2ef42e7080c5221c1f" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int index_entry::block</definition>
+        <argsstring></argsstring>
+        <name>block</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/heap.h" line="23" column="10" bodyfile="include/mem/heap.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mem/heap.h" line="20" column="1" bodyfile="include/mem/heap.h" bodystart="20" bodyend="24"/>
+    <listofallmembers>
+      <member refid="structindex__entry_1a0a8d4dc0595b5f2ef42e7080c5221c1f" prot="public" virt="non-virtual"><scope>index_entry</scope><name>block</name></member>
+      <member refid="structindex__entry_1afdbdffb4bd17e4ab003b94be3d5bade7" prot="public" virt="non-virtual"><scope>index_entry</scope><name>empty</name></member>
+      <member refid="structindex__entry_1a2b0247aae5c7f9884f8eef1ee121adb0" prot="public" virt="non-virtual"><scope>index_entry</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

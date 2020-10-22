@@ -14,6 +14,5 @@ var R2__Internal__Functions__And__Structures_8h =
     [ "getSuspendedReady", "d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a5c800899e50bc0eb8e12f8ab6b3bfba2", null ],
     [ "insertPCB", "d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a64667c0bd1ab46d8e14c4b26d6e3f975", null ],
     [ "removePCB", "d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a7c5d1dea8311ecc31306a370d2877616", null ],
-    [ "searchPCB", "d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a9a281aed8d219ff76ce90daaefe09e51", null ],
     [ "setupPCB", "d4/d3c/R2__Internal__Functions__And__Structures_8h.html#a410acbffbc7a41f58ff2a6b2173ee3c4", null ]
 ];

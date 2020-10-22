@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="utilities_8h" kind="file" language="C++">
+    <compoundname>utilities.h</compoundname>
+    <includedby refid="commhand_8c" local="yes">modules/R1/commhand.c</includedby>
+    <includedby refid="R1commands_8c" local="yes">modules/R1/R1commands.c</includedby>
+    <includedby refid="R2__Internal__Functions__And__Structures_8c" local="yes">modules/R2/R2_Internal_Functions_And_Structures.c</includedby>
+    <includedby refid="R2commands_8c" local="yes">modules/R2/R2commands.c</includedby>
+    <includedby refid="R3commands_8c" local="yes">modules/R3/R3commands.c</includedby>
+    <includedby refid="R4commands_8c" local="yes">modules/R4/R4commands.c</includedby>
+    <includedby refid="R5commands_8c" local="yes">modules/R5/R5commands.c</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>modules/utilities.h</label>
+        <link refid="utilities_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>modules/R4/R4commands.c</label>
+        <link refid="R4commands_8c"/>
+      </node>
+      <node id="5">
+        <label>modules/R2/R2commands.c</label>
+        <link refid="R2commands_8c"/>
+      </node>
+      <node id="2">
+        <label>modules/R1/commhand.c</label>
+        <link refid="commhand_8c"/>
+      </node>
+      <node id="6">
+        <label>modules/R3/R3commands.c</label>
+        <link refid="R3commands_8c"/>
+      </node>
+      <node id="3">
+        <label>modules/R1/R1commands.c</label>
+        <link refid="R1commands_8c"/>
+      </node>
+      <node id="4">
+        <label>modules/R2/R2_Internal_Functions_And_Structures.c</label>
+        <link refid="R2__Internal__Functions__And__Structures_8c"/>
+      </node>
+      <node id="8">
+        <label>modules/R5/R5commands.c</label>
+        <link refid="R5commands_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="utilities_8h_1a94d7cc7ba50f677cad3e3e9d5a556b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* reverseStr</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>reverseStr</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/utilities.h" line="1" column="6" bodyfile="modules/utilities.c" bodystart="8" bodyend="24" declfile="modules/utilities.h" declline="1" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a2eb4e84d30d30f692f4ee87348aac05b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* itoa</definition>
+        <argsstring>(int num, char *buffer)</argsstring>
+        <name>itoa</name>
+        <param>
+          <type>int</type>
+          <declname>num</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/utilities.h" line="3" column="6" bodyfile="modules/utilities.c" bodystart="26" bodyend="57" declfile="modules/utilities.h" declline="3" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="utilities_8h_1a6b64e960aa5ad14e823de069f78c9b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void printMessage</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>printMessage</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/utilities.h" line="5" column="6" bodyfile="modules/utilities.c" bodystart="59" bodyend="72" declfile="modules/utilities.h" declline="5" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="utilities_8h_1a94d7cc7ba50f677cad3e3e9d5a556b42" kindref="member">reverseStr</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str);</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="utilities_8h_1a2eb4e84d30d30f692f4ee87348aac05b" kindref="member">itoa</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer);</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="utilities_8h_1a6b64e960aa5ad14e823de069f78c9b83" kindref="member">printMessage</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str);</highlight></codeline>
+    </programlisting>
+    <location file="modules/utilities.h"/>
+  </compounddef>
+</doxygen>

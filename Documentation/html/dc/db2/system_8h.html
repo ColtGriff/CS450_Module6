@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MPX-Fall2020-Group9
-   &#160;<span id="projectnumber">2</span>
+   &#160;<span id="projectnumber">3.75</span>
    </div>
   </td>
  </tr>
@@ -137,8 +137,6 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afeb86486e42faf6fe24c7065db580810"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/db2/system_8h.html#afeb86486e42faf6fe24c7065db580810">irq_on</a> ()</td></tr>
-<tr class="separator:afeb86486e42faf6fe24c7065db580810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb09834267dd4a2a0d07d43ca4d230d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/db2/system_8h.html#abdb09834267dd4a2a0d07d43ca4d230d">klogv</a> (const char *msg)</td></tr>
 <tr class="separator:abdb09834267dd4a2a0d07d43ca4d230d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff8473f901d828d76d3548130731c41d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/db2/system_8h.html#aff8473f901d828d76d3548130731c41d">kpanic</a> (const char *msg)</td></tr>
@@ -406,40 +404,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="afeb86486e42faf6fe24c7065db580810"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afeb86486e42faf6fe24c7065db580810">&#9670;&nbsp;</a></span>irq_on()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int irq_on </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../dc/db2/system_8h_source.html#l00042">42</a> of file <a class="el" href="../../dc/db2/system_8h_source.html">system.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">int</span> f;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">asm</span> <span class="keyword">volatile</span> (<span class="stringliteral">&quot;pushf\n\t&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="stringliteral">&quot;popl %0&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        : <span class="stringliteral">&quot;=g&quot;</span>(f));</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> f &amp; (1 &lt;&lt; 9);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="abdb09834267dd4a2a0d07d43ca4d230d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abdb09834267dd4a2a0d07d43ca4d230d">&#9670;&nbsp;</a></span>klogv()</h2>
 

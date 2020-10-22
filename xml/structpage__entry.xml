@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.0" xml:lang="en-US">
+  <compounddef id="structpage__entry" kind="struct" language="C++" prot="public">
+    <compoundname>page_entry</compoundname>
+    <includes refid="paging_8h" local="no">paging.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structpage__entry_1a34148a94af9bfabbb8c4f00f9865dfee" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::present</definition>
+        <argsstring></argsstring>
+        <name>present</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="13" column="10" bodyfile="include/mem/paging.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1a2ea8d7684fe45772b6acba70d46e41d9" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::writeable</definition>
+        <argsstring></argsstring>
+        <name>writeable</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="14" column="10" bodyfile="include/mem/paging.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1a2beafd3900a1f36f09af9c35a9a14f18" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::usermode</definition>
+        <argsstring></argsstring>
+        <name>usermode</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="15" column="10" bodyfile="include/mem/paging.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1a8b4097e0cee08d028182b11bd1f73f92" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::accessed</definition>
+        <argsstring></argsstring>
+        <name>accessed</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="16" column="10" bodyfile="include/mem/paging.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1ab3b5e22c6146f227a26bdec64e63f4b0" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::dirty</definition>
+        <argsstring></argsstring>
+        <name>dirty</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="17" column="10" bodyfile="include/mem/paging.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1af6d963f09b01571b107e6f505050c0e5" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::reserved</definition>
+        <argsstring></argsstring>
+        <name>reserved</name>
+        <bitfield> 7</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="18" column="10" bodyfile="include/mem/paging.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structpage__entry_1a68a6dc54a7ab6f7fb1a068476190bf67" prot="public" static="no" mutable="no">
+        <type><ref refid="system_8h_1a757de76cafbcddaac0d1632902fe4cb8" kindref="member">u32int</ref></type>
+        <definition>u32int page_entry::frameaddr</definition>
+        <argsstring></argsstring>
+        <name>frameaddr</name>
+        <bitfield> 20</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mem/paging.h" line="19" column="10" bodyfile="include/mem/paging.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mem/paging.h" line="12" column="1" bodyfile="include/mem/paging.h" bodystart="12" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structpage__entry_1a8b4097e0cee08d028182b11bd1f73f92" prot="public" virt="non-virtual"><scope>page_entry</scope><name>accessed</name></member>
+      <member refid="structpage__entry_1ab3b5e22c6146f227a26bdec64e63f4b0" prot="public" virt="non-virtual"><scope>page_entry</scope><name>dirty</name></member>
+      <member refid="structpage__entry_1a68a6dc54a7ab6f7fb1a068476190bf67" prot="public" virt="non-virtual"><scope>page_entry</scope><name>frameaddr</name></member>
+      <member refid="structpage__entry_1a34148a94af9bfabbb8c4f00f9865dfee" prot="public" virt="non-virtual"><scope>page_entry</scope><name>present</name></member>
+      <member refid="structpage__entry_1af6d963f09b01571b107e6f505050c0e5" prot="public" virt="non-virtual"><scope>page_entry</scope><name>reserved</name></member>
+      <member refid="structpage__entry_1a2beafd3900a1f36f09af9c35a9a14f18" prot="public" virt="non-virtual"><scope>page_entry</scope><name>usermode</name></member>
+      <member refid="structpage__entry_1a2ea8d7684fe45772b6acba70d46e41d9" prot="public" virt="non-virtual"><scope>page_entry</scope><name>writeable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
