@@ -4,6 +4,7 @@
 #include <string.h>
 #include "../mpx_supt.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
+#include "../R2/R2commands.h"
 #include <core/io.h>
 
 int BCDtoChar(unsigned char test, char *buffer);
@@ -477,14 +478,18 @@ int BCDtoChar(unsigned char test, char *buffer)
 	return 0;
 }
 
-void removeQueue(queue *queue)
+void deleteQueue(queue *queue)
 {
 	PCB *tempPtr;
 	int loop;
 	for (loop = 0; loop < queue->count; loop++)
 	{
 		tempPtr = queue->head;
-		removePCB(tempPtr);
+		if (strcmp(tempPtr->processName, "infinite") == 0 && tempPtr->suspendedStatus == 1)
+		{
+			suspendPCB(tempPtr->processName);
+		}
+		deletePCB(tempPtr->processName);
 	}
 }
 
@@ -492,22 +497,22 @@ void removeAll()
 {
 	if (getReady()->head != NULL)
 	{
-		removeQueue(getReady());
+		deleteQueue(getReady());
 	}
 
 	if (getBlocked()->head != NULL)
 	{
-		removeQueue(getBlocked());
+		deleteQueue(getBlocked());
 	}
 
 	if (getSuspendedBlocked()->head != NULL)
 	{
-		removeQueue(getSuspendedBlocked());
+		deleteQueue(getSuspendedBlocked());
 	}
 
 	if (getSuspendedReady()->head != NULL)
 	{
-		removeQueue(getSuspendedReady());
+		deleteQueue(getSuspendedReady());
 	}
 }
 
