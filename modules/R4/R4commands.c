@@ -9,14 +9,16 @@
 #include "../R3/R3commands.h"
 #include "R4commands.h"
 
+queue *alarms;
+
 void alarmPCB()
 {
-
+    // calls other functions to make alarms.
 }
 
 void infinitePCB()
 {
-	createPCB("infinite", 'a', 1);
+    createPCB("infinite", 'a', 1);
     PCB *new_pcb = findPCB("infinite");
     context *cp = (context *)(new_pcb->stackTop);
     memset(cp, 0, sizeof(context));
@@ -29,19 +31,30 @@ void infinitePCB()
     cp->esp = (u32int)(new_pcb->stackTop);
     cp->eip = (u32int)infiniteFunc; // The function correlating to the process, ie. Proc1
     cp->eflags = 0x202;
-
 }
 
 void infiniteFunc()
 {
-	while(1){
+    while (1)
+    {
 
-		char idleMSG[] = "Infinite Process Executing.\n";
-		int idleLength = strlen(idleMSG);
+        char idleMSG[] = "Infinite Process Executing.\n";
+        int idleLength = strlen(idleMSG);
         sys_req(WRITE, DEFAULT_DEVICE, idleMSG, &idleLength);
 
-		sys_req(IDLE, DEFAULT_DEVICE, idleMSG, &idleLength);
+        sys_req(IDLE, DEFAULT_DEVICE, idleMSG, &idleLength);
+    }
+}
 
-		
-	}
+void allocateAlarms()
+{
+    alarms = sys_alloc_mem(sizeof(queue));
+    alarms->count = NULL;
+    alarms->head = NULL;
+    alarms->tail = NULL;
+}
+
+queue *getAlarms()
+{
+    return alarms;
 }

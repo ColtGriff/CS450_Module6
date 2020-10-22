@@ -2,6 +2,7 @@
 
 #include <string.h>
 #include "../mpx_supt.h"
+#include "../R1/R1commands.h"
 #include "R2_Internal_Functions_And_Structures.h"
 #include "R2commands.h"
 #include <string.h>
@@ -22,32 +23,21 @@ void createPCB(char *processName, char processClass, int processPriority)
 
     if (findPCB(processName) != NULL || strlen(processName) > 20)
     { // Check if the process has a unique name, and if it has a valid name.
-        char errMsg[125];
-        strcpy(errMsg, "The PCB could not be created as it either does not have a unique name or the name is longer than 20 characters!\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        printMessage("The PCB could not be created as it either does not have a unique name or the name is longer than 20 characters!\n");
     }
     else if (processClass != 'a' && processClass != 's')
     { // Check if the process has a valid class.
-        char errMsg[100];
-        strcpy(errMsg, "The PCB could not be created as it does not have a valid class!\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        printMessage("The PCB could not be created as it does not have a valid class!\n");
     }
     else if (processPriority < 0 || processPriority > 9)
     { // Check if the process has a valid priority.
-        char errMsg[100];
-        strcpy(errMsg, "The PCB could not be created as it does not have a valid priority!\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        printMessage("The PCB could not be created as it does not have a valid priority!\n");
     }
     else
     { // Make the PCB
         PCB *createdPCB = setupPCB(processName, processClass, processPriority);
 
-        char msg[] = "The PCB was created!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB was created!\n");
 
         insertPCB(createdPCB);
     }
@@ -66,45 +56,36 @@ void deletePCB(char *processName)
 
     if (strlen(processName) > 20)
     { // Check if the process has a valid name.
-        char errMsg[100];
-        strcpy(errMsg, "The PCB could not be deleted as the name is longer than 20 characters!\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        printMessage("The PCB could not be deleted as the name is longer than 20 characters!\n");
     }
 
     PCB *PCB_to_delete = findPCB(processName);
 
     if (PCB_to_delete == NULL)
     {
-        char errMsg[42] = "The PCB you want to remove does not exist\n";
-        int errMsgLen = 42;
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
+        printMessage("The PCB you want to remove does not exist\n");
+    }
+    else if (strcmp(processName, "infinite") == 0 && PCB_to_delete->suspendedStatus != 0)
+    {
+        printMessage("In order to delete the infinite process it must be suspended first.\n");
     }
     else
     {
         int removed = removePCB(PCB_to_delete);
         if (removed == 1)
         {
-            char errMsg[] = "The PCB could not be unlinked.\n";
-            int errMsgLen = strlen(errMsg);
-            sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errMsgLen);
+            printMessage("The PCB could not be unlinked.\n");
         }
         else
         {
             int result = sys_free_mem(PCB_to_delete);
             if (result == -1)
             {
-                // char errMsg[50];
-                // strcpy(errMsg, "The PCB could not be successfully deleted\n");
-                // int errLen = strlen(errMsg);
-                // sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+                // printMessage("The PCB could not be successfully deleted\n");
             }
             else
             {
-                char msg[50];
-                strcpy(msg, "The desired PCB was deleted\n");
-                int msgLen = strlen(msg);
-                sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+                printMessage("The desired PCB was deleted\n");
             }
         }
     }
@@ -122,9 +103,7 @@ void blockPCB(char *processName)
         removePCB(pcb_to_block);
         insertPCB(pcb_to_block);
 
-        char msg[] = "The PCB was successfully blocked!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB was successfully blocked!\n");
     }
 }
 
@@ -147,9 +126,7 @@ void unblockPCB(char *processName)
         removePCB(pcb_to_unblock);         // is this the right place to put that function?
         insertPCB(pcb_to_unblock);
 
-        char msg[] = "The PCB was successfully unblocked!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB was successfully unblocked!\n");
     }
 }
 
@@ -168,9 +145,7 @@ void suspendPCB(char *processName)
 
     if (PCBtoSuspend == NULL || strlen(processName) > 20)
     {
-        char nameError[] = "This is not a valid name.\n";
-        int printCount = strlen(nameError);
-        sys_req(WRITE, DEFAULT_DEVICE, nameError, &printCount);
+        printMessage("This is not a valid name.\n");
     }
     else
     {
@@ -178,9 +153,7 @@ void suspendPCB(char *processName)
         PCBtoSuspend->suspendedStatus = 0;
         insertPCB(PCBtoSuspend);
 
-        char msg[] = "The PCB was successfully suspended!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB was successfully suspended!\n");
     }
 }
 
@@ -198,9 +171,7 @@ void resumePCB(char *processName)
 
     if (PCBtoResume == NULL || strlen(processName) > 20)
     {
-        char nameError[] = "This is not a valid name.\n";
-        int printCount = strlen(nameError);
-        sys_req(WRITE, DEFAULT_DEVICE, nameError, &printCount);
+        printMessage("This is not a valid name.\n");
     }
     else
     {
@@ -208,9 +179,7 @@ void resumePCB(char *processName)
         PCBtoResume->suspendedStatus = 1;
         insertPCB(PCBtoResume);
 
-        char msg[] = "The PCB was successfully resumed!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB was successfully resumed!\n");
     }
 }
 
@@ -234,9 +203,7 @@ void setPCBPriority(char *processName, int newProcessPriority)
         removePCB(tempPCB);
         insertPCB(tempPCB);
 
-        char msg[] = "The PCB's priority was successfully changed!\n";
-        int msgLen = strlen(msg);
-        sys_req(WRITE, DEFAULT_DEVICE, msg, &msgLen);
+        printMessage("The PCB's priority was successfully changed!\n");
     }
 }
 
@@ -258,176 +225,128 @@ void showPCB(char *processName)
 
     if (strlen(processName) > 20)
     { // Check if the process has a valid name.
-        char errMsg[100];
-        strcpy(errMsg, "The PCB could not be shown as the name is longer than 20 characters!\n");
-        int errLen = strlen(errMsg);
-        sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+        printMessage("The PCB could not be shown as the name is longer than 20 characters!\n");
     }
     else
     {
-
         PCB *PCB_to_show = findPCB(processName);
 
         if (PCB_to_show == NULL)
         { // Check to see if the PCB exists.
-            char errMsg[100];
-            strcpy(errMsg, "The PCB could not be shown, as it does not exist!\n");
-            int errLen = strlen(errMsg);
-            sys_req(WRITE, DEFAULT_DEVICE, errMsg, &errLen);
+            printMessage("The PCB could not be shown, as it does not exist!\n");
         }
         else
         {
             // Print out the PCB name.
-            char nameMsg[50];
-            strcpy(nameMsg, "The process name is: ");
-            int nameMsgLen = strlen(nameMsg);
-            sys_req(WRITE, DEFAULT_DEVICE, nameMsg, &nameMsgLen);
-            char name[20];
-            strcpy(name, PCB_to_show->processName);
-            int nameLen = strlen(name);
-            sys_req(WRITE, DEFAULT_DEVICE, name, &nameLen);
-            char newLine[1];
-            strcpy(newLine, "\n");
-            int newLineLen = 1;
-            sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+            printMessage("The process name is: ");
+            int length = strlen(PCB_to_show->processName);
+            sys_req(WRITE, DEFAULT_DEVICE, PCB_to_show->processName, &length);
+            printMessage("\n");
 
             // Print out PCB class
-            char classMsg[50];
-            strcpy(classMsg, "The process class is: ");
-            int classMsgLen = strlen(classMsg);
-            sys_req(WRITE, DEFAULT_DEVICE, classMsg, &classMsgLen);
+            printMessage("The process class is: ");
 
             if (PCB_to_show->processClass == 'a')
             {
-                char appMsg[50];
-                strcpy(appMsg, "application");
-                int appMsgLen = strlen(appMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, appMsg, &appMsgLen);
+                printMessage("application.\n");
             }
             else
             {
-                char sysMsg[50];
-                strcpy(sysMsg, "system");
-                int sysMsgLen = strlen(sysMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, sysMsg, &sysMsgLen);
+                printMessage("system.\n");
             }
-            sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
 
             // Print out the PCB state
 
             if (PCB_to_show->runningStatus == 0)
             { // The process is ready.
-                char stateMsg[50];
-                strcpy(stateMsg, "The process is ready!\n");
-                int stateMsgLen = strlen(stateMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, stateMsg, &stateMsgLen);
+                printMessage("The process is ready!\n");
             }
             else if (PCB_to_show->runningStatus == -1)
             { // The process is blocked.
-                char stateMsg[50];
-                strcpy(stateMsg, "The process is blocked!\n");
-                int stateMsgLen = strlen(stateMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, stateMsg, &stateMsgLen);
+                printMessage("The process is blocked!\n");
             }
             else if (PCB_to_show->runningStatus == 1)
             { // The process is running.
-                char stateMsg[50];
-                strcpy(stateMsg, "The process is running!\n");
-                int stateMsgLen = strlen(stateMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, stateMsg, &stateMsgLen);
+                printMessage("The process is running!\n");
             }
 
             // Print out the PCB suspended status
 
             if (PCB_to_show->suspendedStatus == 0)
             { // The process is suspended
-                char susMsg[50];
-                strcpy(susMsg, "The process is suspended!\n");
-                int susMsgLen = strlen(susMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, susMsg, &susMsgLen);
+                printMessage("The process is suspended!\n");
             }
             else if (PCB_to_show->suspendedStatus == 1)
             { // The process is not suspended
-                char susMsg[50];
-                strcpy(susMsg, "The process is not suspended!\n");
-                int susMsgLen = strlen(susMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, susMsg, &susMsgLen);
+                printMessage("The process is not suspended!\n");
             }
 
             // Print out the PCB priority
-            char priorityMsg[50];
-            int priorityMsgLen = 0;
-
             switch (PCB_to_show->priority)
             {
             case 0:
-                strcpy(priorityMsg, "The process priority is 0!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 0!\n");
                 break;
 
             case 1:
-                strcpy(priorityMsg, "The process priority is 1!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 1!\n");
                 break;
 
             case 2:
-                strcpy(priorityMsg, "The process priority is 2!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 2!\n");
                 break;
 
             case 3:
-                strcpy(priorityMsg, "The process priority is 3!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 3!\n");
                 break;
 
             case 4:
-                strcpy(priorityMsg, "The process priority is 4!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 4!\n");
                 break;
 
             case 5:
-                strcpy(priorityMsg, "The process priority is 5!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 5!\n");
                 break;
 
             case 6:
-                strcpy(priorityMsg, "The process priority is 6!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 6!\n");
                 break;
 
             case 7:
-                strcpy(priorityMsg, "The process priority is 7!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 7!\n");
                 break;
 
             case 8:
-                strcpy(priorityMsg, "The process priority is 8!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 8!\n");
                 break;
 
             case 9:
-                strcpy(priorityMsg, "The process priority is 9!\n");
-                priorityMsgLen = strlen(priorityMsg);
-                sys_req(WRITE, DEFAULT_DEVICE, priorityMsg, &priorityMsgLen);
+                printMessage("The process priority is 9!\n");
                 break;
 
             default:
                 break;
             }
         }
-        char newLine[1];
-        strcpy(newLine, "\n");
-        int newLineLen = strlen(newLine);
-        sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+    }
+}
+
+void showQueue(PCB *pcb, int count)
+{
+    if (count == 0)
+    {
+        // the queue is empty
+        printMessage("The queue is empty.\n");
+        return;
+    }
+    // The queue is not empty
+
+    int value;
+    for (value = 0; value < count; value++)
+    {
+        // Print out the process
+        showPCB(pcb->processName);
+        pcb = pcb->nextPCB;
     }
 }
 
@@ -446,39 +365,8 @@ void showReady()
     None
     */
 
-    char print_message[30] = "The ready queue:\n";
-    int message_size = strlen(print_message);
-    sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
-
-    // printPCBs(blocked);
-    queue *tempQueue = getReady();
-    PCB *tempPtr = tempQueue->head; //PCB_container->head;
-    int count = tempQueue->count;
-
-    if (count == 0)
-    {
-        // the queue is empty
-        char error_message[30] = "The queue is empty.\n";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
-    }
-    // The queue is not empty
-
-    int value = 0;
-    // Testing purpose
-    //char print_message[38]="The blocke queue testing:\n";
-    //int message_size=strlen(print_message);
-    //sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
-
-    while (value < count)
-    { // testing for <== or <
-        // Print out the process
-        showPCB(tempPtr->processName);
-        // increment pcb*tempPtr, the loop variable.
-        tempPtr = tempPtr->nextPCB;
-        value++;
-    }
+    printMessage("The ready queue:\n");
+    showQueue(getReady()->head, getReady()->count);
 }
 
 void showSuspendedReady()
@@ -496,32 +384,8 @@ void showSuspendedReady()
     None
     */
 
-    char message[] = "Printing the suspended ready queue:\n";
-    int messLength = strlen(message);
-    sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
-
-    queue *tempQueue = getSuspendedReady();
-    PCB *tempPCB = tempQueue->head;
-
-    int loop = 0;
-    int count = tempQueue->count;
-
-    if (count == 0)
-    {
-        // the queue is empty
-        char error_message[30] = "The queue is empty.\n";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
-    }
-
-    while (loop < count)
-    {
-        showPCB(tempPCB->processName);
-        PCB *tempNext = tempPCB->nextPCB;
-        loop++;
-        tempPCB = tempNext;
-    }
+    printMessage("The suspended ready queue:\n");
+    showQueue(getSuspendedReady()->head, getSuspendedReady()->count);
 }
 
 void showSuspendedBlocked()
@@ -539,32 +403,8 @@ void showSuspendedBlocked()
     None
     */
 
-    char message[] = "Printing the suspended blocked queue:\n";
-    int messLength = strlen(message);
-    sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
-
-    queue *tempQueue = getSuspendedBlocked();
-    PCB *tempPCB = tempQueue->head;
-
-    int loop = 0;
-    int count = tempQueue->count;
-
-    if (count == 0)
-    {
-        // the queue is empty
-        char error_message[30] = "The queue is empty.\n";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
-    }
-
-    while (loop < count)
-    {
-        showPCB(tempPCB->processName);
-        PCB *tempNext = tempPCB->nextPCB;
-        loop++;
-        tempPCB = tempNext;
-    }
+    printMessage("The suspended blocked queue:\n");
+    showQueue(getSuspendedBlocked()->head, getSuspendedBlocked()->count);
 }
 
 void showBlocked()
@@ -583,41 +423,8 @@ void showBlocked()
     None
     */
 
-    // check
-
-    char print_message[30] = "The blocked queue:\n";
-    int message_size = strlen(print_message);
-    sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
-
-    // printPCBs(blocked);
-    queue *tempQueue = getBlocked();
-    PCB *tempPtr = tempQueue->head; //PCB_container->head;
-    int count = tempQueue->count;
-
-    if (count == 0)
-    {
-        // the queue is empty
-        char error_message[30] = "The queue is empty.\n";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
-        return;
-    }
-    // The queue is not empty
-
-    int value = 0;
-    // Testing purpose
-    //char print_message[38]="The blocke queue testing:\n";
-    //int message_size=strlen(print_message);
-    //sys_req(WRITE, DEFAULT_DEVICE, print_message, &message_size);
-
-    while (value < count)
-    { // testing for <== or <
-        // Print out the process
-        showPCB(tempPtr->processName);
-        // increment pcb*tempPtr, the loop variable.
-        tempPtr = tempPtr->nextPCB;
-        value++;
-    }
+    printMessage("The blocked queue:\n");
+    showQueue(getBlocked()->head, getBlocked()->count);
 }
 
 void showAll()
@@ -634,20 +441,15 @@ void showAll()
     Error Checking:
     None
     */
-
     showReady();
-    char newLine[1] = "\n";
-    int newLineLen = strlen(newLine);
-    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+    printMessage("\n");
 
     showSuspendedReady();
-    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+    printMessage("\n");
 
     showBlocked();
-    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
+    printMessage("\n");
 
     showSuspendedBlocked();
-    sys_req(WRITE, DEFAULT_DEVICE, newLine, &newLineLen);
-
-    memset(newLine, 1, '\0');
+    printMessage("\n");
 }

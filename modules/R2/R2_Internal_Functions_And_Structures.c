@@ -6,7 +6,6 @@
 #include "R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
 
-
 queue *ready;
 queue *blocked;
 queue *suspendedReady;
@@ -214,7 +213,6 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 temp++;
             }
-            //ready->count++;
         }
         else
         {
@@ -268,7 +266,6 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 temp++;
             }
-            //suspendedReady->count++;
         }
         else
         {
@@ -402,11 +399,11 @@ int removePCB(PCB *PCB_to_remove) //Return 0 is success code, return 1 is error 
     }
     else
     {
-        PCB *tempPrev = PCB_to_remove->prevPCB;
-        PCB *tempNext = PCB_to_remove->nextPCB;
+        // PCB *tempPrev = PCB_to_remove->prevPCB;
+        // PCB *tempNext = PCB_to_remove->nextPCB;
 
-        tempPrev->nextPCB = tempNext;
-        tempNext->prevPCB = tempPrev;
+        PCB_to_remove->prevPCB->nextPCB = PCB_to_remove->nextPCB;
+        PCB_to_remove->nextPCB->prevPCB = PCB_to_remove->prevPCB;
 
         PCB_to_remove->nextPCB = NULL;
         PCB_to_remove->prevPCB = NULL;

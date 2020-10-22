@@ -1,3 +1,5 @@
+void printMessage(char *str);
+
 void help();
 
 void version();

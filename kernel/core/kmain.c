@@ -26,6 +26,7 @@
 #include "modules/R2/R2commands.h"
 #include "modules/R2/R2_Internal_Functions_And_Structures.h"
 #include "modules/R3/R3commands.h"
+#include "modules/R4/R4commands.h"
 
 void kmain(void)
 {
@@ -92,6 +93,7 @@ void kmain(void)
    //commhand(); //Removed for R4
 
    allocateQueues();
+   //allocateAlarms();
 
    createPCB("Commhand", 's', 9);
    PCB *new_pcb = findPCB("Commhand");
@@ -123,23 +125,7 @@ void kmain(void)
    cpIDLE->eip = (u32int)idle; // The function correlating to the process, ie. Proc1
    cpIDLE->eflags = 0x202;
 
-   createPCB("Idle1", 's', 1);
-   PCB *idlePCB1 = findPCB("Idle1");
-   context *cpIDLE1 = (context *)(idlePCB1->stackTop);
-   memset(cpIDLE1, 0, sizeof(context));
-   cpIDLE1->fs = 0x10;
-   cpIDLE1->gs = 0x10;
-   cpIDLE1->ds = 0x10;
-   cpIDLE1->es = 0x10;
-   cpIDLE1->cs = 0x8;
-   cpIDLE1->ebp = (u32int)(idlePCB1->stack);
-   cpIDLE1->esp = (u32int)(idlePCB1->stackTop);
-   cpIDLE1->eip = (u32int)idle; // The function correlating to the process, ie. Proc1
-   cpIDLE1->eflags = 0x202;
-
-   showAll();
-
-   asm volatile ("int $60");
+   asm volatile("int $60");
 
    // 7) System Shutdown on return from your command handler
 

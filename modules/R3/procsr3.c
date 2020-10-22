@@ -33,12 +33,10 @@ void proc1()
   {
     for (i = 0; i < RC_1; i++)
     {
-      //serial_println("proc1 dispatched");
       sys_req(WRITE, DEFAULT_DEVICE, msg1, &msgSize);
       sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);
     }
     sys_req(EXIT, DEFAULT_DEVICE, NULL, NULL);
-    //serial_println("proc1 ran after it was terminated");
     sys_req(WRITE, DEFAULT_DEVICE, er1, &erSize);
   }
 }
