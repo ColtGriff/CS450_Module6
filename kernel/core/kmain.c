@@ -109,7 +109,19 @@ void kmain(void)
    cp->eip = (u32int)commhand; // The function correlating to the process, ie. Proc1
    cp->eflags = 0x202;
 
-   //asm volatile ("int $60");
+   createPCB("Alarm", 'a', 1);
+   PCB *AlarmPCB = findPCB("Alarm");
+   context *cpAlarm = (context *)(AlarmPCB->stackTop);
+   memset(cpAlarm, 0, sizeof(context));
+   cpAlarm->fs = 0x10;
+   cpAlarm->gs = 0x10;
+   cpAlarm->ds = 0x10;
+   cpAlarm->es = 0x10;
+   cpAlarm->cs = 0x8;
+   cpAlarm->ebp = (u32int)(AlarmPCB->stack);
+   cpAlarm->esp = (u32int)(AlarmPCB->stackTop);
+   cpAlarm->eip = (u32int)alarmPCB; // The function correlating to the process, ie. Proc1
+   cpAlarm->eflags = 0x202;
 
    createPCB("Idle", 's', 0);
    PCB *idlePCB = findPCB("Idle");

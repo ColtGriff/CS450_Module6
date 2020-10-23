@@ -200,6 +200,10 @@ void commhand()
 
 			printMessage("\n");
 		}
+		else if (strcmp(cmdBuffer, "addAlarm") == 0)
+		{
+			addAlarm();
+		}
 		else
 		{
 			printMessage("Unrecognized Command\n");
