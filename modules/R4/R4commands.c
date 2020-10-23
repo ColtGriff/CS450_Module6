@@ -23,7 +23,6 @@ void alarmPCB()
 	{
 		iterateAlarms();
 	}
-	serial_print("are we finishing alarmPCB?");
 }
 
 void infinitePCB()

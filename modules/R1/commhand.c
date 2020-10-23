@@ -203,14 +203,6 @@ void commhand()
 
 			printMessage("\n");
 		}
-		else if (strcmp(cmdBuffer, "yield") == 0)
-		{
-			yield();
-		}
-		else if (strcmp(cmdBuffer, "loadr3") == 0)
-		{
-			loadr3();
-		}
 		else
 		{
 			printMessage("Unrecognized Command\n");
