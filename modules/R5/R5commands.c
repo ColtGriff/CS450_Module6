@@ -5,6 +5,7 @@
 #include <string.h>
 #include "../mpx_supt.h"
 #include <core/io.h>
+#include "R5commands.h"
 
 void initializeHeap()
 {
