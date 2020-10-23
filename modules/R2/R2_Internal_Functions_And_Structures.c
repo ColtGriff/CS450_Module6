@@ -237,6 +237,7 @@ void insertPCB(PCB *PCB_to_insert)
                 }
                 else if (PCB_to_insert->priority <= suspendedReady->tail->priority)
                 { // insert at tail
+
                     suspendedReady->tail->nextPCB = PCB_to_insert;
                     PCB_to_insert->prevPCB = suspendedReady->tail;
                     suspendedReady->tail = PCB_to_insert;

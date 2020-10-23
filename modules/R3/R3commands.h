@@ -7,8 +7,6 @@ typedef struct context
     u32int eip, cs, eflags;
 } context;
 
-void sys_call_isr();
-
 void yield();
 
 void loadr3();

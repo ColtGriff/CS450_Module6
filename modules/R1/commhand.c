@@ -7,7 +7,6 @@
 #include "../R2/R2commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
-#include "../R4/R4commands.h"
 
 void commhand()
 {
@@ -203,6 +202,14 @@ void commhand()
 			}
 
 			printMessage("\n");
+		}
+		else if (strcmp(cmdBuffer, "yield") == 0)
+		{
+			yield();
+		}
+		else if (strcmp(cmdBuffer, "loadr3") == 0)
+		{
+			loadr3();
 		}
 		else
 		{

@@ -189,6 +189,47 @@ void idle()
     sys_req(WRITE, DEFAULT_DEVICE, msg, &count);
     sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);
   }
+
+
+
+
+}
+
+PCB *COP;
+context *callerContext;
+
+u32int *sys_call(context *registers)
+{ // Benjamin and Anastase programmed this function
+    if (COP == NULL)
+    { // sys_call has not been called yet.
+        callerContext = registers;
+    }
+    else
+    {
+        // Need to work on this, insertPCB needs to be moved or commhand will run forever.
+        if (params.op_code == IDLE)
+        { // Save the context (reassign COP's stack top)
+            COP->runningStatus = 0;
+            COP->stackTop = (unsigned char *)registers;
+            insertPCB(COP);
+        }
+        else if (params.op_code == EXIT)
+        { // free COP.
+            sys_free_mem(COP);
+        }
+    }
+
+    queue *ready = getReady();
+    COP = ready->head;
+
+    if (COP != NULL)
+    {
+        removePCB(COP);
+        COP->runningStatus = 1;
+        return (u32int *)COP->stackTop;
+        
+    }
+    return (u32int *)callerContext;
 }
 
 PCB *COP;
