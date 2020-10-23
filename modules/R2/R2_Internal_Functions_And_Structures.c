@@ -3,6 +3,7 @@
 #include <string.h>
 #include <core/serial.h>
 #include "../mpx_supt.h"
+#include "../R1/R1commands.h"
 #include "R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
 
@@ -57,9 +58,7 @@ PCB *setupPCB(char *processName, unsigned char processClass, int processPriority
 
     if (findPCB(processName)->processName == processName)
     {
-        char message[] = "There is already a PCB with this name.\n";
-        int messLength = strlen(message);
-        sys_req(WRITE, DEFAULT_DEVICE, message, &messLength);
+        printMessage("There is already a PCB with this name.\n");
 
         returnedPCB = NULL;
     }
@@ -89,9 +88,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     if (strlen(processName) > 20)
     {
 
-        char error_message[30] = "Invalid process name.\n";
-        int error_size = strlen(error_message);
-        sys_req(WRITE, DEFAULT_DEVICE, error_message, &error_size);
+        printMessage("Invalid process name.\n");
         return NULL;
         //return cz we have to stop if the process name is too long
     }

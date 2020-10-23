@@ -53,12 +53,7 @@ void help()
 
 int version()
 {
-	char version[] = "Version 2.0\n";
-
-	int tempBuffer = strlen(version);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)version, &tempBuffer);
-	memset(version, '\0', tempBuffer);
+	printMessage("Version 3.75\n");
 
 	return 0;
 }
@@ -99,16 +94,8 @@ int setTime()
 
 	int count = 4; // counter for printing
 
-	char spacer[1] = "\n"; // used to space out terminal outputs
-	int spaceCount = 1;
-
 	///////// Taking hours input
-	char instruction1[] = "Please type the desired hours. I.E.: hh.\n";
-
-	int length = strlen(instruction1);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction1, &length);
-	memset(instruction1, '\0', length);
+	printMessage("Please type the desired hours. I.E.: hh.\n");
 
 	char hour[4] = "\0\0\n\0";
 
@@ -120,27 +107,18 @@ int setTime()
 		if (atoi(hour) < 24 && atoi(hour) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid hours.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid hours.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	///////// Taking minutes input
-	char instruction2[] = "Please type the desired minutes. I.E.: mm.\n";
-
-	length = strlen(instruction2);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction2, &length);
-	memset(instruction2, '\0', length);
+	printMessage("Please type the desired minutes. I.E.: mm.\n");
 
 	char minute[4] = "\0\0\n\0";
 
@@ -150,28 +128,18 @@ int setTime()
 		if (atoi(minute) < 60 && atoi(minute) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid minutes.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid minutes.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking seconds input
-	char instruction3[] = "Please type the desired seconds. I.E.: ss.\n";
-
-	length = strlen(instruction3);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction3, &length);
-	memset(instruction3, '\0', length);
-
+	printMessage("Please type the desired seconds. I.E.: ss.\n");
 	char second[4] = "\0\0\n\0";
 
 	do
@@ -180,16 +148,12 @@ int setTime()
 		if (atoi(second) < 60 && atoi(second) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid seconds.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("Invalid seconds.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
@@ -207,11 +171,7 @@ int setTime()
 
 	sti();
 
-	char exitMessage[] = "The time has been set.\n";
-	int exitLength = strlen(exitMessage);
-	sys_req(WRITE, DEFAULT_DEVICE, exitMessage, &exitLength);
-	memset(exitMessage, '\0', exitLength);
-	memset(spacer, '\0', spaceCount);
+	printMessage("The time has been set.\n");
 
 	return 0;
 }
@@ -257,15 +217,8 @@ int setDate()
 
 	int count = 4; // used to print year
 
-	char spacer[1] = "\n"; // used to space out terminal outputs
-	int spaceCount = 1;
-
 	/////////// Taking year input
-	char instruction1[] = "Please type the desired year. I.E.: yyyy.\n";
-	int length = strlen(instruction1);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction1, &length);
-	memset(instruction1, '\0', length);
+	printMessage("Please type the desired year. I.E.: yyyy.\n");
 
 	char year[5] = "\0\0\0\0\0"; // year buffer
 
@@ -277,7 +230,7 @@ int setDate()
 		if (atoi(year) > 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 
 			char yearUpper[3] = "\0\0\0";
@@ -300,21 +253,13 @@ int setDate()
 		}
 		else
 		{
-			char invalid[] = "Invalid year.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid year.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking month input
-	char instruction2[] = "Please type the desired month. I.E.: mm.\n";
-	length = strlen(instruction2);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction2, &length);
-	memset(instruction2, '\0', length);
+	printMessage("Please type the desired month. I.E.: mm.\n");
 
 	char month[4] = "\0\0\n\0";
 	count = 4; // used to print month
@@ -325,7 +270,7 @@ int setDate()
 		if (atoi(month) < 13 && atoi(month) > 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 
 			cli();
@@ -337,21 +282,13 @@ int setDate()
 		}
 		else
 		{
-			char invalid[] = "Invalid month.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid month.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking day input
-	char instruction3[] = "Please type the desired day of month. I.E.: dd.\n";
-
-	length = strlen(instruction3);
-	sys_req(WRITE, DEFAULT_DEVICE, instruction3, &length);
-	memset(instruction3, '\0', length);
+	printMessage("Please type the desired day of month. I.E.: dd.\n");
 
 	char day[4] = "\0\0\n\0";
 	count = 4; // used to print day
@@ -359,39 +296,26 @@ int setDate()
 	do
 	{
 		sys_req(READ, DEFAULT_DEVICE, day, &count);
-		sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+		printMessage("\n");
 		if ((atoi(year) % 4 == 0 && atoi(year) % 100 != 0) || atoi(year) % 400 == 0)
 		{ // checking for leap year
 
-			char leapYear[] = "This is a leap year. February has 29 days.\n";
-			length = strlen(leapYear);
-
-			sys_req(WRITE, DEFAULT_DEVICE, leapYear, &length);
-			memset(leapYear, '\0', length);
+			printMessage("This is a leap year. February has 29 days.\n");
 
 			if ((atoi(month) == 1 || atoi(month) == 3 || atoi(month) == 5 || atoi(month) == 7 || atoi(month) == 8 || atoi(month) == 10 || atoi(month) == 12) && atoi(day) > 31)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 4 || atoi(month) == 6 || atoi(month) == 9 || atoi(month) == 11) && atoi(day) > 30)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 2) && atoi(day) > 29)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else
 			{
@@ -408,34 +332,22 @@ int setDate()
 		else if (atoi(year) % 4 != 0 || atoi(year) % 400 != 0)
 		{ // checking for leap year
 
-			char noLeap[] = "This is not a leap year.\n";
-			length = strlen(noLeap);
-			sys_req(WRITE, DEFAULT_DEVICE, noLeap, &length);
-			memset(noLeap, '\0', length);
+			printMessage("This is not a leap year.\n");
 
 			if ((atoi(month) == 1 || atoi(month) == 3 || atoi(month) == 5 || atoi(month) == 7 || atoi(month) == 8 || atoi(month) == 10 || atoi(month) == 12) && atoi(day) > 31)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 4 || atoi(month) == 6 || atoi(month) == 9 || atoi(month) == 11) && atoi(day) > 30)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 2) && atoi(day) > 28)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else
 			{
@@ -451,12 +363,7 @@ int setDate()
 
 	} while (flag == 1);
 
-	char exitMessage[] = "The date has been set.\n";
-	int exitLength = strlen(exitMessage);
-	sys_req(WRITE, DEFAULT_DEVICE, exitMessage, &exitLength);
-	memset(exitMessage, '\0', exitLength);
-	memset(spacer, '\0', spaceCount);
-
+	printMessage("The date has been set.\n");
 	return 0;
 }
 
@@ -528,10 +435,12 @@ int quit()
 		flag = 1;
 		//removeAll processes.
 		removeAll();
+		printMessage("\n");
 	}
 	else if (answer == 'n' || answer == 'N')
 	{
 		flag = 0;
+		printMessage("\n");
 	}
 	else
 	{

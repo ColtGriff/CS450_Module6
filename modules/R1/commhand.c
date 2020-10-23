@@ -189,6 +189,10 @@ void commhand()
 		{
 			infinitePCB();
 		}
+		// else if (strcmp(cmdBuffer, "addAlarm") == 0)
+		// {
+		// 	addAlarm();
+		// }
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();
@@ -199,10 +203,6 @@ void commhand()
 			}
 
 			printMessage("\n");
-		}
-		else if (strcmp(cmdBuffer, "addAlarm") == 0)
-		{
-			addAlarm();
 		}
 		else
 		{
