@@ -69,6 +69,10 @@ void deletePCB(char *processName)
     {
         printMessage("In order to delete the infinite process it must be suspended first.\n");
     }
+    else if (PCB_to_delete->processClass == 's')
+    {
+        printMessage("You do not have permission to delete system processes!\n");
+    }
     else
     {
         int removed = removePCB(PCB_to_delete);
@@ -146,6 +150,10 @@ void suspendPCB(char *processName)
     if (PCBtoSuspend == NULL || strlen(processName) > 20)
     {
         printMessage("This is not a valid name.\n");
+    }
+    else if (PCBtoSuspend->processClass == 's')
+    {
+        printMessage("You do not have permission to suspend system processes!\n");
     }
     else
     {
