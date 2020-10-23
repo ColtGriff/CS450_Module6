@@ -7,6 +7,7 @@
 #include "../R2/R2commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
+#include "../R4/R4commands.h"
 
 void commhand()
 {
