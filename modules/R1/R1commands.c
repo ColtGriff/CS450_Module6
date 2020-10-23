@@ -3,186 +3,57 @@
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
+#include "../R2/R2_Internal_Functions_And_Structures.h"
+#include "../R2/R2commands.h"
 #include <core/io.h>
 
 int BCDtoChar(unsigned char test, char *buffer);
 unsigned char intToBCD(int test);
 
-int help()
+void printMessage(char *str)
 {
+	char Desc[137];
 
-	// Help Description section
-	char helpDesc[] = "help: Returns basic command information.\n";
+	size_t length = strlen(str);
+	if (length > (sizeof(Desc) - 2))
+	{
+		length = sizeof(Desc) - 2;
+		Desc[sizeof(Desc) - 1] = '\0';
+	}
+	strcpy(Desc, str);
+	int tempBuffer = strlen(Desc);
+	sys_req(WRITE, DEFAULT_DEVICE, (char *)Desc, &tempBuffer);
+}
 
-	int tempBuffer = strlen(helpDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)helpDesc, &tempBuffer);
-	memset(helpDesc, '\0', tempBuffer);
-
-	// Version Description section
-	char versionDesc[] = "version: Returns the current version of the software.\n";
-
-	tempBuffer = strlen(versionDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)versionDesc, &tempBuffer);
-	memset(versionDesc, '\0', tempBuffer);
-
-	// getTime Description section
-	char getTimeDesc[] = "getTime: Returns the current set time.\n";
-
-	tempBuffer = strlen(getTimeDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)getTimeDesc, &tempBuffer);
-	memset(getTimeDesc, '\0', tempBuffer);
-
-	// setTime Description section
-	char setTimeDesc[] = "setTime: Allows the user to change the set time.\n";
-
-	tempBuffer = strlen(setTimeDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)setTimeDesc, &tempBuffer);
-	memset(setTimeDesc, '\0', tempBuffer);
-
-	// getDate Description section
-	char getDateDesc[] = "getDate: Returns the current set date.\n";
-
-	tempBuffer = strlen(getDateDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)getDateDesc, &tempBuffer);
-	memset(getDateDesc, '\0', tempBuffer);
-
-	// setDate Description section
-	char setDateDesc[] = "setDate: Allows the user to change the set date.\n";
-
-	tempBuffer = strlen(setDateDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)setDateDesc, &tempBuffer);
-	memset(setDateDesc, '\0', tempBuffer);
-
-	// createPCb Description section
-	char createPCBDesc[] = "createPCB: Will create a PCB and put it into the ready queue by default.\n";
-
-	tempBuffer = strlen(createPCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)createPCBDesc, &tempBuffer);
-	memset(createPCBDesc, '\0', tempBuffer);
-
-	// deletePCB Description section
-	char deletePCBDesc[] = "deletePCB: Will delete a specific PCB from what ever queue it is in.\n";
-
-	tempBuffer = strlen(deletePCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)deletePCBDesc, &tempBuffer);
-	memset(deletePCBDesc, '\0', tempBuffer);
-
-	// blockPCB Description section
-	char blockPCBDesc[] = "blockPCB: Will change a specific PCB's state to blocked.\n";
-
-	tempBuffer = strlen(blockPCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)blockPCBDesc, &tempBuffer);
-	memset(blockPCBDesc, '\0', tempBuffer);
-
-	// unblockPCB Description section
-	char unblockPCBDesc[] = "unblockPCB: Will change a specific PCB's state to ready.\n";
-
-	tempBuffer = strlen(unblockPCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)unblockPCBDesc, &tempBuffer);
-	memset(unblockPCBDesc, '\0', tempBuffer);
-
-	// suspendPCB Description section
-	char suspendPCBDesc[] = "suspendPCB: Will suspend a specific PCB.\n";
-
-	tempBuffer = strlen(suspendPCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)suspendPCBDesc, &tempBuffer);
-	memset(suspendPCBDesc, '\0', tempBuffer);
-
-	// resumePCB Description section
-	char resumePCBDesc[] = "resumePCB: Will unsuspend a specific PCB.\n";
-
-	tempBuffer = strlen(resumePCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)resumePCBDesc, &tempBuffer);
-	memset(resumePCBDesc, '\0', tempBuffer);
-
-	// setPCBPriority Description section
-	char setPCBPriorityDesc[] = "setPCBPriority: Will change the priority of a specific PCB.\n";
-
-	tempBuffer = strlen(setPCBPriorityDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)setPCBPriorityDesc, &tempBuffer);
-	memset(setPCBPriorityDesc, '\0', tempBuffer);
-
-	// showPCB Description section
-	char showPCBDesc[] = "showPCB: Will display the name, class, state, suspended status, and priority of a specific PCB.\n";
-
-	tempBuffer = strlen(showPCBDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showPCBDesc, &tempBuffer);
-	memset(showPCBDesc, '\0', tempBuffer);
-
-	// showReady Description section
-	char showReadyDesc[] = "showReady: Will display the name, class, state, suspended status, and priority of every PCB in the ready queue.\n";
-
-	tempBuffer = strlen(showReadyDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showReadyDesc, &tempBuffer);
-	memset(showReadyDesc, '\0', tempBuffer);
-
-	// showSuspendedReady Description section
-	char showSuspendedReadyDesc[] = "showSuspendedReady: Will display the name, class, state, suspended status, and priority of every PCB in the suspended ready queue.\n";
-
-	tempBuffer = strlen(showSuspendedReadyDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showSuspendedReadyDesc, &tempBuffer);
-	memset(showSuspendedReadyDesc, '\0', tempBuffer);
-
-	// showSuspendedBlocked Description section
-	char showSuspendedBlockedDesc[] = "showSuspendedBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the suspended blocked queue.\n";
-
-	tempBuffer = strlen(showSuspendedBlockedDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showSuspendedBlockedDesc, &tempBuffer);
-	memset(showSuspendedBlockedDesc, '\0', tempBuffer);
-
-	// showBlocked Description section
-	char showBlockedDesc[] = "showBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the blocked queue.\n";
-
-	tempBuffer = strlen(showBlockedDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showBlockedDesc, &tempBuffer);
-	memset(showBlockedDesc, '\0', tempBuffer);
-
-	// showAll Description section
-	char showAllDesc[] = "showReady: Will display the name, class, state, suspended status, and priority of every PCB in all 4 queues.\n";
-
-	tempBuffer = strlen(showAllDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)showAllDesc, &tempBuffer);
-	memset(showAllDesc, '\0', tempBuffer);
-
-	// quit Description section
-	char quitDesc[] = "quit: Allows the user to shut the system down.\n";
-
-	tempBuffer = strlen(quitDesc);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)quitDesc, &tempBuffer);
-	memset(quitDesc, '\0', tempBuffer);
-
-	return 0;
+void help()
+{
+	printMessage("help: Returns basic command information.\n");
+	printMessage("version: Returns the current version of the software.\n");
+	printMessage("getTime: Returns the current set time.\n");
+	printMessage("setTime: Allows the user to change the set time.\n");
+	printMessage("getDate: Returns the current set date.\n");
+	printMessage("setDate: Allows the user to change the set date.\n");
+	// printMessage("createPCB: Will create a PCB and put it into the ready queue by default.\n");
+	printMessage("deletePCB: Will delete a specific PCB from what ever queue it is in.\n");
+	// printMessage("blockPCB: Will change a specific PCB's state to blocked.\n");
+	// printMessage("unblockPCB: Will change a specific PCB's state to ready.\n");
+	printMessage("suspendPCB: Will suspend a specific PCB.\n");
+	printMessage("resumePCB: Will unsuspend a specific PCB.\n");
+	printMessage("setPCBPriority: Will change the priority of a specific PCB.\n");
+	printMessage("showPCB: Will display the name, class, state, suspended status, and priority of a specific PCB.\n");
+	printMessage("showReady: Will display the name, class, state, suspended status, and priority of every PCB in the ready queue.\n");
+	printMessage("showSuspendedReady: Will display the name, class, state, suspended status, and priority of every PCB in the suspended ready queue.\n");
+	printMessage("showSuspendedBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the suspended blocked queue.\n");
+	printMessage("showBlocked: Will display the name, class, state, suspended status, and priority of every PCB in the blocked queue.\n");
+	printMessage("showReady: Will display the name, class, state, suspended status, and priority of every PCB in all 4 queues.\n");
+	printMessage("yield: Will cause commhand to voluntarily allow other processes to use the CPU.\n (removed for R4)");
+	printMessage("loadr3: Will load all processes for R3. \n");
+	printMessage("quit: Allows the user to shut the system down.\n");
 }
 
 int version()
 {
-
-	char version[] = "Version 2.0\n";
-
-	int tempBuffer = strlen(version);
-
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)version, &tempBuffer);
-	memset(version, '\0', tempBuffer);
+	printMessage("Version 3.75\n");
 
 	return 0;
 }
@@ -223,16 +94,8 @@ int setTime()
 
 	int count = 4; // counter for printing
 
-	char spacer[1] = "\n"; // used to space out terminal outputs
-	int spaceCount = 1;
-
 	///////// Taking hours input
-	char instruction1[] = "Please type the desired hours. I.E.: hh.\n";
-
-	int length = strlen(instruction1);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction1, &length);
-	memset(instruction1, '\0', length);
+	printMessage("Please type the desired hours. I.E.: hh.\n");
 
 	char hour[4] = "\0\0\n\0";
 
@@ -244,27 +107,18 @@ int setTime()
 		if (atoi(hour) < 24 && atoi(hour) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid hours.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid hours.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	///////// Taking minutes input
-	char instruction2[] = "Please type the desired minutes. I.E.: mm.\n";
-
-	length = strlen(instruction2);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction2, &length);
-	memset(instruction2, '\0', length);
+	printMessage("Please type the desired minutes. I.E.: mm.\n");
 
 	char minute[4] = "\0\0\n\0";
 
@@ -274,28 +128,18 @@ int setTime()
 		if (atoi(minute) < 60 && atoi(minute) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid minutes.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid minutes.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking seconds input
-	char instruction3[] = "Please type the desired seconds. I.E.: ss.\n";
-
-	length = strlen(instruction3);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction3, &length);
-	memset(instruction3, '\0', length);
-
+	printMessage("Please type the desired seconds. I.E.: ss.\n");
 	char second[4] = "\0\0\n\0";
 
 	do
@@ -304,16 +148,12 @@ int setTime()
 		if (atoi(second) < 60 && atoi(second) >= 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 		}
 		else
 		{
-			char invalid[] = "Invalid seconds.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("Invalid seconds.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
@@ -331,11 +171,7 @@ int setTime()
 
 	sti();
 
-	char exitMessage[] = "The time has been set.\n";
-	int exitLength = strlen(exitMessage);
-	sys_req(WRITE, DEFAULT_DEVICE, exitMessage, &exitLength);
-	memset(exitMessage, '\0', exitLength);
-	memset(spacer, '\0', spaceCount);
+	printMessage("The time has been set.\n");
 
 	return 0;
 }
@@ -381,15 +217,8 @@ int setDate()
 
 	int count = 4; // used to print year
 
-	char spacer[1] = "\n"; // used to space out terminal outputs
-	int spaceCount = 1;
-
 	/////////// Taking year input
-	char instruction1[] = "Please type the desired year. I.E.: yyyy.\n";
-	int length = strlen(instruction1);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction1, &length);
-	memset(instruction1, '\0', length);
+	printMessage("Please type the desired year. I.E.: yyyy.\n");
 
 	char year[5] = "\0\0\0\0\0"; // year buffer
 
@@ -401,7 +230,7 @@ int setDate()
 		if (atoi(year) > 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 
 			char yearUpper[3] = "\0\0\0";
@@ -424,21 +253,13 @@ int setDate()
 		}
 		else
 		{
-			char invalid[] = "Invalid year.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid year.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking month input
-	char instruction2[] = "Please type the desired month. I.E.: mm.\n";
-	length = strlen(instruction2);
-
-	sys_req(WRITE, DEFAULT_DEVICE, instruction2, &length);
-	memset(instruction2, '\0', length);
+	printMessage("Please type the desired month. I.E.: mm.\n");
 
 	char month[4] = "\0\0\n\0";
 	count = 4; // used to print month
@@ -449,7 +270,7 @@ int setDate()
 		if (atoi(month) < 13 && atoi(month) > 0)
 		{
 
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+			printMessage("\n");
 			flag = 0;
 
 			cli();
@@ -461,21 +282,13 @@ int setDate()
 		}
 		else
 		{
-			char invalid[] = "Invalid month.\n";
-			int lengthInval = strlen(invalid);
-			sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
-			sys_req(WRITE, DEFAULT_DEVICE, invalid, &lengthInval);
-			memset(invalid, '\0', lengthInval);
+			printMessage("\nInvalid month.\n");
 			flag = 1;
 		}
 	} while (flag == 1);
 
 	/////////// Taking day input
-	char instruction3[] = "Please type the desired day of month. I.E.: dd.\n";
-
-	length = strlen(instruction3);
-	sys_req(WRITE, DEFAULT_DEVICE, instruction3, &length);
-	memset(instruction3, '\0', length);
+	printMessage("Please type the desired day of month. I.E.: dd.\n");
 
 	char day[4] = "\0\0\n\0";
 	count = 4; // used to print day
@@ -483,39 +296,26 @@ int setDate()
 	do
 	{
 		sys_req(READ, DEFAULT_DEVICE, day, &count);
-		sys_req(WRITE, DEFAULT_DEVICE, spacer, &spaceCount);
+		printMessage("\n");
 		if ((atoi(year) % 4 == 0 && atoi(year) % 100 != 0) || atoi(year) % 400 == 0)
 		{ // checking for leap year
 
-			char leapYear[] = "This is a leap year. February has 29 days.\n";
-			length = strlen(leapYear);
-
-			sys_req(WRITE, DEFAULT_DEVICE, leapYear, &length);
-			memset(leapYear, '\0', length);
+			printMessage("This is a leap year. February has 29 days.\n");
 
 			if ((atoi(month) == 1 || atoi(month) == 3 || atoi(month) == 5 || atoi(month) == 7 || atoi(month) == 8 || atoi(month) == 10 || atoi(month) == 12) && atoi(day) > 31)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 4 || atoi(month) == 6 || atoi(month) == 9 || atoi(month) == 11) && atoi(day) > 30)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 2) && atoi(day) > 29)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else
 			{
@@ -532,34 +332,22 @@ int setDate()
 		else if (atoi(year) % 4 != 0 || atoi(year) % 400 != 0)
 		{ // checking for leap year
 
-			char noLeap[] = "This is not a leap year.\n";
-			length = strlen(noLeap);
-			sys_req(WRITE, DEFAULT_DEVICE, noLeap, &length);
-			memset(noLeap, '\0', length);
+			printMessage("This is not a leap year.\n");
 
 			if ((atoi(month) == 1 || atoi(month) == 3 || atoi(month) == 5 || atoi(month) == 7 || atoi(month) == 8 || atoi(month) == 10 || atoi(month) == 12) && atoi(day) > 31)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 4 || atoi(month) == 6 || atoi(month) == 9 || atoi(month) == 11) && atoi(day) > 30)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else if ((atoi(month) == 2) && atoi(day) > 28)
 			{
 				flag = 1;
-				char invalid[] = "Invalid day.\n";
-				length = strlen(invalid);
-				sys_req(WRITE, DEFAULT_DEVICE, invalid, &length);
-				memset(invalid, '\0', length);
+				printMessage("Invalid day.\n");
 			}
 			else
 			{
@@ -575,12 +363,7 @@ int setDate()
 
 	} while (flag == 1);
 
-	char exitMessage[] = "The date has been set.\n";
-	int exitLength = strlen(exitMessage);
-	sys_req(WRITE, DEFAULT_DEVICE, exitMessage, &exitLength);
-	memset(exitMessage, '\0', exitLength);
-	memset(spacer, '\0', spaceCount);
-
+	printMessage("The date has been set.\n");
 	return 0;
 }
 
@@ -602,13 +385,45 @@ int BCDtoChar(unsigned char test, char *buffer)
 	return 0;
 }
 
+void deleteQueue(queue *queue)
+{
+	PCB *tempPtr;
+	int loop;
+	for (loop = 0; loop < queue->count; loop++)
+	{
+		tempPtr = queue->head;
+		removePCB(tempPtr);
+	}
+}
+
+void removeAll()
+{
+	if (getReady()->head != NULL)
+	{
+		deleteQueue(getReady());
+	}
+
+	if (getBlocked()->head != NULL)
+	{
+		deleteQueue(getBlocked());
+	}
+
+	if (getSuspendedBlocked()->head != NULL)
+	{
+		deleteQueue(getSuspendedBlocked());
+	}
+
+	if (getSuspendedReady()->head != NULL)
+	{
+		deleteQueue(getSuspendedReady());
+	}
+}
+
 int quit()
 {
 	int flag = 0;
 
-	char quitMsg[] = "Are you sure you want to shutdown? y/n\n";
-	int quitMsgLength = strlen(quitMsg);
-	sys_req(WRITE, DEFAULT_DEVICE, quitMsg, &quitMsgLength);
+	printMessage("Are you sure you want to shutdown? y/n\n");
 
 	char quitAns[] = "\0\0";
 	int quitAnsLength = 1;
@@ -618,16 +433,18 @@ int quit()
 	if (answer == 'y' || answer == 'Y')
 	{
 		flag = 1;
+		//removeAll processes.
+		removeAll();
+		printMessage("\n");
 	}
 	else if (answer == 'n' || answer == 'N')
 	{
 		flag = 0;
+		printMessage("\n");
 	}
 	else
 	{
-		char error[] = "Invalid input!\n";
-		int errorLength = strlen(error);
-		sys_req(WRITE, DEFAULT_DEVICE, error, &errorLength);
+		printMessage("Invalid input!\n");
 	}
 
 	return flag;

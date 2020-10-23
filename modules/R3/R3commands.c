@@ -4,11 +4,11 @@
 #include "../mpx_supt.h"
 #include <string.h>
 #include <core/serial.h>
+#include "../R1/R1commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R2/R2commands.h"
 #include "R3commands.h"
 #include "procsr3.h"
-
 
 void yield()
 { // temporary command - only in R3
@@ -18,6 +18,8 @@ void yield()
 void loadr3()
 {
     //loadr3 will load all r3 "processes" (proc3.c file eCampus) into memory in a suspended ready state at any priority of your choosing.
+    // We may want to change these to use setupPCB instead of createPCB and suspendPCB
+    printMessage("Loading R3 Processes.\n\n");
 
     createPCB("Process1", 'a', 1);
     suspendPCB("Process1");

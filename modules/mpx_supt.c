@@ -13,12 +13,12 @@
 #include "R2/R2_Internal_Functions_And_Structures.h"
 #include "R3/R3commands.h"
 
-// global variable containing parameter used when making 
+// global variable containing parameter used when making
 // system calls via sys_req
-param params;   
+param params;
 
 // global for the current module
-int current_module = -1;  
+int current_module = -1;
 static int io_module_active = 0;
 static int mem_module_active = 0;
 
@@ -29,8 +29,6 @@ u32int (*student_malloc)(u32int);
 // if a student created heap manager is implemented this
 // is a pointer to the student's "free" operation.
 int (*student_free)(void *);
-
-
 
 /* *********************************************
 *	This function is use to issue system requests
@@ -49,22 +47,24 @@ int (*student_free)(void *);
 *					 to be read or written
 *
 *************************************************/
-int sys_req( 	int  op_code,
-			int device_id,
-			char *buffer_ptr,
-			int *count_ptr )
+int sys_req(int op_code,
+            int device_id,
+            char *buffer_ptr,
+            int *count_ptr)
 
 {
-	int return_code =0;
+  int return_code = 0;
 
-  if (op_code == IDLE || op_code == EXIT){
+  if (op_code == IDLE || op_code == EXIT)
+  {
     // store the process's operation request
     // triger interrupt 60h to invoke
     params.op_code = op_code;
-  	asm volatile ("int $60");
-  }// idle or exit
+    asm volatile("int $60");
+  } // idle or exit
 
-  else if (op_code == READ || op_code == WRITE) {
+  else if (op_code == READ || op_code == WRITE)
+  {
     // validate buffer pointer and count pointer
     if (buffer_ptr == NULL)
       return_code = INVALID_BUFFER;
@@ -72,28 +72,33 @@ int sys_req( 	int  op_code,
       return_code = INVALID_COUNT;
 
     // if parameters are valid store in the params structure
-    if ( return_code == 0){ 
+    if (return_code == 0)
+    {
       params.op_code = op_code;
       params.device_id = device_id;
       params.buffer_ptr = buffer_ptr;
       params.count_ptr = count_ptr;
 
-      if (!io_module_active){
+      if (!io_module_active)
+      {
         // if default device
         if (op_code == READ)
           return_code = *(polling(buffer_ptr, count_ptr));
-		  			
+
         else //must be WRITE
-          return_code = serial_print(buffer_ptr);	
-	    
-      } else {// I/O module is implemented
-        asm volatile ("int $60");
+          return_code = serial_print(buffer_ptr);
+      }
+      else
+      { // I/O module is implemented
+        asm volatile("int $60");
       } // NOT IO_MODULE
     }
-  } else return_code = INVALID_OPERATION;
-  
+  }
+  else
+    return_code = INVALID_OPERATION;
+
   return return_code;
-}// end of sys_req
+} // end of sys_req
 
 /*
   Procedure..: mpx_init
@@ -108,16 +113,14 @@ int sys_req( 	int  op_code,
 */
 void mpx_init(int cur_mod)
 {
-  
+
   current_module = cur_mod;
   if (cur_mod == MEM_MODULE)
-		mem_module_active = TRUE;
+    mem_module_active = TRUE;
 
   if (cur_mod == IO_MODULE)
-		io_module_active = TRUE;
+    io_module_active = TRUE;
 }
-
-
 
 /*
   Procedure..: sys_set_malloc
@@ -147,11 +150,10 @@ void sys_set_free(int (*func)(void *))
 void *sys_alloc_mem(u32int size)
 {
   if (!mem_module_active)
-    return (void *) kmalloc(size);
+    return (void *)kmalloc(size);
   else
-    return (void *) (*student_malloc)(size);
+    return (void *)(*student_malloc)(size);
 }
-
 
 /*
   Procedure..: sys_free_mem
@@ -176,14 +178,15 @@ int sys_free_mem(void *ptr)
 void idle()
 {
   char msg[30];
-  int count=0;
-	
-	memset( msg, '\0', sizeof(msg));
-	strcpy(msg, "IDLE PROCESS EXECUTING.\n");
-	count = strlen(msg);
-  
-  while(1){
-	sys_req( WRITE, DEFAULT_DEVICE, msg, &count);
+  int count = 0;
+
+  memset(msg, '\0', sizeof(msg));
+  strcpy(msg, "IDLE PROCESS EXECUTING.\n");
+  count = strlen(msg);
+
+  while (1)
+  {
+    sys_req(WRITE, DEFAULT_DEVICE, msg, &count);
     sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);
   }
 
@@ -227,4 +230,47 @@ u32int *sys_call(context *registers)
         
     }
     return (u32int *)callerContext;
+}
+
+PCB *COP;
+context *callerContext;
+u32int *sys_call(context *registers)
+{ // Benjamin and Anastase programmed this function
+
+  PCB *tempOOP = NULL;
+  if (COP == NULL)
+  { // sys_call has not been called yet.
+
+    callerContext = registers;
+  }
+  else
+  {
+    if (params.op_code == IDLE)
+    { // Save the context (reassign COP's stack top).
+      COP->runningStatus = 0;
+      COP->stackTop = (unsigned char *)registers;
+      tempOOP = COP;
+    }
+    else if (params.op_code == EXIT)
+    { // free COP.
+      sys_free_mem(COP);
+    }
+  }
+
+  queue *ready = getReady();
+
+  if (ready->head != NULL)
+  {
+    COP = ready->head;
+    removePCB(COP);
+    COP->runningStatus = 1;
+
+    if (tempOOP != NULL)
+    {
+      insertPCB(tempOOP);
+    }
+
+    return (u32int *)COP->stackTop;
+  }
+  return (u32int *)callerContext;
 }
