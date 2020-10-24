@@ -14,7 +14,7 @@ typedef struct LMCB
     int size;  // the size of the LMCB in bytes.
 } LMCB;
 
-void initializeHeap();
+u32int initializeHeap(int heapSize);
 
 void allocateMemory();
 
