@@ -3,6 +3,7 @@
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
+#include "../utilities.h"
 #include "R1commands.h"
 #include "../R2/R2commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"

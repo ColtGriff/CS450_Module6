@@ -6,24 +6,10 @@
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R2/R2commands.h"
 #include <core/io.h>
+#include "../utilities.h"
 
 int BCDtoChar(unsigned char test, char *buffer);
 unsigned char intToBCD(int test);
-
-void printMessage(char *str)
-{
-	char Desc[137];
-
-	size_t length = strlen(str);
-	if (length > (sizeof(Desc) - 2))
-	{
-		length = sizeof(Desc) - 2;
-		Desc[sizeof(Desc) - 1] = '\0';
-	}
-	strcpy(Desc, str);
-	int tempBuffer = strlen(Desc);
-	sys_req(WRITE, DEFAULT_DEVICE, (char *)Desc, &tempBuffer);
-}
 
 void help()
 {
