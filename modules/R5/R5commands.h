@@ -2,8 +2,8 @@ typedef struct CMCB
 {
     char type;            // indicates if the CMBC is free or allocated ('a' for allocated, 'f' for free).
     u32int beginningAddr; // the beginning address of the CMCB.
-    int size;             // the size of the CMCB in bytes.
-    char name[20];        // name of the process (PCB) that is housed in the CMCB.
+    int size;             // the size of the memory in bytes.
+    //char name[20];        // name of the process (PCB) that is housed in the CMCB.
     CMCB *nextCMCB;       // pointer to the next CMCB of the same type.
     CMCB *prevCMCB;       // pointer to the previous CMCB of the same type.
 } CMCB;

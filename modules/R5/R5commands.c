@@ -14,6 +14,8 @@
 memList *freeList;
 memList *allocatedList;
 
+u32int totalSize;
+
 u32int memStart;
 
 void allocateMemLists()
@@ -22,16 +24,16 @@ void allocateMemLists()
     allocatedList = kmalloc(sizeof(memList));
 }
 
-u32int initializeHeap(int heapSize)
+u32int initializeHeap(u32int heapSize)
 {
     CMCB *temp = (CMCB *)kmalloc(heapSize + sizeof(CMCB) + sizeof(LMCB));
     memStart = &temp;
 
     // Create the first free block
     temp->type = 'f';
-    temp->beginningAddr = memStart;
+    temp->beginningAddr = memStart + sizeof(CMCB);
     temp->size = heapSize;
-    strcpy(temp->name, "first");
+    //strcpy(temp->name, "first");
     temp->nextCMCB = NULL;
     temp->prevCMCB = NULL;
 
@@ -50,16 +52,44 @@ u32int initializeHeap(int heapSize)
     freeList->head = temp;
     freeList->tail = temp;
 
-    // Place the LMCB at the bottom of the heap and initialize it.
-    LMCB *temp2 = (&temp->beginningAddr + heapSize);
-    temp2->size = sizeof(LMCB);
-    temp2->type = 'f';
+    // // Place the LMCB at the bottom of the heap and initialize it.
+    // LMCB *temp2 = (&temp->beginningAddr + heapSize);
+    // temp2->size = sizeof(LMCB);
+    // temp2->type = 'f';
+
+    totalSize = heapSize;
 
     return memStart;
 }
 
-void *allocateMemory(u32int size)
+u32int *allocateMemory(u32int size)
 {
+	CMCB* temp = freeList->head;
+	// if (isEmpty()){   /// Not actually sure if this if-else is needed since the while loop would still catch an entire free block
+	// 	
+	// }
+	// else{
+		while((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL)){
+			temp = temp->nextCMCB;
+		}
+		if(temp->nextCMCB == NULL){
+			return NULL;
+		}
+		else{
+			CMCB* new = (CMCB*) temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
+			new->beginningAddr = size + sizeof(CMCB);
+			new->size = totalSize - size - sizeof(CMCB);
+			new->type = 'f';
+			new->nextCMCB = temp->nextCMCB;
+			new->prevCMCB = temp->prevCMCB;
+			new->prevCMCB->nextCMCB = new;
+			new->nextCMCB->prevCMCB = new;
+
+			// Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
+			temp->type = 'a'; 
+			return temp->beginningAddr;
+		}
+	//}
 }
 
 void freeMemory()
