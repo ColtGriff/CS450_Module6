@@ -4,8 +4,8 @@ typedef struct CMCB
     u32int beginningAddr; // the beginning address of the CMCB.
     int size;             // the size of the memory in bytes.
     //char name[20];        // name of the process (PCB) that is housed in the CMCB.
-    CMCB *nextCMCB;       // pointer to the next CMCB of the same type.
-    CMCB *prevCMCB;       // pointer to the previous CMCB of the same type.
+    CMCB *nextCMCB; // pointer to the next CMCB of the same type.
+    CMCB *prevCMCB; // pointer to the previous CMCB of the same type.
 } CMCB;
 
 // typedef struct LMCB
@@ -27,7 +27,7 @@ u32int initializeHeap(u32int heapSize);
 
 u32int *allocateMemory(u32int size);
 
-void freeMemory();
+int freeMemory(CMCB *memToFree);
 
 int isEmpty();
 

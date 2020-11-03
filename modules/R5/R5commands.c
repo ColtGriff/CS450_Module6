@@ -64,68 +64,171 @@ u32int initializeHeap(u32int heapSize)
 
 u32int *allocateMemory(u32int size)
 {
-	CMCB* temp = freeList->head;
-	// if (isEmpty()){   /// Not actually sure if this if-else is needed since the while loop would still catch an entire free block
-	// 	
-	// }
-	// else{
-		while((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL)){ 
-			temp = temp->nextCMCB;
-		}
-		if(temp->nextCMCB == NULL){
-			return NULL;
-		}
-		else{
-			CMCB* new = (CMCB*) temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
-			new->beginningAddr = size + sizeof(CMCB);
-			new->size = totalSize - size - sizeof(CMCB);
-			new->type = 'f';
-			new->nextCMCB = temp->nextCMCB;
-			new->prevCMCB = temp->prevCMCB;
-			new->prevCMCB->nextCMCB = new;
-			new->nextCMCB->prevCMCB = new;
+    CMCB *temp = freeList->head;
+    // if (isEmpty()){   /// Not actually sure if this if-else is needed since the while loop would still catch an entire free block
+    //
+    // }
+    // else{
+    while ((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL))
+    {
+        temp = temp->nextCMCB;
+    }
+    if (temp->nextCMCB == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        CMCB *new = (CMCB *)temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
+        new->beginningAddr = size + sizeof(CMCB);
+        new->size = totalSize - size - sizeof(CMCB);
+        new->type = 'f';
+        new->nextCMCB = temp->nextCMCB;
+        new->prevCMCB = temp->prevCMCB;
+        new->prevCMCB->nextCMCB = new;
+        new->nextCMCB->prevCMCB = new;
 
-			// Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
-			temp->type = 'a'; 
+        // Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
+        temp->type = 'a';
 
-			if(allocatedList->count == 0){ // If first memory block being allocated
-				allocatedList->head = temp;
-				allocatedList->tail = temp;
-				temp->prevCMCB = NULL;
-				temp->nextCMCB = NULL;
-				allocatedList->count++;
-			}
-			else{				// If not first allocated block, linked in order of beginning address by increasing	address	
+        if (allocatedList->count == 0)
+        { // If first memory block being allocated
+            allocatedList->head = temp;
+            allocatedList->tail = temp;
+            temp->prevCMCB = NULL;
+            temp->nextCMCB = NULL;
+            allocatedList->count++;
+        }
+        else
+        { // If not first allocated block, linked in order of beginning address by increasing	address
 
-				CMCB* alreadyAllocated = allocatedList->head;
+            CMCB *alreadyAllocated = allocatedList->head;
 
-				while(temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL){ // Finding a block with a greater address than the one we are trying to place
-					alreadyAllocated = alreadyAllocated->nextCMCB;
-				}
-				
-				if(alreadyAllocated->nextCMCB == NULL){
-					alreadyAllocated->nextCMCB = temp;
-					temp->prevCMCB = alreadyAllocated;
-					allocatedList->tail = temp;
+            while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
+            { // Finding a block with a greater address than the one we are trying to place
+                alreadyAllocated = alreadyAllocated->nextCMCB;
+            }
 
-					allocatedList->count++;
-				}
-				else{
-					temp->nextCMCB = alreadyAllocated;	// Since the block has a greater address, the new allocated bloc (temp) comes before it.
-					temp->prevCMCB = alreadyAllocated->prevCMCB;
-					alreadyAllocated->prevCMCB = temp;
+            if (alreadyAllocated->nextCMCB == NULL)
+            {
+                alreadyAllocated->nextCMCB = temp;
+                temp->prevCMCB = alreadyAllocated;
+                allocatedList->tail = temp;
 
-					allocatedList->count++;
-				}
-			}
+                allocatedList->count++;
+            }
+            else
+            {
+                temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated bloc (temp) comes before it.
+                temp->prevCMCB = alreadyAllocated->prevCMCB;
+                alreadyAllocated->prevCMCB = temp;
 
-		return temp->beginningAddr;
-		}
-	//}
+                allocatedList->count++;
+            }
+        }
+
+        return temp->beginningAddr;
+    }
+    //}
 }
 
-void freeMemory()
+int freeMemory(CMCB *memToFree)
 {
+    if (isEmpty())
+    {
+        printMessage("There is no memory to free!\n");
+        return 1;
+    }
+    else if (memToFree->type == 'f')
+    {
+        printMessage("The memory block you are trying to free is already free!\n");
+        return 1;
+    }
+    else
+    {
+        // Remove memToFree from the allocatedList.
+        if (memToFree == allocatedList->head)
+        {
+            allocatedList->head = memToFree->nextCMCB;
+            memToFree->nextCMCB = NULL;
+            allocatedList->count--;
+        }
+        else if (memToFree == allocatedList->tail)
+        {
+            allocatedList->tail = memToFree->prevCMCB;
+            memToFree->prevCMCB = NULL;
+            allocatedList->count--;
+        }
+        else
+        {
+            memToFree->prevCMCB->nextCMCB = memToFree->nextCMCB;
+            memToFree->nextCMCB->prevCMCB = memToFree->prevCMCB;
+            memToFree->nextCMCB = NULL;
+            memToFree->prevCMCB = NULL;
+            allocatedList->count--;
+        }
+
+        // Insert memToFree into the freeList in increasing order.
+        CMCB *alreadyFree = freeList->head;
+        while (memToFree->beginningAddr > alreadyFree->beginningAddr && alreadyFree->nextCMCB != NULL)
+        { // Finding a block with a greater address than the one we are trying to place
+            alreadyFree = alreadyFree->nextCMCB;
+        }
+        if (alreadyFree->nextCMCB == NULL)
+        {
+            alreadyFree->nextCMCB = memToFree;
+            memToFree->prevCMCB = alreadyFree;
+            freeList->tail = memToFree;
+
+            freeList->count++;
+        }
+        else
+        {
+            memToFree->nextCMCB = alreadyFree; // Since the block has a greater address, the new allocated bloc (temp) comes before it.
+            memToFree->prevCMCB = alreadyFree->prevCMCB;
+            alreadyFree->prevCMCB = memToFree;
+
+            freeList->count++;
+        }
+
+        // Merge memToFree to other free CMCBs if possible.
+        CMCB *prev = memToFree->prevCMCB;
+        CMCB *next = memToFree->nextCMCB;
+
+        if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size))
+        { // merge left and right.
+            prev->size += (memToFree->size + next->size);
+            prev->nextCMCB = next->nextCMCB;
+            next->nextCMCB->prevCMCB = prev;
+            memToFree->nextCMCB = NULL;
+            memToFree->prevCMCB = NULL;
+            next->nextCMCB = NULL;
+            next->prevCMCB = NULL;
+            freeList->count -= 2;
+        }
+        else if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1))
+        { // merge left only.
+            prev->size += memToFree->size;
+            prev->nextCMCB = memToFree->nextCMCB;
+            memToFree->nextCMCB->prevCMCB = prev;
+            memToFree->nextCMCB = NULL;
+            memToFree->prevCMCB = NULL;
+            freeList->count--;
+        }
+        else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
+        { // merge right only.
+            memToFree->size += next->size;
+            memToFree->nextCMCB = next->nextCMCB;
+            next->nextCMCB->prevCMCB = memToFree;
+            next->nextCMCB = NULL;
+            next->prevCMCB = NULL;
+            freeList->count--;
+        }
+        else
+        { // don't merge.
+            /* code */
+        }
+    }
 }
 
 int isEmpty()
