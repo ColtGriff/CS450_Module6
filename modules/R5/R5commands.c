@@ -26,7 +26,7 @@ void allocateMemLists()
 
 u32int initializeHeap(u32int heapSize)
 {
-    CMCB *temp = (CMCB *)kmalloc(heapSize + sizeof(CMCB) + sizeof(LMCB));
+    CMCB *temp = (CMCB *)kmalloc(heapSize + sizeof(CMCB));
     memStart = &temp;
 
     // Create the first free block
@@ -69,7 +69,7 @@ u32int *allocateMemory(u32int size)
 	// 	
 	// }
 	// else{
-		while((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL)){
+		while((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL)){ 
 			temp = temp->nextCMCB;
 		}
 		if(temp->nextCMCB == NULL){
@@ -91,23 +91,34 @@ u32int *allocateMemory(u32int size)
 			if(allocatedList->count == 0){ // If first memory block being allocated
 				allocatedList->head = temp;
 				allocatedList->tail = temp;
-				allocatedList->head->prevCMCB = NULL;
-				allocatedList->tail->nextCMCB = NULL;
+				temp->prevCMCB = NULL;
+				temp->nextCMCB = NULL;
 				allocatedList->count++;
 			}
-			else{				// If not first allocated block, linked in order of beginning address by increasing		
+			else{				// If not first allocated block, linked in order of beginning address by increasing	address	
 
 				CMCB* alreadyAllocated = allocatedList->head;
 
-				while(temp->beginningAddr > alreadyAllocated->beginningAddr){ // Finding a block with a greater address than the one we are trying to place
+				while(temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL){ // Finding a block with a greater address than the one we are trying to place
 					alreadyAllocated = alreadyAllocated->nextCMCB;
 				}
 				
-				temp->nextCMCB = alreadyAllocated;	// Since the block has a greater address, the new allocated bloc (temp) comes before it.
-				temp->prevCMCB = alreadyAllocated->prevCMCB;
-				alreadyAllocated->prevCMCB = temp;
+				if(alreadyAllocated->nextCMCB == NULL){
+					alreadyAllocated->nextCMCB = temp;
+					temp->prevCMCB = alreadyAllocated;
+					allocatedList->tail = temp;
 
-				allocatedList->count++;
+					allocatedList->count++;
+				}
+				else{
+					temp->nextCMCB = alreadyAllocated;	// Since the block has a greater address, the new allocated bloc (temp) comes before it.
+					temp->prevCMCB = alreadyAllocated->prevCMCB;
+					alreadyAllocated->prevCMCB = temp;
+
+					allocatedList->count++;
+				}
+
+				
 			}
 
 

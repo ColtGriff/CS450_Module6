@@ -8,11 +8,11 @@ typedef struct CMCB
     CMCB *prevCMCB;       // pointer to the previous CMCB of the same type.
 } CMCB;
 
-typedef struct LMCB
-{
-    char type; // indicates if the LMBC is free or allocated ('a' for allocated, 'f' for free).
-    int size;  // the size of the LMCB in bytes.
-} LMCB;
+// typedef struct LMCB
+// {
+//     char type; // indicates if the LMBC is free or allocated ('a' for allocated, 'f' for free).
+//     int size;  // the size of the LMCB in bytes.
+// } LMCB;
 
 typedef struct memList
 {
@@ -25,7 +25,7 @@ void allocateMemLists();
 
 u32int initializeHeap(int heapSize);
 
-void *allocateMemory(u32int size);
+u32int *allocateMemory(u32int size);
 
 void freeMemory();
 
