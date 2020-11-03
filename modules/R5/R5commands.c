@@ -77,9 +77,10 @@ u32int *allocateMemory(u32int size)
     {
         return NULL;
     }
-    else if(temp->size == size + sizeof(CMBC)){ // If temp->size = size, no need to create a new CMCB for the remainder, since there is none
+    else if (temp->size == size + sizeof(CMCB))
+    { // If temp->size = size, no need to create a new CMCB for the remainder, since there is none
 
-    	// Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
+        // Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
         temp->type = 'a';
 
         if (allocatedList->count == 0)
@@ -117,8 +118,8 @@ u32int *allocateMemory(u32int size)
                 allocatedList->count++;
             }
         }
-        
-       return temp->beginningAddr;
+
+        return temp->beginningAddr;
     }
     else // if temp->size > size
     {
@@ -142,9 +143,9 @@ u32int *allocateMemory(u32int size)
             temp->nextCMCB = NULL;
             allocatedList->count++;
         }
-        else 
-        { 
-        	// If not first allocated block, linked in order of beginning address by increasing	address
+        else
+        {
+            // If not first allocated block, linked in order of beginning address by increasing	address
             CMCB *alreadyAllocated = allocatedList->head;
 
             while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
@@ -234,44 +235,123 @@ int freeMemory(CMCB *memToFree)
         }
 
         // Merge memToFree to other free CMCBs if possible.
-        CMCB *prev = memToFree->prevCMCB;
-        CMCB *next = memToFree->nextCMCB;
+        if (memToFree->nextCMCB != NULL && memToFree->prevCMCB != NULL)
+        {
+            CMCB *prev = memToFree->prevCMCB;
+            CMCB *next = memToFree->nextCMCB;
 
-        if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size))
-        { // merge left and right.
-            prev->size += (memToFree->size + next->size);
-            prev->nextCMCB = next->nextCMCB;
-            next->nextCMCB->prevCMCB = prev;
-            memToFree->nextCMCB = NULL;
-            memToFree->prevCMCB = NULL;
-            next->nextCMCB = NULL;
-            next->prevCMCB = NULL;
-            freeList->count -= 2;
+            if (next->nextCMCB != NULL)
+            {
+                if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1 == memToFree->beginningAddr + memToFree->size)))
+                {
+                    prev->size += (memToFree->size + next->size);
+                    prev->nextCMCB = next->nextCMCB;
+                    next->nextCMCB->prevCMCB = prev;
+                    memToFree->nextCMCB = NULL;
+                    memToFree->prevCMCB = NULL;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList -= 2;
+                }
+                else if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
+                {
+                    prev->size += memToFree->size;
+                    prev->nextCMCB = memToFree->nextCMCB;
+                    memToFree->nextCMCB->prevCMCB = prev;
+                    memToFree->nextCMCB = NULL;
+                    memToFree->prevCMCB = NULL;
+                    freeList->count--;
+                }
+                else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
+                {
+                    memToFree->size += next->size;
+                    memToFree->nextCMCB = next->nextCMCB;
+                    next->nextCMCB->prevCMCB = memToFree;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList->count--;
+                }
+            }
+            else
+            {
+                if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1 == memToFree->beginningAddr + memToFree->size)))
+                {
+                    prev->size += (memToFree->size + next->size);
+                    prev->nextCMCB = NULL;
+                    memToFree->nextCMCB = NULL;
+                    memToFree->prevCMCB = NULL;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList -= 2;
+                }
+                else if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
+                {
+                    prev->size += memToFree->size;
+                    prev->nextCMCB = memToFree->nextCMCB;
+                    memToFree->nextCMCB->prevCMCB = prev;
+                    memToFree->nextCMCB = NULL;
+                    memToFree->prevCMCB = NULL;
+                    freeList->count--;
+                }
+                else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
+                {
+                    memToFree->size += next->size;
+                    memToFree->nextCMCB = NULL;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList->count--;
+                }
+            }
         }
-        else if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1))
-        { // merge left only.
-            prev->size += memToFree->size;
-            prev->nextCMCB = memToFree->nextCMCB;
-            memToFree->nextCMCB->prevCMCB = prev;
-            memToFree->nextCMCB = NULL;
-            memToFree->prevCMCB = NULL;
-            freeList->count--;
+        else if (memToFree->nextCMCB != NULL)
+        {
+            CMCB *next = memToFree->nextCMCB;
+
+            if (next->nextCMCB != NULL)
+            {
+                if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
+                {
+                    memToFree->size += next->size;
+                    memToFree->nextCMCB = next->nextCMCB;
+                    next->nextCMCB->prevCMCB = memToFree;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList->count--;
+                }
+            }
+            else
+            {
+                if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
+                {
+                    memToFree->size += next->size;
+                    memToFree->nextCMCB = NULL;
+                    next->nextCMCB = NULL;
+                    next->prevCMCB = NULL;
+                    freeList->count--;
+                }
+            }
         }
-        else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
-        { // merge right only.
-            memToFree->size += next->size;
-            memToFree->nextCMCB = next->nextCMCB;
-            next->nextCMCB->prevCMCB = memToFree;
-            next->nextCMCB = NULL;
-            next->prevCMCB = NULL;
-            freeList->count--;
+        else if (memToFree->prevCMCB != NULL)
+        {
+            CMCB *prev = memToFree->prevCMCB;
+
+            if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
+            {
+                prev->size += memToFree->size;
+                prev->nextCMCB = NULL;
+                memToFree->nextCMCB = NULL;
+                memToFree->prevCMCB = NULL;
+                freeList->count--;
+            }
         }
         else
-        { // don't merge.
-            /* code */
+        {
+            freeList->head = memToFree;
+            freeList->tail = memToFree;
+            freeList->count--;
         }
-    }
-}
+    } // end of else statement to free memory.
+} // end of Function.
 
 int isEmpty()
 {
