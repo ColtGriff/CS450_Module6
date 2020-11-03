@@ -117,12 +117,9 @@ u32int *allocateMemory(u32int size)
 
 					allocatedList->count++;
 				}
-
-				
 			}
 
-
-			return temp->beginningAddr;
+		return temp->beginningAddr;
 		}
 	//}
 }
@@ -146,12 +143,6 @@ int isEmpty()
 void showMCB(CMCB *mem)
 {
     int sizeLen;
-
-    // Print the block name.
-    printMessage("The name of the memory block is: ");
-    sizeLen = strLen(mem->name);
-    sys_req(WRITE, DEFAULT_DEVICE, mem->name, &sizeLen);
-    printMessage(".\n");
 
     // Print the block type.
     if (mem->type == 'a')
@@ -189,7 +180,7 @@ void showFreeMemory()
     CMCB *temp = freeList->head;
     for (loop = 0; loop <= freeList->count; loop++)
     {
-        showMCB(temp->name);
+        showMCB(temp);
         temp = temp->nextCMCB;
     }
 }
@@ -205,7 +196,7 @@ void showAllocatedMemory()
     CMCB *temp = allocatedList->head;
     for (loop = 0; loop <= allocatedList->count; loop++)
     {
-        showMCB(temp->name);
+        showMCB(temp);
         temp = temp->nextCMCB;
     }
 }
