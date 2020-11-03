@@ -69,26 +69,17 @@ u32int *allocateMemory(u32int size)
     //
     // }
     // else{
-    while ((temp->size <= size + sizeof(CMCB)) && (temp->nextCMCB != NULL))
+    while ((temp->size < size + sizeof(CMCB)) && (temp->nextCMCB != NULL))
     {
         temp = temp->nextCMCB;
     }
-    if (temp->nextCMCB == NULL)
+    if (temp->nextCMCB == NULL && temp->size < size + sizeof(CMCB))
     {
         return NULL;
     }
-    else
-    {
-        CMCB *new = (CMCB *)temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
-        new->beginningAddr = size + sizeof(CMCB);
-        new->size = totalSize - size - sizeof(CMCB);
-        new->type = 'f';
-        new->nextCMCB = temp->nextCMCB;
-        new->prevCMCB = temp->prevCMCB;
-        new->prevCMCB->nextCMCB = new;
-        new->nextCMCB->prevCMCB = new;
+    else if(temp->size == size + sizeof(CMBC)){ // If temp->size = size, no need to create a new CMCB for the remainder, since there is none
 
-        // Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
+    	// Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
         temp->type = 'a';
 
         if (allocatedList->count == 0)
@@ -119,6 +110,58 @@ u32int *allocateMemory(u32int size)
             }
             else
             {
+                temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated block (temp) comes before it.
+                temp->prevCMCB = alreadyAllocated->prevCMCB;
+                alreadyAllocated->prevCMCB = temp;
+
+                allocatedList->count++;
+            }
+        }
+        
+       return temp->beginningAddr;
+    }
+    else // if temp->size > size
+    {
+        CMCB *new = (CMCB *)temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
+        new->beginningAddr = size + sizeof(CMCB);
+        new->size = totalSize - size - sizeof(CMCB);
+        new->type = 'f';
+        new->nextCMCB = temp->nextCMCB;
+        new->prevCMCB = temp->prevCMCB;
+        new->prevCMCB->nextCMCB = new;
+        new->nextCMCB->prevCMCB = new;
+
+        // Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
+        temp->type = 'a';
+
+        if (allocatedList->count == 0)
+        { // If first memory block being allocated
+            allocatedList->head = temp;
+            allocatedList->tail = temp;
+            temp->prevCMCB = NULL;
+            temp->nextCMCB = NULL;
+            allocatedList->count++;
+        }
+        else 
+        { 
+        	// If not first allocated block, linked in order of beginning address by increasing	address
+            CMCB *alreadyAllocated = allocatedList->head;
+
+            while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
+            { // Finding a block with a greater address than the one we are trying to place
+                alreadyAllocated = alreadyAllocated->nextCMCB;
+            }
+
+            if (alreadyAllocated->nextCMCB == NULL)
+            {
+                alreadyAllocated->nextCMCB = temp;
+                temp->prevCMCB = alreadyAllocated;
+                allocatedList->tail = temp;
+
+                allocatedList->count++;
+            }
+            else
+            {
                 temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated bloc (temp) comes before it.
                 temp->prevCMCB = alreadyAllocated->prevCMCB;
                 alreadyAllocated->prevCMCB = temp;
@@ -129,7 +172,6 @@ u32int *allocateMemory(u32int size)
 
         return temp->beginningAddr;
     }
-    //}
 }
 
 int freeMemory(CMCB *memToFree)
