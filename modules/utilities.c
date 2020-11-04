@@ -1,6 +1,6 @@
 #include <core/serial.h>
 #include <string.h>
-#include "../mpx_supt.h"
+#include "mpx_supt.h"
 #include <core/io.h>
 #include <mem/heap.h>
 #include <system.h>
@@ -9,6 +9,7 @@ char *reverseStr(char *str)
 {
     int size = strlen(str);
     char temp[size];
+    
 
     int i = 0;
     while (size >= 0)
@@ -17,8 +18,9 @@ char *reverseStr(char *str)
         size--;
         i++;
     }
-
-    return temp;
+    char* test= temp;
+    
+    return test;
 }
 
 char *itoa(int num, char *buffer)

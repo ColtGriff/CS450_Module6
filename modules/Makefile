@@ -18,7 +18,8 @@ R2/R2_Internal_Functions_And_Structures.o \
 R2/R2commands.o \
 R3/R3commands.o \
 R3/procsr3.o \
-R4/R4commands.o 
+R4/R4commands.o \
+utilities.o
 
 .c.s:
 	$(CC) $(CFLAGS) -S -o $@ $<
