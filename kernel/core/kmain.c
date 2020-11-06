@@ -27,6 +27,7 @@
 #include "modules/R2/R2_Internal_Functions_And_Structures.h"
 #include "modules/R3/R3commands.h"
 #include "modules/R4/R4commands.h"
+#include "modules/R5/R5commands.h"
 
 void kmain(void)
 {
@@ -93,6 +94,7 @@ void kmain(void)
    //commhand(); //Removed for R4
 
    allocateQueues();
+   allocateMemLists();
    //allocateAlarms();
 
    createPCB("Commhand", 's', 9);

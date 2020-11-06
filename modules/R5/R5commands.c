@@ -10,6 +10,8 @@
 #include "../R2/R2commands.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "R5commands.h"
+#include "../R1/R1commands.h"
+
 
 memList *freeList;
 memList *allocatedList;
@@ -20,18 +22,18 @@ u32int memStart;
 
 void allocateMemLists()
 {
-    freeList = kmalloc(sizeof(memList));
-    allocatedList = kmalloc(sizeof(memList));
+    freeList = (memList*)kmalloc(sizeof(memList));   	//////
+    allocatedList = (memList*)kmalloc(sizeof(memList)); //////   These two were throwing errors so I added the (memList*) typeCast
 }
 
 u32int initializeHeap(u32int heapSize)
 {
     CMCB *temp = (CMCB *)kmalloc(heapSize + sizeof(CMCB));
-    memStart = &temp;
+    memStart = sizeof(CMCB) + 1;	//////////////// This is throwing errors.  Unsure if needs to be temp->beginningAddress, or temp->beginningAddress - sizeof(CMCB)
 
     // Create the first free block
     temp->type = 'f';
-    temp->beginningAddr = memStart + sizeof(CMCB);
+    temp->beginningAddr = memStart;
     temp->size = heapSize;
     //strcpy(temp->name, "first");
     temp->nextCMCB = NULL;
@@ -64,11 +66,10 @@ u32int initializeHeap(u32int heapSize)
 
 u32int *allocateMemory(u32int size)
 {
-    CMCB *temp = freeList->head;
-    // if (isEmpty()){   /// Not actually sure if this if-else is needed since the while loop would still catch an entire free block
-    //
-    // }
-    // else{
+
+	if(freeList->head != NULL){
+    	CMCB *temp = freeList->head;
+    
     while ((temp->size < size + sizeof(CMCB)) && (temp->nextCMCB != NULL))
     {
         temp = temp->nextCMCB;
@@ -83,6 +84,7 @@ u32int *allocateMemory(u32int size)
         // Temp becomes an allocated block since the allocation is first fit, temp is the first block large enough.  Easier to just use its already created CMCB
         temp->type = 'a';
 
+
         if (allocatedList->count == 0)
         { // If first memory block being allocated
             allocatedList->head = temp;
@@ -96,36 +98,44 @@ u32int *allocateMemory(u32int size)
 
             CMCB *alreadyAllocated = allocatedList->head;
 
-            while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
-            { // Finding a block with a greater address than the one we are trying to place
-                alreadyAllocated = alreadyAllocated->nextCMCB;
-            }
+            if(temp->beginningAddr < alreadyAllocated->beginningAddr){
+            	alreadyAllocated->prevCMCB = temp;
+           		temp->nextCMCB = alreadyAllocated;
+          		allocatedList->head = temp;
+        		allocatedList->count++;
+           	}
+            else{
+	            while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
+	            { // Finding a block with a greater address than the one we are trying to place
+	                alreadyAllocated = alreadyAllocated->nextCMCB;
+	            }
 
-            if (alreadyAllocated->nextCMCB == NULL)
-            {
-                alreadyAllocated->nextCMCB = temp;
-                temp->prevCMCB = alreadyAllocated;
-                allocatedList->tail = temp;
+	            if (alreadyAllocated->nextCMCB == NULL)
+	            {
+	                alreadyAllocated->nextCMCB = temp;
+	                temp->prevCMCB = alreadyAllocated;
+	                allocatedList->tail = temp;
 
-                allocatedList->count++;
-            }
-            else
-            {
-                temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated block (temp) comes before it.
-                temp->prevCMCB = alreadyAllocated->prevCMCB;
-                alreadyAllocated->prevCMCB = temp;
+	                allocatedList->count++;
+	            }
+	            else
+	            {
+	                temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated block (temp) comes before it.
+	                temp->prevCMCB = alreadyAllocated->prevCMCB;
+	                alreadyAllocated->prevCMCB = temp;
 
-                allocatedList->count++;
-            }
+	                allocatedList->count++;
+	            }
+	        }
         }
 
-        return temp->beginningAddr;
+        return (u32int*)temp->beginningAddr;
     }
     else // if temp->size > size
     {
         CMCB *new = (CMCB *)temp->beginningAddr + size; // This CMCB pertains to the head of the free list at the new memory address
-        new->beginningAddr = size + sizeof(CMCB);
-        new->size = totalSize - size - sizeof(CMCB);
+        new->beginningAddr = size + sizeof(CMCB); // Could be tmp->beginningAddr + size + sizeof(CMCB)
+        new->size = totalSize - size - sizeof(CMCB);		
         new->type = 'f';
         new->nextCMCB = temp->nextCMCB;
         new->prevCMCB = temp->prevCMCB;
@@ -148,34 +158,48 @@ u32int *allocateMemory(u32int size)
             // If not first allocated block, linked in order of beginning address by increasing	address
             CMCB *alreadyAllocated = allocatedList->head;
 
-            while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
-            { // Finding a block with a greater address than the one we are trying to place
-                alreadyAllocated = alreadyAllocated->nextCMCB;
-            }
+            if(temp->beginningAddr < alreadyAllocated->beginningAddr){
+            	alreadyAllocated->prevCMCB = temp;
+           		temp->nextCMCB = alreadyAllocated;
+          		allocatedList->head = temp;
+        		allocatedList->count++;
+           	}
+            else{
 
-            if (alreadyAllocated->nextCMCB == NULL)
-            {
-                alreadyAllocated->nextCMCB = temp;
-                temp->prevCMCB = alreadyAllocated;
-                allocatedList->tail = temp;
+         	   while (temp->beginningAddr > alreadyAllocated->beginningAddr && alreadyAllocated->nextCMCB != NULL)
+         	   { // Finding a block with a greater address than the one we are trying to place
+        	        alreadyAllocated = alreadyAllocated->nextCMCB;
+          		}
 
-                allocatedList->count++;
-            }
-            else
-            {
-                temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated bloc (temp) comes before it.
-                temp->prevCMCB = alreadyAllocated->prevCMCB;
-                alreadyAllocated->prevCMCB = temp;
+       	 	    if (alreadyAllocated->nextCMCB == NULL)
+       		     {
+         	       alreadyAllocated->nextCMCB = temp;
+         	       temp->prevCMCB = alreadyAllocated;
+           	  	   allocatedList->tail = temp;
 
-                allocatedList->count++;
+           	  	   allocatedList->count++;
+         	   }
+      		  else
+         	   {
+        	        temp->nextCMCB = alreadyAllocated; // Since the block has a greater address, the new allocated bloc (temp) comes before it.
+          	      temp->prevCMCB = alreadyAllocated->prevCMCB;
+            	    alreadyAllocated->prevCMCB = temp;
+
+           	     allocatedList->count++;
+            	}
             }
         }
 
-        return temp->beginningAddr;
+        return (u32int*)temp->beginningAddr;
+    }
+    
+    }
+    else{
+    	return NULL;
     }
 }
 
-int freeMemory(CMCB *memToFree)
+int freeMemory(CMCB *memToFree)	/////////// Needs return statements
 {
     if (isEmpty())
     {
@@ -351,16 +375,19 @@ int freeMemory(CMCB *memToFree)
             freeList->count--;
         }
     } // end of else statement to free memory.
+    return 0;
 } // end of Function.
 
 int isEmpty()
 {
     if (allocatedList->head == NULL && freeList->count == 1)
     {
+    	printMessage("The allocated list is empty.\n");
         return TRUE;
     }
     else
     {
+    	printMessage("The allocated list is not empty.\n");
         return FALSE;
     }
 }
@@ -380,14 +407,16 @@ void showMCB(CMCB *mem)
     }
 
     // Print the block size.
-    char size[20] = itoa(mem->size, size);
+    char size[20]; 
+    strcpy(size, itoa(mem->size, size));
     sizeLen = strlen(size);
     printMessage("The size is: ");
     sys_req(WRITE, DEFAULT_DEVICE, size, &sizeLen);
     printMessage(" bytes.\n");
 
     // Print the block beginning address.
-    char temp[20] = itoa((int)mem->beginningAddr, size);
+    char temp[20];
+    strcpy(temp, itoa((int)mem->beginningAddr, size));
     sizeLen = strlen(temp);
     printMessage("The beginning address of the block is: ");
     sys_req(WRITE, DEFAULT_DEVICE, temp, &sizeLen);
@@ -424,4 +453,12 @@ void showAllocatedMemory()
         showMCB(temp);
         temp = temp->nextCMCB;
     }
+}
+
+memList* getFree(){
+	return freeList;
+}
+
+memList* getAlloc(){
+	return allocatedList;
 }

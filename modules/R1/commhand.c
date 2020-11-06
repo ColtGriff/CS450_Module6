@@ -9,6 +9,7 @@
 #include "../R2/R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
 #include "../R4/R4commands.h"
+#include "../R5/R5commands.h"
 
 void commhand()
 {
@@ -43,6 +44,9 @@ void commhand()
 	printMessage("           |    __________________________________________________________________________     |\n");
 	printMessage("           |   |                                                                          |    |\n");
 	printMessage("           |   |  C:\\> Welcome to our CS 450 Project! Type help to see what you can do!   |    |\n");
+	printMessage("           |   |                                                                          |    |\n");
+	printMessage("           |   |                                                                          |    |\n");
+	printMessage("           |   |                                                                          |    |\n");
 	printMessage("           |   |                                                                          |    |\n");
 	printMessage("           |   |                                                                          |    |\n");
 	printMessage("           |   |                                                                          |    |\n");
@@ -145,15 +149,15 @@ void commhand()
 
 		// 	createPCB(processName, processClass, processPriority);
 		// }
-		else if (strcmp(cmdBuffer, "deletePCB") == 0)
-		{
-			printMessage("Please enter the name for the PCB you wish to delete. (The name can be no more than 20 characters)\n");
-			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
-			printMessage("\n");
-			strcpy(processName, cmdBuffer);
+		// else if (strcmp(cmdBuffer, "deletePCB") == 0)
+		// {
+		// 	printMessage("Please enter the name for the PCB you wish to delete. (The name can be no more than 20 characters)\n");
+		// 	sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+		// 	printMessage("\n");
+		// 	strcpy(processName, cmdBuffer);
 
-			deletePCB(processName);
-		}
+		// 	deletePCB(processName);
+		// }
 		// else if (strcmp(cmdBuffer, "blockPCB") == 0)
 		// {
 		// 	printMessage("Please enter the name for the PCB you wish to block. (The name can be no more than 20 characters)\n");
@@ -249,6 +253,53 @@ void commhand()
 		// {
 		// 	addAlarm();
 		// }
+		else if (strcmp(cmdBuffer, "initializeHeap") == 0) //// Need to set this up to take an input for the function it calls
+		{
+
+			printMessage("Please enter the desired heap size in Bytes. \n");
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			printMessage("\n");
+			u32int size = atoi(cmdBuffer);
+
+			initializeHeap(size);
+		}
+		else if (strcmp(cmdBuffer, "allocateMemory") == 0) //// Need to set this up to take an input for the function it calls
+		{
+			
+			printMessage("Please enter the desired size of memory to allocate in Bytes. \n");
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			printMessage("\n");
+			u32int size = atoi(cmdBuffer);
+			
+			allocateMemory(size);
+		}
+		else if (strcmp(cmdBuffer, "freeMemory") == 0) //// Need to set this up to take an input for the function it calls
+		{
+
+			printMessage("Please enter the block number you would like to free.\n");
+			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+			printMessage("\n");
+			int number = atoi(cmdBuffer);
+			int i;
+			CMCB* temp = getAlloc()->head;
+			for (i = 0; i < number; i++){
+				temp = temp->nextCMCB;
+			}
+
+			freeMemory(temp);
+		}
+		else if (strcmp(cmdBuffer, "isEmpty") == 0) //// ---------------------------------------------------------------------------------- TEMPORARY FOR TESTING
+		{
+			isEmpty();
+		}
+		else if (strcmp(cmdBuffer, "showFreeMemory") == 0) //// ---------------------------------------------------------------------------	TEMPORARY FOR TESTING
+		{
+			showFreeMemory();
+		}
+		else if (strcmp(cmdBuffer, "showAllocatedMemory") == 0) //// ----------------------------------------------------------------------	TEMPORARY FOR TESTING
+		{
+			showAllocatedMemory();
+		}
 		else if (strcmp(cmdBuffer, "quit") == 0)
 		{
 			quitFlag = quit();
@@ -260,6 +311,7 @@ void commhand()
 
 			printMessage("\n");
 		}
+
 		else
 		{
 			printMessage("Unrecognized Command\n");
