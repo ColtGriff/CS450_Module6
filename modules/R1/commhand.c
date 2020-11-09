@@ -38,7 +38,6 @@ void commhand()
 	printMessage("\n");
 	printMessage("\n");
 
-
 	printMessage("            ___________________________________________________________________________________\n");
 	printMessage("           /                                                                                   \\\n");
 	printMessage("           |    __________________________________________________________________________     |\n");
@@ -70,7 +69,6 @@ void commhand()
 	printMessage("                  _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_\n");
 	printMessage("                 :-------------------------------------------------------------------------:\n");
 	printMessage("                  `---._.-------------------------------------------------------------._.-\n");
-
 
 	printMessage("\n\n\n");
 
@@ -265,24 +263,24 @@ void commhand()
 		}
 		else if (strcmp(cmdBuffer, "allocateMemory") == 0) //// Need to set this up to take an input for the function it calls
 		{
-			
+
 			printMessage("Please enter the desired size of memory to allocate in Bytes. \n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			u32int size = atoi(cmdBuffer);
-			
+
 			allocateMemory(size);
 		}
 		else if (strcmp(cmdBuffer, "freeMemory") == 0) //// Need to set this up to take an input for the function it calls
 		{
 
-			printMessage("Please enter the block number you would like to free.\n");
+			printMessage("Please enter the size of the block you would like to free.\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			int number = atoi(cmdBuffer);
-			int i;
-			CMCB* temp = getAlloc()->head;
-			for (i = 0; i < number; i++){
+			CMCB *temp = getAlloc()->head;
+			while ((u32int)number < temp->size)
+			{
 				temp = temp->nextCMCB;
 			}
 
