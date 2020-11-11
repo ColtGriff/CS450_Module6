@@ -93,7 +93,7 @@ void kmain(void)
    klogv("Transferring control to commhand...");
    //commhand(); //Removed for R4
 
-   allocateMemLists();
+   // allocateMemLists();
    allocateQueues();
    //allocateAlarms();
 

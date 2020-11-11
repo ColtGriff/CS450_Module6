@@ -12,6 +12,8 @@
 #include "R5commands.h"
 #include "../R1/R1commands.h"
 
+void showMCB(CMCB *mem);
+
 memList *freeList;
 memList *allocatedList;
 
@@ -19,11 +21,11 @@ u32int totalSize;
 
 u32int memStart;
 
-void allocateMemLists()
-{
-    freeList = (memList *)kmalloc(sizeof(memList));      //////
-    allocatedList = (memList *)kmalloc(sizeof(memList)); //////   These two were throwing errors so I added the (memList*) typeCast
-}
+// void allocateMemLists()
+// {
+//     freeList = (memList *)kmalloc(sizeof(memList));      //////
+//     allocatedList = (memList *)kmalloc(sizeof(memList)); //////   These two were throwing errors so I added the (memList*) typeCast
+// }
 
 u32int initializeHeap(u32int heapSize)
 {
@@ -38,6 +40,8 @@ u32int initializeHeap(u32int heapSize)
     temp->nextCMCB = NULL;
     temp->prevCMCB = NULL;
 
+    freeList = (memList *)allocateMemory(sizeof(memList));
+    allocatedList = (memList *)allocateMemory(sizeof(memList));
     // Initialize free list
     freeList->count = 0;
     freeList->head = NULL;
@@ -65,45 +69,45 @@ u32int initializeHeap(u32int heapSize)
 
 void insertToList(CMCB *current, memList *list)
 {
-
-    // if(list == getFree()){
-
-    // }
-
-    if (isEmpty()) // something is wrong here when inserting to the freeList!
+    if (list->head == NULL) // current is put into an empty list.
     {
         list->head = current;
         list->tail = current;
         list->count++;
     }
-    else if (current->beginningAddr < list->head->beginningAddr)
+    else if (current->beginningAddr < list->head->beginningAddr) // current goes at the start of the list.
     {
         current->nextCMCB = list->head;
         list->head->prevCMCB = current;
         list->head = current;
         list->count++;
     }
-    else if (current->beginningAddr > list->tail->beginningAddr)
+    else if (current->beginningAddr > list->tail->beginningAddr) // current goes at the end of the list.
     {
         current->prevCMCB = list->tail;
         list->tail->nextCMCB = current;
         list->tail = current;
         list->count++;
     }
-    else
+    else // current goes in the middle of list.
     {
-        // current goes in the middle of allocatedList.
         CMCB *temp = list->head;
-        while (current->beginningAddr > temp->beginningAddr && temp->nextCMCB != NULL)
+        while (temp->nextCMCB != NULL)
         {
-            temp = temp->nextCMCB;
+            if (current->beginningAddr > temp->beginningAddr)
+            {
+                current->nextCMCB = temp;
+                current->prevCMCB = temp->prevCMCB;
+                temp->prevCMCB->nextCMCB = current;
+                temp->prevCMCB = current;
+                list->count++;
+                break;
+            }
+            else
+            {
+                temp = temp->nextCMCB;
+            }
         }
-
-        current->nextCMCB = temp;
-        current->prevCMCB = temp->prevCMCB;
-        temp->prevCMCB->nextCMCB = current;
-        temp->prevCMCB = current;
-        list->count++;
     }
 }
 
@@ -186,17 +190,6 @@ u32int *allocateMemory(u32int size)
                     freeList->tail = new;
                 }
 
-                if (size == 200)
-                {
-                    char temp[20];
-                    memset(temp, '\0', 20);
-                    strcpy(temp, itoa(size, temp));
-                    int tempLen = strlen(temp);
-                    printMessage("The size is: ");
-                    sys_req(WRITE, DEFAULT_DEVICE, temp, &tempLen);
-                    printMessage(" bytes.\n");
-                }
-
                 current->size = size;
                 current->nextCMCB = NULL;
                 current->prevCMCB = NULL;
@@ -217,6 +210,34 @@ u32int *allocateMemory(u32int size)
     return NULL;
 }
 
+void removeFromAlloc(CMCB *temp)
+{
+    // Remove temp from allocatedList
+    if (temp == allocatedList->head)
+    {
+        allocatedList->head = temp->nextCMCB;
+        temp->nextCMCB = NULL;
+        allocatedList->count--;
+    }
+    else if (temp == allocatedList->tail)
+    {
+        showMCB(temp);
+        allocatedList->tail = temp->prevCMCB;
+        allocatedList->tail->nextCMCB = NULL;
+        showMCB(allocatedList->tail);
+        temp->prevCMCB = NULL;
+        allocatedList->count--;
+    }
+    else
+    {
+        temp->prevCMCB->nextCMCB = temp->nextCMCB;
+        temp->nextCMCB->prevCMCB = temp->prevCMCB;
+        temp->nextCMCB = NULL;
+        temp->prevCMCB = NULL;
+        allocatedList->count--;
+    }
+}
+
 int freeMemory(CMCB *memToFree) /////////// Needs return statements
 {
     if (isEmpty())
@@ -232,145 +253,50 @@ int freeMemory(CMCB *memToFree) /////////// Needs return statements
     else
     {
         // Remove memToFree from the allocatedList.
-        if (memToFree == allocatedList->head)
-        {
-            allocatedList->head = memToFree->nextCMCB;
-            memToFree->nextCMCB = NULL;
-            allocatedList->count--;
-        }
-        else if (memToFree == allocatedList->tail)
-        {
-            allocatedList->tail = memToFree->prevCMCB;
-            memToFree->prevCMCB = NULL;
-            allocatedList->count--;
-        }
-        else
-        {
-            memToFree->prevCMCB->nextCMCB = memToFree->nextCMCB;
-            memToFree->nextCMCB->prevCMCB = memToFree->prevCMCB;
-            memToFree->nextCMCB = NULL;
-            memToFree->prevCMCB = NULL;
-            allocatedList->count--;
-        }
+        removeFromAlloc(memToFree);
 
         // Insert memToFree into the freeList in increasing order.
         insertToList(memToFree, getFree());
+        memToFree->type = 'f';
 
         // Merge memToFree to other free CMCBs if possible.
-        if (memToFree->nextCMCB != NULL && memToFree->prevCMCB != NULL)
+        if (freeList->count >= 1)
         {
-            CMCB *prev = memToFree->prevCMCB;
-            CMCB *next = memToFree->nextCMCB;
+            CMCB *temp = freeList->head;
 
-            if (next->nextCMCB != NULL)
+            while (temp != NULL)
             {
-                if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1 == memToFree->beginningAddr + memToFree->size)))
+                if ((temp->beginningAddr + temp->size) == (temp->nextCMCB->beginningAddr - sizeof(CMCB)))
                 {
-                    prev->size += (memToFree->size + next->size);
-                    prev->nextCMCB = next->nextCMCB;
-                    next->nextCMCB->prevCMCB = prev;
-                    memToFree->nextCMCB = NULL;
-                    memToFree->prevCMCB = NULL;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList -= 2;
+                    if (temp->nextCMCB->nextCMCB != NULL)
+                    {
+                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
+                        temp->nextCMCB = temp->nextCMCB->nextCMCB;
+                        temp->nextCMCB->nextCMCB->prevCMCB = temp;
+                        temp->nextCMCB->nextCMCB = NULL;
+                        temp->nextCMCB->prevCMCB = NULL;
+                        freeList->count--;
+                    }
+                    else
+                    {
+                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
+                        temp->nextCMCB->nextCMCB = NULL;
+                        temp->nextCMCB->prevCMCB = NULL;
+                        temp->nextCMCB = NULL;
+                        freeList->count--;
+                    }
                 }
-                else if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
+                else
                 {
-                    prev->size += memToFree->size;
-                    prev->nextCMCB = memToFree->nextCMCB;
-                    memToFree->nextCMCB->prevCMCB = prev;
-                    memToFree->nextCMCB = NULL;
-                    memToFree->prevCMCB = NULL;
-                    freeList->count--;
+                    temp = temp->nextCMCB;
                 }
-                else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
-                {
-                    memToFree->size += next->size;
-                    memToFree->nextCMCB = next->nextCMCB;
-                    next->nextCMCB->prevCMCB = memToFree;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList->count--;
-                }
-            }
-            else
-            {
-                if (((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1) && ((next->beginningAddr - sizeof(CMCB) - 1 == memToFree->beginningAddr + memToFree->size)))
-                {
-                    prev->size += (memToFree->size + next->size);
-                    prev->nextCMCB = NULL;
-                    memToFree->nextCMCB = NULL;
-                    memToFree->prevCMCB = NULL;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList -= 2;
-                }
-                else if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
-                {
-                    prev->size += memToFree->size;
-                    prev->nextCMCB = memToFree->nextCMCB;
-                    memToFree->nextCMCB->prevCMCB = prev;
-                    memToFree->nextCMCB = NULL;
-                    memToFree->prevCMCB = NULL;
-                    freeList->count--;
-                }
-                else if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
-                {
-                    memToFree->size += next->size;
-                    memToFree->nextCMCB = NULL;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList->count--;
-                }
-            }
-        }
-        else if (memToFree->nextCMCB != NULL)
-        {
-            CMCB *next = memToFree->nextCMCB;
-
-            if (next->nextCMCB != NULL)
-            {
-                if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
-                {
-                    memToFree->size += next->size;
-                    memToFree->nextCMCB = next->nextCMCB;
-                    next->nextCMCB->prevCMCB = memToFree;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList->count--;
-                }
-            }
-            else
-            {
-                if ((next->beginningAddr - sizeof(CMCB) - 1) == memToFree->beginningAddr + memToFree->size)
-                {
-                    memToFree->size += next->size;
-                    memToFree->nextCMCB = NULL;
-                    next->nextCMCB = NULL;
-                    next->prevCMCB = NULL;
-                    freeList->count--;
-                }
-            }
-        }
-        else if (memToFree->prevCMCB != NULL)
-        {
-            CMCB *prev = memToFree->prevCMCB;
-
-            if ((prev->beginningAddr + prev->size) == memToFree->beginningAddr - sizeof(CMCB) - 1)
-            {
-                prev->size += memToFree->size;
-                prev->nextCMCB = NULL;
-                memToFree->nextCMCB = NULL;
-                memToFree->prevCMCB = NULL;
-                freeList->count--;
             }
         }
         else
         {
             freeList->head = memToFree;
             freeList->tail = memToFree;
-            freeList->count--;
+            freeList->count = 1;
         }
     } // end of else statement to free memory.
     return 0;
@@ -416,7 +342,7 @@ void showMCB(CMCB *mem)
     // Print the block beginning address.
     char temp[20];
     memset(temp, '\0', 20);
-    strcpy(temp, itoa(mem->beginningAddr, size));
+    strcpy(temp, itoa(mem->beginningAddr, temp));
     sizeLen = strlen(temp);
     printMessage("The beginning address of the block is: ");
     sys_req(WRITE, DEFAULT_DEVICE, temp, &sizeLen);
