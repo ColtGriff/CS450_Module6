@@ -176,38 +176,46 @@ void commhand()
 		// }
 		else if (strcmp(cmdBuffer, "suspendPCB") == 0)
 		{
+			memset(cmdBuffer, '\0', bufferSize);
 			printMessage("Please enter the name for the PCB you wish to suspend. (The name can be no more than 20 characters)\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			strcpy(processName, cmdBuffer);
+			memset(cmdBuffer, '\0', bufferSize);
 
 			suspendPCB(processName);
 		}
 		else if (strcmp(cmdBuffer, "resumePCB") == 0)
 		{
+			memset(cmdBuffer, '\0', bufferSize);
 			printMessage("Please enter the name for the PCB you wish to resume. (The name can be no more than 20 characters)\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			strcpy(processName, cmdBuffer);
+			memset(cmdBuffer, '\0', bufferSize);
 
 			resumePCB(processName);
 		}
 		else if (strcmp(cmdBuffer, "setPCBPriority") == 0)
 		{
+			memset(cmdBuffer, '\0', bufferSize);
 			printMessage("Please enter the name for the PCB you wish to change priorities for. (The name can be no more than 20 characters)\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			strcpy(processName, cmdBuffer);
+			memset(cmdBuffer, '\0', bufferSize);
 
 			printMessage("Please enter a priority for the PCB you wish to change priorities for. (The priorities range from 0 to 9)\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			processPriority = atoi(cmdBuffer);
+			memset(cmdBuffer, '\0', bufferSize);
 
 			setPCBPriority(processName, processPriority);
 		}
 		else if (strcmp(cmdBuffer, "showPCB") == 0)
 		{
+			memset(cmdBuffer, '\0', bufferSize);
 			printMessage("Please enter the name for the PCB you wish to see. (The name can be no more than 20 characters)\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
