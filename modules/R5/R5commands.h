@@ -21,8 +21,6 @@ typedef struct memList
     CMCB *tail;
 } memList;
 
-void allocateMemLists();
-
 u32int initializeHeap(u32int heapSize);
 
 u32int *allocateMemory(u32int size);

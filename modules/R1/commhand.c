@@ -278,12 +278,6 @@ void commhand()
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
 			int address = atoi(cmdBuffer);
-			// CMCB *temp = getAlloc()->head;
-			// while ((u32int)number < temp->size)
-			// {
-			// 	temp = temp->nextCMCB;
-			// }
-
 			freeMemory((u32int *)address);
 		}
 		else if (strcmp(cmdBuffer, "isEmpty") == 0) //// ---------------------------------------------------------------------------------- TEMPORARY FOR TESTING
