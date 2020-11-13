@@ -86,9 +86,9 @@ void insertToList(CMCB *current, memList *list)
     else // current goes in the middle of list.
     {
         CMCB *temp = list->head;
-        while (temp->nextCMCB != NULL)
+        while (temp != NULL)
         {
-            if (current->beginningAddr > temp->beginningAddr)
+            if (current->beginningAddr < temp->beginningAddr)
             {
                 current->nextCMCB = temp;
                 current->prevCMCB = temp->prevCMCB;
