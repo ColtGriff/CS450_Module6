@@ -251,39 +251,39 @@ void commhand()
 		// {
 		// 	addAlarm();
 		// }
-		else if (strcmp(cmdBuffer, "initializeHeap") == 0) //// Need to set this up to take an input for the function it calls
-		{
+		// else if (strcmp(cmdBuffer, "initializeHeap") == 0) //// Need to set this up to take an input for the function it calls
+		// {
 
-			printMessage("Please enter the desired heap size in Bytes. \n");
-			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
-			printMessage("\n");
-			u32int size = atoi(cmdBuffer);
+		// 	printMessage("Please enter the desired heap size in Bytes. \n");
+		// 	sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+		// 	printMessage("\n");
+		// 	u32int size = atoi(cmdBuffer);
 
-			initializeHeap(size);
-		}
-		else if (strcmp(cmdBuffer, "allocateMemory") == 0) //// Need to set this up to take an input for the function it calls
-		{
+		// 	initializeHeap(size);
+		// }
+		// else if (strcmp(cmdBuffer, "allocateMemory") == 0) //// Need to set this up to take an input for the function it calls
+		// {
 
-			printMessage("Please enter the desired size of memory to allocate in Bytes. \n");
-			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
-			printMessage("\n");
-			u32int size = atoi(cmdBuffer);
+		// 	printMessage("Please enter the desired size of memory to allocate in Bytes. \n");
+		// 	sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+		// 	printMessage("\n");
+		// 	u32int size = atoi(cmdBuffer);
 
-			allocateMemory(size);
-		}
-		else if (strcmp(cmdBuffer, "freeMemory") == 0) //// Need to set this up to take an input for the function it calls
-		{
+		// 	allocateMemory(size);
+		// }
+		// else if (strcmp(cmdBuffer, "freeMemory") == 0) //// Need to set this up to take an input for the function it calls
+		// {
 
-			printMessage("Please enter the address of the block you would like to free.\n");
-			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
-			printMessage("\n");
-			int address = atoi(cmdBuffer);
-			freeMemory((u32int *)address);
-		}
-		else if (strcmp(cmdBuffer, "isEmpty") == 0) //// ---------------------------------------------------------------------------------- TEMPORARY FOR TESTING
-		{
-			isEmpty();
-		}
+		// 	printMessage("Please enter the address of the block you would like to free.\n");
+		// 	sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
+		// 	printMessage("\n");
+		// 	int address = atoi(cmdBuffer);
+		// 	freeMemory((u32int *)address);
+		// }
+		// else if (strcmp(cmdBuffer, "isEmpty") == 0) //// ---------------------------------------------------------------------------------- TEMPORARY FOR TESTING
+		// {
+		// 	isEmpty();
+		// }
 		else if (strcmp(cmdBuffer, "showFreeMemory") == 0) //// ---------------------------------------------------------------------------	TEMPORARY FOR TESTING
 		{
 			showFreeMemory();

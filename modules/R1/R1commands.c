@@ -35,13 +35,15 @@ void help()
 	// printMessage("yield: Will cause commhand to voluntarily allow other processes to use the CPU.(removed for R4)\n");
 	printMessage("loadr3: Will load all processes for R3. \n");
 	printMessage("infinitePCB: Will load a process that executes infinitely until suspended.\n");
-	printMessage("addAlarm: Allows the user to make an alarm. The system is also able to keep track of multiple alarms.\n");
+	//printMessage("addAlarm: Allows the user to make an alarm. The system is also able to keep track of multiple alarms.\n");
+	printMessage("showFreeMemory: Shows all of the free memory in the system.\n");
+	printMessage("showAllocatedMemory: Shows all of the allocated memory in the system.\n");
 	printMessage("quit: Allows the user to shut the system down.\n");
 }
 
 int version()
 {
-	printMessage("Version 3.75\n");
+	printMessage("Version 5\n");
 
 	return 0;
 }
