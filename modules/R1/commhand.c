@@ -274,17 +274,17 @@ void commhand()
 		else if (strcmp(cmdBuffer, "freeMemory") == 0) //// Need to set this up to take an input for the function it calls
 		{
 
-			printMessage("Please enter the size of the block you would like to free.\n");
+			printMessage("Please enter the address of the block you would like to free.\n");
 			sys_req(READ, DEFAULT_DEVICE, cmdBuffer, &bufferSize);
 			printMessage("\n");
-			int number = atoi(cmdBuffer);
-			CMCB *temp = getAlloc()->head;
-			while ((u32int)number < temp->size)
-			{
-				temp = temp->nextCMCB;
-			}
+			int address = atoi(cmdBuffer);
+			// CMCB *temp = getAlloc()->head;
+			// while ((u32int)number < temp->size)
+			// {
+			// 	temp = temp->nextCMCB;
+			// }
 
-			freeMemory(temp);
+			freeMemory((u32int *)address);
 		}
 		else if (strcmp(cmdBuffer, "isEmpty") == 0) //// ---------------------------------------------------------------------------------- TEMPORARY FOR TESTING
 		{

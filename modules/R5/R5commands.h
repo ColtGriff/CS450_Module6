@@ -27,14 +27,10 @@ u32int initializeHeap(u32int heapSize);
 
 u32int *allocateMemory(u32int size);
 
-int freeMemory(CMCB *memToFree);
+int freeMemory(u32int *memToFree);
 
 int isEmpty();
 
 void showFreeMemory();
 
 void showAllocatedMemory();
-
-memList *getFree();
-
-memList *getAlloc();

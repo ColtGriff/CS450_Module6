@@ -14,12 +14,8 @@
 
 void showMCB(CMCB *mem);
 
-memList *freeList;
-memList *allocatedList;
-
-u32int totalSize;
-
-u32int memStart;
+memList freeList;
+memList allocatedList;
 
 // void allocateMemLists()
 // {
@@ -29,7 +25,7 @@ u32int memStart;
 
 u32int initializeHeap(u32int heapSize)
 {
-    memStart = kmalloc(heapSize + sizeof(CMCB));
+    u32int memStart = kmalloc(heapSize + sizeof(CMCB));
     CMCB *temp = (CMCB *)memStart;
 
     // Create the first free block
@@ -40,29 +36,27 @@ u32int initializeHeap(u32int heapSize)
     temp->nextCMCB = NULL;
     temp->prevCMCB = NULL;
 
-    freeList = (memList *)allocateMemory(sizeof(memList));
-    allocatedList = (memList *)allocateMemory(sizeof(memList));
+    // freeList = (memList *)allocateMemory(sizeof(memList));
+    // allocatedList = (memList *)allocateMemory(sizeof(memList));
     // Initialize free list
-    freeList->count = 0;
-    freeList->head = NULL;
-    freeList->tail = NULL;
+    // freeList->count = 0;
+    // freeList->head = NULL;
+    // freeList->tail = NULL;
 
     // Initialize alllocated list
-    allocatedList->count = 0;
-    allocatedList->head = NULL;
-    allocatedList->tail = NULL;
+    allocatedList.count = 0;
+    allocatedList.head = NULL;
+    allocatedList.tail = NULL;
 
     // Place first free block into the free list
-    freeList->count++;
-    freeList->head = temp;
-    freeList->tail = temp;
+    freeList.count++;
+    freeList.head = temp;
+    freeList.tail = temp;
 
     // // Place the LMCB at the bottom of the heap and initialize it.
     // LMCB *temp2 = (&temp->beginningAddr + heapSize);
     // temp2->size = sizeof(LMCB);
     // temp2->type = 'f';
-
-    totalSize = heapSize;
 
     return memStart;
 }
@@ -113,14 +107,14 @@ void insertToList(CMCB *current, memList *list)
 
 u32int *allocateMemory(u32int size)
 {
-    if (freeList->head != NULL)
+    if (freeList.head != NULL)
     {
-        CMCB *current = freeList->head;
+        CMCB *current = freeList.head;
 
         // get to block of appropriate size
         while (current != NULL)
         {
-            if (current->size == size + sizeof(CMCB) && freeList->count == 1)
+            if (current->size == size + sizeof(CMCB) && freeList.count == 1)
             {
                 // remove from free list.
                 current->nextCMCB->prevCMCB = current->prevCMCB;
@@ -128,14 +122,14 @@ u32int *allocateMemory(u32int size)
                 current->nextCMCB = NULL;
                 current->prevCMCB = NULL;
                 // place current in alloc list.
-                insertToList(current, allocatedList);
+                insertToList(current, &allocatedList);
 
                 // change current marker to 'a'.
                 current->type = 'a';
 
                 // remove all freeList pointers to current.
-                freeList->head = NULL;
-                freeList->tail = NULL;
+                freeList.head = NULL;
+                freeList.tail = NULL;
 
                 // return allocated block.
                 return (u32int *)current->beginningAddr;
@@ -148,7 +142,7 @@ u32int *allocateMemory(u32int size)
                 current->nextCMCB = NULL;
                 current->prevCMCB = NULL;
                 // place current in alloc list.
-                insertToList(current, allocatedList);
+                insertToList(current, &allocatedList);
 
                 // change current marker to 'a'.
                 current->type = 'a';
@@ -176,18 +170,18 @@ u32int *allocateMemory(u32int size)
                     new->nextCMCB->prevCMCB = new;
                 }
 
-                if (freeList->head == current && freeList->tail == current)
+                if (freeList.head == current && freeList.tail == current)
                 {
-                    freeList->head = new;
-                    freeList->tail = new;
+                    freeList.head = new;
+                    freeList.tail = new;
                 }
-                else if (freeList->head == current)
+                else if (freeList.head == current)
                 {
-                    freeList->head = new;
+                    freeList.head = new;
                 }
-                else if (freeList->tail == current)
+                else if (freeList.tail == current)
                 {
-                    freeList->tail = new;
+                    freeList.tail = new;
                 }
 
                 current->size = size;
@@ -195,7 +189,7 @@ u32int *allocateMemory(u32int size)
                 current->prevCMCB = NULL;
 
                 // place current in alloc list.
-                insertToList(current, allocatedList);
+                insertToList(current, &allocatedList);
 
                 // change current marker to 'a'.
                 current->type = 'a';
@@ -213,20 +207,18 @@ u32int *allocateMemory(u32int size)
 void removeFromAlloc(CMCB *temp)
 {
     // Remove temp from allocatedList
-    if (temp == allocatedList->head)
+    if (temp == allocatedList.head)
     {
-        allocatedList->head = temp->nextCMCB;
+        allocatedList.head = temp->nextCMCB;
         temp->nextCMCB = NULL;
-        allocatedList->count--;
+        allocatedList.count--;
     }
-    else if (temp == allocatedList->tail)
+    else if (temp == allocatedList.tail)
     {
-        showMCB(temp);
-        allocatedList->tail = temp->prevCMCB;
-        allocatedList->tail->nextCMCB = NULL;
-        showMCB(allocatedList->tail);
+        allocatedList.tail = temp->prevCMCB;
+        allocatedList.tail->nextCMCB = NULL;
         temp->prevCMCB = NULL;
-        allocatedList->count--;
+        allocatedList.count--;
     }
     else
     {
@@ -234,69 +226,86 @@ void removeFromAlloc(CMCB *temp)
         temp->nextCMCB->prevCMCB = temp->prevCMCB;
         temp->nextCMCB = NULL;
         temp->prevCMCB = NULL;
-        allocatedList->count--;
+        allocatedList.count--;
     }
 }
 
-int freeMemory(CMCB *memToFree) /////////// Needs return statements
+int freeMemory(u32int *memToFree) /////////// Needs return statements
 {
     if (isEmpty())
     {
         printMessage("There is no memory to free!\n");
         return 1;
     }
-    else if (memToFree->type == 'f')
+
+    CMCB *temp = allocatedList.head;
+
+    if (temp == NULL)
     {
-        printMessage("The memory block you are trying to free is already free!\n");
+        printMessage("There is no allocated memory at that address!\n");
         return 1;
     }
     else
     {
-        // Remove memToFree from the allocatedList.
-        removeFromAlloc(memToFree);
-
-        // Insert memToFree into the freeList in increasing order.
-        insertToList(memToFree, getFree());
-        memToFree->type = 'f';
-
-        // Merge memToFree to other free CMCBs if possible.
-        if (freeList->count >= 1)
+        while (temp->beginningAddr != (u32int)memToFree)
         {
-            CMCB *temp = freeList->head;
+            temp = temp->nextCMCB;
+        }
 
-            while (temp != NULL)
-            {
-                if ((temp->beginningAddr + temp->size) == (temp->nextCMCB->beginningAddr - sizeof(CMCB)))
-                {
-                    if (temp->nextCMCB->nextCMCB != NULL)
-                    {
-                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
-                        temp->nextCMCB = temp->nextCMCB->nextCMCB;
-                        temp->nextCMCB->nextCMCB->prevCMCB = temp;
-                        temp->nextCMCB->nextCMCB = NULL;
-                        temp->nextCMCB->prevCMCB = NULL;
-                        freeList->count--;
-                    }
-                    else
-                    {
-                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
-                        temp->nextCMCB->nextCMCB = NULL;
-                        temp->nextCMCB->prevCMCB = NULL;
-                        temp->nextCMCB = NULL;
-                        freeList->count--;
-                    }
-                }
-                else
-                {
-                    temp = temp->nextCMCB;
-                }
-            }
+        if (temp == NULL)
+        {
+            printMessage("There is no allocated memory at that address!\n");
+            return 1;
         }
         else
         {
-            freeList->head = memToFree;
-            freeList->tail = memToFree;
-            freeList->count = 1;
+
+            // Remove memToFree from the allocatedList.
+            removeFromAlloc(temp);
+
+            // Insert memToFree into the freeList in increasing order.
+            insertToList(temp, &freeList);
+            temp->type = 'f';
+
+            // Merge memToFree to other free CMCBs if possible.
+            if (freeList.count >= 1)
+            {
+                CMCB *temp = freeList.head;
+
+                while (temp != NULL)
+                {
+                    if ((temp->beginningAddr + temp->size) == (temp->nextCMCB->beginningAddr - sizeof(CMCB)))
+                    {
+                        if (temp->nextCMCB->nextCMCB != NULL)
+                        {
+                            temp->size += (temp->nextCMCB->size + sizeof(CMCB));
+                            temp->nextCMCB = temp->nextCMCB->nextCMCB;
+                            temp->nextCMCB->nextCMCB->prevCMCB = temp;
+                            temp->nextCMCB->nextCMCB = NULL;
+                            temp->nextCMCB->prevCMCB = NULL;
+                            freeList.count--;
+                        }
+                        else
+                        {
+                            temp->size += (temp->nextCMCB->size + sizeof(CMCB));
+                            temp->nextCMCB->nextCMCB = NULL;
+                            temp->nextCMCB->prevCMCB = NULL;
+                            temp->nextCMCB = NULL;
+                            freeList.count--;
+                        }
+                    }
+                    else
+                    {
+                        temp = temp->nextCMCB;
+                    }
+                }
+            }
+            else
+            {
+                freeList.head = temp;
+                freeList.tail = temp;
+                freeList.count = 1;
+            }
         }
     } // end of else statement to free memory.
     return 0;
@@ -304,7 +313,7 @@ int freeMemory(CMCB *memToFree) /////////// Needs return statements
 
 int isEmpty()
 {
-    if (allocatedList->head == NULL && freeList->count == 1)
+    if (allocatedList.head == NULL && freeList.count == 1)
     {
         printMessage("The allocated list is empty.\n");
         return TRUE;
@@ -351,12 +360,12 @@ void showMCB(CMCB *mem)
 
 void showFreeMemory()
 {
-    if (freeList->head == NULL)
+    if (freeList.head == NULL)
     {
         printMessage("There is no free memory!\n");
     }
 
-    CMCB *temp = freeList->head;
+    CMCB *temp = freeList.head;
     while (temp != NULL)
     {
         showMCB(temp);
@@ -366,25 +375,15 @@ void showFreeMemory()
 
 void showAllocatedMemory()
 {
-    if (allocatedList->head == NULL)
+    if (allocatedList.head == NULL)
     {
         printMessage("There is no allocated memory!\n");
     }
 
-    CMCB *temp = allocatedList->head;
+    CMCB *temp = allocatedList.head;
     while (temp != NULL)
     {
         showMCB(temp);
         temp = temp->nextCMCB;
     }
-}
-
-memList *getFree()
-{
-    return freeList;
-}
-
-memList *getAlloc()
-{
-    return allocatedList;
 }
