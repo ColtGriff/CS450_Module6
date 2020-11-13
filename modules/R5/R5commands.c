@@ -87,7 +87,7 @@ void insertToList(CMCB *current, memList *list)
     }
 }
 
-u32int *allocateMemory(u32int size)
+u32int allocateMemory(u32int size)
 {
     if (freeList.head != NULL)
     {
@@ -114,7 +114,7 @@ u32int *allocateMemory(u32int size)
                 freeList.tail = NULL;
 
                 // return allocated block.
-                return (u32int *)current->beginningAddr;
+                return current->beginningAddr;
             }
             else if (current->size == size + sizeof(CMCB)) // current is excetly the size requested.
             {
@@ -130,7 +130,7 @@ u32int *allocateMemory(u32int size)
                 current->type = 'a';
 
                 // return allocated block.
-                return (u32int *)current->beginningAddr;
+                return current->beginningAddr;
             }
             else if (current->size > size + sizeof(CMCB)) // current is greater than the size requested
             {
@@ -177,7 +177,7 @@ u32int *allocateMemory(u32int size)
                 current->type = 'a';
 
                 // return allocated block.
-                return (u32int *)current->beginningAddr;
+                return current->beginningAddr;
             }
             current = current->nextCMCB;
         }
@@ -212,7 +212,7 @@ void removeFromAlloc(CMCB *temp)
     }
 }
 
-int freeMemory(u32int *memToFree) /////////// Needs return statements
+int freeMemory(void *memToFree) /////////// Needs return statements
 {
     if (isEmpty())
     {
@@ -246,33 +246,45 @@ int freeMemory(u32int *memToFree) /////////// Needs return statements
         if (freeList.count >= 1)
         {
             CMCB *temp = freeList.head;
-
             while (temp != NULL)
             {
-                if ((temp->beginningAddr + temp->size) == (temp->nextCMCB->beginningAddr - sizeof(CMCB)))
+                if ((temp->beginningAddr + temp->size) == (temp->nextCMCB->beginningAddr - sizeof(CMCB))) // merge down
                 {
+                    printMessage("Memory merge down\n");
                     if (temp->nextCMCB->nextCMCB != NULL)
                     {
-                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
-                        temp->nextCMCB = temp->nextCMCB->nextCMCB;
-                        temp->nextCMCB->nextCMCB->prevCMCB = temp;
-                        temp->nextCMCB->nextCMCB = NULL;
-                        temp->nextCMCB->prevCMCB = NULL;
+                        CMCB *next = temp->nextCMCB;
+                        temp->size += (next->size + sizeof(CMCB));
+                        temp->nextCMCB = next->nextCMCB;
+                        next->nextCMCB->prevCMCB = temp;
+                        next->prevCMCB = NULL;
+                        next->nextCMCB = NULL;
                         freeList.count--;
                     }
                     else
                     {
-                        temp->size += (temp->nextCMCB->size + sizeof(CMCB));
-                        temp->nextCMCB->nextCMCB = NULL;
-                        temp->nextCMCB->prevCMCB = NULL;
+                        printMessage("Merge down part 2\n");
+                        CMCB *next = temp->nextCMCB;
+                        temp->size += (next->size + sizeof(CMCB));
+                        next->prevCMCB = NULL;
+                        next->nextCMCB = NULL;
                         temp->nextCMCB = NULL;
                         freeList.count--;
                     }
                 }
-                else
+
+                if ((temp->prevCMCB->beginningAddr + temp->prevCMCB->size) == (temp->beginningAddr - sizeof(CMCB))) //merge up
                 {
-                    temp = temp->nextCMCB;
+                    printMessage("Memory merge up\n");
+                    CMCB *prev = temp->prevCMCB;
+                    prev->size += (temp->size + sizeof(CMCB));
+                    prev->nextCMCB = temp->nextCMCB;
+                    temp->nextCMCB = prev;
+                    temp->nextCMCB = NULL;
+                    temp->prevCMCB = NULL;
+                    freeList.count--;
                 }
+                temp = temp->nextCMCB;
             }
         }
         else

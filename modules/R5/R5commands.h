@@ -23,9 +23,9 @@ typedef struct memList
 
 u32int initializeHeap(u32int heapSize);
 
-u32int *allocateMemory(u32int size);
+u32int allocateMemory(u32int size);
 
-int freeMemory(u32int *memToFree);
+int freeMemory(void *memToFree);
 
 int isEmpty();
 

@@ -51,7 +51,7 @@ void kmain(void)
    //     MPX Module.  This will change with each module.
    // you will need to call mpx_init from the mpx_supt.c
 
-   mpx_init(MODULE_R4);
+   mpx_init(MODULE_R5);
 
    // 2) Check that the boot was successful and correct when using grub
    // Comment this when booting the kernel directly using QEMU, etc.
@@ -94,8 +94,13 @@ void kmain(void)
    //commhand(); //Removed for R4
 
    // allocateMemLists();
-   allocateQueues();
    //allocateAlarms();
+
+   initializeHeap((u32int)50000);
+   mpx_init(MEM_MODULE);
+   sys_set_malloc((allocateMemory));
+   sys_set_free((freeMemory));
+   allocateQueues();
 
    createPCB("Commhand", 's', 9);
    PCB *new_pcb = findPCB("Commhand");
