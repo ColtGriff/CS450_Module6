@@ -196,6 +196,13 @@ context *callerContext;
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
 
+  // Add to your IF block that checks the op code for IDLE/EXIT
+  // If the op code is read or write
+  // Insert PCB to blocked queue
+  // Insert an iod to the IO queue.
+  // Call your IO scheduler that:
+  // Reassign cop's stack top and set its state accordingly.
+
   PCB *tempOOP = NULL;
   if (COP == NULL)
   { // sys_call has not been called yet.
@@ -232,4 +239,12 @@ u32int *sys_call(context *registers)
     return (u32int *)COP->stackTop;
   }
   return (u32int *)callerContext;
+}
+
+void io_scheduler()
+{
+  // Check if there are any active or completed IO processes on the DCB.
+  // If completed,
+  // unblock the corresponding PCB and remove it from queue
+  // call com_read() or com_write() on the next iod depending on the op code.
 }
