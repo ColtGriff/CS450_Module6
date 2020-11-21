@@ -1,6 +1,11 @@
 // The file to house your r6 code.
 
 #include <Driver.h>
+#include <core/serial.h>
+#include <string.h>
+#include "../mpx_supt.h"
+#include <core/io.h>
+#include "../utilities.h"
 
 dcb *DCB; // the device representing the terminal.
 
@@ -19,6 +24,12 @@ void pic_mask(char enable)
     // If enable, do a logical NOT on the IRQ for COM1.
     // Obtain the mask by inb(the PIC_MASK register).
     // outb (PIC MASK register, (logical AND the mask with the irq from step 1))
+
+    if (enable == '1')
+    {
+        inb(PIC_MASK);
+        outb(PIC_MASK, (PIC_MASK && (!IRQ_COM1)));
+    }
 }
 
 int com_open(int *e_flag, int baud_rate)
@@ -66,6 +77,10 @@ void serial_io()
     // obtain interrupt type. Call appropriate second level handler
     // Check if the event has completed. If so call io scheduler.
     // outb(PIC register, PIC end of interrupt)
+
+    if (DCB->port_open == OPEN)
+    {
+    }
 }
 
 void serial_write()
