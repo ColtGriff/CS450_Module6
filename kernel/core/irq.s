@@ -147,5 +147,5 @@ sys_call_isr:
 	iret
 
 serial_io_isr:
-	call serial_io_isr
+	call serial_io
 	iret

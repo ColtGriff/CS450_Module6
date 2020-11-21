@@ -31,7 +31,7 @@ typedef struct dcb
 {
     // params here
     void *port_open;
-    void *e_flag;
+    int *e_flag;
     void *status;
     void *buffer_ptr;
     void *count_ptr;
