@@ -51,13 +51,13 @@ int com_open(int *e_flag, int baud_rate)  // ME
 	// -103 port already open
 
 	if(e_flag == NULL){
-		return (-101)
+		return (-101);
 	}
 	else if(baud_rate <= 0){
-		return (-102)
+		return (-102);
 	}
 	else if(dcb.port_open == OPEN){
-		return (-103)
+		return (-103);
 	}
 	else{
 		dcb.status = IDLE;

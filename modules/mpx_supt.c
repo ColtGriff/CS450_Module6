@@ -18,7 +18,7 @@
 // system calls via sys_req
 param params;
 iod*tempIOD;
-tempIOD->op
+tempIOD->op;
 // global for the current module
 int current_module = -1;
 static int io_module_active = 0;
@@ -200,8 +200,8 @@ u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
 
   // Add to your IF block that checks the op code for IDLE/EXIT
-  if (params.op_code == IDLE || params.op_code == EXIT)
-    insertPCB(COP); // not sure.
+  //if (params.op_code == IDLE || params.op_code == EXIT)
+    //insertPCB(COP); // not sure.
   // If the op code is read or write
      // Insert PCB to blocked queue
      // Insert an iod to the IO queue.
