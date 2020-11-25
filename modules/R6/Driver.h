@@ -5,6 +5,11 @@
 #define PIC_MASK 0x21
 #define IRQ_COM1 0x10
 
+#define OPEN 1
+#define CLOSE 0
+
+#include "../mpx_supt.h"
+
 /*
 * enum for the possible dcb states.
 */
@@ -30,13 +35,14 @@ typedef enum status_t
 typedef struct dcb
 {
     // params here
-    void *port_open;
-    void *e_flag;
-    void *status;
-    void *buffer_ptr;
-    void *count_ptr;
-    void *buffer_loc;
-    void *byte_count;
+    int com_port;
+    int port_open; // 0 closed, 1 is open.
+    int e_flag;    // 0 IO not finished, 1 IO finished
+    int status;    // EXIT, IDLE, READ, WRITE, INVALID_OPERATION: 0, 1, 2, 3, 4 respectively
+    char *buffer_ptr;
+    int *count_ptr;
+    u32int buffer_loc;
+    int byte_count;
 } dcb;
 
 /*!
@@ -51,12 +57,12 @@ typedef struct dcb
 typedef struct iod
 {
     // params here
-    void *pcb_id;
-    void *op_code;
-    void *com_port;
-    void *buffer_ptr;
-    void *count_ptr;
-    void *next;
+    int pcb_id;
+    int op_code;
+    int com_port;
+    char *buffer_ptr;
+    int *count_ptr;
+    struct iod *next;
 } iod;
 
 /*!
