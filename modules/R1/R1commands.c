@@ -43,7 +43,7 @@ void help()
 
 int version()
 {
-	printMessage("Version 5\n");
+	printMessage("Version 6\n");
 
 	return 0;
 }
