@@ -262,9 +262,10 @@ iod *tempIOD;
 void io_scheduler()
 {
   // Check if there are any active or completed IO processes on the DCB.
-  if (tempDCB->e_flag == 1)
-  { // IO process completed
+  if (tempDCB->e_flag == 1) // IO process completed?
+  { 
     // unblock the corresponding PCB and remove it from queue
+
     int count = 0;
     PCB *tempPCB = getBlocked()->head;
     while (tempPCB != NULL)
@@ -277,6 +278,8 @@ void io_scheduler()
       tempPCB = tempPCB->nextPCB;
       count++;
     }
+    
+    unblockPCB(tempIOD->pcb_id);
 
     // call com_read() or com_write() on the next iod depending on the op code.
 
