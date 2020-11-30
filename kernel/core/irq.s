@@ -26,6 +26,7 @@
 [GLOBAL rtc_isr]
 [GLOBAL sys_call_isr]
 [GLOBAL serial_io_isr]
+[GLOBAL serial_io]
 
 ;; Names of the C handlers
 extern do_divide_error
@@ -47,7 +48,7 @@ extern do_reserved
 extern do_coprocessor
 extern sys_call
 extern serial_io_isr
-
+extern serial_io
 
 ; RTC interrupt handler
 ; Tells the slave PIC to ignore
