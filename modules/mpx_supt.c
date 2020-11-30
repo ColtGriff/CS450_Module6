@@ -265,18 +265,20 @@ void io_scheduler()
   { // IO process completed
     // unblock the corresponding PCB and remove it from queue
     // Assumming that
-    int count = 0;
-    PCB *tempPCB = getBlocked()->head;
-    while (tempPCB != NULL)
-    {
-      if (count == tempIOD->pcb_id)
-      {
-        unblockPCB(tempPCB->processName);
-        break;
-      }
-      tempPCB = tempPCB->nextPCB;
-      count++;
-    }
+
+    // int count = 0;
+    // PCB *tempPCB = getBlocked()->head;
+    // while (tempPCB != NULL)
+    // {
+    //   if (count == tempIOD->pcb_id)
+    //   {
+    //     unblockPCB(tempPCB->processName);
+    //     break;
+    //   }
+    //   tempPCB = tempPCB->nextPCB;
+    //   count++;
+    // }
+    unblockPCB(tempIOD->pcb_id);
 
     // call com_read() or com_write() on the next iod depending on the op code.
 
