@@ -11,6 +11,9 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 int mask;
 dcb *DCB; // the device representing the terminal.
 
+// ring buffer
+ring_buffer ring; // where do we initialize the pointers for the ring buffer?
+
 void disable_interrupts()
 {
     outb(IRQ_COM1 + 1, 0x00); //disable interrupts
@@ -351,4 +354,17 @@ void serial_line()
 {
     // read a value from the Line Status Register and return to first level handler.
     inb(COM1 + 5);
+}
+
+void push(char input)
+{
+    ring.write_ptr = input;
+    ring.write_ptr = (char *)(((u32int)(ring.write_ptr) + 1) % 30);
+}
+
+char pop()
+{
+    char result = &ring.read_ptr;
+    ring.read_ptr = (char *)(((u32int)(ring.write_ptr) + 1) % 30);
+    return result;
 }

@@ -70,6 +70,13 @@ typedef struct iod
     struct iod *next;
 } iod;
 
+typedef struct ring_buffer
+{
+    char buffer[30];
+    char *read_ptr;
+    char *write_ptr;
+} ring_buffer;
+
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
 +*  @param enable 1 to enable or 0 to disable.
@@ -137,3 +144,7 @@ void serial_read();
 void serial_modem();
 
 void serial_line();
+
+void push(char input);
+
+char pop();
