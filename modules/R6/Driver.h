@@ -8,7 +8,10 @@
 #define OPEN 1
 #define CLOSE 0
 
+#define COM1 0x3F8
+
 #include "../mpx_supt.h"
+#include "../R2/R2_Internal_Functions_And_Structures.h"
 
 /*
 * enum for the possible dcb states.
@@ -42,7 +45,7 @@ typedef struct dcb
     int status;    // EXIT, IDLE, READ, WRITE, INVALID_OPERATION: 0, 1, 2, 3, 4 respectively
     char *buffer_ptr;
     int *count_ptr;
-    u32int buffer_loc;
+    int buffer_loc;
     int byte_count;
 
 } dcb;
@@ -59,7 +62,7 @@ typedef struct dcb
 typedef struct iod
 {
     // params here
-    int pcb_id;
+    PCB *pcb_id;
     int op_code;
     int com_port;
     char *buffer_ptr;

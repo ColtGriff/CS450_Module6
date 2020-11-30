@@ -148,6 +148,31 @@ void serial_io()
 
     if (DCB->port_open == OPEN)
     {
+        if (inb(COM1 + 2) & 0b0) // Interrupt was caused by the COM1 serial port
+        {
+            if (inb(COM1 + 2) & 0b000) // Modem Status Interrupt
+            {
+                serial_modem();
+            }
+            else if (inb(COM1 + 2) & 0b010) // Output Interrupt
+            {
+                serial_write();
+            }
+            else if (inb(COM1 + 2) & 0b100) // Input Interrupt
+            {
+                serial_read();
+            }
+            else if (inb(COM1 + 2) & 0b110) // Line Status Interrupt
+            {
+                serial_line();
+            }
+
+            if (DCB->e_flag == 1)
+            {
+                io_scheduler();
+            }
+            outb(PIC_REG, PIC_EOI); // send EOI to the PIC command register.
+        }
     }
 }
 
@@ -157,6 +182,27 @@ void serial_write()
     // If there are any more characters left in the buffer, print them
     // Othewise we are done printing
     // Update the dcb status. Disable output interrupts
+
+    if (DCB->status == WRITE)
+    {
+        if (DCB->count_ptr > 0)
+        {
+            // if count has not been exhausted, get the next character from the requestor's output buffer and store it in the output register.
+            // return without signaling completion.
+            outb(COM1, (DCB->buffer_ptr + DCB->buffer_loc));
+            DCB->buffer_loc++;
+            DCB->count_ptr--;
+            DCB->byte_count++;
+            return;
+        }
+        else
+        {
+            DCB->status = IDLE;
+            DCB->e_flag = 1;
+            outb(COM1 + 1, (COM1 + 1) & 0b01);
+            return DCB->count_ptr;
+        }
+    }
 }
 
 void serial_read()
@@ -165,4 +211,39 @@ void serial_read()
     // Read a character from the COM port & add it to the buffer.
     // If we reached a new line or the buffer size, we are done reading
     // Update the dcb status. Disable intput interrupts
+    char input = inb(COM1);
+    if (DCB->status == READ)
+    {
+        (DCB->buffer_ptr + DCB->buffer_loc) = input;
+        if (DCB->count_ptr > 0 && input != '\n')
+        {
+            return;
+        }
+        else
+        {
+            DCB->status = IDLE;
+            DCB->e_flag = 1;
+            return DCB->count_ptr;
+        }
+    }
+    else
+    {
+        /*
+        * push to the ring buffer
+        * if buffer is full, discard the character.
+        * return to first level anyway and do not signal completion.
+        */
+    }
+}
+
+void serial_modem()
+{
+    // read the modem status register and return to first level handler.
+    inb(COM1 + 6);
+}
+
+void serial_line()
+{
+    // read a value from the Line Status Register and return to first level handler.
+    inb(COM1 + 5);
 }
