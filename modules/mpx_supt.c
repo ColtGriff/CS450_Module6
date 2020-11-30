@@ -265,7 +265,6 @@ void io_scheduler()
   if (tempDCB->e_flag == 1)
   { // IO process completed
     // unblock the corresponding PCB and remove it from queue
-    // Assumming that
     int count = 0;
     PCB *tempPCB = getBlocked()->head;
     while (tempPCB != NULL)
