@@ -94,10 +94,13 @@ void enable_interrupts();
 */
 int com_open(int *e_flag, int baud_rate);
 
+
 /*!
 +*  com_close() Closes the communication port.
 +*  @return error code if port was not open, or a 0 for successful operation
 */
+int com_open_version1(int *e_flag, int baud_rate) ;
+
 int com_close(void);
 
 /*!

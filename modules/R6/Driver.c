@@ -34,8 +34,7 @@ void pic_mask(char enable)
     }
 }
 
-<<<<<<< HEAD
-int com_open(int *e_flag, int baud_rate) // ME
+int com_open_version1(int *e_flag, int baud_rate) // ME
 {
     // Check the event flag is not null, the baud rate valid,and port is open.
     // Set the status of the device to open and idle.
@@ -81,7 +80,6 @@ int com_open(int *e_flag, int baud_rate) // ME
 		return 0;
 	}
 
-=======
 int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, instead I followed the steps from the detailed document
 { 
     // Check the event flag is not null, the baud rate valid,and port is not currently open. - DONE
@@ -153,7 +151,7 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
 
         return 0; // no error
     }
->>>>>>> bd80121d8dde81ba586138cb8a1263ee0e40d1c7
+
 }
 
 int com_close(void) 
@@ -247,20 +245,20 @@ int com_read(char *buf_ptr, int *count_ptr)
 
 int com_write(char *buf_ptr, int *count_ptr) 
 {
-<<<<<<< HEAD
+
     // check port open, check valid pointer, check port is idle, etc.
     // set dcb vars
     // disable interrupts
     // write a single byte to the device.
     // enable interrupts
     // enable write interrupts interrupts
-2
+
     // if no error return 0, otherwise:
     // -401 serial port not open
     // -402 invalid buffer address
     // -403 invalid count address or count value
     // -404 device busy
-=======
+
     // check port open, check valid pointer, check port is idle, etc. - DONE
     // set dcb vars - DONE
     // disable interrupts - DONE
@@ -299,7 +297,7 @@ int com_write(char *buf_ptr, int *count_ptr)
 
 		return 0; // no error
 	}
->>>>>>> bd80121d8dde81ba586138cb8a1263ee0e40d1c7
+
 }
 
 void serial_io()
