@@ -225,7 +225,7 @@ int com_write(char *buf_ptr, int *count_ptr)
         DCB->e_flag = 0;
 
         cli();
-        (void)outb(COM1); // get first character from requestors buffer and store it in the output reg
+        (void)outb(COM1); // get first character from requestors buffer and store it in the output reg ------there are a couple of errors here in my editor
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
