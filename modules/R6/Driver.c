@@ -111,7 +111,7 @@ int com_close(void)
 {
     // Set the status of the device to closed - DONE(?)
     // Disable pic mask - CONFUSED ON THIS AND 
-    // Disable interrupts - THIS
+    // Disable interrupts - THIS BECAUSE INTERRUPTS HAVE TO BE DISABLED TO WORK ON PIC MASK
 
     if (DCB->port_open != 1)
     {
