@@ -41,11 +41,10 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
     // Set the event flag of the device to the one passed in - DONE
     // Save interrupt vector - DONE
     // Disable your interrupts. - DONE
-    // Set registers. Take a look at init_serial() in serial.c - DONE I THINK
+    // Set registers. Take a look at init_serial() in serial.c - DONE
     // PIC mask enable - DONE
     // Enable your interrupts. - DONE
-    // Read a single byte to reset the port. - DONE I THINK
-
+    // Read a single byte to reset the port. - DONE
     if (e_flag == NULL)
     {
         return (-101); // invalid event flag pointer
@@ -65,11 +64,7 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
         DCB->status = 1;    // setting status idle
         DCB->e_flag = e_flag;
 
-        // initialize ring buffer parameters here
-
-        IVT = idt_get_gate(0x24); // saving current interrupt handler
-
-        // Install the new handler in the interrupt vector?
+        // initialize ring buffer parameters here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         long baudR = 115200 / (long)baud_rate;
 
@@ -80,18 +75,17 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
         // base +4 : Modem control reg
         // base +5 : Line status reg
         // base +6 : modem status reg
-        disable_interrupts();
+        cli();
         outb(COM1 + 3, 0x80);  //set line control register
         outb(COM1 + 0, baudR); //set bsd least sig bit
         outb(COM1 + 1, 0x00);  //brd most significant bit ------------ Not too sure about how this works, from serial.c
         outb(COM1 + 3, 0x03);  //lock divisor; 8bits, no parity, one stop // 0000 0011
 
         // Enable the appropriate level in the PIC mask register
-
         mask = inb(PIC_MASK);
         mask = mask & ~0x10;
         outb(PIC_MASK, mask);
-        enable_interrupts();
+        sti();
 
         outb(COM1 + 4, 0x08); // Enable overall serial port interrupts
 
@@ -107,8 +101,8 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
 int com_close(void)
 {
     // Set the status of the device to closed - DONE(?)
-    // Disable pic mask - CONFUSED ON THIS AND
-    // Disable interrupts - THIS BECAUSE INTERRUPTS HAVE TO BE DISABLED TO WORK ON PIC MASK
+    // Disable pic mask - DONE
+    // Disable interrupts - DONE
 
     if (DCB->port_open != 1)
     {
@@ -121,19 +115,17 @@ int com_close(void)
         // Disable the appropriate level in the PIC mask reg
         // I'm fairly certain that I properly did this in com_open, but I'm not sure about this 0xEF here
         // Mrs. Hayhurst said to do the opposite of what was done in com_open to turn it back off
-        disable_interrupts();
+        cli();
         mask = inb(PIC_MASK); // 0x80 1000 0000
         mask = mask & ~0xEF;  // 0001 0000 -> ' -> & -> 1110 1111 = 0xEF
         outb(PIC_MASK, mask);
-        enable_interrupts();
+        sti();
 
         outb(COM1 + 3, 0x00); // Disable all interrupts in the ACC by loading zero values to the modem status reg
 
         outb(COM1 + 1, 0x00); // (prev comment continuation) and the interrupt enable reg
 
         outb(PIC_REG, 0x20); // passing the EOI code to the PIC_REG
-
-        idt_set_gate(0x24, IVT, 0x08, 0x8e); // restoring the interrupt vector saved in com_open (IVT)
 
         return 0; // no error
     }
@@ -175,10 +167,10 @@ int com_read(char *buf_ptr, int *count_ptr)
 
         DCB->e_flag = 0; // Clear callers event flag
 
-        disable_interrupts();
+        cli();
         // Copy characters from ring buffer to requestor's bufer, until the ring buffer is emptied, the requested amount has been reached, or a CR (enter) code has been found
         // the copied characters should, of course be removed from the ring buffer.  Either input interrupts or all interrupts should be disabled during the copying
-        enable_interrupts();
+        sti();
 
         // Enable input ready interupts only by storing the value 0x01 in the interrupt enable reg
         outb(COM1 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
@@ -202,7 +194,7 @@ int com_write(char *buf_ptr, int *count_ptr)
     // check port open, check valid pointer, check port is idle, etc. - DONE
     // set dcb vars - DONE
     // disable interrupts - DONE
-    // write a single byte to the device. - NOT DONE
+    // write a single byte to the device. - DONE
     // enable interrupts - DONE
     // enable write interrupts - DONE
 
@@ -232,13 +224,13 @@ int com_write(char *buf_ptr, int *count_ptr)
         DCB->status = 3; // setting status to writing
         DCB->e_flag = 0;
 
-        disable_interrupts();
-        // get first character from requestors buffer and store it in the output reg
-        enable_interrupts();
+        cli();
+        (void)outb(COM1); // get first character from requestors buffer and store it in the output reg
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
-        outb(COM1 + 1, intReg);
+        outb(COM1 + 1, intReg); // THESE MAY NEED TO BE BEFORE THE OUTB
+        sti();
 
         return 0; // no error
     }
