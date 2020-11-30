@@ -9,6 +9,7 @@
 #define CLOSE 0
 
 #define COM1 0x3F8
+#define ERROR_FULL -1
 
 #include "../mpx_supt.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
@@ -48,6 +49,10 @@ typedef struct dcb
     int buffer_loc;
     int byte_count;
 
+    // ring buffer parameters
+    char ring[30];
+    char *read_ptr;
+    char *write_ptr;
 } dcb;
 
 /*!
@@ -70,12 +75,12 @@ typedef struct iod
     struct iod *next;
 } iod;
 
-typedef struct ring_buffer
-{
-    char buffer[30];
-    char *read_ptr;
-    char *write_ptr;
-} ring_buffer;
+// typedef struct ring_buffer
+// {
+//     char buffer[30];
+//     char *read_ptr;
+//     char *write_ptr;
+// } ring_buffer;
 
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
@@ -145,6 +150,6 @@ void serial_modem();
 
 void serial_line();
 
-void push(char input);
+int push(char input);
 
 char pop();

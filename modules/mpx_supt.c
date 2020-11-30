@@ -200,7 +200,7 @@ u32int *sys_call(context *registers)
 
   // Add to your IF block that checks the op code for IDLE/EXIT
   //if (params.op_code == IDLE || params.op_code == EXIT)
-    //insertPCB(COP); // not sure.
+  //insertPCB(COP); // not sure.
   // If the op code is read or write
   // Insert PCB to blocked queue
   // Insert an iod to the IO queue.
@@ -263,22 +263,22 @@ void io_scheduler()
 {
   // Check if there are any active or completed IO processes on the DCB.
   if (tempDCB->e_flag == 1) // IO process completed?
-  { 
+  {
     // unblock the corresponding PCB and remove it from queue
 
     int count = 0;
-    PCB *tempPCB = getBlocked()->head;
-    while (tempPCB != NULL)
-    {
-      if (count == tempIOD->pcb_id)
-      {
-        unblockPCB(tempPCB->processName);
-        break;
-      }
-      tempPCB = tempPCB->nextPCB;
-      count++;
-    }
-    
+    // PCB *tempPCB = getBlocked()->head;
+    // while (tempPCB != NULL)
+    // {
+    //   if (count == tempIOD->pcb_id)
+    //   {
+    //     unblockPCB(tempPCB->processName);
+    //     break;
+    //   }
+    //   tempPCB = tempPCB->nextPCB;
+    //   count++;
+    // }
+
     unblockPCB(tempIOD->pcb_id);
 
     // call com_read() or com_write() on the next iod depending on the op code.

@@ -9,10 +9,7 @@
 
 u32int IVT; // the interrupt vector table, using this to save and restore the IVT in com_open/com_close
 int mask;
-dcb *DCB; // the device representing the terminal.
-
-// ring buffer
-ring_buffer ring; // where do we initialize the pointers for the ring buffer?
+dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
 void disable_interrupts()
 {
@@ -341,6 +338,13 @@ int serial_read()
         * if buffer is full, discard the character.
         * return to first level anyway and do not signal completion.
         */
+        if (push(input) == ERROR_FULL)
+        {
+            input = '\0';
+            return;
+        }
+
+        return;
     }
 }
 
@@ -356,15 +360,23 @@ void serial_line()
     inb(COM1 + 5);
 }
 
-void push(char input)
-{
-    ring.write_ptr = input;
-    ring.write_ptr = (char *)(((u32int)(ring.write_ptr) + 1) % 30);
+int push(char input)
+{ // add checks here.
+    if ((((u32int)(DCB->write_ptr) + 1) % 30) == DCB->read_ptr)
+    {
+        return ERROR_FULL; // ring buffer is full.
+    }
+    else
+    {
+        DCB->write_ptr = input;
+        DCB->write_ptr = (char *)(((u32int)(DCB->write_ptr) + 1) % 30);
+        return 0;
+    }
 }
 
 char pop()
 {
-    char result = &ring.read_ptr;
-    ring.read_ptr = (char *)(((u32int)(ring.write_ptr) + 1) % 30);
+    char result = &DCB->read_ptr;
+    DCB->read_ptr = (char *)(((u32int)(DCB->write_ptr) + 1) % 30);
     return result;
 }
