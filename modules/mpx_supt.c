@@ -17,8 +17,7 @@
 // global variable containing parameter used when making
 // system calls via sys_req
 param params;
-iod*tempIOD;
-tempIOD->op;
+
 // global for the current module
 int current_module = -1;
 static int io_module_active = 0;
@@ -188,8 +187,8 @@ void idle()
 
   while (1)
   {
-    sys_req(WRITE, DEFAULT_DEVICE, msg, &count);// will be removed for R6
-    sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL); // will be removed for R6
+    sys_req(WRITE, DEFAULT_DEVICE, msg, &count); // will be removed for R6
+    sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);   // will be removed for R6
   }
 }
 
@@ -203,10 +202,10 @@ u32int *sys_call(context *registers)
   //if (params.op_code == IDLE || params.op_code == EXIT)
     //insertPCB(COP); // not sure.
   // If the op code is read or write
-     // Insert PCB to blocked queue
-     // Insert an iod to the IO queue.
-     // Call your IO scheduler that:
-     // Reassign cop's stack top and set its state accordingly.
+  // Insert PCB to blocked queue
+  // Insert an iod to the IO queue.
+  // Call your IO scheduler that:
+  // Reassign cop's stack top and set its state accordingly.
 
   PCB *tempOOP = NULL;
   if (COP == NULL)
@@ -225,15 +224,17 @@ u32int *sys_call(context *registers)
     else if (params.op_code == EXIT)
     { // free COP.
       sys_free_mem(COP);
-    }else if (params.op_code == READ  || params.op_code == WRITE){
-      COP->runningStatus = -1;// -1 means blocked
+    }
+    else if (params.op_code == READ || params.op_code == WRITE)
+    {
+      COP->runningStatus = -1; // -1 means blocked
       COP->stackTop = (unsigned char *)registers;
       // tempOOP = COP;
-     insertPCB(COP->processName);
-     // iod: io descriptor
-     // insert iod into IOqueue 
-     io_scheduler();
-     //COP->stackTop = (unsigned char *)registers;
+      insertPCB(COP->processName);
+      // iod: io descriptor
+      // insert iod into IOqueue
+      io_scheduler();
+      //COP->stackTop = (unsigned char *)registers;
     }
   }
 
@@ -255,33 +256,34 @@ u32int *sys_call(context *registers)
   return (u32int *)callerContext;
 }
 
-dcb*tempDCB;
+dcb *tempDCB;
 
-iod*tempIOD;
+iod *tempIOD;
 void io_scheduler()
 {
   // Check if there are any active or completed IO processes on the DCB.
-  if(tempDCB->e_flag == 1){ // IO process completed
-      // unblock the corresponding PCB and remove it from queue
-      // Assumming that 
-       int count = 0; 
-       PCB *tempPCB = getBlocked()->head;
-      while(tempPCB != NULL){
-           if(count == tempIOD->pcb_id){
-              unblockPCB(tempPCB->processName);
-             break;
-            }
-            tempPCB =tempPCB->nextPCB;
-            count++;
+  if (tempDCB->e_flag == 1)
+  { // IO process completed
+    // unblock the corresponding PCB and remove it from queue
+    // Assumming that
+    int count = 0;
+    PCB *tempPCB = getBlocked()->head;
+    while (tempPCB != NULL)
+    {
+      if (count == tempIOD->pcb_id)
+      {
+        unblockPCB(tempPCB->processName);
+        break;
       }
-    
+      tempPCB = tempPCB->nextPCB;
+      count++;
+    }
+
     // call com_read() or com_write() on the next iod depending on the op code.
-    
+
     if (tempIOD->next->op_code == WRITE)
-      com_write(tempIOD->next->buffer_ptr,tempIOD->next->count_ptr);
+      com_write(tempIOD->next->buffer_ptr, tempIOD->next->count_ptr);
     if (tempIOD->next->op_code == READ)
-      com_read(tempIOD->next->buffer_ptr,tempIOD->next->count_ptr);
+      com_read(tempIOD->next->buffer_ptr, tempIOD->next->count_ptr);
   }
-  
-  
 }

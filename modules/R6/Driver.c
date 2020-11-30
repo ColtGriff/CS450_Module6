@@ -7,7 +7,7 @@
 #include <core/io.h>
 #include "../utilities.h"
 
-u32int IVT // the interrupt vector table, using this to save and restore the IVT in com_open/com_close
+u32int IVT; // the interrupt vector table, using this to save and restore the IVT in com_open/com_close
 
 dcb *DCB; // the device representing the terminal.
 
@@ -34,7 +34,7 @@ void pic_mask(char enable)
     }
 }
 
-int com_open(int *e_flag, int baud_rate)  // ME
+int com_open(int *e_flag, int baud_rate) // ME
 {
     // Check the event flag is not null, the baud rate valid,and port is open.
     // Set the status of the device to open and idle.
@@ -45,6 +45,7 @@ int com_open(int *e_flag, int baud_rate)  // ME
     // PIC mask enable
     // Enable your interrupts.
     // Read a single byte to reset the port.
+
 
 	// -101 for invalid (null) event flag pointer
 	// -102 invalid baud rate divisor
@@ -78,9 +79,10 @@ int com_open(int *e_flag, int baud_rate)  // ME
 
 		return 0;
 	}
+
 }
 
-int com_close(void)  // ME
+int com_close(void) // ME
 {
     // Set the status of the device to closed
     // Disable pic mask
@@ -89,21 +91,22 @@ int com_close(void)  // ME
     // if no error return 0, otherwise return -201 - serial port not open
     // Restore the original saved interrupt vector
 
-	if(dcb.port_open == CLOSED){
-		return (-201);
-	}
-	else{
-		dcb.port_open == CLOSED;
-		pic_mask(0);
-		disable_interrupts();
-		idt_set_gate(0x24, IVT, 0x08, 0x8e); 
+    if (DCB->port_open == CLOSE)
+    {
+        return (-201);
+    }
+    else
+    {
+        DCB->port_open == CLOSE;
+        pic_mask(0);
+        disable_interrupts();
+        idt_set_gate(0x24, IVT, 0x08, 0x8e);
 
-		return 0;
-	}
-
+        return 0;
+    }
 }
 
-int com_read(char *buf_ptr, int *count_ptr)  // ME
+int com_read(char *buf_ptr, int *count_ptr) // ME
 {
     // check port open, check valid pointer, check port is idle, etc.
     // set dcb vars
@@ -112,16 +115,14 @@ int com_read(char *buf_ptr, int *count_ptr)  // ME
     // enable interrupts
     // enable input ready interrupts
 
-	// if no error return 0, otherwise:
-	// return -301 (port not open)
-	// return -302 (invalid buffer address)
-	// -303 (invalid count address or count value)
-	// -304 (device busy)
-
-
+    // if no error return 0, otherwise:
+    // return -301 (port not open)
+    // return -302 (invalid buffer address)
+    // -303 (invalid count address or count value)
+    // -304 (device busy)
 }
 
-int com_write(char *buf_ptr, int *count_ptr)  // ME
+int com_write(char *buf_ptr, int *count_ptr) // ME
 {
     // check port open, check valid pointer, check port is idle, etc.
     // set dcb vars
@@ -129,7 +130,7 @@ int com_write(char *buf_ptr, int *count_ptr)  // ME
     // write a single byte to the device.
     // enable interrupts
     // enable write interrupts interrupts
-
+2
     // if no error return 0, otherwise:
     // -401 serial port not open
     // -402 invalid buffer address
