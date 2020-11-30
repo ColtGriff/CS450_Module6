@@ -284,7 +284,7 @@ void serial_io()
     }
 }
 
-void serial_write()
+int serial_write()
 {
     // Ensure the dcb status is writing
     // If there are any more characters left in the buffer, print them
@@ -308,12 +308,12 @@ void serial_write()
             DCB->status = IDLE;
             DCB->e_flag = 1;
             outb(COM1 + 1, (COM1 + 1) & 0b01);
-            return DCB->count_ptr;
+            return &DCB->count_ptr;
         }
     }
 }
 
-void serial_read()
+int serial_read()
 {
     // Ensure the dcb status is reading. If not, push to the ring buffer.
     // Read a character from the COM port & add it to the buffer.
@@ -331,7 +331,7 @@ void serial_read()
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
-            return DCB->count_ptr;
+            return &DCB->count_ptr;
         }
     }
     else

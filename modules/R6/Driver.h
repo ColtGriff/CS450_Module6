@@ -133,13 +133,13 @@ void serial_io();
 /*!
 +*  serial_write() provides interrupt routine for writing IO.
 */
-void serial_write();
+int serial_write();
 
 /*!
 +*  serial_read() provides interrupt routine for reading IO.
 */
 
-void serial_read();
+int serial_read();
 
 void serial_modem();
 
