@@ -1,6 +1,6 @@
 // The file to house your r6 code.
 
-#include <Driver.h>
+#include "Driver.h"
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
@@ -62,7 +62,7 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
 
         DCB->port_open = 1; // setting device open
         DCB->status = 1;    // setting status idle
-        DCB->e_flag = e_flag;
+        DCB->e_flag = (int)&(e_flag);
 
         // initialize ring buffer parameters here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -110,7 +110,7 @@ int com_close(void)
     }
     else
     {
-        DCB->port_open == 0; // Clear open indicator in the DCB
+        DCB->port_open = 0; // Clear open indicator in the DCB
 
         // Disable the appropriate level in the PIC mask reg
         // I'm fairly certain that I properly did this in com_open, but I'm not sure about this 0xEF here
@@ -187,6 +187,7 @@ int com_read(char *buf_ptr, int *count_ptr)
             return 0; // no error
         }
     }
+    return 0;
 }
 
 int com_write(char *buf_ptr, int *count_ptr)
@@ -282,7 +283,7 @@ int serial_write()
 
     if (DCB->status == WRITE)
     {
-        if (DCB->count_ptr > 0)
+        if ((int)&(DCB->count_ptr) > 0)
         {
             // if count has not been exhausted, get the next character from the requestor's output buffer and store it in the output register.
             // return without signaling completion.
@@ -290,16 +291,17 @@ int serial_write()
             DCB->buffer_loc++;
             DCB->count_ptr--;
             DCB->byte_count++;
-            return;
+            return 0;
         }
         else
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
             outb(COM1 + 1, (COM1 + 1) & 0b01);
-            return &DCB->count_ptr;
+            return (int)&(DCB->count_ptr);
         }
     }
+    return 0;
 }
 
 int serial_read()
@@ -312,15 +314,15 @@ int serial_read()
     if (DCB->status == READ)
     {
         (DCB->buffer_ptr + DCB->buffer_loc) = input;
-        if (DCB->count_ptr > 0 && input != '\n')
+        if ((int)&(DCB->count_ptr) > 0 && input != '\n')
         {
-            return;
+            return 0;
         }
         else
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
-            return &DCB->count_ptr;
+            return (int)&DCB->count_ptr;
         }
     }
     else
@@ -333,10 +335,10 @@ int serial_read()
         if (push(input) == ERROR_FULL)
         {
             input = '\0';
-            return;
+            return ERROR_FULL;
         }
 
-        return;
+        return 0;
     }
 }
 
@@ -353,22 +355,22 @@ void serial_line()
 }
 
 int push(char input)
-{ // add checks here.
-    if ((((u32int)(DCB->write_ptr) + 1) % 30) == DCB->read_ptr)
+{
+    if (DCB->ring[(DCB->write_count + 1) % 30] == DCB->ring[DCB->read_count])
     {
         return ERROR_FULL; // ring buffer is full.
     }
     else
     {
-        DCB->write_ptr = input;
-        DCB->write_ptr = (char *)(((u32int)(DCB->write_ptr) + 1) % 30);
+        DCB->ring[DCB->write_count] = input;
+        DCB->write_count = (DCB->write_count + 1) % 30;
         return 0;
     }
 }
 
 char pop()
 {
-    char result = &DCB->read_ptr;
-    DCB->read_ptr = (char *)(((u32int)(DCB->write_ptr) + 1) % 30);
+    char result = DCB->ring[DCB->read_count];
+    DCB->read_count = (DCB->read_count + 1) % 30;
     return result;
 }

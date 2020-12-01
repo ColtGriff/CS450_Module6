@@ -8,11 +8,9 @@
 #define OPEN 1
 #define CLOSE 0
 
-#define COM1 0x3F8
 #define ERROR_FULL -1
 
 #include "../mpx_supt.h"
-#include "../R2/R2_Internal_Functions_And_Structures.h"
 
 /*
 * enum for the possible dcb states.
@@ -51,8 +49,8 @@ typedef struct dcb
 
     // ring buffer parameters
     char ring[30];
-    char *read_ptr;
-    char *write_ptr;
+    int read_count;
+    int write_count;
 } dcb;
 
 /*!

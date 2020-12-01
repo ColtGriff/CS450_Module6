@@ -230,7 +230,7 @@ u32int *sys_call(context *registers)
       COP->runningStatus = -1; // -1 means blocked
       COP->stackTop = (unsigned char *)registers;
       // tempOOP = COP;
-      insertPCB(COP->processName);
+      insertPCB(COP);
       // iod: io descriptor
       // insert iod into IOqueue
       io_scheduler();
@@ -266,7 +266,7 @@ void io_scheduler()
   {
     // unblock the corresponding PCB and remove it from queue
 
-    int count = 0;
+    // int count = 0;
     // PCB *tempPCB = getBlocked()->head;
     // while (tempPCB != NULL)
     // {
@@ -279,7 +279,7 @@ void io_scheduler()
     //   count++;
     // }
 
-    unblockPCB(tempIOD->pcb_id);
+    unblockPCB(tempIOD->pcb_id->processName);
 
     // call com_read() or com_write() on the next iod depending on the op code.
 
