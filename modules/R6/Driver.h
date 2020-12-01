@@ -8,10 +8,9 @@
 #define OPEN 1
 #define CLOSE 0
 
-#define COM1 0x3F8
+#define ERROR_FULL -1
 
 #include "../mpx_supt.h"
-#include "../R2/R2_Internal_Functions_And_Structures.h"
 
 /*
 * enum for the possible dcb states.
@@ -48,6 +47,10 @@ typedef struct dcb
     int buffer_loc;
     int byte_count;
 
+    // ring buffer parameters
+    char ring[30];
+    int read_count;
+    int write_count;
 } dcb;
 
 /*!
@@ -77,6 +80,14 @@ typedef struct iodQueue // simply an IO queue
 
 }iodQueue;
 
+// typedef struct ring_buffer
+// {
+//     char buffer[30];
+//     char *read_ptr;
+//     char *write_ptr;
+// } ring_buffer;
+
+
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
 +*  @param enable 1 to enable or 0 to disable.
@@ -101,12 +112,10 @@ void enable_interrupts();
 */
 int com_open(int *e_flag, int baud_rate);
 
-
 /*!
 +*  com_close() Closes the communication port.
 +*  @return error code if port was not open, or a 0 for successful operation
 */
-int com_open_version1(int *e_flag, int baud_rate) ;
 
 int com_close(void);
 
@@ -135,10 +144,18 @@ void serial_io();
 /*!
 +*  serial_write() provides interrupt routine for writing IO.
 */
-void serial_write();
+int serial_write();
 
 /*!
 +*  serial_read() provides interrupt routine for reading IO.
 */
 
-void serial_read();
+int serial_read();
+
+void serial_modem();
+
+void serial_line();
+
+int push(char input);
+
+char pop();

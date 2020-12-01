@@ -20,7 +20,8 @@ R3/R3commands.o \
 R3/procsr3.o \
 R4/R4commands.o \
 utilities.o \
-R5/R5commands.o 
+R5/R5commands.o \
+R6/Driver.o 
 .c.s:
 	$(CC) $(CFLAGS) -S -o $@ $<
 .s.o:

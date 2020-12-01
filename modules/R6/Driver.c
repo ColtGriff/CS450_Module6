@@ -1,6 +1,6 @@
 // The file to house your r6 code.
 
-#include <Driver.h>
+#include "Driver.h"
 #include <core/serial.h>
 #include <string.h>
 #include "../mpx_supt.h"
@@ -8,8 +8,8 @@
 #include "../utilities.h"
 
 u32int IVT; // the interrupt vector table, using this to save and restore the IVT in com_open/com_close
-
-dcb *DCB; // the device representing the terminal.
+int mask;
+dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
 iodQueue *active; // IO queue for active requests
 iodQueue *waiting; // queue for pending I/O requests
@@ -38,19 +38,16 @@ void pic_mask(char enable)
 }
 
 int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, instead I followed the steps from the detailed document
-{ 
+{
     // Check the event flag is not null, the baud rate valid,and port is not currently open. - DONE
     // Set the status of the device to open and idle. - DONE
     // Set the event flag of the device to the one passed in - DONE
     // Save interrupt vector - DONE
     // Disable your interrupts. - DONE
-    // Set registers. Take a look at init_serial() in serial.c - DONE I THINK
+    // Set registers. Take a look at init_serial() in serial.c - DONE
     // PIC mask enable - DONE
     // Enable your interrupts. - DONE
-    // Read a single byte to reset the port. - DONE I THINK
-
-    int mask;
-
+    // Read a single byte to reset the port. - DONE
     if (e_flag == NULL)
     {
         return (-101); // invalid event flag pointer
@@ -67,55 +64,48 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
     {
 
         DCB->port_open = 1; // setting device open
-        DCB->status = 1; // setting status idle
-        DCB->e_flag = e_flag;
+        DCB->status = 1;    // setting status idle
+        DCB->e_flag = (int)&(e_flag);
 
-        // initialize ring buffer parameters here
-
-        IVT = idt_get_gate(0x24); // saving current interrupt handler
-
-        // Install the new handler in the interrupt vector?
+        // initialize ring buffer parameters here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         long baudR = 115200 / (long)baud_rate;
 
-
         // com1:
         // base +1 : interrupt enable (if bit 7 of line control register is 1 base and base+1 are LSB and MSB respectively of baud rate divisor)
-		// base +2 : interrupt ID reg
+        // base +2 : interrupt ID reg
         // base +3 : line control reg
         // base +4 : Modem control reg
         // base +5 : Line status reg
         // base +6 : modem status reg
-        disable_interrupts();
-        outb(0x3F8 + 3, 0x80);          //set line control register
-        outb(0x3F8 + 0, baudR); 		//set bsd least sig bit
-        outb(0x3F8 + 1, 0x00);          //brd most significant bit ------------ Not too sure about how this works, from serial.c
-        outb(0x3F8 + 3, 0x03);          //lock divisor; 8bits, no parity, one stop // 0000 0011
+        cli();
+        outb(COM1 + 3, 0x80);  //set line control register
+        outb(COM1 + 0, baudR); //set bsd least sig bit
+        outb(COM1 + 1, 0x00);  //brd most significant bit ------------ Not too sure about how this works, from serial.c
+        outb(COM1 + 3, 0x03);  //lock divisor; 8bits, no parity, one stop // 0000 0011
 
         // Enable the appropriate level in the PIC mask register
-        
         mask = inb(PIC_MASK);
-        mask = mask & ~0x10; 
+        mask = mask & ~0x10;
         outb(PIC_MASK, mask);
-        enable_interrupts();
-       
-        outb(0x3F8 + 4, 0x08)			// Enable overall serial port interrupts
+        sti();
+
+        outb(COM1 + 4, 0x08); // Enable overall serial port interrupts
 
         // Enable input ready interupts only by storing the value 0x01 in the interrupt enable reg
-        outb(0x3F8 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
+        outb(COM1 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
 
-        (void)inb(0x3F8); //read bit to reset port
+        (void)inb(COM1); //read bit to reset port
 
         return 0; // no error
     }
-
 }
 
-int com_close(void) 
+int com_close(void)
 {
     // Set the status of the device to closed - DONE(?)
-    // Disable pic mask - CONFUSED ON THIS AND 
-    // Disable interrupts - THIS BECAUSE INTERRUPTS HAVE TO BE DISABLED TO WORK ON PIC MASK
+    // Disable pic mask - DONE
+    // Disable interrupts - DONE
 
     if (DCB->port_open != 1)
     {
@@ -123,31 +113,28 @@ int com_close(void)
     }
     else
     {
-        DCB->port_open == 0; // Clear open indicator in the DCB
-        
+        DCB->port_open = 0; // Clear open indicator in the DCB
+
         // Disable the appropriate level in the PIC mask reg
         // I'm fairly certain that I properly did this in com_open, but I'm not sure about this 0xEF here
         // Mrs. Hayhurst said to do the opposite of what was done in com_open to turn it back off
-        disable_interrupts();
+        cli();
         mask = inb(PIC_MASK); // 0x80 1000 0000
-        mask = mask & ~0xEF; // 0001 0000 -> ' -> & -> 1110 1111 = 0xEF
+        mask = mask & ~0xEF;  // 0001 0000 -> ' -> & -> 1110 1111 = 0xEF
         outb(PIC_MASK, mask);
-        enable_interrupts();
+        sti();
 
-        outb(0x3F8 + 3, 0x00); // Disable all interrupts in the ACC by loading zero values to the modem status reg
+        outb(COM1 + 3, 0x00); // Disable all interrupts in the ACC by loading zero values to the modem status reg
 
-        outb(0x3F8 + 1, 0x00); // (prev comment continuation) and the interrupt enable reg
+        outb(COM1 + 1, 0x00); // (prev comment continuation) and the interrupt enable reg
 
         outb(PIC_REG, 0x20); // passing the EOI code to the PIC_REG
-
-
-        idt_set_gate(0x24, IVT, 0x08, 0x8e); // restoring the interrupt vector saved in com_open (IVT)
 
         return 0; // no error
     }
 }
 
-int com_read(char *buf_ptr, int *count_ptr) 
+int com_read(char *buf_ptr, int *count_ptr)
 {
     // check port open, check valid pointer, check port is idle, etc. - DONE
     // set dcb vars - DONE
@@ -156,105 +143,101 @@ int com_read(char *buf_ptr, int *count_ptr)
     // enable interrupts - DONE
     // enable input ready interrupts - DONE
 
+    if (DCB->port_open != 1)
+    {
+        return (-301); // Port not open
+    }
+    if (buf_ptr == NULL)
+    {
+        return (-302); // invalid buffer address
+    }
+    if (count_ptr == NULL)
+    {
+        return (-303); // invalid count address(?) or value
+    }
+    if (DCB->status != 1)
+    {
+        return (-304); // device busy
+    }
+    else
+    {
 
-	if (DCB->port_open != 1){
-		return (-301); // Port not open
-	}
-	if(buf_ptr == NULL){
-		return (-302); // invalid buffer address
-	}
-	if(count_ptr == NULL){
-		return (-303); // invalid count address(?) or value
-	}
-	if(DCB->status != 1){
-		return (-304); // device busy
-	}
-	else{
-		
-		// initialize the input buffer variables
-		DCB->buffer_ptr = buf_ptr;
-		DCB->count_ptr = count_ptr;
+        // initialize the input buffer variables
+        DCB->buffer_ptr = buf_ptr;
+        DCB->count_ptr = count_ptr;
 
-		DCB->status = 2; // set status to reading
+        DCB->status = 2; // set status to reading
 
-		DCB->e_flag = 0;// Clear callers event flag
+        DCB->e_flag = 0; // Clear callers event flag
 
-		disable_interrupts();
-		// Copy characters from ring buffer to requestor's bufer, until the ring buffer is emptied, the requested amount has been reached, or a CR (enter) code has been found
-		// the copied characters should, of course be removed from the ring buffer.  Either input interrupts or all interrupts should be disabled during the copying
-		enable_interrupts();
+        cli();
+        // Copy characters from ring buffer to requestor's bufer, until the ring buffer is emptied, the requested amount has been reached, or a CR (enter) code has been found
+        // the copied characters should, of course be removed from the ring buffer.  Either input interrupts or all interrupts should be disabled during the copying
+        sti();
 
-		// Enable input ready interupts only by storing the value 0x01 in the interrupt enable reg
-        outb(0x3F8 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
-		  
-		if(){ // If more characters are needed, return. If the block is complete, continue with step 7
-			return 0;
-		}
-		if(){ // step 7
-			DCB->status = 1; // reset DCB status to idle
-			DCB->e_flag = 1; // set event flag
-			// return the actual count to the requestor's variable
-			return 0; // no error
-		}
-	}
+        // Enable input ready interupts only by storing the value 0x01 in the interrupt enable reg
+        outb(COM1 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
+
+        if ()
+        { // If more characters are needed, return. If the block is complete, continue with step 7
+            return 0;
+        }
+        if ()
+        {                    // step 7
+            DCB->status = 1; // reset DCB status to idle
+            DCB->e_flag = 1; // set event flag
+            // return the actual count to the requestor's variable
+            return 0; // no error
+        }
+    }
+    return 0;
 }
 
-
-int com_write(char *buf_ptr, int *count_ptr) 
+int com_write(char *buf_ptr, int *count_ptr)
 {
-
-    // check port open, check valid pointer, check port is idle, etc.
-    // set dcb vars
-    // disable interrupts
-    // write a single byte to the device.
-    // enable interrupts
-    // enable write interrupts interrupts
-
-    // if no error return 0, otherwise:
-    // -401 serial port not open
-    // -402 invalid buffer address
-    // -403 invalid count address or count value
-    // -404 device busy
-
     // check port open, check valid pointer, check port is idle, etc. - DONE
     // set dcb vars - DONE
     // disable interrupts - DONE
-    // write a single byte to the device. - NOT DONE
+    // write a single byte to the device. - DONE
     // enable interrupts - DONE
     // enable write interrupts - DONE
 
-	int intReg;
+    int intReg;
 
-	if(DCB->port_open != 1){
-		return (-401); // serial port not open
-	}
-	if(buf_ptr == NULL){
-		return (-402); // invalid buffer address
-	}
-	if(count_ptr == NULL){
-		return (-403); // invalid count address or count value
-	}
-	if(DCB->status != 1){
-		return (-404); // device busy
-	}
-	else{
-		//set dcb vars
-		DCB->buffer_ptr = buf_ptr;
-		DCB->count_ptr = count_ptr;
-		DCB->status = 3; // setting status to writing
-		DCB->e_flag = 0;
-		
-		disable_interrupts();
-		// get first character from requestors buffer and store it in the output reg
-		enable_interrupts();
-		
-		intReg = inb(0x3F8 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.  
-		intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
-		outb(0x3F8 + 1, intReg);
+    if (DCB->port_open != 1)
+    {
+        return (-401); // serial port not open
+    }
+    if (buf_ptr == NULL)
+    {
+        return (-402); // invalid buffer address
+    }
+    if (count_ptr == NULL)
+    {
+        return (-403); // invalid count address or count value
+    }
+    if (DCB->status != 1)
+    {
+        return (-404); // device busy
+    }
+    else
+    {
+        //set dcb vars
+        DCB->buffer_ptr = buf_ptr;
+        DCB->count_ptr = count_ptr;
+        DCB->status = 3; // setting status to writing
+        DCB->e_flag = 0;
 
-		return 0; // no error
-	}
+        cli();
+        (void)outb(COM1); // get first character from requestors buffer and store it in the output reg ------there are a couple of errors here in my editor
 
+        intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
+        intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
+        outb(COM1 + 1, intReg); // THESE MAY NEED TO BE BEFORE THE OUTB
+        sti();
+
+        return 0; // no error
+    }
 }
 
 void serial_io()
@@ -294,7 +277,7 @@ void serial_io()
     }
 }
 
-void serial_write()
+int serial_write()
 {
     // Ensure the dcb status is writing
     // If there are any more characters left in the buffer, print them
@@ -303,7 +286,7 @@ void serial_write()
 
     if (DCB->status == WRITE)
     {
-        if (DCB->count_ptr > 0)
+        if ((int)&(DCB->count_ptr) > 0)
         {
             // if count has not been exhausted, get the next character from the requestor's output buffer and store it in the output register.
             // return without signaling completion.
@@ -311,19 +294,20 @@ void serial_write()
             DCB->buffer_loc++;
             DCB->count_ptr--;
             DCB->byte_count++;
-            return;
+            return 0;
         }
         else
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
             outb(COM1 + 1, (COM1 + 1) & 0b01);
-            return DCB->count_ptr;
+            return (int)&(DCB->count_ptr);
         }
     }
+    return 0;
 }
 
-void serial_read()
+int serial_read()
 {
     // Ensure the dcb status is reading. If not, push to the ring buffer.
     // Read a character from the COM port & add it to the buffer.
@@ -333,15 +317,15 @@ void serial_read()
     if (DCB->status == READ)
     {
         (DCB->buffer_ptr + DCB->buffer_loc) = input;
-        if (DCB->count_ptr > 0 && input != '\n')
+        if ((int)&(DCB->count_ptr) > 0 && input != '\n')
         {
-            return;
+            return 0;
         }
         else
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
-            return DCB->count_ptr;
+            return (int)&DCB->count_ptr;
         }
     }
     else
@@ -351,6 +335,13 @@ void serial_read()
         * if buffer is full, discard the character.
         * return to first level anyway and do not signal completion.
         */
+        if (push(input) == ERROR_FULL)
+        {
+            input = '\0';
+            return ERROR_FULL;
+        }
+
+        return 0;
     }
 }
 
@@ -364,4 +355,25 @@ void serial_line()
 {
     // read a value from the Line Status Register and return to first level handler.
     inb(COM1 + 5);
+}
+
+int push(char input)
+{
+    if (DCB->ring[(DCB->write_count + 1) % 30] == DCB->ring[DCB->read_count])
+    {
+        return ERROR_FULL; // ring buffer is full.
+    }
+    else
+    {
+        DCB->ring[DCB->write_count] = input;
+        DCB->write_count = (DCB->write_count + 1) % 30;
+        return 0;
+    }
+}
+
+char pop()
+{
+    char result = DCB->ring[DCB->read_count];
+    DCB->read_count = (DCB->read_count + 1) % 30;
+    return result;
 }
