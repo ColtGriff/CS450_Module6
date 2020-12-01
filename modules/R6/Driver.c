@@ -11,6 +11,9 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 
 dcb *DCB; // the device representing the terminal.
 
+iodQueue *active; // IO queue for active requests
+iodQueue *waiting; // queue for pending I/O requests
+
 void disable_interrupts()
 {
     outb(IRQ_COM1 + 1, 0x00); //disable interrupts
@@ -33,52 +36,6 @@ void pic_mask(char enable)
         outb(PIC_MASK, (PIC_MASK && (!IRQ_COM1)));
     }
 }
-
-int com_open_version1(int *e_flag, int baud_rate) // ME
-{
-    // Check the event flag is not null, the baud rate valid,and port is open.
-    // Set the status of the device to open and idle.
-    // Set the event flag of the device to the one passed in
-    // Save interrupt vector
-    // Disable your interrupts.
-    // Set registers. Take a look at init_serial() in serial.c
-    // PIC mask enable
-    // Enable your interrupts.
-    // Read a single byte to reset the port.
-
-
-	// -101 for invalid (null) event flag pointer
-	// -102 invalid baud rate divisor
-	// -103 port already open
-
-	if(e_flag == NULL){
-		return (-101);
-	}
-	else if(baud_rate <= 0){
-		return (-102);
-	}
-	else if(dcb.port_open == OPEN){
-		return (-103);
-	}
-	else{
-		dcb.status = IDLE;
-		dcb.port_open = OPEN;
-		dcb.e_flag = e_flag;
-		IVT = idt_get_gate(0x24);
-		disable_interrupts(); 
-		// These are from init_serial()
-		outb(device + 3, 0x80);          //set line control register
-	  	outb(device + 0, 115200 / 9600); //set bsd least sig bit
-	  	outb(device + 1, 0x00);          //brd most significant bit
-	  	outb(device + 3, 0x03);          //lock divisor; 8bits, no parity, one stop
-	  	outb(device + 2, 0xC7);          //enable fifo, clear, 14byte threshold
-	  	// The values may need changed
-	  	enable_interrupts();
-	  	(void)inb(device);               //read bit to reset port
-
-
-		return 0;
-	}
 
 int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, instead I followed the steps from the detailed document
 { 
@@ -328,7 +285,7 @@ void serial_io()
                 serial_line();
             }
 
-            if (DCB->e_flag == 1)
+            if (DCB->e_flag == 1) // e_flag ==1 : IO is completed. Else, IO is not completed yet
             {
                 io_scheduler();
             }

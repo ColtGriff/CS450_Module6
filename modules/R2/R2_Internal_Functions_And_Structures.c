@@ -94,7 +94,7 @@ PCB *findPCB(char *processName) //Returns the created PCB pointer if successful,
     }
     else
     {
-        PCB *tempPCB = ready->head;
+        PCB *tempPCB = ready->head; // this gives access to the PCB structure in a ready queue
         int value = 0;
         while (value < ready->count)
         {

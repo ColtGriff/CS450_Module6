@@ -70,6 +70,13 @@ typedef struct iod
     struct iod *next;
 } iod;
 
+typedef struct iodQueue // simply an IO queue
+{
+   iod*head;
+   int count_iods; // number of iods in a IO queue  
+
+}iodQueue;
+
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
 +*  @param enable 1 to enable or 0 to disable.
