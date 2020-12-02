@@ -326,7 +326,7 @@ int serial_read()
     if (DCB->status == READ)
     {
         strcpy((DCB->buffer_ptr + DCB->buffer_loc), temp);
-        if ((int)&(DCB->count_ptr) > 0 && input != '\n')
+        if ((int)&(DCB->count_ptr) > 0 && input != '\n' && input != '\r')
         {
             return 0;
         }
