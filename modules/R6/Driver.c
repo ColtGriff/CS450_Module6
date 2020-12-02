@@ -11,6 +11,9 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 int mask;
 dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
+iodQueue *active; // IO queue for active requests
+iodQueue *waiting; // queue for pending I/O requests
+
 void disable_interrupts()
 {
     outb(IRQ_COM1 + 1, 0x00); //disable interrupts
@@ -265,7 +268,7 @@ void serial_io()
                 serial_line();
             }
 
-            if (DCB->e_flag == 1)
+            if (DCB->e_flag == 1) // e_flag ==1 : IO is completed. Else, IO is not completed yet
             {
                 io_scheduler();
             }
