@@ -73,12 +73,20 @@ typedef struct iod
     struct iod *next;
 } iod;
 
+typedef struct iodQueue // simply an IO queue
+{
+   iod*head;
+   int count_iods; // number of iods in a IO queue  
+
+}iodQueue;
+
 // typedef struct ring_buffer
 // {
 //     char buffer[30];
 //     char *read_ptr;
 //     char *write_ptr;
 // } ring_buffer;
+
 
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
