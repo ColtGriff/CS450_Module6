@@ -11,8 +11,8 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 int mask;
 dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
-iodQueue *active;  // IO queue for active requests
-iodQueue *waiting; // queue for pending I/O requests
+iodQueue *activeQueue;  // IO queue for active requests
+iodQueue *waitingQueue; // queue for pending I/O requests
 
 void disable_interrupts()
 {
@@ -386,4 +386,71 @@ char pop()
     char result = DCB->ring[DCB->read_count];
     DCB->read_count = (DCB->read_count + 1) % 30;
     return result;
+}
+
+void insert_IO_request(PCB*pcb_id){
+    // This function insert IO request in a waiting queue or active queue depending on the status of the DCB (device)
+    // input: PCB ptr to an IOD->pcb_id based on iod struct
+
+    iod*IO_request; // The IO request to insert in a Queue
+    iod *pendingIO = waitingQueue->head; // the beginning of the iods in the waiting IO queue
+    iod *activeIO = activeQueue->head; // the beginning of the iods in the active IO queue
+    
+    IO_request->pcb_id = pcb_id; // capture the input
+
+     // insertion procedure
+    if(DCB->status != 1){
+      // is the device busy? if so, insert the IO request in the waiting queue to wait for the device resource
+        if(waitingQueue->head == NULL && waitingQueue->tail == NULL){
+            // The queue is empty?
+            pendingIO->head = IO_request; // make the IO_request the head of the queue
+            pendingIO->tail = IO_request; // make the IO_request the tail of the queue
+            IO_request->next = NULL;
+            waitingQueue->count_iods ++;
+
+        }else{
+         // The waiting queue is not empty
+            pendingIO->tail->next = IO_request; // add to the tail of the queue
+            pendingIO->tail = IO_request;
+            pendingIO->tail->next = NULL; // this line may be removed
+            waitingQueue->count_iods ++;
+        }
+
+    }else{
+      // The device is idle(device status ==1). Insert the IO request in the active queue to be serviced immediately
+         if(activeQueue->head == NULL && activeQueue->tail == NULL){
+            // The queue is empty ?
+            activeIO->head = IO_request; // make the IO_request the head of the queue
+            activeIO->tail = IO_request; // make the IO_request the tail of the queue
+            IO_request->next = NULL;
+            activeQueue->count_iods ++;
+
+        }else{
+         // The active queue is not empty
+            activeIO->tail->next = IO_request; // add to the tail of the queue
+            activeIO->tail = IO_request;
+            activeIO->tail->next = NULL; // this line may be removed
+            activeQueue->count_iods ++;
+        }
+    }
+    
+}
+
+void remove_IO_request(PCB*pcb_id){
+    io*IO_request;
+    IO_request->pcb_id = pcb_id;
+    iod *pendingIO = waitingQueue->head; // the beginning of the iods in the waiting IO queue
+    iod *activeIO = activeQueue->head; // the beginning of the iods in the active IO queue
+    
+    if(DCB->e_flag == 1)
+        // io done?
+        if(activeIO->head != NULL){
+             // the queue is not empty?
+            activeIO->head = next;
+            activeQueue->count_iods --;
+        }else{
+            // the queue has no IO requests
+            //return ERROR_EMPTY_QUEUE;
+            // do nothing ?
+        }  
 }

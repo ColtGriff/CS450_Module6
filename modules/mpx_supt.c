@@ -233,6 +233,8 @@ u32int *sys_call(context *registers)
       insertPCB(COP);
       // iod: io descriptor
       // insert iod into IOqueue // active io queue
+      insert_IO_request(COP);
+      // call IO scheduler
       io_scheduler();
       //COP->stackTop = (unsigned char *)registers;
     }
