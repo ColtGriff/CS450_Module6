@@ -226,7 +226,7 @@ int com_write(char *buf_ptr, int *count_ptr)
         DCB->e_flag = 0;
 
         cli();
-        (void)outb(COM1); // get first character from requestors buffer and store it in the output reg ------there are a couple of errors here in my editor
+        outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg ------there are a couple of errors here in my editor
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
@@ -298,7 +298,7 @@ int serial_write()
             DCB->status = IDLE;
             DCB->e_flag = 1;
             outb(COM1 + 1, (COM1 + 1) & 0b01);
-            return (int)&(DCB->count_ptr);
+            return DCB->byte_count;
         }
     }
     return 0;
@@ -311,9 +311,10 @@ int serial_read()
     // If we reached a new line or the buffer size, we are done reading
     // Update the dcb status. Disable intput interrupts
     char input = inb(COM1);
+    char *temp = &input;
     if (DCB->status == READ)
     {
-        (DCB->buffer_ptr + DCB->buffer_loc) = input;
+        strcpy((DCB->buffer_ptr + DCB->buffer_loc), temp);
         if ((int)&(DCB->count_ptr) > 0 && input != '\n')
         {
             return 0;
@@ -322,7 +323,8 @@ int serial_read()
         {
             DCB->status = IDLE;
             DCB->e_flag = 1;
-            return (int)&DCB->count_ptr;
+            DCB->byte_count++;
+            return DCB->byte_count;
         }
     }
     else

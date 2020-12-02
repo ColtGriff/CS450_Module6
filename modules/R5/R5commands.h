@@ -1,3 +1,6 @@
+#ifndef R5COMMANDS_H
+#define R5COMMANDS_H
+
 typedef struct CMCB
 {
     char type;            // indicates if the CMBC is free or allocated ('a' for allocated, 'f' for free).
@@ -32,3 +35,4 @@ int isEmpty();
 void showFreeMemory();
 
 void showAllocatedMemory();
+#endif

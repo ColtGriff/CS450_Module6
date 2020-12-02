@@ -1,3 +1,6 @@
+#ifndef R2COMMANDS_H
+#define R2COMMANDS_H
+
 void createPCB(char *processName, char processClass, int processPriority);
 
 void deletePCB(char *processName);
@@ -23,5 +26,4 @@ void showSuspendedReady();
 void showBlocked();
 
 void showAll();
-//char* int_to_char(int value);
-//void printPCBs(queue*PCB_container);
+#endif

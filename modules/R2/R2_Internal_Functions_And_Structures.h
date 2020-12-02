@@ -1,3 +1,6 @@
+#ifndef R2_INTERNAL_FUNCTIONS_AND_STRUCTURES_H
+#define R2_INTERNAL_FUNCTIONS_AND_STRUCTURES_H
+
 typedef struct PCB
 {
     char processName[20];      // Name of the Process Control Block(PCB).
@@ -41,3 +44,4 @@ queue *getBlocked();
 queue *getSuspendedReady();
 
 queue *getSuspendedBlocked();
+#endif

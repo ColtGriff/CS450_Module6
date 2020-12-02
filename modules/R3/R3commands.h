@@ -1,4 +1,6 @@
 //R3commands.h
+#ifndef R3COMMANDS_H
+#define R3COMMANDS_H
 
 typedef struct context
 {
@@ -10,3 +12,4 @@ typedef struct context
 void yield();
 
 void loadr3();
+#endif

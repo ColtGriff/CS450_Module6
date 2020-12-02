@@ -1,4 +1,6 @@
 // The file to house your r6 header.
+#ifndef DRIVER_H
+#define DRIVER_H
 
 #define PIC_REG 0x20
 #define PIC_EOI 0x20
@@ -11,6 +13,7 @@
 #define ERROR_FULL -1
 
 #include "../mpx_supt.h"
+#include "../R2/R2_Internal_Functions_And_Structures.h"
 
 /*
 * enum for the possible dcb states.
@@ -72,13 +75,6 @@ typedef struct iod
     int *count_ptr;
     struct iod *next;
 } iod;
-
-// typedef struct ring_buffer
-// {
-//     char buffer[30];
-//     char *read_ptr;
-//     char *write_ptr;
-// } ring_buffer;
 
 /*!
 +*  pic_mask() masks so only the desired PIC interrupt is enabled or disabled.
@@ -151,3 +147,4 @@ void serial_line();
 int push(char input);
 
 char pop();
+#endif
