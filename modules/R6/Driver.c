@@ -11,7 +11,7 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 int mask;
 dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
-iodQueue *active; // IO queue for active requests
+iodQueue *active;  // IO queue for active requests
 iodQueue *waiting; // queue for pending I/O requests
 
 void disable_interrupts()
@@ -37,7 +37,7 @@ void pic_mask(char enable)
     }
 }
 
-int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, instead I followed the steps from the detailed document
+int com_open(int *e_flag, int baud_rate)
 {
     // Check the event flag is not null, the baud rate valid,and port is not currently open. - DONE
     // Set the status of the device to open and idle. - DONE
@@ -67,7 +67,10 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
         DCB->status = 1;    // setting status idle
         DCB->e_flag = (int)&(e_flag);
 
-        // initialize ring buffer parameters here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // initialize ring buffer parameters here
+        int read_count = 0;
+        int write_count = 0;
+        char ring[30];
 
         long baudR = 115200 / (long)baud_rate;
 
@@ -116,8 +119,6 @@ int com_close(void)
         DCB->port_open = 0; // Clear open indicator in the DCB
 
         // Disable the appropriate level in the PIC mask reg
-        // I'm fairly certain that I properly did this in com_open, but I'm not sure about this 0xEF here
-        // Mrs. Hayhurst said to do the opposite of what was done in com_open to turn it back off
         cli();
         mask = inb(PIC_MASK); // 0x80 1000 0000
         mask = mask & ~0xEF;  // 0001 0000 -> ' -> & -> 1110 1111 = 0xEF
@@ -142,6 +143,8 @@ int com_read(char *buf_ptr, int *count_ptr)
     // read from ring buffer into the dcb buffer if there is anything - NOT DONE
     // enable interrupts - DONE
     // enable input ready interrupts - DONE
+
+    int byte_count = 0;
 
     if (DCB->port_open != 1)
     {
@@ -173,21 +176,26 @@ int com_read(char *buf_ptr, int *count_ptr)
         cli();
         // Copy characters from ring buffer to requestor's bufer, until the ring buffer is emptied, the requested amount has been reached, or a CR (enter) code has been found
         // the copied characters should, of course be removed from the ring buffer.  Either input interrupts or all interrupts should be disabled during the copying
+
+        // requestors buffer is buf_ptr
+        while ((byte_count <= (int)&count_ptr && byte_count < 30) || ((inb(COM1) == '\n') || (inb(COM1) == '\r')))
+        {
+        }
         sti();
 
         // Enable input ready interupts only by storing the value 0x01 in the interrupt enable reg
         outb(COM1 + 1, 0x01); // storing the value 0x01 in the interrupt enable reg
 
-        if ()
-        { // If more characters are needed, return. If the block is complete, continue with step 7
-            return 0;
+        if (byte_count < (int)&count_ptr)
+        {             // If more characters are needed, return. If the block is complete, continue with step 7
+            return 0; // Gotta figure out what this return is
         }
-        if ()
+        else
         {                    // step 7
             DCB->status = 1; // reset DCB status to idle
             DCB->e_flag = 1; // set event flag
             // return the actual count to the requestor's variable
-            return 0; // no error
+            return byte_count;
         }
     }
     return 0;
@@ -229,7 +237,7 @@ int com_write(char *buf_ptr, int *count_ptr)
         DCB->e_flag = 0;
 
         cli();
-        outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg ------there are a couple of errors here in my editor
+        outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
