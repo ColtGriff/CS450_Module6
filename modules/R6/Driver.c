@@ -37,7 +37,7 @@ void pic_mask(char enable)
     }
 }
 
-int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, instead I followed the steps from the detailed document
+int com_open(int *e_flag, int baud_rate)
 {
     // Check the event flag is not null, the baud rate valid,and port is not currently open. - DONE
     // Set the status of the device to open and idle. - DONE
@@ -67,7 +67,7 @@ int com_open(int *e_flag, int baud_rate) // I didn't follow the comments below, 
         DCB->status = 1;    // setting status idle
         DCB->e_flag = (int)&(e_flag);
 
-        // initialize ring buffer parameters here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // initialize ring buffer parameters here
         int read_count = 0;
         int write_count = 0;
         char ring[30];
