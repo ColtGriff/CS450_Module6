@@ -198,6 +198,7 @@ context *callerContext;
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
 
+  klogv("Entered sys_call function!");
   // Add to your IF block that checks the op code for IDLE/EXIT
   //if (params.op_code == IDLE || params.op_code == EXIT)
   //insertPCB(COP); // not sure.
@@ -261,6 +262,7 @@ dcb *tempDCB;
 iod *tempIOD;
 void io_scheduler()
 {
+  klogv("Entered io_scheduler function!");
   // Check if there are any active or completed IO processes on the DCB.
   if (tempDCB->e_flag == 1) // IO process completed?
   {

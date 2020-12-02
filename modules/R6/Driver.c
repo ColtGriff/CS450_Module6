@@ -11,12 +11,6 @@ u32int IVT; // the interrupt vector table, using this to save and restore the IV
 int mask;
 dcb *DCB; // the device representing the terminal. do sys_alloc_mem(sizeof(dcb));
 
-// Ring buffer paramters
-int read_count = 0;
-int write_count = 0;
-char ring[30];
-
-
 iodQueue *active;  // IO queue for active requests
 iodQueue *waiting; // queue for pending I/O requests
 
@@ -54,6 +48,9 @@ int com_open(int *e_flag, int baud_rate)
     // PIC mask enable - DONE
     // Enable your interrupts. - DONE
     // Read a single byte to reset the port. - DONE
+
+    // klogv("Entered com_open function.");
+
     if (e_flag == NULL)
     {
         return (-101); // invalid event flag pointer
@@ -70,7 +67,7 @@ int com_open(int *e_flag, int baud_rate)
     {
 
         DCB->port_open = 1; // setting device open
-        DCB->status = IDLE;    // setting status idle
+        DCB->status = IDLE; // setting status idle
         DCB->e_flag = (int)&(e_flag);
 
         // initialize ring buffer parameters here
@@ -184,7 +181,7 @@ int com_read(char *buf_ptr, int *count_ptr)
         while ((DCB->byte_count <= (int)&count_ptr || DCB->byte_count < 30) || ((inb(COM1) == '\n') || (inb(COM1) == '\r')))
         {
             char input = pop();
-            char * temp = &input;
+            char *temp = &input;
             strcpy(buf_ptr, temp);
             //buf_ptr = pop();
             DCB->byte_count++;
@@ -200,9 +197,9 @@ int com_read(char *buf_ptr, int *count_ptr)
             return 0; // Gotta figure out what this return is -------------------------------------------------------------------------------------------------
         }
         else
-        {                    // step 7
+        {                       // step 7
             DCB->status = IDLE; // reset DCB status to idle
-            DCB->e_flag = 1; // set event flag
+            DCB->e_flag = 1;    // set event flag
             // return the actual count to the requestor's variable
             return DCB->byte_count;
         }
@@ -218,23 +215,28 @@ int com_write(char *buf_ptr, int *count_ptr)
     // write a single byte to the device. - DONE
     // enable interrupts - DONE
     // enable write interrupts - DONE
+    klogv("Entered com_write function!");
 
     int intReg;
 
     if (DCB->port_open != 1)
     {
+        klogv("Port is already open!");
         return (-401); // serial port not open
     }
     if (buf_ptr == NULL)
     {
+        klogv("Invalid buffer address!");
         return (-402); // invalid buffer address
     }
     if (count_ptr == NULL)
     {
+        klogv("Invalid count address or count value");
         return (-403); // invalid count address or count value
     }
     if (DCB->status != 1)
     {
+        klogv("Device is busy!");
         return (-404); // device busy
     }
     else
