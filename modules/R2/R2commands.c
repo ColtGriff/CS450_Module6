@@ -130,7 +130,7 @@ void unblockPCB(char *processName)
         removePCB(pcb_to_unblock);         // is this the right place to put that function?
         insertPCB(pcb_to_unblock);
 
-        printMessage("The PCB was successfully unblocked!\n");
+        //printMessage("The PCB was successfully unblocked!\n");
     }
 }
 

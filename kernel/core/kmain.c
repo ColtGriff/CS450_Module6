@@ -114,8 +114,8 @@ void kmain(void)
    // klogv("sys_set_free to freeMemory function!");
 
    allocateQueues();
-   int e_flag;
-   com_open(&e_flag, 1200);
+   int e_flag = 1;
+   com_open((int*)e_flag, 1200);
 
    // klogv("Call allocateQueues functions!");
 
@@ -165,7 +165,7 @@ void kmain(void)
 
    // klogv("Made the Idle PCB!");
 
-   asm volatile("int $60"); // This line is doing something that causes a page fault error!
+   asm volatile("int $60");
 
    // klogv("Threw interrupt!");
 

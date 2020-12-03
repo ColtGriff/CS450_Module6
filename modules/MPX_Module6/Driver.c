@@ -93,7 +93,7 @@ int com_open(int *e_flag, int baud_rate)
 
         // Enable the appropriate level in the PIC mask register
         mask = inb(PIC_MASK);
-        mask = mask & ~0x10; // 0001 0000
+        mask = mask & ~0x10;
         outb(PIC_MASK, mask);
         sti();
 
@@ -131,7 +131,7 @@ int com_close(void)
         outb(PIC_MASK, mask);
         sti();
 
-        outb(COM1 + 6, 0x00); // Disable all interrupts in the ACC by loading zero values to the modem status reg
+        outb(COM1 + 3, 0x00); // Disable all interrupts in the ACC by loading zero values to the modem status reg
 
         outb(COM1 + 1, 0x00); // (prev comment continuation) and the interrupt enable reg
 
@@ -150,22 +150,20 @@ int com_read(char *buf_ptr, int *count_ptr)
     // enable interrupts - DONE
     // enable input ready interrupts - DONE
 
-    klogv("*****************Entered com_read function.");
-
-
+    klogv("Entered com_read function.");
     if (DCB->port_open != 1)
     {
         return (-301); // Port not open
     }
-    else if (buf_ptr == NULL)
+    if (buf_ptr == NULL)
     {
         return (-302); // invalid buffer address
     }
-    else if (count_ptr == NULL)
+    if (count_ptr == NULL)
     {
         return (-303); // invalid count address(?) or value
     }
-    else if (DCB->status != 1)
+    if (DCB->status != 1)
     {
         return (-304); // device busy
     }
@@ -190,9 +188,11 @@ int com_read(char *buf_ptr, int *count_ptr)
             char input = pop();
             char *temp = &input;
             strcpy(buf_ptr, temp);
+            //buf_ptr = pop();
             DCB->byte_count++;
-            //buf_ptr++;
-            DCB->read_count++;
+            buf_ptr++;
+
+            // Need to remove the copied characters from the ring buffer
         }
         sti();
 
@@ -256,11 +256,10 @@ int com_write(char *buf_ptr, int *count_ptr)
 
         cli();
         outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg
-
         DCB->write_count++;
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
-        intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02 - 0000 0010
+        intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
         outb(COM1 + 1, intReg); // THESE MAY NEED TO BE BEFORE THE OUTB
         sti();
 
@@ -422,7 +421,6 @@ int push(char input)
 char pop()
 {
     char result = DCB->ring[DCB->read_count];
-    DCB->ring[DCB->read_count] = '\0';
     DCB->read_count = (DCB->read_count + 1) % 30;
     return result;
 }

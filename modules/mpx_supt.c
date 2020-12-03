@@ -178,17 +178,18 @@ int sys_free_mem(void *ptr)
 */
 void idle()
 {
-  char msg[30];
-  int count = 0;
+  // char msg[30];
+  // int count = 0;
 
-  memset(msg, '\0', sizeof(msg));
-  strcpy(msg, "IDLE PROCESS EXECUTING.\n");
-  count = strlen(msg);
+  // memset(msg, '\0', sizeof(msg));
+  // strcpy(msg, "IDLE PROCESS EXECUTING.\n");
+  // count = strlen(msg);
 
   while (1)
   {
-    sys_req(WRITE, DEFAULT_DEVICE, msg, &count); // will be removed for R6
-    sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);   // will be removed for R6
+    //klogv("IDLE!");
+    // sys_req(WRITE, DEFAULT_DEVICE, msg, &count); // will be removed for R6
+    // sys_req(IDLE, DEFAULT_DEVICE, NULL, NULL);   // will be removed for R6
   }
 }
 
@@ -208,74 +209,87 @@ u32int *sys_call(context *registers)
   // Call your IO scheduler that:
   // Reassign cop's stack top and set its state accordingly.
 
-  PCB *tempOOP = NULL;
+  //PCB *tempOOP = NULL;
   if (COP == NULL)
   { // sys_call has not been called yet.
 
+    klogv("sys_call 1!");
     callerContext = registers;
   }
   else
   {
+    klogv("sys_call 2!");
     if (params.op_code == IDLE)
     { // Save the context (reassign COP's stack top).
+      klogv("sys_call 3!");
       COP->runningStatus = 0;
       COP->stackTop = (unsigned char *)registers;
-      tempOOP = COP;
+      //tempOOP = COP;
     }
     else if (params.op_code == EXIT)
     { // free COP.
+      klogv("sys_call 4!");
       sys_free_mem(COP);
     }
     else if (params.op_code == READ || params.op_code == WRITE)
     {
+      klogv("sys_call 5!");
       COP->runningStatus = -1; // -1 means blocked
       COP->stackTop = (unsigned char *)registers;
       // tempOOP = COP;
       insertPCB(COP);
       // iod: io descriptor
       iod *COPiod = sys_alloc_mem(sizeof(iod));
-      COPiod->pcb_id = &COP;
+      COPiod->pcb_id = COP;
       COPiod->op_code = params.op_code;
       COPiod->com_port = params.device_id;
       COPiod->buffer_ptr = params.buffer_ptr;
       COPiod->count_ptr = params.count_ptr;
       COPiod->next = NULL;
+      klogv("sys_call 6!");
       // insert iod into IOqueue // active io queue
-      insert_IO_request(COP);
+      insert_IO_request(COPiod);
       // call IO scheduler
       io_scheduler();
       //COP->stackTop = (unsigned char *)registers;
     }
   }
 
+  klogv("sys_call 7!");
   queue *ready = getReady();
 
   if (ready->head != NULL)
   {
+    klogv("sys_call 8!");
     COP = ready->head;
     removePCB(COP);
     COP->runningStatus = 1;
 
-    if (tempOOP != NULL)
+    if (COP != NULL)
     {
-      insertPCB(tempOOP);
+      klogv("sys_call 9!");
+      insertPCB(COP);
     }
-
+    klogv("sys_call 10!");
     return (u32int *)COP->stackTop;
   }
+  klogv("sys_call 11!");
   return (u32int *)callerContext;
 }
 
-dcb *tempDCB;
+//dcb *tempDCB;
 
 iod *tempIOD;
+iod *tempIOD2;
 void io_scheduler()
 {
   klogv("Entered io_scheduler function!");
   // Check if there are any active or completed IO processes on the DCB.
-  if (tempDCB->e_flag == 1) // IO process completed?
+
+  if (DCB->e_flag == 1) // IO process completed
   {
     // unblock the corresponding PCB and remove it from queue
+
 
     // int count = 0;
     // PCB *tempPCB = getBlocked()->head;
@@ -290,12 +304,22 @@ void io_scheduler()
     //   tempPCB = tempPCB->nextPCB;
     //   count++;
     // }
+    tempIOD2->pcb_id = COP->nextPCB;
+    strcpy(tempIOD2->pcb_id->processName, COP->nextPCB->processName); 
+    tempIOD2->op_code = params.op_code;
 
+    tempIOD->pcb_id = COP;
+    strcpy(tempIOD->pcb_id->processName, COP->processName);
+    tempIOD->op_code = params.op_code;
+    tempIOD->next = tempIOD2;
+    
+    klogv("IO schedule 1");
     remove_IO_request(COP);
+    klogv("IO schedule 1.1");
     unblockPCB(tempIOD->pcb_id->processName);
-
+    klogv("IO schedule 1.2");
     // call com_read() or com_write() on the next iod depending on the op code.
-
+    klogv("IO schedule 2");
     if (tempIOD->next->op_code == WRITE)
       com_write(tempIOD->next->buffer_ptr, tempIOD->next->count_ptr);
     if (tempIOD->next->op_code == READ)
