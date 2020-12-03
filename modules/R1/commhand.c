@@ -13,6 +13,7 @@
 
 void commhand()
 {
+	klogv("entered commhand");
 	printMessage("░░░▄▀░░░░░░░░░░░░░░░▀▀▄▄░░░░░ \n");
 	printMessage("░░▄▀░░░░░░░░░░░░░░░░░░░░▀▄░░░ \n");
 	printMessage("░▄▀░░░░░░░░░░░░░░░░░░░░░░░█░░ \n");

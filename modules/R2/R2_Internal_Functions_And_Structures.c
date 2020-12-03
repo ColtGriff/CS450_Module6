@@ -6,6 +6,7 @@
 #include "../utilities.h"
 #include "R2_Internal_Functions_And_Structures.h"
 #include "../R3/R3commands.h"
+#include "../R6/Driver.h"
 
 queue *ready;
 queue *blocked;
@@ -448,6 +449,8 @@ void allocateQueues()
     suspendedBlocked->count = 0;
     suspendedBlocked->head = NULL;
     suspendedBlocked->tail = NULL;
+
+    allocateIOQueues();
 }
 
 queue *getReady()

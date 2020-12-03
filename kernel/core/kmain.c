@@ -28,6 +28,7 @@
 #include "modules/R3/R3commands.h"
 #include "modules/R4/R4commands.h"
 #include "modules/R5/R5commands.h"
+#include "modules/R6/Driver.h"
 
 void kmain(void)
 {
@@ -51,7 +52,9 @@ void kmain(void)
    //     MPX Module.  This will change with each module.
    // you will need to call mpx_init from the mpx_supt.c
 
-   mpx_init(MODULE_R5);
+   mpx_init(MODULE_F);
+   mpx_init(MEM_MODULE);
+   mpx_init(IO_MODULE);
 
    // 2) Check that the boot was successful and correct when using grub
    // Comment this when booting the kernel directly using QEMU, etc.
@@ -97,10 +100,24 @@ void kmain(void)
    //allocateAlarms();
 
    initializeHeap((u32int)50000);
-   mpx_init(MEM_MODULE);
+
+   // klogv("initialized heap!");
+
+   // klogv("mpx init Mem-Module command works!");
+
    sys_set_malloc((allocateMemory));
+
+   // klogv("sys_set_malloc to allocateMemory function!");
+
    sys_set_free((freeMemory));
+
+   // klogv("sys_set_free to freeMemory function!");
+
    allocateQueues();
+   int e_flag;
+   com_open(&e_flag, 1200);
+
+   // klogv("Call allocateQueues functions!");
 
    createPCB("Commhand", 's', 9);
    PCB *new_pcb = findPCB("Commhand");
@@ -115,6 +132,8 @@ void kmain(void)
    cp->esp = (u32int)(new_pcb->stackTop);
    cp->eip = (u32int)commhand; // The function correlating to the process, ie. Proc1
    cp->eflags = 0x202;
+
+   // klogv("Made the commhand PCB!");
 
    // createPCB("Alarm", 'a', 1);
    // PCB *AlarmPCB = findPCB("Alarm");
@@ -144,11 +163,17 @@ void kmain(void)
    cpIDLE->eip = (u32int)idle; // The function correlating to the process, ie. Proc1
    cpIDLE->eflags = 0x202;
 
-   asm volatile("int $60");
+   // klogv("Made the Idle PCB!");
+
+   asm volatile("int $60"); // This line is doing something that causes a page fault error!
+
+   // klogv("Threw interrupt!");
 
    // 7) System Shutdown on return from your command handler
 
    klogv("Starting system shutdown procedure...");
+
+   com_close();
 
    /* Shutdown Procedure */
    klogv("Shutdown complete. You may now turn off the machine. (QEMU: C-a x)");

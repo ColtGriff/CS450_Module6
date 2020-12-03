@@ -198,6 +198,7 @@ context *callerContext;
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
 
+  klogv("Entered sys_call function!");
   // Add to your IF block that checks the op code for IDLE/EXIT
   //if (params.op_code == IDLE || params.op_code == EXIT)
   //insertPCB(COP); // not sure.
@@ -232,7 +233,16 @@ u32int *sys_call(context *registers)
       // tempOOP = COP;
       insertPCB(COP);
       // iod: io descriptor
+      iod *COPiod = sys_alloc_mem(sizeof(iod));
+      COPiod->pcb_id = &COP;
+      COPiod->op_code = params.op_code;
+      COPiod->com_port = params.device_id;
+      COPiod->buffer_ptr = params.buffer_ptr;
+      COPiod->count_ptr = params.count_ptr;
+      COPiod->next = NULL;
       // insert iod into IOqueue // active io queue
+      insert_IO_request(COP);
+      // call IO scheduler
       io_scheduler();
       //COP->stackTop = (unsigned char *)registers;
     }
@@ -261,6 +271,7 @@ dcb *tempDCB;
 iod *tempIOD;
 void io_scheduler()
 {
+  klogv("Entered io_scheduler function!");
   // Check if there are any active or completed IO processes on the DCB.
   if (tempDCB->e_flag == 1) // IO process completed?
   {
@@ -280,6 +291,7 @@ void io_scheduler()
     //   count++;
     // }
 
+    remove_IO_request(COP);
     unblockPCB(tempIOD->pcb_id->processName);
 
     // call com_read() or com_write() on the next iod depending on the op code.

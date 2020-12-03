@@ -11,6 +11,7 @@
 #define CLOSE 0
 
 #define ERROR_FULL -1
+#define ERROR_EMPTY_QUEUE -2
 
 #include "../mpx_supt.h"
 #include "../R2/R2_Internal_Functions_And_Structures.h"
@@ -79,6 +80,7 @@ typedef struct iod
 typedef struct iodQueue // simply an IO queue
 {
     iod *head;
+    iod *tail;
     int count_iods; // number of iods in a IO queue
 
 } iodQueue;
@@ -161,4 +163,10 @@ void serial_line();
 int push(char input);
 
 char pop();
+
+void insert_IO_request(iod *iocb); // called in mpx_support.c, sys_call()
+
+void remove_IO_request(PCB *pcb_id); // not yet called anywhere.
+
+void allocateIOQueues();
 #endif
