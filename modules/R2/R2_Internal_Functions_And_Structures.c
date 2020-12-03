@@ -450,15 +450,7 @@ void allocateQueues()
     suspendedBlocked->head = NULL;
     suspendedBlocked->tail = NULL;
 
-    activeQueue = sys_alloc_mem(sizeof(iodQueue));
-    activeQueue->count_iods = 0;
-    activeQueue->head = NULL;
-    activeQueue->tail = NULL;
-
-    waitingQueue = sys_alloc_mem(sizeof(iodQueue));
-    waitingQueue->count_iods = 0;
-    waitingQueue->head = NULL;
-    waitingQueue->tail = NULL;
+    allocateIOQueues();
 }
 
 queue *getReady()

@@ -233,6 +233,13 @@ u32int *sys_call(context *registers)
       // tempOOP = COP;
       insertPCB(COP);
       // iod: io descriptor
+      iod *COPiod = sys_alloc_mem(sizeof(iod));
+      COPiod->pcb_id = &COP;
+      COPiod->op_code = params.op_code;
+      COPiod->com_port = params.device_id;
+      COPiod->buffer_ptr = params.buffer_ptr;
+      COPiod->count_ptr = params.count_ptr;
+      COPiod->next = NULL;
       // insert iod into IOqueue // active io queue
       insert_IO_request(COP);
       // call IO scheduler
@@ -284,6 +291,7 @@ void io_scheduler()
     //   count++;
     // }
 
+    remove_IO_request(COP);
     unblockPCB(tempIOD->pcb_id->processName);
 
     // call com_read() or com_write() on the next iod depending on the op code.
