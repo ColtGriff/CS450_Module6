@@ -197,7 +197,7 @@ int com_read(char *buf_ptr, int *count_ptr)
 
         if (DCB->byte_count < (int)&count_ptr)
         {             // If more characters are needed, return. If the block is complete, continue with step 7
-            return 0; // Gotta figure out what this return is -------------------------------------------------------------------------------------------------
+            return 0; 
         }
         else
         {                    // step 7
@@ -246,7 +246,8 @@ int com_write(char *buf_ptr, int *count_ptr)
         DCB->e_flag = 0;
 
         cli();
-        outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg ------ Is this right?
+        outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg
+        DCB->write_count++;
 
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02
