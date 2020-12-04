@@ -58,7 +58,7 @@ char *itoa(int num, char *buffer)
 
 void printMessage(char *str)
 {
-    klogv("Entered printMessage function.");
+    //klogv("Entered printMessage function.");
     char Desc[137];
 
     size_t length = strlen(str);

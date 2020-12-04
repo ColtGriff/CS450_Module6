@@ -245,9 +245,9 @@ int com_write(char *buf_ptr, int *count_ptr)
 
         cli();
         outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg
-        DCB->buffer_ptr = (u32int)&(DCB->buffer_ptr++);
+        DCB->buffer_ptr++;
         DCB->write_count++;
-        klogv("com_write has printed!");
+        //klogv("com_write has printed!");
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02 - 0000 0010
         outb(COM1 + 1, intReg); // THESE MAY NEED TO BE BEFORE THE OUTB
@@ -310,7 +310,7 @@ int serial_write()
             // if count has not been exhausted, get the next character from the requestor's output buffer and store it in the output register.
             // return without signaling completion.
             outb(COM1, (DCB->buffer_ptr + DCB->buffer_loc));
-            klogv("Is this where the issue is?");
+            //klogv("Is this where the issue is?");
             
             DCB->write_count++;
             DCB->count_ptr--;
