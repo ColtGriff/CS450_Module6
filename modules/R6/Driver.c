@@ -48,26 +48,23 @@ int com_open(int *e_flag, int baud_rate)
     // Enable your interrupts. - DONE
     // Read a single byte to reset the port. - DONE
 
-    klogv("Entered com_open function.");
+    DCB = sys_alloc_mem(sizeof(dcb));
+
 
     if (e_flag == NULL)
     {
-        klogv("com_open 1");
         return (-101); // invalid event flag pointer
     }
     else if (baud_rate <= 0)
     {
-        klogv("com_open 2");
         return (-102); // invalid baud rate divisor
     }
     else if (DCB->port_open == 1)
     {
-        klogv("com_open 3");
         return (-103); // port is already open
     }
     else
     {
-        klogv("com_open 4");
         DCB->port_open = 1; // setting device open
         DCB->status = IDLE; // setting status idle
         DCB->e_flag = (int)e_flag;
@@ -115,7 +112,6 @@ int com_close(void)
     // Set the status of the device to closed - DONE(?)
     // Disable pic mask - DONE
     // Disable interrupts - DONE
-    klogv("***********************************Entered com_close function!");
     if (DCB->port_open != 1)
     {
         return (-201); // serial port not open
@@ -149,8 +145,6 @@ int com_read(char *buf_ptr, int *count_ptr)
     // read from ring buffer into the dcb buffer if there is anything - NOT DONE
     // enable interrupts - DONE
     // enable input ready interrupts - DONE
-
-    klogv("*****************Entered com_read function.");
 
 
     if (DCB->port_open != 1)
@@ -222,28 +216,23 @@ int com_write(char *buf_ptr, int *count_ptr)
     // write a single byte to the device. - DONE
     // enable interrupts - DONE
     // enable write interrupts - DONE
-    klogv("Entered com_write function!");
 
     int intReg;
 
     if (DCB->port_open != 1)
     {
-        klogv("Port is not open!");
         return (-401); // serial port not open
     }
     if (buf_ptr == NULL)
     {
-        klogv("Invalid buffer address!");
         return (-402); // invalid buffer address
     }
     if (count_ptr == NULL)
     {
-        klogv("Invalid count address or count value");
         return (-403); // invalid count address or count value
     }
     if (DCB->status != 1)
     {
-        klogv("Device status is not idle!");
         return (-404); // device busy
     }
     else
@@ -256,9 +245,9 @@ int com_write(char *buf_ptr, int *count_ptr)
 
         cli();
         outb(COM1, DCB->buffer_ptr); // get first character from requestors buffer and store it in the output reg
-
+        DCB->buffer_ptr = (u32int)&(DCB->buffer_ptr++);
         DCB->write_count++;
-
+        klogv("com_write has printed!");
         intReg = inb(COM1 + 1); // enable write interrupts by setting bit 1 of the interrupt enable register.
         intReg = intReg | 0x02; // This must be done by setting the register to the logical or of its previous contents and 0x02 - 0000 0010
         outb(COM1 + 1, intReg); // THESE MAY NEED TO BE BEFORE THE OUTB
@@ -270,47 +259,42 @@ int com_write(char *buf_ptr, int *count_ptr)
 
 void serial_io()
 {
+    // int tempCOM;
+    // int realCOM;
+    // int realCOM2;
     // check port open.
     // obtain interrupt type. Call appropriate second level handler
     // Check if the event has completed. If so call io scheduler.
     // outb(PIC register, PIC end of interrupt)
-    klogv("----------------------------------------Entered serial_io");
     if (DCB->port_open == 1)
     {
-        klogv("------------------------------------------------serial_io 1!");
-        if (inb(COM1 + 2) & 0x0C) // Interrupt was caused by the COM1 serial port
+        // tempCOM = inb(COM1 + 2);
+        // realCOM = tempCOM>>1 & 1;
+        // realCOM2 = tempCOM >> 2 & 1;
+       
+        if (inb(COM1 + 2) & 0b00) // Modem Status Interrupt
         {
-            klogv("------------------------------------------------serial_io 2!");
-            if (inb(COM1 + 2) & 0b000) // Modem Status Interrupt
-            {
-                klogv("----------------------------------------serial_io 3!");
-                serial_modem();
-            }
-            else if (inb(COM1 + 2) & 0b010) // Output Interrupt
-            {
-                klogv("----------------------------------------serial_io 4!");
-                serial_write();
-            }
-            else if (inb(COM1 + 2) & 0b100) // Input Interrupt
-            {
-                klogv("----------------------------------------serial_io 5!");
-                serial_read();
-            }
-            else if (inb(COM1 + 2) & 0b110) // Line Status Interrupt
-            {
-                klogv("----------------------------------------serial_io 6!");
-                serial_line();
-            }
-
-            if (DCB->e_flag == 1) // e_flag == 1 : IO is completed. Else, IO is not completed yet
-            {
-                klogv("----------------------------------------serial_io 7!");
-                io_scheduler();
-            }
-            outb(PIC_REG, PIC_EOI); // send EOI to the PIC command register.
+            serial_modem();
         }
+        else if ((inb(COM1 + 2) ) & 0b01) // Output Interrupt
+        {
+            serial_write();
+        }
+        else if (inb(COM1 + 2) & 0b10) // Input Interrupt
+        {
+            serial_read();
+        }
+        else if (inb(COM1 + 2) & 0b11) // Line Status Interrupt
+        {
+            serial_line();
+        }
+
+        if (DCB->e_flag == 1) // e_flag == 1 : IO is completed. Else, IO is not completed yet
+        {
+            io_scheduler();
+        }
+        outb(PIC_REG, PIC_EOI); // send EOI to the PIC command register.
     }
-    klogv("----------------------------------------serial_io 8!");
 }
 
 int serial_write()
@@ -319,31 +303,28 @@ int serial_write()
     // If there are any more characters left in the buffer, print them
     // Othewise we are done printing
     // Update the dcb status. Disable output interrupts
-    klogv("Entered serial_write!");
     if (DCB->status == WRITE)
     {
-        klogv("serial_write 1!");
         if ((int)&(DCB->count_ptr) > 0)
         {
-            klogv("serial_write 2!");
             // if count has not been exhausted, get the next character from the requestor's output buffer and store it in the output register.
             // return without signaling completion.
             outb(COM1, (DCB->buffer_ptr + DCB->buffer_loc));
-            DCB->buffer_loc++;
+            klogv("Is this where the issue is?");
+            
+            DCB->write_count++;
             DCB->count_ptr--;
             DCB->byte_count++;
             return 0;
         }
         else
         {
-            klogv("serial_write 3!");
             DCB->status = IDLE;
             DCB->e_flag = 1;
             outb(COM1 + 1, (COM1 + 1) & 0b01);
             return DCB->byte_count;
         }
     }
-    klogv("serial_write 4!");
     return 0;
 }
 
@@ -353,21 +334,17 @@ int serial_read()
     // Read a character from the COM port & add it to the buffer.
     // If we reached a new line or the buffer size, we are done reading
     // Update the dcb status. Disable intput interrupts
-    klogv("Entered serial_read!");
     char input = inb(COM1);
     char *temp = &input;
     if (DCB->status == READ)
     {
-        klogv("serial_read 1!");
         strcpy((DCB->buffer_ptr + DCB->buffer_loc), temp);
         if ((int)&(DCB->count_ptr) > 0 && input != '\n' && input != '\r')
         {
-            klogv("serial_read 2!");
             return 0;
         }
         else
         {
-            klogv("serial_read 3!");
             DCB->status = IDLE;
             DCB->e_flag = 1;
             DCB->byte_count++;
@@ -376,7 +353,6 @@ int serial_read()
     }
     else
     {
-        klogv("serial_read 4!");
         /*
         * push to the ring buffer
         * if buffer is full, discard the character.
@@ -384,11 +360,9 @@ int serial_read()
         */
         if (push(input) == ERROR_FULL)
         {
-            klogv("serial_read 5!");
             input = '\0';
             return ERROR_FULL;
         }
-        klogv("serial_read 6!");
         return 0;
     }
 }
@@ -459,29 +433,20 @@ void insert_IO_request(iod *iocb)
 void remove_IO_request(PCB *pcb_id)
 { // cut to one IO queue
 
-    klogv("Entered remove_IO function!");
-
     iod *temp = waiting->head;
 
     if (temp->pcb_id == pcb_id)
     {
-        klogv("remove_IO 1!");
         waiting->head = temp->next;
-        klogv("remove_IO 1.1!");
         temp->next = NULL;
-        klogv("remove_IO 1.2!");
         waiting->count_iods--;
-        klogv("remove_IO 1.3!");
     }
     else
     {
-        klogv("remove_IO 2!");
         while (temp->next->pcb_id != pcb_id)
         {
-            klogv("remove_IO 3!");
             temp = temp->next;
         }
-        klogv("remove_IO 4!");
         iod *next = temp->next;
         temp->next = next->next;
         next->next = NULL;

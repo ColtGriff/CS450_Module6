@@ -199,7 +199,6 @@ context *callerContext;
 u32int *sys_call(context *registers)
 { // Benjamin and Anastase programmed this function
 
-  klogv("Entered sys_call function!");
   // Add to your IF block that checks the op code for IDLE/EXIT
   //if (params.op_code == IDLE || params.op_code == EXIT)
   //insertPCB(COP); // not sure.
@@ -213,27 +212,22 @@ u32int *sys_call(context *registers)
   if (COP == NULL)
   { // sys_call has not been called yet.
 
-    klogv("sys_call 1!");
     callerContext = registers;
   }
   else
   {
-    klogv("sys_call 2!");
     if (params.op_code == IDLE)
     { // Save the context (reassign COP's stack top).
-      klogv("sys_call 3!");
       COP->runningStatus = 0;
       COP->stackTop = (unsigned char *)registers;
       //tempOOP = COP;
     }
     else if (params.op_code == EXIT)
     { // free COP.
-      klogv("sys_call 4!");
       sys_free_mem(COP);
     }
     else if (params.op_code == READ || params.op_code == WRITE)
     {
-      klogv("sys_call 5!");
       COP->runningStatus = -1; // -1 means blocked
       COP->stackTop = (unsigned char *)registers;
       // tempOOP = COP;
@@ -246,44 +240,38 @@ u32int *sys_call(context *registers)
       COPiod->buffer_ptr = params.buffer_ptr;
       COPiod->count_ptr = params.count_ptr;
       COPiod->next = NULL;
-      klogv("sys_call 6!");
       // insert iod into IOqueue // active io queue
       insert_IO_request(COPiod);
       // call IO scheduler
-      io_scheduler();
+      
       //COP->stackTop = (unsigned char *)registers;
     }
+    io_scheduler();
   }
 
-  klogv("sys_call 7!");
   queue *ready = getReady();
 
   if (ready->head != NULL)
   {
-    klogv("sys_call 8!");
     COP = ready->head;
     removePCB(COP);
     COP->runningStatus = 1;
 
     if (COP != NULL)
     {
-      klogv("sys_call 9!");
       insertPCB(COP);
     }
-    klogv("sys_call 10!");
     return (u32int *)COP->stackTop;
   }
-  klogv("sys_call 11!");
   return (u32int *)callerContext;
 }
 
-//dcb *tempDCB;
 
 iod *tempIOD;
 iod *tempIOD2;
+// Instead of these temp variables, use the head of the queue
 void io_scheduler()
 {
-  klogv("Entered io_scheduler function!");
   // Check if there are any active or completed IO processes on the DCB.
 
   if (DCB->e_flag == 1) // IO process completed
@@ -313,13 +301,9 @@ void io_scheduler()
     tempIOD->op_code = params.op_code;
     tempIOD->next = tempIOD2;
     
-    klogv("IO schedule 1");
     remove_IO_request(COP);
-    klogv("IO schedule 1.1");
     unblockPCB(tempIOD->pcb_id->processName);
-    klogv("IO schedule 1.2");
     // call com_read() or com_write() on the next iod depending on the op code.
-    klogv("IO schedule 2");
     if (tempIOD->next->op_code == WRITE)
       com_write(tempIOD->next->buffer_ptr, tempIOD->next->count_ptr);
     if (tempIOD->next->op_code == READ)
